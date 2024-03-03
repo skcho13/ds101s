@@ -61,12 +61,13 @@ website:
       - section: Introduction
         contents:
           - href: contents/intro.qmd
-            text: Data Science Intro
-          - href: contents/two-cultures.qmd
-            text: Two Cultures
-          - href: contents/rethinking.qmd
-            text: Statistical Rethinking
-          - text: Python Setup
+            text: Overview
+          - text: Data Science Intro
+          # - href: contents/two-cultures.qmd
+          - text: Two Cultures
+          # - href: contents/rethinking.qmd
+          - text: Statistical Rethinking
+          # - text: Python Setup
       - text: ---
       - section: Exploratory Data Analysis and Visualisation
       - text: ---
@@ -152,10 +153,10 @@ website:
       # - text: ---
       # - href: contents/statistics.ipynb
       # # - text: ---
-      # # - section: Communicate
-      # #   contents:
-      # #     - href: https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing
-      # #       text: Ask
+      - section: Communicate
+        contents:
+          - href: https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing
+            text: Ask
       # #     - href: https://docs.google.com/document/d/13RYgzt7L4Bbw46kHHpQMNLXWJZMi62hJPk44TBoLteQ/edit?usp=sharing
       # #       text: Personal Project
 
@@ -167,21 +168,21 @@ website:
 
 format:
   html:
-        toc: true
-        toc-depth: 4
-        toc-location: right
-        code-fold: false
-        code-overflow: scroll
-        code-summary: "Show the code"
-        theme: [sandstone, theme-light.scss]
-        fontsize: 1.1em
-        linestretch: 2
-        code-copy: true
-        highlight-style: ayu-light
-        link-external-newwindow: true
-        grid:
-          body-width: 900px
-          margin-width: 200px
+    toc: true
+    toc-depth: 4
+    toc-location: right
+    code-fold: false
+    code-overflow: scroll
+    code-summary: "Show the code"
+    theme: [sandstone, theme-light.scss]
+    fontsize: 1.1em
+    linestretch: 2
+    code-copy: true
+    highlight-style: ayu-light
+    link-external-newwindow: true
+    grid:
+      body-width: 900px
+      margin-width: 200px
         
         # css: styles.css
 

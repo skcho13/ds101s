@@ -61,76 +61,52 @@
     "href": "contents/rethinking.html",
     "title": "Statistical Rethinking",
     "section": "",
-    "text": "예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n고양이인가 아닌가? 예측의 정확성\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리의 답변\n비즈니스 분석\n\n\n\n\n\n\n\n현상 본질과 매커니즘 파악\nStatistical Models 강점 Parametric\n\nQ: 닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n\n\n가난, 인종, 범죄\n임금 차별\n\n\n\n출산율의 감소\n\n\n\n\n\n\n\n\n\n. . .\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지는 서로 상보 관계!",
-    "crumbs": [
-      "Introduction",
-      "Statistical Rethinking"
-    ]
+    "text": "예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n고양이인가 아닌가? 예측의 정확성\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리의 답변\n비즈니스 분석\n\n\n\n\n\n\n\n현상 본질과 매커니즘 파악\nStatistical Models 강점 Parametric\n\nQ: 닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n\n\n가난, 인종, 범죄\n임금 차별\n\n\n\n출산율의 감소\n\n\n\n\n\n\n\n\n\n. . .\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지는 서로 상보 관계!"
   },
   {
     "objectID": "contents/rethinking.html#데이터를-분석한다는-것은",
     "href": "contents/rethinking.html#데이터를-분석한다는-것은",
     "title": "Statistical Rethinking",
     "section": "",
-    "text": "예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n고양이인가 아닌가? 예측의 정확성\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리의 답변\n비즈니스 분석\n\n\n\n\n\n\n\n현상 본질과 매커니즘 파악\nStatistical Models 강점 Parametric\n\nQ: 닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n\n\n가난, 인종, 범죄\n임금 차별\n\n\n\n출산율의 감소\n\n\n\n\n\n\n\n\n\n. . .\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지는 서로 상보 관계!",
-    "crumbs": [
-      "Introduction",
-      "Statistical Rethinking"
-    ]
+    "text": "예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n고양이인가 아닌가? 예측의 정확성\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리의 답변\n비즈니스 분석\n\n\n\n\n\n\n\n현상 본질과 매커니즘 파악\nStatistical Models 강점 Parametric\n\nQ: 닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n\n\n가난, 인종, 범죄\n임금 차별\n\n\n\n출산율의 감소\n\n\n\n\n\n\n\n\n\n. . .\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지는 서로 상보 관계!"
   },
   {
     "objectID": "contents/rethinking.html#데이터를-분석한다는-것은-1",
     "href": "contents/rethinking.html#데이터를-분석한다는-것은-1",
     "title": "Statistical Rethinking",
     "section": "데이터를 분석한다는 것은?",
-    "text": "데이터를 분석한다는 것은?\n전통적인 분류\n\n\n\n\n탐색적 분석 vs. 가설 검증\nexploratory vs. confirmatory\n\n탐색적 분석\n\n통찰 혹은 가설의 기초 제공\n끼워 맞추기? 오류에 빠지기 쉬움\n\n가설 검증\n\n진위의 확률을 높임\n탐색적 분석으로부터 온 가설은 재테스트\n\n\n\n\n\n관찰 vs. 실험 데이터\nobservational vs. experimental\n\n당근과 시력?\n커피의 효과?\n남녀의 임금 차별?\n\n\n  \n\n기술적 vs. 추론적 분석\ndescriptive vs. inferential\n\n연봉과 삶의 만족도와 관계\n두통약의 효능",
-    "crumbs": [
-      "Introduction",
-      "Statistical Rethinking"
-    ]
+    "text": "데이터를 분석한다는 것은?\n전통적인 분류\n\n\n\n\n탐색적 분석 vs. 가설 검증\nexploratory vs. confirmatory\n\n탐색적 분석\n\n통찰 혹은 가설의 기초 제공\n끼워 맞추기? 오류에 빠지기 쉬움\n\n가설 검증\n\n진위의 확률을 높임\n탐색적 분석으로부터 온 가설은 재테스트\n\n\n\n\n\n관찰 vs. 실험 데이터\nobservational vs. experimental\n\n당근과 시력?\n커피의 효과?\n남녀의 임금 차별?\n\n\n  \n\n기술적 vs. 추론적 분석\ndescriptive vs. inferential\n\n연봉과 삶의 만족도와 관계\n두통약의 효능"
   },
   {
     "objectID": "contents/rethinking.html#통계적-사고-i",
     "href": "contents/rethinking.html#통계적-사고-i",
     "title": "Statistical Rethinking",
     "section": "통계적 사고 I",
-    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\n\n\nSimpson’s paradox\n\n\n\n\nSource: The book of why by Judea Pearl",
-    "crumbs": [
-      "Introduction",
-      "Statistical Rethinking"
-    ]
+    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\n\n\nSimpson’s paradox\n\n\n\n\nSource: The book of why by Judea Pearl"
   },
   {
     "objectID": "contents/rethinking.html#통계적-사고-ii",
     "href": "contents/rethinking.html#통계적-사고-ii",
     "title": "Statistical Rethinking",
     "section": "통계적 사고 II",
-    "text": "통계적 사고 II\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?",
-    "crumbs": [
-      "Introduction",
-      "Statistical Rethinking"
-    ]
+    "text": "통계적 사고 II\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?"
   },
   {
     "objectID": "contents/rethinking.html#데이터-시각화",
     "href": "contents/rethinking.html#데이터-시각화",
     "title": "Statistical Rethinking",
     "section": "데이터 시각화",
-    "text": "데이터 시각화\nData Visualization \n\n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\n\nInteractive",
-    "crumbs": [
-      "Introduction",
-      "Statistical Rethinking"
-    ]
+    "text": "데이터 시각화\nData Visualization \n\n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\n\nInteractive"
   },
   {
     "objectID": "contents/intro.html",
     "href": "contents/intro.html",
     "title": "개관",
     "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보: 인류, 실시간\n의료서비스, 보건\n자율주행차량: 내부, 외부\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n금융정보 및 흐름\n스포츠\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보",
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -138,10 +114,10 @@
     "href": "contents/intro.html#미래-데이터의-중요성",
     "title": "개관",
     "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보: 인류, 실시간\n의료서비스, 보건\n자율주행차량: 내부, 외부\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n금융정보 및 흐름\n스포츠\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보",
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -149,10 +125,10 @@
     "href": "contents/intro.html#데이터-사이언스의-응용-예시",
     "title": "개관",
     "section": "데이터 사이언스의 응용 예시",
-    "text": "데이터 사이언스의 응용 예시\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n10년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족.\n특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n도시 운영 및 설계\n\n환경, 에너지, 교통 시스템을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\n데이터 분석을 통해 시장에서 조직이 우위를 점할 수 있는 방법을 제시",
+    "text": "데이터 사이언스의 응용 예시\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n10년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -160,10 +136,10 @@
     "href": "contents/intro.html#사회적-파장",
     "title": "개관",
     "section": "사회적 파장",
-    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n기계와의 교감 vs. 인간관계의 소외\n개별성/자율성 vs. 피동적/비주체적\n개인화된 서비스 vs. 설득/유혹/조작\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932 (Wikipedia)\n\n\n\n\n\n\n\nThe Technological Society, 1954 (Wikipedia)\n\n\n\n\n\n\n\nSapiens by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.",
+    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계와의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -174,7 +150,7 @@
     "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical Learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -185,7 +161,7 @@
     "text": "Skills\n\n\nDomain knowledge\n\n해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 “one size fits all”은 효과적이지 않음\n추상화된 현실에 대한 모형은 수많은 가정/사전 지식(prior knowledge)을 전제하고 있음.\n각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적\n\nEthics\n\n데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요\n\n배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물\n\n소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움\n\n공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터\n누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집\n\n아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움\n\n사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집\n\n메타데이터(metadata)\n통화 내역만으로 많은 민감한 정보을 유추할 수 있음\n\n알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등\n\n\n한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력\n\n\nWrangling\n\n데이터 소스는 다양한 형식으로 존재\n통합, 정리, 변환, 정규화 등의 작업이 요구\ndata munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림\n\nDatabase & computer science\n\n수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술\n다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용\nML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등\n\nVisualisation\n\n작업 프로세스의 모든 과정에 관여\n\n데이터를 탐색하거나,\n데이터의 의미를 효과적으로 전달\n\n\nStatistics & Probability\n\n데이터 과학 프로세스 전반에 걸쳐 사용됨\n\n초기 수집과 조사\n다양한 모델과 분석의 결과를 해석\n의사결정에 활용\n\n\nMachine Learning\n\n데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용\n응용 측면에서는\n\n수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등\n해결할 문제와 데이터에 가장 적합한 알고리즘을 파악\n\n\nCommunication\n\n데이터에 담긴 스토리를 효과적으로 전달하는 능력\n분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -196,7 +172,7 @@
     "text": "응용/비즈니스에서 정형적인 절차\nPhases of the CRISP-DM (CRoss-Industry Standard Process for Data Mining)\nsource: Chapman et al., 2000\n\nGeneric tasks of the CRISP-DM reference model\n\n비즈니스의 이해와 데이터의 이해\n\n프로젝트의 목표를 정의하고, 비즈니스 문제를 이해하는 것\n어떤 데이터를 수집하는 것이 유용한지, 어떤 데이터가 수집 가능한지 등을 탐색\n\n데이터 준비와 모델링\n\n노이즈와 비정형화된 데이터를 정제하고, 모델링을 위한 데이터를 준비\n데이터로부터 의미있는 패턴(signal vs. noise)과 통찰을 찾기 위해 다양한 모델을 검토하고 실행\n\n모델 평가와 배포\n\n모델링 성능을 평가하고 개선, 모델을 배포\n실제 환경에서는 훈련/평가을 위해 사용된 데이터가 보진 못한 새로운 데이터에 적용됨으로 모델의 성능을 지속적으로 모니터링\n\n데이터 질의 중요성\n\n2016년 데이터 과학자를 대상으로 한 설문조사(CrowdFlower report, 2016)\n데이터 준비(데이터 수집, 클린닝)에 79%의 시간이 소요\n프로젝트의 초점이 명확하고, 그에 맞는 올바른 데이터가 수집되었는지, 모델이 프로젝트의 목표에 잘 부응하는지 중요!\nGarbage in, garbage out\n\n\n\nSource: Cleaning Big Data\n\n문제 정의: 데이터 과학 기술을 사용하여 해결하려는 문제와 달성하려는 목표를 명확하게 정의; 도메인 지식이 요구\n데이터 수집: 프로젝트 요구 사항에 따라 데이터베이스, API, 웹 스크래핑 또는 센서를 포함할 수 있는 다양한 소스에서 관련 데이터를 수집\n데이터 전처리\n\n누락된 값, 이상값 및 불일치를 처리하여 데이터를 정리\n분석에 적합하도록 기능을 변환하고 엔지니어링\n\n탐색적 데이터 분석(EDA): 시각화 및 통계 기법을 사용하여 데이터의 특성, 분포, 관계 및 패턴을 분석\n특성 선택 및 엔지니어링:\n\n분석 또는 모델에 가장 관련성이 높은 특성을 선택\n데이터에서 중요한 정보를 캡처하는 새로운 특성을 만듦\n\n모델 선택 및 학습:\n\n문제 유형(분류, 회귀, 클러스터링 등)에 따라 적절한 기계 학습 알고리즘을 선택\n데이터를 훈련 및 검증 세트로 분할하고 모델을 선택\n\n모델 평가:\n\n교차 검증과 같은 적절한 메트릭 및 검증 기술을 사용하여 모델 성능을 평가\n모델 성능을 최적화하기 위해 하이퍼파라미터를 조정\n\n모델 배포:\n\n훈련된 모델을 프로덕션 환경에 통합; API 또는 마이크로서비스 생성을 포함\n이를 배포하고(간단히 말하면 고객이 상호 작용할 수 있는 UI를 제공) 고객은 입력 내용을 입력하기만 하면 예측값을 얻을 수 있음\n\n실시간 데이터 수집 및 추론: 실시간 데이터를 수집하고 예측 또는 분류를 위해 훈련된 모델을 사용하는 파이프라인을 설정\n모니터링 및 유지 관리:\n\n실제 환경에서 모델 성능을 지속적으로 모니터링\n정확성과 관련성을 유지하기 위해 필요에 따라 모델을 재교육하거나 업데이트\n\n시각화 및 보고: 시각화 및 보고서를 생성하여 이해관계자에게 통찰력과 결과를 전달\n피드백 루프 및 개선: 사용자 및 이해관계자의 피드백을 통합하여 솔루션을 개선하고 문제를 해결",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -204,10 +180,10 @@
     "href": "contents/intro.html#표준-비즈니스-영역에서의-데이터-사이언스-작업",
     "title": "개관",
     "section": "표준 비즈니스 영역에서의 데이터 사이언스 작업",
-    "text": "표준 비즈니스 영역에서의 데이터 사이언스 작업\nSource: Data Science (The MIT Press Essential Knowledge Series), 2018, by John D. Kelleher & Brendan Tierney\n\nClustering\nAnomaly detection\nAssociation-rule mining\nPrediction: classification & regression\n\n\nClustering:\nWho Are Our Customers?\n\n\n클러스터링을 통해 타깃 고객을 더 세분화된 군집으로 분류하여 마케팅 캠페인의 타겟을 명확히 정의할 수 있음\n\nMeta S. Brown (2014)의 보고서에 따르면,\n\nSoccer Moms? \n\n어린이집에 다니는 어린 자녀를 둔 전업주부\n고등학생 자녀와 함께 파트타임으로 일하는 엄마\n음식과 건강에 관심이 많지만 자녀가 없는 여성\n\n\n\n클러스터링을 통해 얻은 고객 세그먼트에 페르소나를 부여\n각 특성에 맞는 캠패인 전략을 수립\n\n작고 집중된 고객 클러스터를 발견\n많은 매출을 창출하는 고객이 포함된 클러스터에 집중\n\n\n\n  Source: Introduction to Statistical Learning by James et al.\n\n\n\n클러스터링을 위해 사용할 수 있는 속성들: 어떤 속성을 포함하고 어떤 속성을 제외할지 결정하는 것이 중요!\n\n인구통계학적 정보(연령, 성별 등)\n위치(우편번호, 시골 또는 도시 주소 등)\n거래 정보(예: 고객이 어떤 제품이나 서비스를 추구했는지)\n기업이 고객으로부터 창출하는 수익\n고객이 된 지 얼마나 되었는지\n로열티 카드 회원인지\n제품을 반품하거나 서비스에 대해 불만을 제기한 적이 있는지 등\n\n\n\n\n\n\n\n프로젝트의 데이터 이해 단계에서 탐색 도구로 자주 사용됨\n추가 지원이 필요하거나 다른 학습 접근 방식을 선호하는 학생 그룹을 식별\n생물 정보학에서 마이크로어레이 분석에서 유전자 서열을 분석\n\n\n\nAnomaly detection:\nIs This Fraud?\n\n잠재적인 사기, 특히 금융 거래 행위를 식별하고 조사\n\n예를 들어, 비정상적인 위치에서 발생한 거래\n비정상적으로 많은 금액이 포함된 거래\n\n어떤 면에서 클러스터링과 반대 개념\n\n클러스터링: 유사한 인스턴스 그룹을 식별\n이상 징후 탐지: 특별한 인스턴스를 식별\n\n이상 징후는 드물다는 그 고유한 특징으로 인해 식별이 어려움\n여러 가지 모델을 결합: 서로 다른 모델이 서로 다른 유형의 이상 징후를 포착\n\n예를 들어, 4개의 모델 중 1개 모델에서만 거래가 사기성 거래로 식별되는 경우\n반대로, 그 중 서너 가지 모델이 해당 거래를 사기 가능성이 있다고 판단한 경우\n\n다양한 분야에서 활용\n\n금융기관: 잠재적 사기 또는 자금 세탁 사례로 추가 조사가 필요한 금융 거래를 식별\n보험기관: 회사의 일반적인 청구와 일치하지 않는 청구를 식별\n사이버 보안: 해킹 가능성, 직원의 비정상적인 행동을 탐지하여 네트워크 침입을 식별\n의료 분야: 의료 기록의 이상 징후를 식별하여 질병을 진단\n사물 인터넷: 데이터를 모니터링하고 비정상적인 센서 이벤트의 발생을 감지, 조치\n\n\n\nSource: The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov\n\n\nAssociation-Rule Mining:\nDo You Want Fries with That?\n\n고객에게 다른 관련 제품이나 보완 제품, 혹은 잊어 있었던 제품을 제안\n\n예를 들어, 슈퍼마켓에서 핫도그를 구매한 고객은 케첩과 맥주도 함께 구매할 가능성이 높음.\n이에 맞춰 매장은 제품 레이아웃을 계획할 수 있음\n온라인 마켓의 경우, 웹사이트의 배열, 추천, 광고 등을 설계\n즉, 제품 간 연관성을 이해하고 교차 판매를 촉진\n\n연관 규칙 마이닝은 데이터 세트의 속성(또는 열) 간의 관계를 살펴보는 데 중점을 둠: 속성 간의 상관관계\n위의 경우, 고객의 장바구니 품목을 추적\nIF {핫도그, 케첩}, THEN {맥주}\n\n핫도그와 케첩을 맥주와 연관시키는 연관성 규칙의 신뢰도가 75%라면 고객이 핫도그와 케첩을 모두 구매한 경우 75%에서 맥주도 함께 구매했음을 나타냅니다.\n인구통계학적 정보를 연관성 분석에 포함하여 마케팅 및 타겟팅 광고에 활용\n\n특히, 구매 기록 정보는 없는 경우\n\nIF 성별(남성) & 나이(35세 미만)& {핫도그, 케첩}, THEN {맥주}\n장바구니 분석을 통해 다음과 같은 질문에 답을 탐색\n\n마케팅 캠페인이 효과가 있었는지,\n이 고객의 구매 패턴에 변화가 있었는지,\n고객에게 중요한 인생 이벤트가 있었는지,\n제품 위치가 구매 행동에 영향을 미치는지,\n신제품으로 누구를 타깃팅해야 하는지 등\n\n구매 경향의 시간적 요소를 더하면\n\n적절한 시기에 (재)구매를 추천\n유지보수, 부품 교체 일정\n\n다양한 영역에서도 유용함\n\n통신: 회사의 다양한 서비스를 패키지로 묶는 방법을 설계\n보험: 상품과 보험금 청구 사이에 연관성이 파악\n의료: 기존 치료법과 새로운 치료법 및 의약품 간에 상호 작용이 있는지 확인\n\n추천 시스템(recommnder system)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Machine Learning Class (2016.7.8) from Microsoft Research by Chris Bishop, YouTube\n\n\nClassification (Prediction)\nChurn or No Churn(고객 이탈), That Is the Question\n개인의 행동 성향을 모델링하는 것이 목표이기 때문입니다. 이러한 행동은 마케팅에 응답하는 것부터 대출 연체 또는 서비스 탈퇴에 이르기까지 다양합니다. 특히 휴대폰 서비스 회사에게는 서비스를 이탈할 가능성이 높은 고객을 식별하는 능력이 중요합니다.\n휴대폰 서비스 기업은 신규 고객을 유치하는 데 상당한 비용이 들기 때문입니다. 실제로 기존 고객을 유지하는 것보다 신규 고객을 유치하는 데 5~6배의 비용이 더 드는 것으로 추정됩니다(Verbeke 외. 2011). 따라서 많은 휴대폰 서비스 회사들은 현재 고객을 유지하는 데 매우 열심입니다. 하지만 동시에 비용을 최소화하고자 합니다. 따라서 모든 고객에게 단순히 요금 할인과 휴대폰 업그레이드를 제공하면 고객을 유지하기가 쉬울 수 있지만 이는 현실적인 방안이 아닙니다. 대신 가까운 시일 내에 이탈할 가능성이 높은 고객만을 대상으로 혜택을 제공하고자 합니다. 고객 이탈이라는 용어는 고객이 한 서비스를 떠나 다른 서비스에 가입하는 과정을 설명하는 데 사용됩니다. 따라서 가까운 미래에 어떤 고객이 이탈할 가능성이 높은지 예측하는 문제를 이탈 예측이라고 합니다. 많은 기업이 통신, 유틸리티, 은행, 보험 및 기타 산업에서 이러한 종류의 분석을 사용하여 이탈 고객을 예측하고 있습니다. 기업들이 집중하고 있는 또 다른 영역은 직원 이직률 또는 직원 이탈 예측, 즉 특정 기간 내에 퇴사할 가능성이 높은 직원을 예측하는 것입니다.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n이해보다는 예측에 초점을 두는 deep learning\n\nImage recognition\nSpeech recognition\n\n\n\n\n\n\n\n\n\n\n\n\n\nRegression (Prediction):\nHow Much Will It Cost?\n\n앞서 분류는 범주형 속성의 값을 추정하는 반며, 회귀는 연속적인 값을 추정\n전통적인 통계적 모형의 근간\n예를 들어, 주택의 “가격”을 예측하는 경우\n\n주택의 크기, 방의 개수, 층수, 해당 지역의 평균 주택 가격, 해당 지역의 평균 주택 크기 등의 속성을 포함\n\n자동차의 “가격”을 예측하려며\n\n자동차의 연식, 주행 거리, 엔진 크기, 자동차 제조사, 문 개수 등의 속성을 포함",
+    "text": "표준 비즈니스 영역에서의 데이터 사이언스 작업\nSource: Data Science (The MIT Press Essential Knowledge Series), 2018, by John D. Kelleher & Brendan Tierney\n\nClustering\nAnomaly detection\nAssociation-rule mining\nPrediction: classification & regression\n\n\nClustering\nWho Are Our Customers?\n\n\n클러스터링을 통해 타깃 고객을 더 세분화된 군집으로 분류하여 마케팅 캠페인의 타겟을 명확히 정의할 수 있음\n\nMeta S. Brown (2014)의 보고서에 따르면,\n\nSoccer Moms? \n\n어린이집에 다니는 어린 자녀를 둔 전업주부\n고등학생 자녀와 함께 파트타임으로 일하는 엄마\n음식과 건강에 관심이 많지만 자녀가 없는 여성\n\n\n\n클러스터링을 통해 얻은 고객 세그먼트에 페르소나를 부여\n각 특성에 맞는 캠패인 전략을 수립\n\n작고 집중된 고객 클러스터를 발견\n많은 매출을 창출하는 고객이 포함된 클러스터에 집중\n\n\n\n  Source: Introduction to Statistical Learning by James et al.\n\n\n\n클러스터링을 위해 사용할 수 있는 속성들: 어떤 속성을 포함하고 어떤 속성을 제외할지 결정하는 것이 중요!\n\n인구통계학적 정보(연령, 성별 등)\n위치(우편번호, 시골 또는 도시 주소 등)\n거래 정보(예: 고객이 어떤 제품이나 서비스를 추구했는지)\n기업이 고객으로부터 창출하는 수익\n고객이 된 지 얼마나 되었는지\n로열티 카드 회원인지\n제품을 반품하거나 서비스에 대해 불만을 제기한 적이 있는지 등\n\n\n\n\n\n\n\n프로젝트의 데이터 이해 단계에서 탐색 도구로 자주 사용됨\n추가 지원이 필요하거나 다른 학습 접근 방식을 선호하는 학생 그룹을 식별\n생물 정보학에서 마이크로어레이 분석에서 유전자 서열을 분석\n\n\n\nAnomaly detection\nIs This Fraud?\n\n잠재적인 사기, 특히 금융 거래 행위를 식별하고 조사\n\n예를 들어, 비정상적인 위치에서 발생한 거래\n비정상적으로 많은 금액이 포함된 거래\n\n어떤 면에서 클러스터링과 반대 개념\n\n클러스터링: 유사한 인스턴스 그룹을 식별\n이상 징후 탐지: 특별한 인스턴스를 식별\n\n이상 징후는 드물다는 그 고유한 특징으로 인해 식별이 어려움\n여러 가지 모델을 결합: 서로 다른 모델이 서로 다른 유형의 이상 징후를 포착\n\n예를 들어, 4개의 모델 중 1개 모델에서만 거래가 사기성 거래로 식별되는 경우\n반대로, 그 중 서너 가지 모델이 해당 거래를 사기 가능성이 있다고 판단한 경우\n\n다양한 분야에서 활용\n\n금융기관: 잠재적 사기 또는 자금 세탁 사례로 추가 조사가 필요한 금융 거래를 식별\n보험기관: 회사의 일반적인 청구와 일치하지 않는 청구를 식별\n사이버 보안: 해킹 가능성, 직원의 비정상적인 행동을 탐지하여 네트워크 침입을 식별\n의료 분야: 의료 기록의 이상 징후를 식별하여 질병을 진단\n사물 인터넷: 데이터를 모니터링하고 비정상적인 센서 이벤트의 발생을 감지, 조치\n\n\n\nSource: The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov\n\n\nAssociation-Rule Mining\nDo You Want Fries with That?\n\n고객에게 다른 관련 제품이나 보완 제품, 혹은 잊어 있었던 제품을 제안\n\n예를 들어, 슈퍼마켓에서 핫도그를 구매한 고객은 케첩과 맥주도 함께 구매할 가능성이 높음.\n이에 맞춰 매장은 제품 레이아웃을 계획할 수 있음\n온라인 마켓의 경우, 웹사이트의 배열, 추천, 광고 등을 설계\n즉, 제품 간 연관성을 이해하고 교차 판매를 촉진\n\n연관 규칙 마이닝은 데이터 세트의 속성(또는 열) 간의 관계를 살펴보는 데 중점을 둠: 속성 간의 상관관계\n위의 경우, 고객의 장바구니 품목을 추적\nIF {핫도그, 케첩}, THEN {맥주}\n\n핫도그와 케첩을 맥주와 연관시키는 연관성 규칙의 신뢰도가 75%라면 고객이 핫도그와 케첩을 모두 구매한 경우 75%에서 맥주도 함께 구매했음을 나타냅니다.\n인구통계학적 정보를 연관성 분석에 포함하여 마케팅 및 타겟팅 광고에 활용\n\n특히, 구매 기록 정보는 없는 경우\n\nIF 성별(남성) & 나이(35세 미만)& {핫도그, 케첩}, THEN {맥주}\n장바구니 분석을 통해 다음과 같은 질문에 답을 탐색\n\n마케팅 캠페인이 효과가 있었는지,\n이 고객의 구매 패턴에 변화가 있었는지,\n고객에게 중요한 인생 이벤트가 있었는지,\n제품 위치가 구매 행동에 영향을 미치는지,\n신제품으로 누구를 타깃팅해야 하는지 등\n\n구매 경향의 시간적 요소를 더하면\n\n적절한 시기에 (재)구매를 추천\n유지보수, 부품 교체 일정\n\n다양한 영역에서도 유용함\n\n통신: 회사의 다양한 서비스를 패키지로 묶는 방법을 설계\n보험: 상품과 보험금 청구 사이에 연관성이 파악\n의료: 기존 치료법과 새로운 치료법 및 의약품 간에 상호 작용이 있는지 확인\n\n추천 시스템(recommnder system)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Machine Learning Class (2016.7.8) from Microsoft Research by Chris Bishop, YouTube\n\n\nClassification (Prediction)\nChurn or No Churn(고객 이탈), That Is the Question\n\n행동 성향 모델링의 목표: 마케팅 응답, 서비스 탈퇴 등 다양한 행동 예측\n휴대폰 서비스 회사의 고객 유지 필요성: 신규 고객 유치 비용 대비 기존 고객 유지 비용의 상대적 높음\n이탈 가능성이 높은 고객 식별의 중요성: 유지 비용 최소화 및 이탈 예측을 통한 효율적인 혜택 제공 필요\n이탈 예측의 의미와 활용: 서비스 이탈 예측을 통해 고객 이탈 가능성을 예측하고 효율적인 대응 가능\n다양한 산업의 이탈 예측 활용: 통신, 유틸리티, 은행, 보험 등에서의 이탈 예측을 통한 비즈니스 전략 개발 및 운영 향상\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n이해보다는 예측에 초점을 두는 deep learning\n\nImage recognition\nSpeech recognition\n\n\n\n\n\n\n\n\n\n\n\n\n\nRegression (Prediction)\nHow Much Will It Cost?\n\n앞서 분류는 범주형 속성의 값을 추정하는 반며, 회귀는 연속적인 값을 추정\n전통적인 통계적 모형의 근간\n예를 들어, 주택의 “가격”을 예측하는 경우\n\n주택의 크기, 방의 개수, 층수, 해당 지역의 평균 주택 가격, 해당 지역의 평균 주택 크기 등의 속성을 포함\n\n자동차의 “가격”을 예측하려며\n\n자동차의 연식, 주행 거리, 엔진 크기, 자동차 제조사, 문 개수 등의 속성을 포함",
     "crumbs": [
       "Introduction",
-      "Data Science Intro"
+      "Overview"
     ]
   },
   {
@@ -242,22 +218,14 @@
     "href": "contents/two-cultures.html",
     "title": "Two Cultures",
     "section": "",
-    "text": "오랜동안 여러 분야에서 각자의 방식을 개발\nComputer Science\nStatistics\nBiostatistics\nEconomics\nEpidemiology\nPolitical Science\nEngineering\n\n\n\n서로 다른 용어를 쓰기도 하며, 그 분야에서 필요로하는 방식에 초점을 맞춤.\n\n서로 의사소통이 거의 없었음.\n\nData Science라는 이름하에 통합되어가는 과정 중\n\n\n\n\n컴퓨터 사이언스의 경우, 데이터로부터 패턴을 찾아 주로 분류나 예측을 위한 이론과 툴들이 개발되는 반면,\n과학자들은 예측보다는, 변수들 간의 진정한 관계 혹은 인과 관계를 탐구\n현재 이 둘은 소위 cross-fertilization을 지향하며 같이 발전, 통합되어가고 있음.\n\n\n\n\n\n\nBreiman, L. (2001). Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231.\n\n\n\n\nLeo Breiman in 2003 (Wikipedia)",
-    "crumbs": [
-      "Introduction",
-      "Two Cultures"
-    ]
+    "text": "오랜동안 여러 분야에서 각자의 방식을 개발\nComputer Science\nStatistics\nBiostatistics\nEconomics\nEpidemiology\nPolitical Science\nEngineering\n\n\n\n서로 다른 용어를 쓰기도 하며, 그 분야에서 필요로하는 방식에 초점을 맞춤.\n\n서로 의사소통이 거의 없었음.\n\nData Science라는 이름하에 통합되어가는 과정 중\n\n\n\n\n컴퓨터 사이언스의 경우, 데이터로부터 패턴을 찾아 주로 분류나 예측을 위한 이론과 툴들이 개발되는 반면,\n과학자들은 예측보다는, 변수들 간의 진정한 관계 혹은 인과 관계를 탐구\n현재 이 둘은 소위 cross-fertilization을 지향하며 같이 발전, 통합되어가고 있음.\n\n\n\n\n\n\nBreiman, L. (2001). Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231.\n\n\n\n\nLeo Breiman in 2003 (Wikipedia)"
   },
   {
     "objectID": "contents/two-cultures.html#data-analysis",
     "href": "contents/two-cultures.html#data-analysis",
     "title": "Two Cultures",
     "section": "",
-    "text": "오랜동안 여러 분야에서 각자의 방식을 개발\nComputer Science\nStatistics\nBiostatistics\nEconomics\nEpidemiology\nPolitical Science\nEngineering\n\n\n\n서로 다른 용어를 쓰기도 하며, 그 분야에서 필요로하는 방식에 초점을 맞춤.\n\n서로 의사소통이 거의 없었음.\n\nData Science라는 이름하에 통합되어가는 과정 중\n\n\n\n\n컴퓨터 사이언스의 경우, 데이터로부터 패턴을 찾아 주로 분류나 예측을 위한 이론과 툴들이 개발되는 반면,\n과학자들은 예측보다는, 변수들 간의 진정한 관계 혹은 인과 관계를 탐구\n현재 이 둘은 소위 cross-fertilization을 지향하며 같이 발전, 통합되어가고 있음.\n\n\n\n\n\n\nBreiman, L. (2001). Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231.\n\n\n\n\nLeo Breiman in 2003 (Wikipedia)",
-    "crumbs": [
-      "Introduction",
-      "Two Cultures"
-    ]
+    "text": "오랜동안 여러 분야에서 각자의 방식을 개발\nComputer Science\nStatistics\nBiostatistics\nEconomics\nEpidemiology\nPolitical Science\nEngineering\n\n\n\n서로 다른 용어를 쓰기도 하며, 그 분야에서 필요로하는 방식에 초점을 맞춤.\n\n서로 의사소통이 거의 없었음.\n\nData Science라는 이름하에 통합되어가는 과정 중\n\n\n\n\n컴퓨터 사이언스의 경우, 데이터로부터 패턴을 찾아 주로 분류나 예측을 위한 이론과 툴들이 개발되는 반면,\n과학자들은 예측보다는, 변수들 간의 진정한 관계 혹은 인과 관계를 탐구\n현재 이 둘은 소위 cross-fertilization을 지향하며 같이 발전, 통합되어가고 있음.\n\n\n\n\n\n\nBreiman, L. (2001). Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231.\n\n\n\n\nLeo Breiman in 2003 (Wikipedia)"
   },
   {
     "objectID": "contents/vote.html",
