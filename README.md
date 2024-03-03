@@ -1,1 +1,5 @@
-# ds101s
+# 동국대학교, 데이터 분석 및 시각화, 2023-2, 강의 노트
+
+# Data Analysis and Visualization, Dongguk University, 2023-2
+
+Lecture Note
