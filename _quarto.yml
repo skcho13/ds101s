@@ -179,8 +179,10 @@ format:
         code-copy: true
         highlight-style: ayu-light
         link-external-newwindow: true
-        # grid:
-        #   sidebar-width: 270px
+        grid:
+          body-width: 900px
+          margin-width: 200px
+        
         # css: styles.css
 
 
