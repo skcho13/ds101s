@@ -19,8 +19,8 @@ website:
   # navbar: true
   title: "{{< fa fingerprint >}} Introduction to Data Science"
   description: "Introduction to Data Science, Dongguk University, 2024-1"
-
-  # site-url:
+  site-url: "https://dgds101.modellings.art"
+  site-path: "/"
   # repo-url:
   # repo-actions: [edit, issue]
 
