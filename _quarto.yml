@@ -5,19 +5,15 @@ project:
     - "*.qmd"
     - "*.ipynb"
     - "!contents/ignore/"
-    #- "!exercise*.ipynb"
     - "!contents/*.py"
-    - "!final*.ipynb"
-    - "!midterm*.ipynb"
-    #- "!model*.ipynb"
-    - "!overview*.ipynb"
-    - "!slides/"
-  # resources: CNAME
+    - "!*-temp.ipynb"
+    - "!*-temp.qmd"
+  resources: CNAME
   # preview:
   #   port: 5452
 
 website:
-  # google-analytics: "G-5R1D200E6D"
+  google-analytics: "G-F9XY7W8RLK"
   page-navigation: true
   bread-crumbs: false
   # navbar: true
@@ -62,7 +58,6 @@ website:
         contents:
           - href: contents/intro.qmd
             text: Overview
-          - text: Data Science Intro
           # - href: contents/two-cultures.qmd
           - text: Two Cultures
           # - href: contents/rethinking.qmd
