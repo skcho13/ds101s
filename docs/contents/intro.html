@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-04">
+<meta name="dcterms.date" content="2024-03-11">
 
 <title> Introduction to Data Science - 개관</title>
 <style>
@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -253,7 +256,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 4, 2024</p>
+      <p class="date">March 11, 2024</p>
     </div>
   </div>
   
@@ -529,9 +532,9 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="응용비즈니스에서-정형적인-절차">응용/비즈니스에서 정형적인 절차</h2>
 <p>Phases of the <strong>CRISP-DM</strong> (CRoss-Industry Standard Process for Data Mining)<br>
 source: Chapman et al., 2000<br>
-<img src="images/crisp-dm.png" class="img-fluid" width="400"></p>
+<a href="images/crisp-dm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/crisp-dm.png" class="img-fluid" width="400"></a></p>
 <p>Generic tasks of the CRISP-DM reference model<br>
-<img src="images/crisp-dm-stages.png" class="img-fluid" width="800"></p>
+<a href="images/crisp-dm-stages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/crisp-dm-stages.png" class="img-fluid" width="800"></a></p>
 <p><strong>비즈니스의 이해와 데이터의 이해</strong></p>
 <ul>
 <li>프로젝트의 목표를 정의하고, 비즈니스 문제를 이해하는 것</li>
@@ -554,47 +557,35 @@ source: Chapman et al., 2000<br>
 <li>프로젝트의 초점이 명확하고, 그에 맞는 올바른 데이터가 수집되었는지, 모델이 프로젝트의 목표에 잘 부응하는지 중요!</li>
 <li>Garbage in, garbage out</li>
 </ul>
-<p><img src="images/crowdflower-report-2.jpg" class="img-fluid" width="600"></p>
-<p><img src="images/crowdflower-report-1.jpg" class="img-fluid" width="600"></p>
+<p><a href="images/crowdflower-report-2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/crowdflower-report-2.jpg" class="img-fluid" width="600"></a></p>
+<p><a href="images/crowdflower-report-1.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/crowdflower-report-1.jpg" class="img-fluid" width="600"></a></p>
 <p>Source: <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/?sh=5a39b3f86f63">Cleaning Big Data</a></p>
-<ul>
-<li><strong>문제 정의:</strong> 데이터 과학 기술을 사용하여 해결하려는 문제와 달성하려는 목표를 명확하게 정의; 도메인 지식이 요구</li>
-<li><strong>데이터 수집:</strong> 프로젝트 요구 사항에 따라 데이터베이스, API, 웹 스크래핑 또는 센서를 포함할 수 있는 다양한 소스에서 관련 데이터를 수집</li>
-<li><strong>데이터 전처리</strong>
-<ul>
-<li>누락된 값, 이상값 및 불일치를 처리하여 데이터를 정리</li>
-<li>분석에 적합하도록 기능을 변환하고 엔지니어링</li>
-</ul></li>
-<li><strong>탐색적 데이터 분석(EDA):</strong> 시각화 및 통계 기법을 사용하여 데이터의 특성, 분포, 관계 및 패턴을 분석</li>
-<li><strong>특성 선택 및 엔지니어링:</strong>
-<ul>
-<li>분석 또는 모델에 가장 관련성이 높은 특성을 선택</li>
-<li>데이터에서 중요한 정보를 캡처하는 새로운 특성을 만듦</li>
-</ul></li>
-<li><strong>모델 선택 및 학습:</strong>
-<ul>
-<li>문제 유형(분류, 회귀, 클러스터링 등)에 따라 적절한 기계 학습 알고리즘을 선택</li>
-<li>데이터를 훈련 및 검증 세트로 분할하고 모델을 선택</li>
-</ul></li>
-<li><strong>모델 평가:</strong>
-<ul>
-<li>교차 검증과 같은 적절한 메트릭 및 검증 기술을 사용하여 모델 성능을 평가</li>
-<li>모델 성능을 최적화하기 위해 하이퍼파라미터를 조정</li>
-</ul></li>
-<li><strong>모델 배포:</strong>
-<ul>
-<li>훈련된 모델을 프로덕션 환경에 통합; API 또는 마이크로서비스 생성을 포함</li>
-<li>이를 배포하고(간단히 말하면 고객이 상호 작용할 수 있는 UI를 제공) 고객은 입력 내용을 입력하기만 하면 예측값을 얻을 수 있음</li>
-</ul></li>
-<li><strong>실시간 데이터 수집 및 추론:</strong> 실시간 데이터를 수집하고 예측 또는 분류를 위해 훈련된 모델을 사용하는 파이프라인을 설정</li>
-<li><strong>모니터링 및 유지 관리:</strong>
-<ul>
-<li>실제 환경에서 모델 성능을 지속적으로 모니터링</li>
-<li>정확성과 관련성을 유지하기 위해 필요에 따라 모델을 재교육하거나 업데이트</li>
-</ul></li>
-<li><strong>시각화 및 보고:</strong> 시각화 및 보고서를 생성하여 이해관계자에게 통찰력과 결과를 전달</li>
-<li><strong>피드백 루프 및 개선:</strong> 사용자 및 이해관계자의 피드백을 통합하여 솔루션을 개선하고 문제를 해결</li>
-</ul>
+<!-- 
+- **문제 정의:** 데이터 과학 기술을 사용하여 해결하려는 문제와 달성하려는 목표를 명확하게 정의; 도메인 지식이 요구
+- **데이터 수집:** 프로젝트 요구 사항에 따라 데이터베이스, API, 웹 스크래핑 또는 센서를 포함할 수 있는 다양한 소스에서 관련 데이터를 수집
+- **데이터 전처리**
+  - 누락된 값, 이상값 및 불일치를 처리하여 데이터를 정리
+  - 분석에 적합하도록 기능을 변환하고 엔지니어링
+- **탐색적 데이터 분석(EDA):** 시각화 및 통계 기법을 사용하여 데이터의 특성, 분포, 관계 및 패턴을 분석
+- **특성 선택 및 엔지니어링:**
+  - 분석 또는 모델에 가장 관련성이 높은 특성을 선택
+  - 데이터에서 중요한 정보를 캡처하는 새로운 특성을 만듦
+- **모델 선택 및 학습:**
+  - 문제 유형(분류, 회귀, 클러스터링 등)에 따라 적절한 기계 학습 알고리즘을 선택
+  - 데이터를 훈련 및 검증 세트로 분할하고 모델을 선택
+- **모델 평가:**
+  - 교차 검증과 같은 적절한 메트릭 및 검증 기술을 사용하여 모델 성능을 평가
+  - 모델 성능을 최적화하기 위해 하이퍼파라미터를 조정
+- **모델 배포:**
+  - 훈련된 모델을 프로덕션 환경에 통합; API 또는 마이크로서비스 생성을 포함
+  - 이를 배포하고(간단히 말하면 고객이 상호 작용할 수 있는 UI를 제공) 고객은 입력 내용을 입력하기만 하면 예측값을 얻을 수 있음
+- **실시간 데이터 수집 및 추론:** 실시간 데이터를 수집하고 예측 또는 분류를 위해 훈련된 모델을 사용하는 파이프라인을 설정
+- **모니터링 및 유지 관리:**
+  - 실제 환경에서 모델 성능을 지속적으로 모니터링
+  - 정확성과 관련성을 유지하기 위해 필요에 따라 모델을 재교육하거나 업데이트
+
+- **시각화 및 보고:** 시각화 및 보고서를 생성하여 이해관계자에게 통찰력과 결과를 전달
+- **피드백 루프 및 개선:** 사용자 및 이해관계자의 피드백을 통합하여 솔루션을 개선하고 문제를 해결 -->
 </section>
 <section id="표준-비즈니스-영역에서의-데이터-사이언스-작업" class="level2">
 <h2 class="anchored" data-anchor-id="표준-비즈니스-영역에서의-데이터-사이언스-작업">표준 비즈니스 영역에서의 데이터 사이언스 작업</h2>
@@ -646,7 +637,7 @@ source: Chapman et al., 2000<br>
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img src="images/segmentation.png" class="img-fluid" width="400"></p>
+<p><a href="images/segmentation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/segmentation.png" class="img-fluid" width="400"></a></p>
 </div>
 </div>
 <ul>
@@ -672,8 +663,7 @@ source: Chapman et al., 2000<br>
 <li>이상 징후는 드물다는 그 고유한 특징으로 인해 식별이 어려움</li>
 <li>여러 가지 모델을 결합: 서로 다른 모델이 서로 다른 유형의 이상 징후를 포착
 <ul>
-<li>예를 들어, 4개의 모델 중 1개 모델에서만 거래가 사기성 거래로 식별되는 경우</li>
-<li>반대로, 그 중 서너 가지 모델이 해당 거래를 사기 가능성이 있다고 판단한 경우</li>
+<li>예를 들어, 4개의 모델 중 3~4개 모델에서 거래가 사기성 거래로 식별되는 경우</li>
 </ul></li>
 <li>다양한 분야에서 활용
 <ul>
@@ -1264,6 +1254,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 
