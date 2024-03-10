@@ -44,9 +44,9 @@ website:
     
     contents:
       - href: index.qmd
-        # text: "{{< fa angles-right size=xs >}} Welcome"
+        text: "{{< fa angles-right size=xs >}} Welcome"
       - href: contents/notice.qmd
-        # text: "{{< fa check size=xs >}} Notice"
+        text: "{{< fa check size=xs >}} Notice"
       # - href: contents/vote.qmd
         # text: "{{< fa magnifying-glass size=xs >}} 설문"
       # - href: contents/shortcuts.qmd
@@ -58,11 +58,11 @@ website:
         contents:
           - href: contents/intro.qmd
             text: Overview
-          # - href: contents/two-cultures.qmd
-          - text: Two Cultures
+          - href: contents/two-cultures.qmd
+            text: Two Cultures
           # - href: contents/rethinking.qmd
-          - text: Statistical Rethinking
-          # - text: Python Setup
+          #   text: Statistical Rethinking
+          - text: Python Setup
       - text: ---
       - section: Exploratory Data Analysis and Visualisation
       - text: ---
