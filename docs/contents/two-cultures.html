@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-11">
+<meta name="dcterms.date" content="2024-03-13">
 
 <title> Introduction to Data Science - Two Cultures</title>
 <style>
@@ -253,7 +253,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#the-third-school-causal-inference" id="toc-the-third-school-causal-inference" class="nav-link" data-scroll-target="#the-third-school-causal-inference">The Third School: Causal Inference</a>
   <ul>
-  <li><a href="#causal-revolution" id="toc-causal-revolution" class="nav-link" data-scroll-target="#causal-revolution">Causal Revolution</a></li>
+  <li><a href="#causal-revolution" id="toc-causal-revolution" class="nav-link" data-scroll-target="#causal-revolution">Causal Revolution</a>
+  <ul class="collapse">
+  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">Association</a></li>
+  <li><a href="#intervention" id="toc-intervention" class="nav-link" data-scroll-target="#intervention">Intervention</a></li>
+  <li><a href="#counterfactuals" id="toc-counterfactuals" class="nav-link" data-scroll-target="#counterfactuals">Counterfactuals</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -280,7 +285,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 11, 2024</p>
+      <p class="date">March 13, 2024</p>
     </div>
   </div>
   
@@ -629,7 +634,7 @@ Digging It Out in Small Pieces</p>
 <p><strong>Maya Astronomy</strong></p>
 <ul>
 <li>천체의 운행에 대한 정교한 계산법 개발</li>
-<li>예를 들어, 일식과 월실, 계절의 변화를 예측</li>
+<li>예를 들어, 일식과 월식, 계절의 변화를 예측</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -652,14 +657,23 @@ Digging It Out in Small Pieces</p>
 <li>모델이 틀린지에 대해서는 확신할 수 있음</li>
 <li>그럼에도 불구하고, 모델이 없는 과학은 위험할 수 있음</li>
 </ul>
-<blockquote class="blockquote">
-<p><em>Data is a window, not a mirror to reality!</em></p>
-</blockquote>
+<p><strong>두 문화의 결합</strong></p>
+<p>원자의 움직임에 대한 슈뢰딩거 방정식</p>
+<p><span class="math inline">\(\displaystyle \left( -\frac{{\hbar^2}}{{2m}} \frac{{1}}{{r^2}} \frac{{\partial}}{{\partial r}} \left( r^2 \frac{{\partial}}{{\partial r}} \right) - \frac{{\hbar^2}}{{2m r^2}} \left( \frac{{\partial^2}}{{\partial \theta^2}} + \cot \theta \frac{{\partial}}{{\partial \theta}} + \frac{{1}}{{\sin^2 \theta}} \frac{{\partial^2}}{{\partial \phi^2}} \right) - \frac{{k e^2}}{{r}} \right) \psi(r,\theta,\phi) = E \psi(r,\theta,\phi)\)</span></p>
+<ul>
+<li>이 방정식을 이용해 synthetic data를 생성: 현실에 대한 simulation</li>
+<li>이 데이터를 이용해 머신러닝 모델을 학습: 물질의 속성에 대해 학습</li>
+<li>그 모델을 이용해 많은 새로운 후보 물질들 중에 유용한 것을 매우 빠르게 걸러낼 수 있음</li>
+<li>예측 모형의 다양한 활용 가능성을 보여줌</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="the-third-school-causal-inference" class="level1">
 <h1>The Third School: Causal Inference</h1>
+<blockquote class="blockquote">
+<p><em>Data is a window, not a mirror to reality!</em></p>
+</blockquote>
 <p><em>The Grammar of Science (1892),</em> by Karl Pearson</p>
 <blockquote class="blockquote">
 <p><em>특정 시퀀스가 과거에 발생하고 반복되었다는 것은 <strong>경험의 문제</strong>이며, 인과라는 개념 안에서 그렇게 표현합니다. 미래에도 계속 반복될 것이라는 것은 <strong>신념의 문제</strong>이며, 확률이라는 개념 안에서 그렇게 표현합니다. 과학은 어떤 경우에도 시퀀스에 내재된 <strong>필연성을 입증할 수 없으며</strong>, 시퀀스가 반드시 반복되어야 한다는 것을 절대적으로 확실하게 증명할 수도 없습니다. 과거에 대한 과학은 묘사이고 미래에 대한 과학은 믿음입니다;</em></p>
@@ -724,7 +738,51 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <h2 class="anchored" data-anchor-id="causal-revolution">Causal Revolution</h2>
 <p>Source: <strong><em>The Book of Why: The New Science of Cause and Effect</em></strong> by Judea Pearl, Dana Mackenzie (2018)</p>
 <p><img src="images/ladder-causation.jpg" class="img-fluid" width="750"></p>
-<p>전형적인 인과적 질문들</p>
+<section id="association" class="level3">
+<h3 class="anchored" data-anchor-id="association">Association</h3>
+<ul>
+<li>관찰을 기반으로 규칙성 발견하고 예측</li>
+<li>올빼미가 쥐의 움직임을 관찰하고 잠시 후 쥐가 어디에 있을지를 파악</li>
+<li>컴퓨터 바둑 프로그램이 수백만 개의 바둑 게임 데이터베이스를 연구하여 어떤 수와 승률이 높은지 알아내는 것</li>
+<li>하나의 이벤트를 관찰하면 다른 이벤트를 관찰할 가능성이 달라지면 하나의 이벤트가 다른 이벤트와 연관되어 있다고 말할 수 있음</li>
+<li>“치약을 구매한 고객이 치실도 구매할 가능성이 얼마나 되는가?”; <span class="math inline">\(P(치실 ~| 치약~)\)</span></li>
+<li>통계의 핵심: 상관관계, 회귀</li>
+<li>올빼미는 쥐가 왜 항상 A 지점에서 B 지점으로 가는지 이해하지 못해도 훌륭한 사냥꾼이 될 수 있음</li>
+<li>위스키 한 병을 들고 있는 보행자가 경적을 울릴 때 다르게 반응할 가능성이 있다는 것을 기계가 스스로 파악할 수 있는가?
+<ul>
+<li>Association 단계의 한계: 유연성과 적응성의 부족</li>
+</ul></li>
+</ul>
+</section>
+<section id="intervention" class="level3">
+<h3 class="anchored" data-anchor-id="intervention">Intervention</h3>
+<ul>
+<li>관찰을 넘어, 세상에 대한 개입</li>
+<li>“치약 가격을 두 배로 올리면 치실 판매량은 어떻게 될까?”;</li>
+<li>데이터에는 없는 새로운 종류의 지식을 요구</li>
+<li>통계학에서 언어로는 이 질문을 표현하는 것조차 불충분함</li>
+<li>수동적으로 수집된 데이터만으로는 이러한 질문에 대답할 수 없음
+<ul>
+<li>과거의 데이터를 이용하면?</li>
+<li>과거에 가격이 두 배 비쌌을 때, 치실 판매량으로 추론?</li>
+<li>이전에 가격이 두 배 비쌌을 때, 다른 이유가 있었을 수 있음</li>
+</ul></li>
+<li>전통적으로 실험을 통해 해결</li>
+<li>정확한 인과 관계 모델이 있으면 관찰 데이터만으로도 가능; <span class="math inline">\(P(치실 ~| ~do(치약~))\)</span></li>
+<li>사실, 일상 생활에서 항상 개입을 수행: 어떻게(How) 하면 두통이 사라질까?</li>
+</ul>
+</section>
+<section id="counterfactuals" class="level3">
+<h3 class="anchored" data-anchor-id="counterfactuals">Counterfactuals</h3>
+<ul>
+<li>두통이 사라졌다면 왜(Why) 그럴까?</li>
+<li>약을 먹지 않았어도 두통이 사라졌을까?: 가상의 세계 (counterfactual world)</li>
+<li>“현재 치약을 구매한 고객이 가격을 두 배로 올려도 여전히 치약을 구매할 확률은 얼마인가?”</li>
+<li>우리는 현실 세계(고객이 현재 가격으로 치약을 구매했다는 것을 알고 있는)와 가상의 세계(가격이 두 배 높은 경우)와 비교</li>
+<li>보이는 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 있는 새로운 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 없는 세계(보이는 것과 모순)</li>
+<li>이를 위해서는 “이론” 또는 “자연의 법칙”이라고도 근본적인 인과 과정의 모델이 필요</li>
+</ul>
+<p><strong>전형적인 인과적 질문들</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -777,6 +835,7 @@ The case against science is straightforward: much of the scientific literature, 
 - Cuprit : math?, 저널의 선택적 편향 -->
 
 
+</section>
 </section>
 </section>
 
@@ -1209,7 +1268,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

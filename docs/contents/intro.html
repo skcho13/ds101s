@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-11">
+<meta name="dcterms.date" content="2024-03-13">
 
 <title> Introduction to Data Science - 개관</title>
 <style>
@@ -256,7 +256,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 11, 2024</p>
+      <p class="date">March 13, 2024</p>
     </div>
   </div>
   
@@ -692,7 +692,7 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <li>위의 경우, 고객의 장바구니 품목을 추적</li>
 <li><em>IF {핫도그, 케첩}, THEN {맥주}</em><br>
 <img src="images/basket.png" class="img-fluid" width="500"></li>
-<li>핫도그와 케첩을 맥주와 연관시키는 연관성 규칙의 신뢰도가 75%라면 고객이 핫도그와 케첩을 모두 구매한 경우 75%에서 맥주도 함께 구매했음을 나타냅니다.</li>
+<li>연관성 규칙의 신뢰도가 75%라면 고객이 핫도그와 케첩을 모두 구매한 경우 75%에서 맥주도 함께 구매했음을 의미</li>
 <li>인구통계학적 정보를 연관성 분석에 포함하여 마케팅 및 타겟팅 광고에 활용
 <ul>
 <li>특히, 구매 기록 정보는 없는 경우</li>
@@ -714,7 +714,7 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <li>다양한 영역에서도 유용함
 <ul>
 <li>통신: 회사의 다양한 서비스를 패키지로 묶는 방법을 설계</li>
-<li>보험: 상품과 보험금 청구 사이에 연관성이 파악</li>
+<li>보험: 상품과 보험금 청구 사이에 연관성을 파악</li>
 <li>의료: 기존 치료법과 새로운 치료법 및 의약품 간에 상호 작용이 있는지 확인</li>
 </ul></li>
 <li>추천 시스템(recommnder system)</li>
@@ -752,7 +752,7 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 </section>
 <section id="classification-prediction" class="level3">
 <h3 class="anchored" data-anchor-id="classification-prediction">Classification (Prediction)</h3>
-<p>Churn or No Churn(고객 이탈), That Is the Question</p>
+<p><strong>Churn or No Churn(고객 이탈), That Is the Question</strong></p>
 <ul>
 <li>행동 성향 모델링의 목표: 마케팅 응답, 서비스 탈퇴 등 다양한 행동 예측</li>
 <li>휴대폰 서비스 회사의 고객 유지 필요성: 신규 고객 유치 비용 대비 기존 고객 유지 비용의 상대적 높음</li>
@@ -818,7 +818,7 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <li>자동차의 연식, 주행 거리, 엔진 크기, 자동차 제조사, 문 개수 등의 속성을 포함</li>
 </ul></li>
 </ul>
-<p><img src="images/regression-3d.png" class="img-fluid" width="500"></p>
+<p><img src="images/regression-3d.png" class="img-fluid" width="450"></p>
 <!-- ## 개인정보 보호 및 윤리 -->
 
 
@@ -1254,7 +1254,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
