@@ -26,11 +26,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../contents/setup.html" rel="next">
 <link href="../contents/intro.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -43,6 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/iconify-2.0.0/iconify-icon.min.js"></script>
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -139,7 +142,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../"><i class="fa-solid fa-fingerprint" aria-label="fingerprint"></i> Introduction to Data Science</a> 
+      <a href="../"><iconify-icon inline="" icon="fa-solid:fingerprint" aria-label="Icon fingerprint from fa-solid Iconify.design set." title="Icon fingerprint from fa-solid Iconify.design set."></iconify-icon> Introduction to Data Science</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -152,13 +155,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"> Welcome</span></a>
+ <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"> Notice</span></a>
+ <span class="menu-text">Notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/pollr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">설문</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -184,19 +193,69 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Python Setup</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../contents/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Setup</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Exploratory Data Analysis and Visualisation</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Python Basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy &amp; pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/inspection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Inspection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/subsetting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subsetting</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Wrangling</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/vis-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualize</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explore</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">Wrangling</span>
+  </li>
+      </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
@@ -744,7 +803,7 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <li>관찰을 기반으로 규칙성 발견하고 예측</li>
 <li>올빼미가 쥐의 움직임을 관찰하고 잠시 후 쥐가 어디에 있을지를 파악</li>
 <li>컴퓨터 바둑 프로그램이 수백만 개의 바둑 게임 데이터베이스를 연구하여 어떤 수와 승률이 높은지 알아내는 것</li>
-<li>하나의 이벤트를 관찰하면 다른 이벤트를 관찰할 가능성이 달라지면 하나의 이벤트가 다른 이벤트와 연관되어 있다고 말할 수 있음</li>
+<li>하나의 이벤트를 관찰하면 다른 이벤트를 관찰할 가능성이 달라진다면, 하나의 이벤트가 다른 이벤트와 연관되어 있다고 말할 수 있음</li>
 <li>“치약을 구매한 고객이 치실도 구매할 가능성이 얼마나 되는가?”; <span class="math inline">\(P(치실 ~| 치약~)\)</span></li>
 <li>통계의 핵심: 상관관계, 회귀</li>
 <li>올빼미는 쥐가 왜 항상 A 지점에서 B 지점으로 가는지 이해하지 못해도 훌륭한 사냥꾼이 될 수 있음</li>
@@ -758,9 +817,9 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <h3 class="anchored" data-anchor-id="intervention">Intervention</h3>
 <ul>
 <li>관찰을 넘어, 세상에 대한 개입</li>
-<li>“치약 가격을 두 배로 올리면 치실 판매량은 어떻게 될까?”;</li>
+<li>“치약 가격을 두 배로 올리면 치실 판매량은 어떻게 될까?”</li>
 <li>데이터에는 없는 새로운 종류의 지식을 요구</li>
-<li>통계학에서 언어로는 이 질문을 표현하는 것조차 불충분함</li>
+<li>통계학의 언어로는 이 질문을 표현하는 것조차 불충분함</li>
 <li>수동적으로 수집된 데이터만으로는 이러한 질문에 대답할 수 없음
 <ul>
 <li>과거의 데이터를 이용하면?</li>
@@ -1252,6 +1311,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../contents/setup.html" class="pagination-link" aria-label="Python Setup">
+        <span class="nav-page-text">Python Setup</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1268,7 +1330,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

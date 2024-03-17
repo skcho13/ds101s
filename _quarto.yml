@@ -17,7 +17,7 @@ website:
   page-navigation: true
   bread-crumbs: false
   # navbar: true
-  title: "{{< fa fingerprint >}} Introduction to Data Science"
+  title: "{{< iconify fa-solid fingerprint >}} Introduction to Data Science"
   description: "Introduction to Data Science, Dongguk University, 2024-1"
   site-url: "https://dgds101.modellings.art"
   site-path: "/"
@@ -32,7 +32,7 @@ website:
   sidebar:
     # background: "#F6F6FF"
     # logo: 
-    pinned: true
+    # pinned: true
     alignment: left
     # tools:
     #   - icon: github
@@ -44,15 +44,11 @@ website:
     
     contents:
       - href: index.qmd
-        text: "{{< fa angles-right size=xs >}} Welcome"
+        text: "Welcome"
       - href: contents/notice.qmd
-        text: "{{< fa check size=xs >}} Notice"
-      # - href: contents/vote.qmd
-        # text: "{{< fa magnifying-glass size=xs >}} 설문"
-      # - href: contents/shortcuts.qmd
-      #   text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
-      # # - href: https://docs.google.com/document/d/1Yv78iYpRFfpEtPjSN6YRtX9iVAMhF_FgMgZRl2p88Bc/edit?usp=sharing
-      #   # text: "{{< bi stopwatch >}} 기말고사 <<<<<<<<<<"
+        text: "Notice"
+      - href: contents/pollr.qmd
+        text: "설문"
       - text: ---
       - section: Introduction
         contents:
@@ -62,11 +58,28 @@ website:
             text: Two Cultures
           # - href: contents/rethinking.qmd
           #   text: Statistical Rethinking
-          - text: Python Setup
+          - href: contents/setup.qmd
+            text: Python Setup
       - text: ---
-      - section: Exploratory Data Analysis and Visualisation
+      - section: Python Basics
+        contents:
+          - href: contents/pandas.ipynb
+            text: NumPy & pandas
+          - href: contents/inspection.ipynb
+            text: Data Inspection
+          - href: contents/subsetting.ipynb
+            text: Subsetting
       - text: ---
-      - section: Wrangling
+      - section: Exploratory Data Analysis
+        contents:
+          - href: contents/vis-intro.ipynb
+            text: Visualize
+          - href: contents/eda.ipynb
+            text: Explore
+          # - href: contents/wrangling.ipynb
+          - text: Wrangling
+          # - href: contents/descriptive.ipynb
+            # text: Descriptive Statistics
       - text: ---
       - section: Linear Models
       - text: ---
@@ -167,14 +180,15 @@ format:
     toc-depth: 4
     toc-location: right
     code-fold: false
-    code-overflow: scroll
+    code-overflow: wrap
     code-summary: "Show the code"
     theme: [sandstone, theme-light.scss]
     fontsize: 1.1em
-    linestretch: 2
+    linestretch: 1.8
     code-copy: true
     highlight-style: ayu-light
     link-external-newwindow: true
+    # link-external-icon: true
     grid:
       body-width: 900px
       margin-width: 200px
