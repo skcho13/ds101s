@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dgds101.modellings.art/contents/vis-intro.html</loc>
-    <lastmod>2024-03-17T04:02:54.590Z</lastmod>
+    <loc>https://dgds101.modellings.art/contents/wrangling.html</loc>
+    <lastmod>2024-03-19T16:10:57.506Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/subsetting.html</loc>
+    <lastmod>2024-03-16T19:27:31.317Z</lastmod>
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/pandas.html</loc>
@@ -10,11 +14,11 @@
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/eda.html</loc>
-    <lastmod>2024-03-17T19:26:00.440Z</lastmod>
+    <lastmod>2024-03-18T18:27:25.735Z</lastmod>
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/two-cultures.html</loc>
-    <lastmod>2024-03-18T03:55:09.851Z</lastmod>
+    <lastmod>2024-03-19T18:34:27.439Z</lastmod>
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/pollr.html</loc>
@@ -42,14 +46,18 @@
   </url>
   <url>
     <loc>https://dgds101.modellings.art/index.html</loc>
-    <lastmod>2024-03-14T18:15:03.798Z</lastmod>
+    <lastmod>2024-03-18T13:19:05.325Z</lastmod>
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/inspection.html</loc>
     <lastmod>2024-03-16T19:34:28.424Z</lastmod>
   </url>
   <url>
-    <loc>https://dgds101.modellings.art/contents/subsetting.html</loc>
-    <lastmod>2024-03-16T19:27:31.317Z</lastmod>
+    <loc>https://dgds101.modellings.art/contents/statistics.html</loc>
+    <lastmod>2024-03-19T16:50:46.992Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/vis-intro.html</loc>
+    <lastmod>2024-03-17T04:02:54.590Z</lastmod>
   </url>
 </urlset>

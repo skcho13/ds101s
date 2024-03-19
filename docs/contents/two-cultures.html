@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-18">
+<meta name="dcterms.date" content="2024-03-20">
 
 <title> Introduction to Data Science - Two Cultures</title>
 <style>
@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/setup.html" rel="next">
+<link href="../contents/statistics.html" rel="next">
 <link href="../contents/intro.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -194,6 +194,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../contents/statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical Rethinking</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../contents/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Setup</span></a>
   </div>
@@ -253,8 +259,11 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Wrangling</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../contents/wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wrangling</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -318,6 +327,8 @@ window.Quarto = {
   <li><a href="#intervention" id="toc-intervention" class="nav-link" data-scroll-target="#intervention">Intervention</a></li>
   <li><a href="#counterfactuals" id="toc-counterfactuals" class="nav-link" data-scroll-target="#counterfactuals">Counterfactuals</a></li>
   </ul></li>
+  <li><a href="#dag" id="toc-dag" class="nav-link" data-scroll-target="#dag">DAG</a></li>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -344,7 +355,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 18, 2024</p>
+      <p class="date">March 20, 2024</p>
     </div>
   </div>
   
@@ -861,6 +872,74 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 </ul>
 </div>
 </div>
+</section>
+</section>
+<section id="dag" class="level2">
+<h2 class="anchored" data-anchor-id="dag">DAG</h2>
+<p><strong>Directed acyclic graph (DAG): 인과 관계 다이어그램</strong></p>
+<p><img src="images/DAG.png" class="img-fluid" width="830"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: Causality: Models, Reasoning, and Inference (2000) by Judea Pearl</p>
+</div>
+</section>
+<section id="confounding" class="level2">
+<h2 class="anchored" data-anchor-id="confounding">Confounding</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>신발을 신고 잠든 다음날 두통이 생긴다면?</p>
+<p><img src="images/causal_diagram_headache.png" class="img-fluid" width="340"><br>
+Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
+</div><div class="column" style="width:45%;">
+<p>운동능력이 뛰어나면 지능이 떨어지는가? <br></p>
+<p><img src="images/colider.png" class="img-fluid" width="300"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Confounding</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>일반적으로, 표면적으로 드러난 변수간의 관계가 숨겨진 다른 변수들(lurking third variables)에 의해 매개되어 있어 진실한 관계가 아닌 경우, confounding 혹은 confounder가 존재한다고 함.</p>
+<p>극단적이지만 이해하지 쉬운 예로는</p>
+<ul>
+<li>초등학생 발 사이즈 → 독해력<br>
+</li>
+<li>머리 길이 → 우울증</li>
+</ul>
+<p><img src="images/confounding.png" class="img-fluid" width="450"></p>
+<p><strong>Simpson’s paradox</strong></p>
+<p>아래 첫번째 그림은 집단 전체에 대한 플랏이고, 두번째 그림은 나이대별로 나누어 본 플랏<br>
+전체 집단을 보면 운동을 많이 할수록 콜레스테롤이 증가하는 것으로 보이나,<br>
+나이대별로 보면, 상식적으로 운동이 긍정적 효과가 나타남.<br>
+왜 그렇게 나타나는가?</p>
+<p><img src="images/simpson.jpg" class="img-fluid" width="600"><br>
+Source: <em>The book of why</em> by Judea Pearl</p>
+</div>
+</div>
+<p><strong>COVID-27</strong><br>
+Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
+<p><img src="images/covid.png" class="img-fluid" width="420"></p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/causal_diagram_covid1.png" class="img-fluid" width="340"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/causal_diagram_covid2.png" class="img-fluid" width="340"></p>
+</div>
+</div>
+</div>
+<p><strong>학생들의 과제는 성적에 영향을 주는가?</strong><br>
+Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
+<p><img src="images/causal_diagram_grades.png" class="img-fluid" width="500"></p>
 <!-- 
 # History
 
@@ -893,7 +972,6 @@ The case against science is straightforward: much of the scientific literature, 
 - Cuprit : math?, 저널의 선택적 편향 -->
 
 
-</section>
 </section>
 </section>
 
@@ -1310,8 +1388,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/setup.html" class="pagination-link" aria-label="Python Setup">
-        <span class="nav-page-text">Python Setup</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contents/statistics.html" class="pagination-link" aria-label="Statistical Rethinking">
+        <span class="nav-page-text">Statistical Rethinking</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1329,7 +1407,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

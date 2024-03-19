@@ -56,8 +56,8 @@ website:
             text: Overview
           - href: contents/two-cultures.qmd
             text: Two Cultures
-          # - href: contents/rethinking.qmd
-          #   text: Statistical Rethinking
+          - href: contents/statistics.ipynb
+            text: Statistical Rethinking
           - href: contents/setup.qmd
             text: Python Setup
       - text: ---
@@ -76,8 +76,8 @@ website:
             text: Visualize
           - href: contents/eda.ipynb
             text: Explore
-          # - href: contents/wrangling.ipynb
-          - text: Wrangling
+          - href: contents/wrangling.ipynb
+            text: Wrangling
           # - href: contents/descriptive.ipynb
             # text: Descriptive Statistics
       - text: ---
