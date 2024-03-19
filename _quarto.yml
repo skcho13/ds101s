@@ -56,8 +56,6 @@ website:
             text: Overview
           - href: contents/two-cultures.qmd
             text: Two Cultures
-          - href: contents/statistics.ipynb
-            text: Statistical Rethinking
           - href: contents/setup.qmd
             text: Python Setup
       - text: ---
