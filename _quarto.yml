@@ -80,6 +80,12 @@ website:
             # text: Descriptive Statistics
       - text: ---
       - section: Linear Models
+        contents:
+          - href: contents/model-basic.ipynb
+            text: Model Basics
+          - href: contents/statistics.ipynb
+            text: Regression Analysis
+          # - text: Example
       - text: ---
       - section: Machine Learning
 

@@ -99,277 +99,109 @@
     ]
   },
   {
-    "objectID": "contents/inspection.html",
-    "href": "contents/inspection.html",
-    "title": "Inspecting data",
+    "objectID": "contents/pandas.html",
+    "href": "contents/pandas.html",
+    "title": "NumPy and pandas",
     "section": "",
-    "text": "# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")",
+    "text": "파이썬의 모든 것은 객체(object)이며, 특정 클래스(class)의 인스턴스(instance)임\n인스턴스는 클래스에서 정의된 속성(attribute)과 메서드(method)를 전달 받음(inherited)\n\n\nx = \"Love me tender\"  # x: string object\n\nx는 str 클래스(빵의 틀)의 인스턴스(빵)가 되면서, str 클래스의 속성과 함수를 사용할 수 있게 됨\n\nx.upper()  # upper()라는 함수를 호출\n\n'LOVE ME TENDER'\n\n\n이는 다음과 같이 원래 str 클래스의 메서드를 사용하는 것과 동일함\n\nstr.upper(x)\n\n'LOVE ME TENDER'\n\n\n마찬가지로,\n\nx.count('e')  # 함수에 인자(argument)가 포함된 경우\n\n4\n\n\n\nstr.count(x, \"e\")\n\n4\n\n\n\n이렇게, 각 인스턴스가 가지는 함수를 호출해서 적용할 수 있는데\n이 때 그 함수를 메서드(method)라고 함\n이는 각 클레스에서 고유하게 정의된 함수들을 사용할 수 있게 함\n\n이 경우 str이라는 클래스에서 정의된 함수들을 사용할 수 있음\n\n파이썬의 고유한 함수들, 예를 들어\n\ntype(x)\n\nstr\n\n\n\nlen(x)  # 문자열의 길이\n\n14\n\n\npandas 패키지의 한 클래스를 살펴보면,\n\nimport pandas as pd\npd.DataFrame?\n\n\npd.DataFrame\n\npandas.core.frame.DataFrame\n\n\nDataFrame이라는 클래스가 정의되는데, 이는 사실 다음과 같은 폴더 위치에 있는 frame.py 마듈에서 정의된 클래스임\npd.core.frame.DataFrame\n\ndf = pd.DataFrame({'mango': [1, 2, 3], 'apple': [4, 5, 6]})\ndf\n\n   mango  apple\n0      1      4\n1      2      5\n2      3      6\n\n\n\n이 때, df는 DataFrame 클래스의 인스턴스(instance)가 되면서, DataFrame 클래스(class)에서 정의된 속성(attribute)과 함수를 사용할 수 있게 됨.\n\n이 함수를 메서드(method)라고 함\n\n\ndf.columns  # columns라는 속성을 추출\n\nIndex(['mango', 'apple'], dtype='object')\n\n\n\ndf.head(2)  # head()라는 함수를 호출\n\n   mango  apple\n0      1      4\n1      2      5\n\n\n\ndf.columns.sort_values()  # df.columns는 Index object이고, 이에 대한 sort_values()라는 함수를 호출\n\nIndex(['apple', 'mango'], dtype='object')",
     "crumbs": [
       "Python Basics",
-      "Data Inspection"
+      "NumPy & pandas"
     ]
   },
   {
-    "objectID": "contents/inspection.html#useful-method",
-    "href": "contents/inspection.html#useful-method",
-    "title": "Inspecting data",
-    "section": "Useful method",
-    "text": "Useful method\n.head(), .tail(), .sample()\n.info(), .describe(),\n.value_counts(),\n.sort_values(), .nlargest(), .nsmallest()\nData: Tips\n일정기간 한 웨이터가 얻은 팁에 대한 데이터\n\n# load a dataset\ntips = sns.load_dataset(\"tips\")\ntips\n\n     total_bill  tip     sex smoker   day    time  size\n0         16.99 1.01  Female     No   Sun  Dinner     2\n1         10.34 1.66    Male     No   Sun  Dinner     3\n2         21.01 3.50    Male     No   Sun  Dinner     3\n..          ...  ...     ...    ...   ...     ...   ...\n241       22.67 2.00    Male    Yes   Sat  Dinner     2\n242       17.82 1.75    Male     No   Sat  Dinner     2\n243       18.78 3.00  Female     No  Thur  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\ntips.head(3)  # 앞 n개 나열, 기본값은 5\n\n   total_bill  tip     sex smoker  day    time  size\n0       16.99 1.01  Female     No  Sun  Dinner     2\n1       10.34 1.66    Male     No  Sun  Dinner     3\n2       21.01 3.50    Male     No  Sun  Dinner     3\n\n\n\ntips.sample(5)  # 무작위로 n개 표본 추출, 기본값은 1\n\n     total_bill  tip     sex smoker   day    time  size\n129       22.82 2.18    Male     No  Thur   Lunch     3\n30         9.55 1.45    Male     No   Sat  Dinner     2\n234       15.53 3.00    Male    Yes   Sat  Dinner     2\n215       12.90 1.10  Female    Yes   Sat  Dinner     2\n146       18.64 1.36  Female     No  Thur   Lunch     3\n\n\n\ntips.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 244 entries, 0 to 243\nData columns (total 7 columns):\n #   Column      Non-Null Count  Dtype   \n---  ------      --------------  -----   \n 0   total_bill  244 non-null    float64 \n 1   tip         244 non-null    float64 \n 2   sex         244 non-null    category\n 3   smoker      244 non-null    category\n 4   day         244 non-null    category\n 5   time        244 non-null    category\n 6   size        244 non-null    int64   \ndtypes: category(4), float64(2), int64(1)\nmemory usage: 7.4 KB\n\n\n\ntips.describe()  # numerical type만 나열\n\n       total_bill    tip   size\ncount      244.00 244.00 244.00\nmean        19.79   3.00   2.57\nstd          8.90   1.38   0.95\n...           ...    ...    ...\n50%         17.80   2.90   2.00\n75%         24.13   3.56   3.00\nmax         50.81  10.00   6.00\n\n[8 rows x 3 columns]\n\n\n\ntips.describe(include=\"all\")  # all types 나열\n\n        total_bill    tip   sex smoker  day    time   size\ncount       244.00 244.00   244    244  244     244 244.00\nunique         NaN    NaN     2      2    4       2    NaN\ntop            NaN    NaN  Male     No  Sat  Dinner    NaN\n...            ...    ...   ...    ...  ...     ...    ...\n50%          17.80   2.90   NaN    NaN  NaN     NaN   2.00\n75%          24.13   3.56   NaN    NaN  NaN     NaN   3.00\nmax          50.81  10.00   NaN    NaN  NaN     NaN   6.00\n\n[11 rows x 7 columns]\n\n\n\ntips.describe(include=\"category\")\n\n         sex smoker  day    time\ncount    244    244  244     244\nunique     2      2    4       2\ntop     Male     No  Sat  Dinner\nfreq     157    151   87     176\n\n\n\ns1 = tips.value_counts(\"day\") # \"day\" 칼럼에 대한 각 카테고리별 counts\ns2 = tips.value_counts(\"day\", sort=False) # default: sort is true\ns3 = tips.value_counts(\"day\", ascending=True) # default: ascending is False\ns4 = tips.value_counts(\"day\", normalize=True) # 카테고리별 비율\ns5 = tips.value_counts([\"sex\", \"smoker\"]) # \"sex\", \"smoker\" 칼럼에 대한 유니크한 카테고리별 counts\n\n\n\n\n\n\n\n\n\nday\nSat     87\nSun     76\nThur    62\nFri     19\nName: count, dtype: int64\n\n\n(a) s1\n\n\n\n\n\n\n\n\nday\nThur    62\nFri     19\nSat     87\nSun     76\nName: count, dtype: int64\n\n\n(b) s2\n\n\n\n\n\n\n\n\n\n\nday\nFri     19\nThur    62\nSun     76\nSat     87\nName: count, dtype: int64\n\n\n(c) s3\n\n\n\n\n\n\n\n\nday\nSat    0.36\nSun    0.31\nThur   0.25\nFri    0.08\nName: proportion, dtype: float64\n\n\n(d) s4\n\n\n\n\n\n\n\n\n\n\nsex     smoker\nMale    No        97\n        Yes       60\nFemale  No        54\n        Yes       33\nName: count, dtype: int64\n\n\n(e) s5\n\n\n\n\n\n\n\nFigure 1: value_count()의 arguments\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n.value_count()의 결과는 Series이며 그 이름은 ‘count’ 또는 ’proportion’임 (pandas 2.0)\nMissing(NA)을 count하지 않으나 dropna=False을 이용해 나타낼 수 있음\ntips.value_counts(\"day\", dropna=False)\nSeries에 대해서도 적용되며, DataFrame으로 컬럼을 선택해 적용할 수 있음\ntips[\"day\"].value_counts()  # tips[\"day\"]: Series object\ntips[[\"sex\", \"smoker\"]].value_counts()\n\n\n\nData: palmerpenguins\n\n# load a dataset\npenguins = sns.load_dataset(\"penguins\")\npenguins.head()\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0  Adelie  Torgersen           39.10          18.70             181.00   \n1  Adelie  Torgersen           39.50          17.40             186.00   \n2  Adelie  Torgersen           40.30          18.00             195.00   \n3  Adelie  Torgersen             NaN            NaN                NaN   \n4  Adelie  Torgersen           36.70          19.30             193.00   \n\n   body_mass_g     sex  \n0      3750.00    Male  \n1      3800.00  Female  \n2      3250.00  Female  \n3          NaN     NaN  \n4      3450.00  Female  \n\n\n\npenguins.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 344 entries, 0 to 343\nData columns (total 7 columns):\n #   Column             Non-Null Count  Dtype  \n---  ------             --------------  -----  \n 0   species            344 non-null    object \n 1   island             344 non-null    object \n 2   bill_length_mm     342 non-null    float64\n 3   bill_depth_mm      342 non-null    float64\n 4   flipper_length_mm  342 non-null    float64\n 5   body_mass_g        342 non-null    float64\n 6   sex                333 non-null    object \ndtypes: float64(4), object(3)\nmemory usage: 18.9+ KB\n\n\npenguins.describe(include=\"object\")\n\n\n\n       species  island   sex\ncount      344     344   333\nunique       3       3     2\ntop     Adelie  Biscoe  Male\nfreq       152     168   168\n\n\n\n\npenguins.value_counts([\"island\", \"species\"])\n\nisland     species  \nBiscoe     Gentoo       124\nDream      Chinstrap     68\n           Adelie        56\nTorgersen  Adelie        52\nBiscoe     Adelie        44\nName: count, dtype: int64\n\n\n\npenguins.value_counts([\"sex\", \"species\"], dropna=False) # NA은 기본적으로 생략\n\nsex     species  \nFemale  Adelie       73\nMale    Adelie       73\n        Gentoo       61\n                     ..\n        Chinstrap    34\nNaN     Adelie        6\n        Gentoo        5\nName: count, Length: 8, dtype: int64\n\n\n\n# NA의 개수\npenguins.isna().sum()\n\nspecies               0\nisland                0\nbill_length_mm        2\nbill_depth_mm         2\nflipper_length_mm     2\nbody_mass_g           2\nsex                  11\ndtype: int64\n\n\n\n# NA의 비율\npenguins.isna().mean()\n\nspecies             0.00\nisland              0.00\nbill_length_mm      0.01\nbill_depth_mm       0.01\nflipper_length_mm   0.01\nbody_mass_g         0.01\nsex                 0.03\ndtype: float64\n\n\n\ntips.sort_values(\"tip\", ascending=False)\n\n     total_bill   tip     sex smoker  day    time  size\n170       50.81 10.00    Male    Yes  Sat  Dinner     3\n212       48.33  9.00    Male     No  Sat  Dinner     4\n23        39.42  7.58    Male     No  Sat  Dinner     4\n..          ...   ...     ...    ...  ...     ...   ...\n111        7.25  1.00  Female     No  Sat  Dinner     1\n67         3.07  1.00  Female    Yes  Sat  Dinner     1\n92         5.75  1.00  Female    Yes  Fri  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\ntips.sort_values([\"size\", \"tip\"], ascending=[False, True])\n\n     total_bill  tip     sex smoker   day    time  size\n125       29.80 4.20  Female     No  Thur   Lunch     6\n143       27.05 5.00  Female     No  Thur   Lunch     6\n156       48.17 5.00    Male     No   Sun  Dinner     6\n..          ...  ...     ...    ...   ...     ...   ...\n111        7.25 1.00  Female     No   Sat  Dinner     1\n82        10.07 1.83  Female     No  Thur   Lunch     1\n222        8.58 1.92    Male    Yes   Fri   Lunch     1\n\n[244 rows x 7 columns]\n\n\n\ntips.nlargest(3, \"tip\")  # 다수의 동등 순위가 있을 때 처리: keep=\"first\", \"last\", \"all\"\n\n     total_bill   tip   sex smoker  day    time  size\n170       50.81 10.00  Male    Yes  Sat  Dinner     3\n212       48.33  9.00  Male     No  Sat  Dinner     4\n23        39.42  7.58  Male     No  Sat  Dinner     4",
+    "objectID": "contents/pandas.html#python-objects",
+    "href": "contents/pandas.html#python-objects",
+    "title": "NumPy and pandas",
+    "section": "",
+    "text": "파이썬의 모든 것은 객체(object)이며, 특정 클래스(class)의 인스턴스(instance)임\n인스턴스는 클래스에서 정의된 속성(attribute)과 메서드(method)를 전달 받음(inherited)\n\n\nx = \"Love me tender\"  # x: string object\n\nx는 str 클래스(빵의 틀)의 인스턴스(빵)가 되면서, str 클래스의 속성과 함수를 사용할 수 있게 됨\n\nx.upper()  # upper()라는 함수를 호출\n\n'LOVE ME TENDER'\n\n\n이는 다음과 같이 원래 str 클래스의 메서드를 사용하는 것과 동일함\n\nstr.upper(x)\n\n'LOVE ME TENDER'\n\n\n마찬가지로,\n\nx.count('e')  # 함수에 인자(argument)가 포함된 경우\n\n4\n\n\n\nstr.count(x, \"e\")\n\n4\n\n\n\n이렇게, 각 인스턴스가 가지는 함수를 호출해서 적용할 수 있는데\n이 때 그 함수를 메서드(method)라고 함\n이는 각 클레스에서 고유하게 정의된 함수들을 사용할 수 있게 함\n\n이 경우 str이라는 클래스에서 정의된 함수들을 사용할 수 있음\n\n파이썬의 고유한 함수들, 예를 들어\n\ntype(x)\n\nstr\n\n\n\nlen(x)  # 문자열의 길이\n\n14\n\n\npandas 패키지의 한 클래스를 살펴보면,\n\nimport pandas as pd\npd.DataFrame?\n\n\npd.DataFrame\n\npandas.core.frame.DataFrame\n\n\nDataFrame이라는 클래스가 정의되는데, 이는 사실 다음과 같은 폴더 위치에 있는 frame.py 마듈에서 정의된 클래스임\npd.core.frame.DataFrame\n\ndf = pd.DataFrame({'mango': [1, 2, 3], 'apple': [4, 5, 6]})\ndf\n\n   mango  apple\n0      1      4\n1      2      5\n2      3      6\n\n\n\n이 때, df는 DataFrame 클래스의 인스턴스(instance)가 되면서, DataFrame 클래스(class)에서 정의된 속성(attribute)과 함수를 사용할 수 있게 됨.\n\n이 함수를 메서드(method)라고 함\n\n\ndf.columns  # columns라는 속성을 추출\n\nIndex(['mango', 'apple'], dtype='object')\n\n\n\ndf.head(2)  # head()라는 함수를 호출\n\n   mango  apple\n0      1      4\n1      2      5\n\n\n\ndf.columns.sort_values()  # df.columns는 Index object이고, 이에 대한 sort_values()라는 함수를 호출\n\nIndex(['apple', 'mango'], dtype='object')",
     "crumbs": [
       "Python Basics",
-      "Data Inspection"
+      "NumPy & pandas"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
+    "objectID": "contents/pandas.html#numpy",
+    "href": "contents/pandas.html#numpy",
+    "title": "NumPy and pandas",
+    "section": "NumPy",
+    "text": "NumPy\n\n수학적 symbolic 연산에 대한 구현이라고 볼 수 있으며,\n행렬(matrix) 또는 벡터(vector)를 ndarray (n-dimensional array)이라는 이름으로 구현함.\n\n사실상 정수(int)나 실수(float)의 한가지 타입으로 이루어짐.\n\n고차원의 arrays 가능\n\n\n\nSource: Medium.com\n가령, 다음과 같은 행렬 연산이 있다면,\n\\(\\begin{bmatrix}1 & 2 \\\\ 3 & 4 \\\\ 5 & 6 \\end{bmatrix} \\begin{bmatrix}2 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix}0 \\\\ 2 \\\\ 4 \\end{bmatrix}\\)\n\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4],\n              [5, 6]]) # 3x2 matrix\nX = np.array([[2],\n              [-1]]) # 2x1 matrix\n\nA @ X  # A * X : matrix multiplication\n\narray([[0],\n       [2],\n       [4]])\n\n\n\nA.dot(X)  # A @ X와 동일\n\narray([[0],\n       [2],\n       [4]])\n\n\n\nA + A # element-wise addition\n\narray([[ 2,  4],\n       [ 6,  8],\n       [10, 12]])\n\n\n\n2 * A - 1 # braodcasting\n\narray([[ 1,  3],\n       [ 5,  7],\n       [ 9, 11]])\n\n\n\nnp.exp(A) # element-wise\n\narray([[  2.72,   7.39],\n       [ 20.09,  54.6 ],\n       [148.41, 403.43]])\n\n\n\nPython vs. NumPy\n\na = 2**31 - 1\nprint(a)\nprint(a + 1)\n\n2147483647\n2147483648\n\n\n\na = np.array([2**31 - 1], dtype='int32')\nprint(a)\nprint(a + 1)\n\n[2147483647]\n[-2147483648]\n\n\n\nSource: Ch.4 in Python for Data Analysis (3e) by Wes McKinney",
+    "crumbs": [
+      "Python Basics",
+      "NumPy & pandas"
+    ]
+  },
+  {
+    "objectID": "contents/pandas.html#pandas",
+    "href": "contents/pandas.html#pandas",
+    "title": "NumPy and pandas",
+    "section": "pandas",
+    "text": "pandas\nSeries & DataFrame\n\nSeries\n1개의 칼럼으로 이루어진 데이터 포멧: 1d numpy array에 labels을 부여한 것으로 볼 수 있음.\nDataFrame의 각 칼럼들을 Series로 이해할 수 있음.\n\nSource: Practical Data Science\n\n\nDataFrame\n각 칼럼들이 한 가지 데이터 타입으로 이루어진 tabular형태 (2차원)의 데이터 포맷\n\n각 칼럼은 기본적으로 한 가지 데이터 타입인 것이 이상적이나, 다른 타입이 섞여 있을 수 있음\nNumPy의 2차원 array의 각 칼럼에 labels을 부여한 것으로 볼 수도 있으나, 여러 다른 기능들이 추가됨\nNumPy의 경우 고차원의 array를 다룰 수 있음: ndarray\n\n고차원의 DataFrame과 비슷한 것은 xarray가 존재\n\nLabels와 index를 제외한 데이터 값은 거의 NumPy ndarray로 볼 수 있음\n(pandas.array 존재)\n\n\nSource: Practical Data Science\nNumPy의 ndarray &lt;-&gt; pandas의 DataFrame 상호 변환\n\ndf = pd.DataFrame(A, columns=[\"A1\", \"A2\"])\ndf\n\n   A1  A2\n0   1   2\n1   3   4\n2   5   6\n\n\n\n# 데이터 값들은 NumPy array\ndf.values  # 함수 호출이 아니라 속성(attribute) 접근이므로 ()가 없음\n\n# 다른 방법\ndf.to_numpy()  # 이 경우에는 함수 호출이므로 ()가 있음\n\narray([[1, 2],\n       [3, 4],\n       [5, 6]])\n\n\n\ntype(df)\n\npandas.core.frame.DataFrame\n\n\n한 개의 Column을 추출\n보통 Series로 반환됨\n\n\ns = df[\"A1\"] # A1 칼럼 선택\ns  # DataFrame의 column 이름이 Series의 name으로 전환\n\n# 0    1\n# 1    3\n# 2    5\n# Name: A1, dtype: int64\n\n\n\ndf\n\n#    A1  A2\n# 0   1   2\n# 1   3   4\n# 2   5   6\n\n\n\ntype(s)\n\npandas.core.series.Series\n\n\n\ns.values  # 또는 s.to_numpy(); Series의 값은 NumPy 1d array\n\narray([1, 3, 5])\n\n\n\ndf2 = df[[\"A1\"]]  # DataFrame으로 유지\ndf2\n\n   A1\n0   1\n1   3\n2   5\n\n\n\ntype(df2)\n\npandas.core.frame.DataFrame\n\n\n\n\nIndex objects\nframe = pd.DataFrame(np.arange(6).reshape((2, 3)),\n                     index=pd.Index([\"Ohio\", \"Colorado\"], name=\"state\"),\n                     columns=pd.Index([\"one\", \"two\", \"three\"], name=\"number\"))\nframe\n\n\n\nnumber    one  two  three\nstate                    \nOhio        0    1      2\nColorado    3    4      5\n\n\n\n\nframe.index  # 함수 호출이 아니라 속성(attribute) 접근이므로 ()가 없음\n\nIndex(['Ohio', 'Colorado'], dtype='object', name='state')\n\n\n\nframe.columns # columns도 index object\n\nIndex(['one', 'two', 'three'], dtype='object', name='number')\n\n\nIndex는 times series에 특화\n\nbike = pd.read_csv('data/day.csv', index_col='dteday', parse_dates=True)\nbike.head(3)\n\n            instant  season  yr  mnth  holiday  weekday  workingday  \\\ndteday                                                                \n2011-01-01        1       1   0     1        0        6           0   \n2011-01-02        2       1   0     1        0        0           0   \n2011-01-03        3       1   0     1        0        1           1   \n\n            weathersit  temp  atemp  hum  windspeed  casual  registered   cnt  \ndteday                                                                         \n2011-01-01           2  0.34   0.36 0.81       0.16     331         654   985  \n2011-01-02           2  0.36   0.35 0.70       0.25     131         670   801  \n2011-01-03           1  0.20   0.19 0.44       0.25     120        1229  1349  \n\n\n\nbike.plot(kind='line', y=['casual', 'registered'], figsize=(8, 4), title='Bike Sharing')\nplt.show()\n\n\n\n\n\n\n\n\n\n\nDataFrame의 연산\nNumPy의 ndarray들이 연산되는 방식과 동일하게 series나 DataFrame들의 연산 가능함\n\ndf + 2 * df\n\n   A1  A2\n0   3   6\n1   9  12\n2  15  18\n\n\n\nnp.log(df)\n\n    A1   A2\n0 0.00 0.69\n1 1.10 1.39\n2 1.61 1.79\n\n\n사실 연산은 index를 align해서 시행됨\n\n\n\n\n\n\nnumber    one  two  three\nstate                    \nOhio        0    1      2\nColorado    3    4      5\n\n\nnumber  one  two  three\nstate                  \nOhio      0    2      4\nFloria    6    8     10\n\n\n\nframe1 + frame2\n\n\n\nnumber    one  two  three\nstate                    \nColorado  NaN  NaN    NaN\nFloria    NaN  NaN    NaN\nOhio     0.00 3.00   6.00\n\n\n\n\n##",
+    "crumbs": [
+      "Python Basics",
+      "NumPy & pandas"
+    ]
+  },
+  {
+    "objectID": "contents/pandas.html#missing",
+    "href": "contents/pandas.html#missing",
+    "title": "NumPy and pandas",
+    "section": "Missing",
+    "text": "Missing\nNaN, NA, None\n\npandas에서는 missing을 명명하는데 R의 컨벤션을 따라 NA (not available)라 부름.\n\n대부분의 경우에서 NumPy object NaN(np.nan)을 NA을 나타내는데 사용됨.\n\nnp.nan은 실제로 floating-point의 특정 값으로 float64 데이터 타입임. Integer 또는 string type에서 약간 이상하게 작동될 수 있음.\n\nPython object인 None은 pandas에서 NA로 인식함.\n\n현재 NA라는 새로운 pandas object 실험 중임\n\nNA의 handling에 대해서는 교재 참고\n.dropna(), .fillna(), .isna(), .notna()\n\nMckinney’s: 7.1 Handling Missing Data,\nWorking with missing data\n\n\ns = pd.Series([1, 2, np.nan])\ns\n\n0   1.00\n1   2.00\n2    NaN\ndtype: float64\n\n\n\n# type을 변환: float -&gt; int\ns.astype(\"Int64\")\n\n0       1\n1       2\n2    &lt;NA&gt;\ndtype: Int64\n\n\n\ns = pd.Series([\"a\", \"b\", np.nan])\ns\n\n0      a\n1      b\n2    NaN\ndtype: object\n\n\n\n# type을 변환: object -&gt; string\ns.astype(\"string\")\n\n0       a\n1       b\n2    &lt;NA&gt;\ndtype: string\n\n\n\ns = pd.Series([1, 2, np.nan, None, pd.NA])\ns\n\n0       1\n1       2\n2     NaN\n3    None\n4    &lt;NA&gt;\ndtype: object\n\n\nMissing인지를 확인: .isna(), .notna()\n\ns.isna() # or s.isnull()\n\n0    False\n1    False\n2     True\n3     True\ndtype: bool\n\n\n\ns.notna() # or s.notnull()\n\n0     True\n1     True\n2    False\n3    False\ndtype: bool\n\n\npandas에서는 ExtensionDtype이라는 새로운 데이터 타입이 도입되었음.\n\ns2 = pd.Series([2, pd.NA], dtype=pd.Int8Dtype())\ns2.dtype  # date type 확인\n\nInt8Dtype()\n\n\n\nimport pyarrow as pa\ns2 = pd.Series([2, pd.NA], dtype=pd.ArrowDtype(pa.uint16()))\ns2.dtype\n\nuint16[pyarrow]\n\n\npandas dtypes 참고",
+    "crumbs": [
+      "Python Basics",
+      "NumPy & pandas"
+    ]
+  },
+  {
+    "objectID": "contents/interactive-plot.html",
+    "href": "contents/interactive-plot.html",
+    "title": "Interactive Plot",
     "section": "",
-    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업 시간: 월, 수 3:00 ~ 4:30PM\nWebsite: dgds101.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
-    "crumbs": [
-      "Welcome"
-    ]
+    "text": "import plotly.io as pio\npio.renderers.default = \"plotly_mimetype+notebook_connected\"\nimport plotly.graph_objects as go\nimport numpy as np\nfrom sklearn.datasets import make_regression\nfrom sklearn.linear_model import LinearRegression\n\n# Generate some data\nX, y = make_regression(n_samples=100, n_features=2, noise=0.1)\nmodel = LinearRegression()\nmodel.fit(X, y)\n\n# Create a grid of points\nx_range = np.linspace(X[:,0].min(), X[:,0].max(), 10)\ny_range = np.linspace(X[:,1].min(), X[:,1].max(), 10)\nx_grid, y_grid = np.meshgrid(x_range, y_range)\n\n# Compute model values over the grid\nz_grid = model.predict(np.c_[x_grid.ravel(), y_grid.ravel()]).reshape(x_grid.shape)\n\n# Create a 3D scatter plot of data points\nscatter = go.Scatter3d(x=X[:,0], y=X[:,1], z=y, mode='markers')\n\n# Create a 3D surface plot of the regression plane\nsurface = go.Surface(x=x_range, y=y_range, z=z_grid)\n\n# Combine plots\nfig = go.Figure(data=[scatter, surface])\n\n# Show the plot\nfig.show()"
   },
   {
-    "objectID": "index.html#강의-정보",
-    "href": "index.html#강의-정보",
-    "title": "Welcome",
+    "objectID": "contents/eda.html",
+    "href": "contents/eda.html",
+    "title": "Exploratory Data Analysis",
     "section": "",
-    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업 시간: 월, 수 3:00 ~ 4:30PM\nWebsite: dgds101.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
+    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\n다음 네 가지의 시각화 패키지를 사용해서 그 차이를 확인해 볼 것임.\nMatplotlib 방식\n두 가지 interface를 제공하는데, 혼동을 야기함\npandas/seaborn 방식",
     "crumbs": [
-      "Welcome"
+      "Exploratory Data Analysis",
+      "Explore"
     ]
   },
   {
-    "objectID": "index.html#강의-개요",
-    "href": "index.html#강의-개요",
-    "title": "Welcome",
-    "section": "강의 개요",
-    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n교재\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\n\n\n\n참고도서\n\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석",
+    "objectID": "contents/eda.html#위도-경도-값의-활용",
+    "href": "contents/eda.html#위도-경도-값의-활용",
+    "title": "Exploratory Data Analysis",
+    "section": "위도, 경도 값의 활용",
+    "text": "위도, 경도 값의 활용\n\n\n\n\n\n\nShow Matplotlib styles\n\n\n\nplt.style.available\n\n\n\n# set the style\nplt.style.use('seaborn-v0_8-whitegrid')\n\n\n# MATLAB 스타일\nlat, lon = housing['latitude'], housing['longitude']\n\n# figure() 함수를 직접 호출\nplt.figure(figsize=(7, 5)) # create a plot figure\n\n# scatter() 함수를 직접 호출\nplt.scatter(lon, lat, label=None, edgecolors=\"w\", linewidths=.4, alpha=0.3)\n\n# set the labels\nplt.xlabel('longitude')\nplt.ylabel('latitude')\nplt.axis('equal') # set the aspect of the plot to be equal\n\nplt.show()\n\n\n\n\n\n\n\n\n\n# 객체 방식\n# figure, axes라는 객체를 생성 후 메서드를 호출\nfig, ax = plt.subplots(figsize=(5, 3)) \n\n# ax의 메서드인 .scatter로 그래프를 그림\nax.scatter(lon, lat, label=None, edgecolors=\"w\", linewidths=.4, alpha=0.3)\n\n# ax의 메서드인 .set_xlabel, .set_ylabel로 라벨을 지정\nax.set_xlabel('longitude')\nax.set_ylabel('latitude')\nax.axis('equal')  # set the aspect of the plot to be equal\n\nplt.show()\n\n\n\n\n\n\n\n\n\n# pandas의 plot 메서드를 사용하는 방식\nhousing.plot.scatter(x=\"longitude\", y=\"latitude\", alpha=0.3)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n# 다음과 동일함\nhousing.plot(kind=\"scatter\", x=\"longitude\", y=\"latitude\", alpha=0.3)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n\npandas가 제공하는 plots\n\n‘line’ : line plot (default)\n‘bar’ : vertical bar plot\n‘barh’ : horizontal bar plot\n‘hist’ : histogram\n‘box’ : boxplot\n‘kde’ : Kernel Density Estimation plot\n‘density’ : same as ‘kde’\n‘area’ : area plot\n‘pie’ : pie plot\n‘scatter’ : scatter plot (DataFrame only)\n‘hexbin’ : hexbin plot (DataFrame only)\n\n\n# NEAR OCEAN에 해당하는 부분만 시각화\nhousing2 = housing.query('ocean_proximity == \"NEAR OCEAN\"')\n\nhousing2.plot.scatter(x=\"longitude\", y=\"latitude\", alpha=0.3, figsize=(7, 5))\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n# Seaborn을 사용하는 방식\nplt.figure(figsize=(7, 5))\nsns.scatterplot(housing, x=\"longitude\", y=\"latitude\", hue=\"ocean_proximity\", alpha=0.5)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n\n  The San Francisco Bay Area\n\n\n\n\n집값과의 관계를 보기 위해, 집값을 컬러에 매핑하면,\n\nhousing.plot.scatter(\n    x=\"longitude\",\n    y=\"latitude\",\n    s=housing[\"population\"] / 100,  # point size\n    c=\"median_house_value\",  # color\n    alpha=0.3,  # transparency\n    cmap=\"flare\",  # color map\n    figsize=(7, 5),\n)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nText Annotation 추가\n\n\n\n\n\n아래 코드를 추가하여 도시 이름을 표시\npath = \"https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/master/notebooks_v1/data/california_cities.csv\"\ncities = pd.read_csv(path)\n\npopular_cities = cities.query('population_total &gt; 400000')\nlat, lon, names = popular_cities['latd'], popular_cities['longd'], popular_cities[\"city\"]\n\nplt.scatter(lon, lat, c=\"w\", alpha=1)\nfor name, lat, lon in zip(names, lat, lon):\n    plt.annotate(name, (lon, lat), xytext=(5, 5), textcoords=\"offset points\", color=\"k\")\n\n\n\n\n\n\n\n\n\nColor 사용에 관한 체계적 가이드\n\n\n\nChoosing color pallettes from Seaborn website",
     "crumbs": [
-      "Welcome"
+      "Exploratory Data Analysis",
+      "Explore"
     ]
   },
   {
-    "objectID": "index.html#수업-활동",
-    "href": "index.html#수업-활동",
-    "title": "Welcome",
-    "section": "수업 활동",
-    "text": "수업 활동\n출석 (10%), 일반과제 (20%), 중간고사 (35%), 기말고사 (35%)\n코딩 실습 설문",
+    "objectID": "contents/eda.html#데이터의-분포",
+    "href": "contents/eda.html#데이터의-분포",
+    "title": "Exploratory Data Analysis",
+    "section": "데이터의 분포",
+    "text": "데이터의 분포\nHistogram, density plot, boxplot\n\n# pandas의 DataFrame 메서드인 hist()를 사용\nhousing.hist(bins=50, figsize=(9, 6))\nplt.show()\n\n\n\n\n\n\n\n\n\n# density plot\nhousing.plot.density(bw_method=0.2, subplots=True, layout=(3, 3), sharex=False, sharey=False, figsize=(9, 6))\nplt.show()\n\n\n\n\n\n\n\n\n\n# Using matplotlib\nfig, ax = plt.subplots(3, 3, figsize=(9, 6))\nfig.subplots_adjust(hspace=0.5, wspace=0.5)\n\nfor i in range(3):\n    for j in range(3):\n        ax[i, j].hist(housing.iloc[:, i * 3 + j], bins=30)\n        ax[i, j].set_title(housing.columns[i * 3 + j])        \n\n\n\n\n\n\n\n\n\n# 한 변수의 각 레벨/카테고리별로 그리기, using pandas\nhousing.plot.hist(column=[\"median_house_value\"], by=\"ocean_proximity\", sharey=False, sharex=True, figsize=(6, 8), bins=50)\nplt.show()\n\n\n\n\n\n\n\n\n\n# Using pandas\nhousing.plot.box(column=\"median_house_value\", by=\"ocean_proximity\")\nplt.show()\n\n\n\n\n\n\n\n\n\n# Using seaborn\nplt.figure(figsize=(9, 5))\nsns.boxplot(housing, x=\"ocean_proximity\", y=\"median_house_value\", hue=\"median_age_cat\", fill=False, gap=.2)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBoxplot\n\n\n\n\n\n\nsource: R for Data Science",
     "crumbs": [
-      "Welcome"
+      "Exploratory Data Analysis",
+      "Explore"
     ]
   },
   {
-    "objectID": "index.html#수업-계획",
-    "href": "index.html#수업-계획",
-    "title": "Welcome",
-    "section": "수업 계획",
-    "text": "수업 계획\n1주. 데이터 사이언스 소개\n2주. 데이터 분석의 두 문화 1: 전통적 통계\n3주. 데이터 분석의 두 문화 2: 기계 학습\n4주. 탐색적 분석 및 시각화\n5주. 선형 모형(linear model) 소개\n6주. 선형 모형의 활용: 예측과 설명\n7주. 데이터의 해석 및 의미의 추론\n8주. 중간고사\n9주. 기계 학습 소개\n10주. 분류(classification) 1: 로지스틱(logistic) 모형\n11주. 분류(classification) 2: 서포트 벡터 머신\n12주. Tree-based 모형\n13주. 딥러닝\n14주. 비지도 학습(unsupervised learning)\n15주. 기말고사",
+    "objectID": "contents/eda.html#두-연속-변수간의-관계",
+    "href": "contents/eda.html#두-연속-변수간의-관계",
+    "title": "Exploratory Data Analysis",
+    "section": "두 연속 변수간의 관계",
+    "text": "두 연속 변수간의 관계\n\nhousing[\"rooms_per_household\"] = housing[\"total_rooms\"] / housing[\"households\"]\nhousing[\"bedrooms_per_household\"] = housing[\"total_bedrooms\"] / housing[\"households\"]\nhousing[\"people_per_household\"] = housing[\"population\"] / housing[\"households\"]\n\n또는 assign()를 사용\n\nhousing.assign(\n    rooms_per_household = lambda x: x[\"total_rooms\"] / x[\"households\"],\n    bedrooms_per_household = lambda x: x[\"total_bedrooms\"] / x[\"households\"],\n    people_per_household = lambda x: x[\"population\"] / x[\"households\"]\n).head(1)\n\n   longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \\\n0    -122.23     37.88               41.00       880.00          129.00   \n\n   population  households  median_income  median_house_value ocean_proximity  \\\n0      322.00      126.00           8.33           452600.00        NEAR BAY   \n\n  median_age_cat  rooms_per_household  bedrooms_per_household  \\\n0          40-52                 6.98                    1.02   \n\n   people_per_household  \n0                  2.56  \n\n\n\nhousing.value_counts(\"median_house_value\").sort_index()\n\nmedian_house_value\n14999.00       4\n17500.00       1\n22500.00       4\n25000.00       1\n            ... \n499000.00      1\n499100.00      1\n500000.00     27\n500001.00    965\nName: count, Length: 3842, dtype: int64\n\n\n\n# median_house_value &lt; 500001 값으로 필터링\nhousing = housing.query('median_house_value &lt; 500001')\n\n\nxvar = \"rooms_per_household\"\nyvar = \"median_house_value\"\n\n# matplotlib의 객체 방식\nfig, ax = plt.subplots()\nhousing.plot.scatter(ax=ax, x=xvar, y=yvar, alpha=0.1, figsize=(7, 5))\n\n# fitted line of natural spline: 아래 노트 참고\nnspline_fit = nspline(housing, xvar, yvar, df_n=15).sort_values(xvar)\nnspline_fit.plot.line(ax=ax, x=xvar, y=yvar, c=\".3\", figsize=(7, 5))\n\nplt.xlim(0, 10)\nplt.ylim(0, 500000)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNatural spline fit\n\n\n\n\n\ndef nspline(df, x, y, df_n=5):\n    from statsmodels.formula.api import ols\n\n    df = df[[x, y]].dropna()\n    formula = f\"{y} ~ cr({x}, df={df_n})\"\n    df[y] = ols(formula, data=df).fit().fittedvalues\n\n    return df\n\n\n\n해변에 가까운 정도(ocean_proximity) 따라 나누어 보면,\n\n# divide plots by ocean_proximity\nfig, ax = plt.subplots(1, 4, figsize=(12, 3))\nfig.subplots_adjust(hspace=0.5, wspace=0.5)\n\ntypes = ['NEAR OCEAN', '&lt;1H OCEAN', 'NEAR BAY', 'INLAND']\nfor i, op in enumerate(types):\n\n    df = housing.query(f'ocean_proximity == \"{op}\"')\n    df.plot.scatter(ax=ax[i], x=xvar, y=yvar, alpha=0.1)\n\n    # fitted line of natural spline\n    nspline_fit = nspline(df, xvar, yvar, df_n=15).sort_values(xvar)\n    nspline_fit.plot.line(ax=ax[i], x=xvar, y=yvar, c=\".3\")\n    \n    ax[i].set_title(op)\n    ax[i].set_xlim(1, 12)\n    ax[i].set_ylim(0, 500000)\n\nplt.show()\n\n\n\n\n\n\n\n\nseaborn.object 방식\n\n(\n    so.Plot(housing, x='rooms_per_household', y='median_house_value')\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet('ocean_proximity')\n    .limit(x=(1, 12), y=(0, 500000))\n    .layout(size=(8.9, 3))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n범주형 변수의 순서 할당\n\n\n\npd.Categorical을 사용하여 범주형 변수의 순서를 지정할 수 있음.\nhousing[\"ocean_proximity\"] = pd.Categorical(\n    housing[\"ocean_proximity\"],\n    categories=[\"NEAR BAY\", \"NEAR OCEAN\", \"&lt;1H OCEAN\", \"INLAND\"],\n    ordered=True,\n)\n\n\n해변에 가까운 정도(ocean_proximity)와 집의 연령(median_age_cat)에 따라 나누어 보면,\n\n(\n    so.Plot(\n        housing.query('ocean_proximity != \"ISLAND\"'),\n        x=\"rooms_per_household\",\n        y=\"median_house_value\",\n    )\n    .add(so.Dots(alpha=0.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet(col=\"ocean_proximity\", row=\"median_age_cat\")\n    .limit(x=(1, 12), y=(0, 500000))\n    .layout(size=(8, 8))\n)\n\n\n\n\n\n\n\n\n해안에 가까운 정도(ocean_proximity)가 고정되어 있을 때, 그 안에서 여전히\n경도(longitude)가 작을수록, 즉 집값(median_house_value)이 변화하는지 살펴보면,\n\n(\n    so.Plot(\n        housing.query('ocean_proximity != \"ISLAND\"'),\n        x='longitude',\n        y='median_house_value')\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet(\"ocean_proximity\")\n    .layout(size=(8.9, 3))\n    .share(x=False)\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nPopulation과의 관계가 있을까?\n\n\nShow the code\nhousing2 = housing.copy()\nhousing2[\"ocean_proximity\"] = (\n    housing\n    .query('ocean_proximity not in [\"ISLAND\", \"INLAND\"]')[\"ocean_proximity\"]\n    .cat.remove_unused_categories()\n)\n\n(\n    so.Plot(housing2, x='longitude', y='population')\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet(\"ocean_proximity\")\n    .layout(size=(8.9, 3))\n    .share(x=False)\n    .limit(y=(0, 3000))\n)\n\n\n\n\n\n\n\n\n\nPanelized spline fit: pyGAM 참고",
     "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "contents/setup.html",
-    "href": "contents/setup.html",
-    "title": "Python 설정",
-    "section": "",
-    "text": "데이터 사이언스를 위한 Python 개발 환경\n몇 가지 선택지",
-    "crumbs": [
-      "Introduction",
-      "Python Setup"
-    ]
-  },
-  {
-    "objectID": "contents/setup.html#클라우드-환경",
-    "href": "contents/setup.html#클라우드-환경",
-    "title": "Python 설정",
-    "section": "클라우드 환경",
-    "text": "클라우드 환경\nColab\n\n사용법: Colab Welcome\n클라우드 환경 vs. 구글 드라이브 mount\nColab AI assistant",
-    "crumbs": [
-      "Introduction",
-      "Python Setup"
-    ]
-  },
-  {
-    "objectID": "contents/setup.html#로컬-환경",
-    "href": "contents/setup.html#로컬-환경",
-    "title": "Python 설정",
-    "section": "로컬 환경",
-    "text": "로컬 환경\nPython과 Conda Package Manager\nConda Cheatsheet: 기본적인 conda 명령어 요약\n\nMiniconda 설치\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 Command Line Tool 참고\n\nWindows 경우: Anaconda의 응용 프로그램으로 등록된 Anaconda Powershell Prompt를 이용\nMac의 경우: 기본 terminal을 이용\n커서 앞에 (base)가 보이면 conda가 설치된 것\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n(base)&gt; conda info # 콘다 정보 \n(base)&gt; conda update conda # 콘다 업데이트\n\n\nConda Environment\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n(base)&gt; conda create --name myenv  # --name 대신 -n으로 축약 가능\n\n# 특정 버전의 파이썬과 함께 설치시\n(base)&gt; conda create --name myenv python=3.12\n환경 확인\n(base)&gt; conda env list\n# conda environments:\n#\n# base         */.../miniconda3\n# myenv         /.../miniconda3/envs/myenv\n환경 제거\n(base)&gt; conda env remove --name myenv\n환경 activate/deactivate\n(base)&gt; conda activate myenv\n(myenv)&gt; conda deactivate\n특정 환경 안의 파이썬 버전 확인\n(myenv)&gt; python --version\n\n\n환경(activated) 내에서 패키지 설치 및 제거\n\n\n\n\n\n\n패키지 repository(channel) 선택\n\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n(base)&gt; conda config --add channels conda-forge\n(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n(base)&gt; conda search scipy\n\n\n\n# 특정 환경을 activate한 후\n\n# Python을 update하거나 다른 버전을 섦치하려면, 가령 3.12으로 업데이트 하려면\n(myenv)&gt; conda install python=3.12  # python update\n\n# 패키지 설치\n(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n# 특정한 채널, conda-forge 통한 설치: --channel 대신 -c로 축약 가능\n(myenv)&gt; conda install --channel conda-forge &lt;package name&gt;\n\n# 제거\n(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n(myenv)&gt; conda update --all  # all packages\n\n# 패키지 리스트\n(myenv)&gt; conda list\n환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가\n(base)&gt; conda install --name myenv &lt;package name1&gt;  # --name 대신 -n으로 축약 가능\npip을 이용한 패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n수업에 필요한 기본 패키지 설치\n# 수업에 필요한 기본 패키지 설치\n(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn",
-    "crumbs": [
-      "Introduction",
-      "Python Setup"
-    ]
-  },
-  {
-    "objectID": "contents/setup.html#command-line-tool",
-    "href": "contents/setup.html#command-line-tool",
-    "title": "Python 설정",
-    "section": "Command Line Tool",
-    "text": "Command Line Tool\n\nMac의 경우: 기본 terminal을 이용하되 기본 zsh shell 대신 다음 Oh-My-Zsh을 추천\nOh-My-Zsh!: 링크\n\n\nWindows의 경우: Windows Terminal 추천\n\n설치 링크는 구글링…\n명령프롬프트(CMD) vs. Powershell\nPowershell에서 conda를 사용하기 위해서는 몇 가지 설정 필요: 블로그 링크\n잘 안될 경우, conda 설치시 함께 설치되는 응용프로그램 콘다 powershell을 이용",
-    "crumbs": [
-      "Introduction",
-      "Python Setup"
-    ]
-  },
-  {
-    "objectID": "contents/setup.html#sec-vscode",
-    "href": "contents/setup.html#sec-vscode",
-    "title": "Python 설정",
-    "section": "Visual Studio Code",
-    "text": "Visual Studio Code\n\nVS Code 설치\n\n개인마다 선호하는 text editor가 있으나 본 수업에서는 VS Code로 진행: download and install here\n\n\n\nExtensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nPylance: 문법 체크, 자동완성, …\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결\n\nCopilot…\n\n\n\nPreferences\n\nThemes\nFont, font size (notebook, markup, output)\n\n\n\nShortcuts\nShow Command Palette: ctrl(cmd) + shift + p, 또는 F1\nCell 안과 밖에서 다르게 작동\n\nundo / redo : ctrl(cmd) + z / ctrl(cmd) + shift + z\nmove: alt(option) + arrow up/down\ncopy : alt(option) + shift + arrow up/down\n\n코드 실행 방식 3가지: ctrl/shift/alt(option) + enter\nHelp: Keyboard shortcuts reference의 Basic editing 참고\n\n\n그 외\n\ninteractive mode\nexport\ndocs view: sticky mode\nvariables viewer, data viewer\nformatter: “Black formatter”\nsnippets: 구글링…\n\n\n\nVS Code내에서 terminal 사용\nTerminal: Select Default Profile에서 선택\n\nMac: zsh\nWindows: powershell",
-    "crumbs": [
-      "Introduction",
-      "Python Setup"
-    ]
-  },
-  {
-    "objectID": "contents/setup.html#jupyter-notebooklab",
-    "href": "contents/setup.html#jupyter-notebooklab",
-    "title": "Python 설정",
-    "section": "Jupyter Notebook/Lab",
-    "text": "Jupyter Notebook/Lab\n\n\n\n\n\n\n콘다 환경 등록\n\n\n\n\n\n새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서\n(myenv)&gt; ipython kernel install --user --name=myenv\n환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n(myenv)&gt; jupyter kernelspec list\n커널 삭제\n(myenv)&gt; jupyter kernelspec remove myenv\n\n\n\nJupyter Notebook 또는 lab 실행\n\nAnaconda 응용 프로그램을 이용해 실행하거나,\n쉘에서 실행하려면,\n\n# jupytet notebook\n(base)&gt; jupytet notebook\n\n# jupyter lab\n(base)&gt; jupyter lab\n등록한 커널을 선택 후 시작\n커널을 종료하려면, 셀에서 Ctrl-C 두 번",
-    "crumbs": [
-      "Introduction",
-      "Python Setup"
-    ]
-  },
-  {
-    "objectID": "contents/setup.html#python-packages-modules-functions",
-    "href": "contents/setup.html#python-packages-modules-functions",
-    "title": "Python 설정",
-    "section": "Python Packages, Modules, Functions",
-    "text": "Python Packages, Modules, Functions\nJupyter notebook 파일을 생성: filename.ipynb\n\nimport numpy as np\nimport pandas as pd\nfrom numpy.linalg import inv\n\n\n\n\n\n\n\n두 개 이상의 함수/모듈을 import하거나 as로 별칭 지정 가능\n\n\n\n\n\nfrom numpy.linalg import inv as inverse\nfrom numpy.linalg import inv, det\nfrom numpy.linalg import inv as inverse, det as determinant\n\n\n\nnp.linalg?  # 함수에 대한 도움말\nNumPy 패키지(package)의 linalg 모듈(module)\nnp.linalg  # linalg.py 파이썬 스트립트 파일\nlinalg 모듈 파일 안에 def으로 정의된 함수\n\nnp.linalg.inv  # 모듈 안에서 def으로 정의된 함수 inv()\n\n&lt;function inv at 0x105c13170&gt;\n\n\nnp.linalg.inv?  # 함수에 대한 도움말\n예를 들어, 행렬의 역행렬을 구하는 함수 inv를 사용하려면\n\nrng = np.random.default_rng(123)  # random number generator\nx = rng.standard_normal((3, 3))  # 3x3 matrix from standard normal distribution\nx\n\narray([[-0.98912135, -0.36778665,  1.28792526],\n       [ 0.19397442,  0.9202309 ,  0.57710379],\n       [-0.63646365,  0.54195222, -0.31659545]])\n\n\n어떻게 import하느냐에 따라 다른 방식으로 사용\n\ninv(x)  # inverse matrix of x\n\n# inv 함수를 따로 import하지 않은 경우, numpy의 linalg 모듈을 통해 사용\nnp.linalg.inv(x)  # same as above\n\narray([[-0.37762186,  0.36352647, -0.87353193],\n       [-0.19121277,  0.70815019,  0.51298399],\n       [ 0.4318268 ,  0.4814099 , -0.52437858]])\n\n\n주로 모듈 이름을 함께 쓰는 것이 관례인데,\n\n이는 코드의 가독성을 높이고,\n사용자 정의 함수와의 충돌을 방지하기 위함\n\n모듈 안에 정의된 함수들을 확인하려면: dir() 함수\n\ndir(np.linalg)  # 모듈 안에 정의된 함수들\n\n['LinAlgError',\n '__all__',\n '__builtins__',\n '__cached__',\n '__doc__',\n '__file__',\n '__loader__',\n '__name__',\n '__package__',\n '__path__',\n '__spec__',\n '_umath_linalg',\n 'cholesky',\n 'cond',\n 'det',\n 'eig',\n 'eigh',\n 'eigvals',\n 'eigvalsh',\n 'inv',\n 'linalg',\n 'lstsq',\n 'matrix_power',\n 'matrix_rank',\n 'multi_dot',\n 'norm',\n 'pinv',\n 'qr',\n 'slogdet',\n 'solve',\n 'svd',\n 'tensorinv',\n 'tensorsolve',\n 'test']",
-    "crumbs": [
-      "Introduction",
-      "Python Setup"
-    ]
-  },
-  {
-    "objectID": "contents/notice.html#중간고사",
-    "href": "contents/notice.html#중간고사",
-    "title": "Notice",
-    "section": "중간고사",
-    "text": "중간고사",
-    "crumbs": [
-      "Notice"
-    ]
-  },
-  {
-    "objectID": "contents/notice.html#기말고사",
-    "href": "contents/notice.html#기말고사",
-    "title": "Notice",
-    "section": "기말고사",
-    "text": "기말고사",
-    "crumbs": [
-      "Notice"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "contents/intro.html",
-    "href": "contents/intro.html",
-    "title": "개관",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/intro.html#미래-데이터의-중요성",
-    "href": "contents/intro.html#미래-데이터의-중요성",
-    "title": "개관",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/intro.html#데이터-사이언스의-응용-사례",
-    "href": "contents/intro.html#데이터-사이언스의-응용-사례",
-    "title": "개관",
-    "section": "데이터 사이언스의 응용 사례",
-    "text": "데이터 사이언스의 응용 사례\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n수 십년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천, 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/intro.html#사회적-파장",
-    "href": "contents/intro.html#사회적-파장",
-    "title": "개관",
-    "section": "사회적 파장",
-    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계와의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\nThe Social Dilemma (2020)",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/intro.html#data-science",
-    "href": "contents/intro.html#data-science",
-    "title": "개관",
-    "section": "Data Science",
-    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical Learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/intro.html#skills",
-    "href": "contents/intro.html#skills",
-    "title": "개관",
-    "section": "Skills",
-    "text": "Skills\n\n\nDomain knowledge\n\n해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 “one size fits all”은 효과적이지 않음\n추상화된 현실에 대한 모형은 수많은 가정/사전 지식(prior knowledge)을 전제하고 있음.\n각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적\n\nEthics\n\n데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요\n\n배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물\n\n소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움\n\n공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터\n누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집\n\n아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움\n\n사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집\n\n메타데이터(metadata)\n통화 내역만으로 많은 민감한 정보을 유추할 수 있음\n\n알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등\n\n\n한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력\n\n\nWrangling\n\n데이터 소스는 다양한 형식으로 존재\n통합, 정리, 변환, 정규화 등의 작업이 요구\ndata munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림\n\nDatabase & computer science\n\n수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술\n다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용\nML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등\n\nVisualisation\n\n작업 프로세스의 모든 과정에 관여\n\n데이터를 탐색하거나,\n데이터의 의미를 효과적으로 전달\n\n\nStatistics & Probability\n\n데이터 과학 프로세스 전반에 걸쳐 사용됨\n\n초기 수집과 조사\n다양한 모델과 분석의 결과를 해석\n의사결정에 활용\n\n\nMachine Learning\n\n데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용\n응용 측면에서는\n\n수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등\n해결할 문제와 데이터에 가장 적합한 알고리즘을 파악\n\n\nCommunication\n\n데이터에 담긴 스토리를 효과적으로 전달하는 능력\n분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/intro.html#응용비즈니스에서-정형적인-절차",
-    "href": "contents/intro.html#응용비즈니스에서-정형적인-절차",
-    "title": "개관",
-    "section": "응용/비즈니스에서 정형적인 절차",
-    "text": "응용/비즈니스에서 정형적인 절차\nPhases of the CRISP-DM (CRoss-Industry Standard Process for Data Mining)\nsource: Chapman et al., 2000\n\nGeneric tasks of the CRISP-DM reference model\n\n비즈니스의 이해와 데이터의 이해\n\n프로젝트의 목표를 정의하고, 비즈니스 문제를 이해하는 것\n어떤 데이터를 수집하는 것이 유용한지, 어떤 데이터가 수집 가능한지 등을 탐색\n\n데이터 준비와 모델링\n\n노이즈와 비정형화된 데이터를 정제하고, 모델링을 위한 데이터를 준비\n데이터로부터 의미있는 패턴(signal vs. noise)과 통찰을 찾기 위해 다양한 모델을 검토하고 실행\n\n모델 평가와 배포\n\n모델링 성능을 평가하고 개선, 모델을 배포\n실제 환경에서는 훈련/평가을 위해 사용된 데이터가 보진 못한 새로운 데이터에 적용됨으로 모델의 성능을 지속적으로 모니터링\n\n데이터 질의 중요성\n\n2016년 데이터 과학자를 대상으로 한 설문조사(CrowdFlower report, 2016)\n데이터 준비(데이터 수집, 클린닝)에 79%의 시간이 소요\n프로젝트의 초점이 명확하고, 그에 맞는 올바른 데이터가 수집되었는지, 모델이 프로젝트의 목표에 잘 부응하는지 중요!\nGarbage in, garbage out\n\n\n\nSource: Cleaning Big Data",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/intro.html#표준-비즈니스-영역에서의-데이터-사이언스-작업",
-    "href": "contents/intro.html#표준-비즈니스-영역에서의-데이터-사이언스-작업",
-    "title": "개관",
-    "section": "표준 비즈니스 영역에서의 데이터 사이언스 작업",
-    "text": "표준 비즈니스 영역에서의 데이터 사이언스 작업\nSource: Data Science (The MIT Press Essential Knowledge Series), 2018, by John D. Kelleher & Brendan Tierney\n\nClustering\nAnomaly detection\nAssociation-rule mining\nPrediction: classification & regression\n\n\nClustering\nWho Are Our Customers?\n\n\n클러스터링을 통해 타깃 고객을 더 세분화된 군집으로 분류하여 마케팅 캠페인의 타겟을 명확히 정의할 수 있음\n\nMeta S. Brown (2014)의 보고서에 따르면,\n\nSoccer Moms? \n\n어린이집에 다니는 어린 자녀를 둔 전업주부\n고등학생 자녀와 함께 파트타임으로 일하는 엄마\n음식과 건강에 관심이 많지만 자녀가 없는 여성\n\n\n\n클러스터링을 통해 얻은 고객 세그먼트에 페르소나를 부여\n각 특성에 맞는 캠패인 전략을 수립\n\n작고 집중된 고객 클러스터를 발견\n많은 매출을 창출하는 고객이 포함된 클러스터에 집중\n\n\n\n  Source: Introduction to Statistical Learning by James et al.\n\n\n\n클러스터링을 위해 사용할 수 있는 속성들: 어떤 속성을 포함하고 어떤 속성을 제외할지 결정하는 것이 중요!\n\n인구통계학적 정보(연령, 성별 등)\n위치(우편번호, 시골 또는 도시 주소 등)\n거래 정보(예: 고객이 어떤 제품이나 서비스를 추구했는지)\n기업이 고객으로부터 창출하는 수익\n고객이 된 지 얼마나 되었는지\n로열티 카드 회원인지\n제품을 반품하거나 서비스에 대해 불만을 제기한 적이 있는지 등\n\n\n\n\n\n\n\n프로젝트의 데이터 이해 단계에서 탐색 도구로 자주 사용됨\n추가 지원이 필요하거나 다른 학습 접근 방식을 선호하는 학생 그룹을 식별\n생물 정보학에서 마이크로어레이 분석에서 유전자 서열을 분석\n\n\n\nAnomaly detection\nIs This Fraud?\n\n잠재적인 사기, 특히 금융 거래 행위를 식별하고 조사\n\n예를 들어, 비정상적인 위치에서 발생한 거래\n비정상적으로 많은 금액이 포함된 거래\n\n어떤 면에서 클러스터링과 반대 개념\n\n클러스터링: 유사한 인스턴스 그룹을 식별\n이상 징후 탐지: 특별한 인스턴스를 식별\n\n이상 징후는 드물다는 그 고유한 특징으로 인해 식별이 어려움\n여러 가지 모델을 결합: 서로 다른 모델이 서로 다른 유형의 이상 징후를 포착\n\n예를 들어, 4개의 모델 중 3~4개 모델에서 거래가 사기성 거래로 식별되는 경우\n\n다양한 분야에서 활용\n\n금융기관: 잠재적 사기 또는 자금 세탁 사례로 추가 조사가 필요한 금융 거래를 식별\n보험기관: 회사의 일반적인 청구와 일치하지 않는 청구를 식별\n사이버 보안: 해킹 가능성, 직원의 비정상적인 행동을 탐지하여 네트워크 침입을 식별\n의료 분야: 의료 기록의 이상 징후를 식별하여 질병을 진단\n사물 인터넷: 데이터를 모니터링하고 비정상적인 센서 이벤트의 발생을 감지, 조치\n\n\n\nSource: The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov\n\n\nAssociation-Rule Mining\nDo You Want Fries with That?\n\n고객에게 다른 관련 제품이나 보완 제품, 혹은 잊어 있었던 제품을 제안\n\n예를 들어, 슈퍼마켓에서 핫도그를 구매한 고객은 케첩과 맥주도 함께 구매할 가능성이 높음.\n이에 맞춰 매장은 제품 레이아웃을 계획할 수 있음\n온라인 마켓의 경우, 웹사이트의 배열, 추천, 광고 등을 설계\n즉, 제품 간 연관성을 이해하고 교차 판매를 촉진\n\n연관 규칙 마이닝은 데이터 세트의 속성(또는 열) 간의 관계를 살펴보는 데 중점을 둠: 속성 간의 상관관계\n위의 경우, 고객의 장바구니 품목을 추적\nIF {핫도그, 케첩}, THEN {맥주}\n\n연관성 규칙의 신뢰도가 75%라면 고객이 핫도그와 케첩을 모두 구매한 경우 75%에서 맥주도 함께 구매했음을 의미\n인구통계학적 정보를 연관성 분석에 포함하여 마케팅 및 타겟팅 광고에 활용\n\n특히, 구매 기록 정보는 없는 경우\n\nIF 성별(남성) & 나이(35세 미만)& {핫도그, 케첩}, THEN {맥주}\n장바구니 분석을 통해 다음과 같은 질문에 답을 탐색\n\n마케팅 캠페인이 효과가 있었는지,\n이 고객의 구매 패턴에 변화가 있었는지,\n고객에게 중요한 인생 이벤트가 있었는지,\n제품 위치가 구매 행동에 영향을 미치는지,\n신제품으로 누구를 타깃팅해야 하는지 등\n\n구매 경향의 시간적 요소를 더하면\n\n적절한 시기에 (재)구매를 추천\n유지보수, 부품 교체 일정\n\n다양한 영역에서도 유용함\n\n통신: 회사의 다양한 서비스를 패키지로 묶는 방법을 설계\n보험: 상품과 보험금 청구 사이에 연관성을 파악\n의료: 기존 치료법과 새로운 치료법 및 의약품 간에 상호 작용이 있는지 확인\n\n추천 시스템(recommnder system)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Machine Learning Class (2016.7.8) from Microsoft Research by Chris Bishop, YouTube\n\n\nClassification (Prediction)\nChurn or No Churn(고객 이탈), That Is the Question\n\n행동 성향 모델링의 목표: 마케팅 응답, 서비스 탈퇴 등 다양한 행동 예측\n휴대폰 서비스 회사의 고객 유지 필요성: 신규 고객 유치 비용 대비 기존 고객 유지 비용의 상대적 높음\n이탈 가능성이 높은 고객 식별의 중요성: 유지 비용 최소화 및 이탈 예측을 통한 효율적인 혜택 제공 필요\n이탈 예측의 의미와 활용: 서비스 이탈 예측을 통해 고객 이탈 가능성을 예측하고 효율적인 대응 가능\n다양한 산업의 이탈 예측 활용: 통신, 유틸리티, 은행, 보험 등에서의 이탈 예측을 통한 비즈니스 전략 개발 및 운영 향상\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n이해보다는 예측에 초점을 두는 deep learning\n\nImage recognition\nSpeech recognition\n\n\n\n\n\n\n\n\n\n\n\n\n\nRegression (Prediction)\nHow Much Will It Cost?\n\n앞서 분류는 범주형 속성의 값을 추정하는 반며, 회귀는 연속적인 값을 추정\n전통적인 통계적 모형의 근간\n예를 들어, 주택의 “가격”을 예측하는 경우\n\n주택의 크기, 방의 개수, 층수, 해당 지역의 평균 주택 가격, 해당 지역의 평균 주택 크기 등의 속성을 포함\n\n자동차의 “가격”을 예측하려며\n\n자동차의 연식, 주행 거리, 엔진 크기, 자동차 제조사, 문 개수 등의 속성을 포함",
-    "crumbs": [
-      "Introduction",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "contents/pollr.html",
-    "href": "contents/pollr.html",
-    "title": "설문",
-    "section": "",
-    "text": "설문 링크",
-    "crumbs": [
-      "설문"
+      "Exploratory Data Analysis",
+      "Explore"
     ]
   },
   {
@@ -461,102 +293,409 @@
     ]
   },
   {
-    "objectID": "contents/eda.html",
-    "href": "contents/eda.html",
-    "title": "Exploratory Data Analysis",
+    "objectID": "contents/pollr.html",
+    "href": "contents/pollr.html",
+    "title": "설문",
     "section": "",
-    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\n다음 네 가지의 시각화 패키지를 사용해서 그 차이를 확인해 볼 것임.\nMatplotlib 방식\n두 가지 interface를 제공하는데, 혼동을 야기함\npandas/seaborn 방식",
+    "text": "설문 링크",
     "crumbs": [
-      "Exploratory Data Analysis",
-      "Explore"
+      "설문"
     ]
   },
   {
-    "objectID": "contents/eda.html#위도-경도-값의-활용",
-    "href": "contents/eda.html#위도-경도-값의-활용",
-    "title": "Exploratory Data Analysis",
-    "section": "위도, 경도 값의 활용",
-    "text": "위도, 경도 값의 활용\n\n\n\n\n\n\nShow Matplotlib styles\n\n\n\nplt.style.available\n\n\n\n# set the style\nplt.style.use('seaborn-v0_8-whitegrid')\n\n\n# MATLAB 스타일\nlat, lon = housing['latitude'], housing['longitude']\n\n# figure() 함수를 직접 호출\nplt.figure(figsize=(7, 5)) # create a plot figure\n\n# scatter() 함수를 직접 호출\nplt.scatter(lon, lat, label=None, edgecolors=\"w\", linewidths=.4, alpha=0.3)\n\n# set the labels\nplt.xlabel('longitude')\nplt.ylabel('latitude')\nplt.axis('equal') # set the aspect of the plot to be equal\n\nplt.show()\n\n\n\n\n\n\n\n\n\n# 객체 방식\n# figure, axes라는 객체를 생성 후 메서드를 호출\nfig, ax = plt.subplots(figsize=(5, 3)) \n\n# ax의 메서드인 .scatter로 그래프를 그림\nax.scatter(lon, lat, label=None, edgecolors=\"w\", linewidths=.4, alpha=0.3)\n\n# ax의 메서드인 .set_xlabel, .set_ylabel로 라벨을 지정\nax.set_xlabel('longitude')\nax.set_ylabel('latitude')\nax.axis('equal')  # set the aspect of the plot to be equal\n\nplt.show()\n\n\n\n\n\n\n\n\n\n# pandas의 plot 메서드를 사용하는 방식\nhousing.plot.scatter(x=\"longitude\", y=\"latitude\", alpha=0.3)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n# 다음과 동일함\nhousing.plot(kind=\"scatter\", x=\"longitude\", y=\"latitude\", alpha=0.3)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n\npandas가 제공하는 plots\n\n‘line’ : line plot (default)\n‘bar’ : vertical bar plot\n‘barh’ : horizontal bar plot\n‘hist’ : histogram\n‘box’ : boxplot\n‘kde’ : Kernel Density Estimation plot\n‘density’ : same as ‘kde’\n‘area’ : area plot\n‘pie’ : pie plot\n‘scatter’ : scatter plot (DataFrame only)\n‘hexbin’ : hexbin plot (DataFrame only)\n\n\n# NEAR OCEAN에 해당하는 부분만 시각화\nhousing2 = housing.query('ocean_proximity == \"NEAR OCEAN\"')\n\nhousing2.plot.scatter(x=\"longitude\", y=\"latitude\", alpha=0.3, figsize=(7, 5))\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n# Seaborn을 사용하는 방식\nplt.figure(figsize=(7, 5))\nsns.scatterplot(housing, x=\"longitude\", y=\"latitude\", hue=\"ocean_proximity\", alpha=0.5)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n\n  The San Francisco Bay Area\n\n\n\n\n집값과의 관계를 보기 위해, 집값을 컬러에 매핑하면,\n\nhousing.plot.scatter(\n    x=\"longitude\",\n    y=\"latitude\",\n    s=housing[\"population\"] / 100,  # point size\n    c=\"median_house_value\",  # color\n    alpha=0.3,  # transparency\n    cmap=\"flare\",  # color map\n    figsize=(7, 5),\n)\n\nplt.axis('equal') # set the aspect of the plot to be equal\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nText Annotation 추가\n\n\n\n\n\n아래 코드를 추가하여 도시 이름을 표시\npath = \"https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/master/notebooks_v1/data/california_cities.csv\"\ncities = pd.read_csv(path)\n\npopular_cities = cities.query('population_total &gt; 400000')\nlat, lon, names = popular_cities['latd'], popular_cities['longd'], popular_cities[\"city\"]\n\nplt.scatter(lon, lat, c=\"w\", alpha=1)\nfor name, lat, lon in zip(names, lat, lon):\n    plt.annotate(name, (lon, lat), xytext=(5, 5), textcoords=\"offset points\", color=\"k\")\n\n\n\n\n\n\n\n\n\nColor 사용에 관한 체계적 가이드\n\n\n\nChoosing color pallettes from Seaborn website",
-    "crumbs": [
-      "Exploratory Data Analysis",
-      "Explore"
-    ]
-  },
-  {
-    "objectID": "contents/eda.html#데이터의-분포",
-    "href": "contents/eda.html#데이터의-분포",
-    "title": "Exploratory Data Analysis",
-    "section": "데이터의 분포",
-    "text": "데이터의 분포\nHistogram, density plot, boxplot\n\n# pandas의 DataFrame 메서드인 hist()를 사용\nhousing.hist(bins=50, figsize=(12, 8))\nplt.show()\n\n\n\n\n\n\n\n\n\n# Using matplotlib\nfig, ax = plt.subplots(3, 3, figsize=(12, 8))\nfig.subplots_adjust(hspace=0.5, wspace=0.5)\n\nfor i in range(3):\n    for j in range(3):\n        ax[i, j].hist(housing.iloc[:, i * 3 + j], bins=30)\n        ax[i, j].set_title(housing.columns[i * 3 + j])        \n\n\n\n\n\n\n\n\n\n# Using pandas\nhousing.plot.hist(column=[\"median_house_value\"], by=\"ocean_proximity\", sharey=False, sharex=True, figsize=(6, 8), bins=50)\nplt.show()\n\n\n\n\n\n\n\n\n\n# Using pandas\nhousing.plot.box(column=\"median_house_value\", by=\"ocean_proximity\")\nplt.show()\n\n\n\n\n\n\n\n\n\n# Using seaborn\nplt.figure(figsize=(9, 5))\nsns.boxplot(housing, x=\"ocean_proximity\", y=\"median_house_value\", hue=\"median_age_cat\", fill=False, gap=.2)\nplt.show()",
-    "crumbs": [
-      "Exploratory Data Analysis",
-      "Explore"
-    ]
-  },
-  {
-    "objectID": "contents/eda.html#두-연속-변수간의-관계",
-    "href": "contents/eda.html#두-연속-변수간의-관계",
-    "title": "Exploratory Data Analysis",
-    "section": "두 연속 변수간의 관계",
-    "text": "두 연속 변수간의 관계\n\nhousing[\"rooms_per_household\"] = housing[\"total_rooms\"] / housing[\"households\"]\nhousing[\"bedrooms_per_household\"] = housing[\"total_bedrooms\"] / housing[\"households\"]\nhousing[\"people_per_household\"] = housing[\"population\"] / housing[\"households\"]\n\n또는 assign()를 사용\n\nhousing.assign(\n    rooms_per_household = lambda x: x[\"total_rooms\"] / x[\"households\"],\n    bedrooms_per_household = lambda x: x[\"total_bedrooms\"] / x[\"households\"],\n    people_per_household = lambda x: x[\"population\"] / x[\"households\"]\n).head(1)\n\n   longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \\\n0    -122.23     37.88               41.00       880.00          129.00   \n\n   population  households  median_income  median_house_value ocean_proximity  \\\n0      322.00      126.00           8.33           452600.00        NEAR BAY   \n\n  median_age_cat  rooms_per_household  bedrooms_per_household  \\\n0          40-52                 6.98                    1.02   \n\n   people_per_household  \n0                  2.56  \n\n\n\nhousing.value_counts(\"median_house_value\").sort_index()\n\nmedian_house_value\n14999.00       4\n17500.00       1\n22500.00       4\n25000.00       1\n            ... \n499000.00      1\n499100.00      1\n500000.00     27\n500001.00    965\nName: count, Length: 3842, dtype: int64\n\n\n\n# median_house_value &lt; 500001 값으로 필터링\nhousing = housing.query('median_house_value &lt; 500001')\n\n\nxvar = \"rooms_per_household\"\nyvar = \"median_house_value\"\n\n# matplotlib의 객체 방식\nfig, ax = plt.subplots()\nhousing.plot.scatter(ax=ax, x=xvar, y=yvar, alpha=0.1, figsize=(7, 5))\n\n# fitted line of natural spline: 아래 노트 참고\nnspline_fit = nspline(housing, xvar, yvar, df_n=15).sort_values(xvar)\nnspline_fit.plot.line(ax=ax, x=xvar, y=yvar, c=\".3\", figsize=(7, 5))\n\nplt.xlim(0, 10)\nplt.ylim(0, 500000)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNatural spline fit\n\n\n\n\n\ndef nspline(df, x, y, df_n=5):\n    from statsmodels.formula.api import ols\n\n    df = df[[x, y]].dropna()\n    formula = f\"{y} ~ cr({x}, df={df_n})\"\n    df[y] = ols(formula, data=df).fit().fittedvalues\n\n    return df\n\n\n\n해변에 가까운 정도(ocean_proximity) 따라 나누어 보면,\n\n# divide plots by ocean_proximity\nfig, ax = plt.subplots(1, 4, figsize=(12, 3))\nfig.subplots_adjust(hspace=0.5, wspace=0.5)\n\ntypes = ['NEAR OCEAN', '&lt;1H OCEAN', 'NEAR BAY', 'INLAND']\nfor i, op in enumerate(types):\n\n    df = housing.query(f'ocean_proximity == \"{op}\"')\n    df.plot.scatter(ax=ax[i], x=xvar, y=yvar, alpha=0.1)\n\n    # fitted line of natural spline\n    nspline_fit = nspline(df, xvar, yvar, df_n=15).sort_values(xvar)\n    nspline_fit.plot.line(ax=ax[i], x=xvar, y=yvar, c=\".3\")\n    \n    ax[i].set_title(op)\n    ax[i].set_xlim(1, 12)\n    ax[i].set_ylim(0, 500000)\n\nplt.show()\n\n\n\n\n\n\n\n\nseaborn.object 방식\n\n(\n    so.Plot(housing, x='rooms_per_household', y='median_house_value')\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet('ocean_proximity')\n    .limit(x=(1, 12), y=(0, 500000))\n    .layout(size=(8.9, 3))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n범주형 변수의 순서 할당\n\n\n\npd.Categorical을 사용하여 범주형 변수의 순서를 지정할 수 있음.\nhousing[\"ocean_proximity\"] = pd.Categorical(\n    housing[\"ocean_proximity\"],\n    categories=[\"NEAR BAY\", \"NEAR OCEAN\", \"&lt;1H OCEAN\", \"INLAND\"],\n    ordered=True,\n)\n\n\n해변에 가까운 정도(ocean_proximity)와 집의 연령(median_age_cat)에 따라 나누어 보면,\n\n(\n    so.Plot(\n        housing.query('ocean_proximity != \"ISLAND\"'),\n        x=\"rooms_per_household\",\n        y=\"median_house_value\",\n    )\n    .add(so.Dots(alpha=0.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet(col=\"ocean_proximity\", row=\"median_age_cat\")\n    .limit(x=(1, 12), y=(0, 500000))\n    .layout(size=(8, 8))\n)\n\n\n\n\n\n\n\n\n해안에 가까운 정도(ocean_proximity)가 고정되어 있을 때, 그 안에서 여전히\n경도(longitude)가 작을수록, 즉 집값(median_house_value)이 변화하는지 살펴보면,\n\n(\n    so.Plot(\n        housing.query('ocean_proximity != \"ISLAND\"'),\n        x='longitude',\n        y='median_house_value')\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet(\"ocean_proximity\")\n    .layout(size=(8.9, 3))\n    .share(x=False)\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nPopulation과의 관계가 있을까?\n\n\nShow the code\nhousing2 = housing.copy()\nhousing2[\"ocean_proximity\"] = (\n    housing\n    .query('ocean_proximity not in [\"ISLAND\", \"INLAND\"]')[\"ocean_proximity\"]\n    .cat.remove_unused_categories()\n)\n\n(\n    so.Plot(housing2, x='longitude', y='population')\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".3\"), so.PolyFit(5))  # polynomial fit of degree 5\n    .facet(\"ocean_proximity\")\n    .layout(size=(8.9, 3))\n    .share(x=False)\n    .limit(y=(0, 3000))\n)\n\n\n\n\n\n\n\n\n\nPanelized spline fit: pyGAM 참고",
-    "crumbs": [
-      "Exploratory Data Analysis",
-      "Explore"
-    ]
-  },
-  {
-    "objectID": "contents/pandas.html",
-    "href": "contents/pandas.html",
-    "title": "NumPy and pandas",
+    "objectID": "contents/intro.html",
+    "href": "contents/intro.html",
+    "title": "개관",
     "section": "",
-    "text": "파이썬의 모든 것은 객체(object)이며, 특정 클래스(class)의 인스턴스(instance)임\n인스턴스는 클래스에서 정의된 속성(attribute)과 메서드(method)를 전달 받음(inherited)\n\n\nx = \"Love me tender\"  # x: string object\n\nx는 str 클래스(빵의 틀)의 인스턴스(빵)가 되면서, str 클래스의 속성과 함수를 사용할 수 있게 됨\n\nx.upper()  # upper()라는 함수를 호출\n\n'LOVE ME TENDER'\n\n\n이는 다음과 같이 원래 str 클래스의 메서드를 사용하는 것과 동일함\n\nstr.upper(x)\n\n'LOVE ME TENDER'\n\n\n마찬가지로,\n\nx.count('e')  # 함수에 인자(argument)가 포함된 경우\n\n4\n\n\n\nstr.count(x, \"e\")\n\n4\n\n\n\n이렇게, 각 인스턴스가 가지는 함수를 호출해서 적용할 수 있는데\n이 때 그 함수를 메서드(method)라고 함\n이는 각 클레스에서 고유하게 정의된 함수들을 사용할 수 있게 함\n\n이 경우 str이라는 클래스에서 정의된 함수들을 사용할 수 있음\n\n파이썬의 고유한 함수들, 예를 들어\n\ntype(x)\n\nstr\n\n\n\nlen(x)  # 문자열의 길이\n\n14\n\n\npandas 패키지의 한 클래스를 살펴보면,\n\nimport pandas as pd\npd.DataFrame?\n\n\npd.DataFrame\n\npandas.core.frame.DataFrame\n\n\nDataFrame이라는 클래스가 정의되는데, 이는 사실 다음과 같은 폴더 위치에 있는 frame.py 마듈에서 정의된 클래스임\npd.core.frame.DataFrame\n\ndf = pd.DataFrame({'mango': [1, 2, 3], 'apple': [4, 5, 6]})\ndf\n\n   mango  apple\n0      1      4\n1      2      5\n2      3      6\n\n\n\n이 때, df는 DataFrame 클래스의 인스턴스(instance)가 되면서, DataFrame 클래스(class)에서 정의된 속성(attribute)과 함수를 사용할 수 있게 됨.\n\n이 함수를 메서드(method)라고 함\n\n\ndf.columns  # columns라는 속성을 추출\n\nIndex(['mango', 'apple'], dtype='object')\n\n\n\ndf.head(2)  # head()라는 함수를 호출\n\n   mango  apple\n0      1      4\n1      2      5\n\n\n\ndf.columns.sort_values()  # df.columns는 Index object이고, 이에 대한 sort_values()라는 함수를 호출\n\nIndex(['apple', 'mango'], dtype='object')",
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
     "crumbs": [
-      "Python Basics",
-      "NumPy & pandas"
+      "Introduction",
+      "Overview"
     ]
   },
   {
-    "objectID": "contents/pandas.html#python-objects",
-    "href": "contents/pandas.html#python-objects",
-    "title": "NumPy and pandas",
+    "objectID": "contents/intro.html#미래-데이터의-중요성",
+    "href": "contents/intro.html#미래-데이터의-중요성",
+    "title": "개관",
     "section": "",
-    "text": "파이썬의 모든 것은 객체(object)이며, 특정 클래스(class)의 인스턴스(instance)임\n인스턴스는 클래스에서 정의된 속성(attribute)과 메서드(method)를 전달 받음(inherited)\n\n\nx = \"Love me tender\"  # x: string object\n\nx는 str 클래스(빵의 틀)의 인스턴스(빵)가 되면서, str 클래스의 속성과 함수를 사용할 수 있게 됨\n\nx.upper()  # upper()라는 함수를 호출\n\n'LOVE ME TENDER'\n\n\n이는 다음과 같이 원래 str 클래스의 메서드를 사용하는 것과 동일함\n\nstr.upper(x)\n\n'LOVE ME TENDER'\n\n\n마찬가지로,\n\nx.count('e')  # 함수에 인자(argument)가 포함된 경우\n\n4\n\n\n\nstr.count(x, \"e\")\n\n4\n\n\n\n이렇게, 각 인스턴스가 가지는 함수를 호출해서 적용할 수 있는데\n이 때 그 함수를 메서드(method)라고 함\n이는 각 클레스에서 고유하게 정의된 함수들을 사용할 수 있게 함\n\n이 경우 str이라는 클래스에서 정의된 함수들을 사용할 수 있음\n\n파이썬의 고유한 함수들, 예를 들어\n\ntype(x)\n\nstr\n\n\n\nlen(x)  # 문자열의 길이\n\n14\n\n\npandas 패키지의 한 클래스를 살펴보면,\n\nimport pandas as pd\npd.DataFrame?\n\n\npd.DataFrame\n\npandas.core.frame.DataFrame\n\n\nDataFrame이라는 클래스가 정의되는데, 이는 사실 다음과 같은 폴더 위치에 있는 frame.py 마듈에서 정의된 클래스임\npd.core.frame.DataFrame\n\ndf = pd.DataFrame({'mango': [1, 2, 3], 'apple': [4, 5, 6]})\ndf\n\n   mango  apple\n0      1      4\n1      2      5\n2      3      6\n\n\n\n이 때, df는 DataFrame 클래스의 인스턴스(instance)가 되면서, DataFrame 클래스(class)에서 정의된 속성(attribute)과 함수를 사용할 수 있게 됨.\n\n이 함수를 메서드(method)라고 함\n\n\ndf.columns  # columns라는 속성을 추출\n\nIndex(['mango', 'apple'], dtype='object')\n\n\n\ndf.head(2)  # head()라는 함수를 호출\n\n   mango  apple\n0      1      4\n1      2      5\n\n\n\ndf.columns.sort_values()  # df.columns는 Index object이고, 이에 대한 sort_values()라는 함수를 호출\n\nIndex(['apple', 'mango'], dtype='object')",
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
     "crumbs": [
-      "Python Basics",
-      "NumPy & pandas"
+      "Introduction",
+      "Overview"
     ]
   },
   {
-    "objectID": "contents/pandas.html#numpy",
-    "href": "contents/pandas.html#numpy",
-    "title": "NumPy and pandas",
-    "section": "NumPy",
-    "text": "NumPy\n\n수학적 symbolic 연산에 대한 구현이라고 볼 수 있으며,\n행렬(matrix) 또는 벡터(vector)를 ndarray (n-dimensional array)이라는 이름으로 구현함.\n\n사실상 정수(int)나 실수(float)의 한가지 타입으로 이루어짐.\n\n고차원의 arrays 가능\n\n\n\nSource: Medium.com\n가령, 다음과 같은 행렬 연산이 있다면,\n\\(\\begin{bmatrix}1 & 2 \\\\ 3 & 4 \\\\ 5 & 6 \\end{bmatrix} \\begin{bmatrix}2 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix}0 \\\\ 2 \\\\ 4 \\end{bmatrix}\\)\n\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4],\n              [5, 6]]) # 3x2 matrix\nX = np.array([[2],\n              [-1]]) # 2x1 matrix\n\nA @ X  # A * X : matrix multiplication\n\narray([[0],\n       [2],\n       [4]])\n\n\n\nA.dot(X)  # A @ X와 동일\n\narray([[0],\n       [2],\n       [4]])\n\n\n\nA + A # element-wise addition\n\narray([[ 2,  4],\n       [ 6,  8],\n       [10, 12]])\n\n\n\n2 * A - 1 # braodcasting\n\narray([[ 1,  3],\n       [ 5,  7],\n       [ 9, 11]])\n\n\n\nnp.exp(A) # element-wise\n\narray([[  2.72,   7.39],\n       [ 20.09,  54.6 ],\n       [148.41, 403.43]])\n\n\n\nPython vs. NumPy\n\na = 2**31 - 1\nprint(a)\nprint(a + 1)\n\n2147483647\n2147483648\n\n\n\na = np.array([2**31 - 1], dtype='int32')\nprint(a)\nprint(a + 1)\n\n[2147483647]\n[-2147483648]\n\n\n\nSource: Ch.4 in Python for Data Analysis (3e) by Wes McKinney",
+    "objectID": "contents/intro.html#데이터-사이언스의-응용-사례",
+    "href": "contents/intro.html#데이터-사이언스의-응용-사례",
+    "title": "개관",
+    "section": "데이터 사이언스의 응용 사례",
+    "text": "데이터 사이언스의 응용 사례\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n수 십년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천, 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
     "crumbs": [
-      "Python Basics",
-      "NumPy & pandas"
+      "Introduction",
+      "Overview"
     ]
   },
   {
-    "objectID": "contents/pandas.html#pandas",
-    "href": "contents/pandas.html#pandas",
-    "title": "NumPy and pandas",
-    "section": "pandas",
-    "text": "pandas\nSeries & DataFrame\n\nSeries\n1개의 칼럼으로 이루어진 데이터 포멧: 1d numpy array에 labels을 부여한 것으로 볼 수 있음.\nDataFrame의 각 칼럼들을 Series로 이해할 수 있음.\n\nSource: Practical Data Science\n\n\nDataFrame\n각 칼럼들이 한 가지 데이터 타입으로 이루어진 tabular형태 (2차원)의 데이터 포맷\n\n각 칼럼은 기본적으로 한 가지 데이터 타입인 것이 이상적이나, 다른 타입이 섞여 있을 수 있음\nNumPy의 2차원 array의 각 칼럼에 labels을 부여한 것으로 볼 수도 있으나, 여러 다른 기능들이 추가됨\nNumPy의 경우 고차원의 array를 다룰 수 있음: ndarray\n\n고차원의 DataFrame과 비슷한 것은 xarray가 존재\n\nLabels와 index를 제외한 데이터 값은 거의 NumPy ndarray로 볼 수 있음\n(pandas.array 존재)\n\n\nSource: Practical Data Science\nNumPy의 ndarray &lt;-&gt; pandas의 DataFrame 상호 변환\n\ndf = pd.DataFrame(A, columns=[\"A1\", \"A2\"])\ndf\n\n   A1  A2\n0   1   2\n1   3   4\n2   5   6\n\n\n\n# 데이터 값들은 NumPy array\ndf.values  # 함수 호출이 아니라 속성(attribute) 접근이므로 ()가 없음\n\n# 다른 방법\ndf.to_numpy()  # 이 경우에는 함수 호출이므로 ()가 있음\n\narray([[1, 2],\n       [3, 4],\n       [5, 6]])\n\n\n\ntype(df)\n\npandas.core.frame.DataFrame\n\n\n한 개의 Column을 추출\n보통 Series로 반환됨\n\n\ns = df[\"A1\"] # A1 칼럼 선택\ns  # DataFrame의 column 이름이 Series의 name으로 전환\n\n# 0    1\n# 1    3\n# 2    5\n# Name: A1, dtype: int64\n\n\n\ndf\n\n#    A1  A2\n# 0   1   2\n# 1   3   4\n# 2   5   6\n\n\n\ntype(s)\n\npandas.core.series.Series\n\n\n\ns.values  # 또는 s.to_numpy(); Series의 값은 NumPy 1d array\n\narray([1, 3, 5])\n\n\n\ndf2 = df[[\"A1\"]]  # DataFrame으로 유지\ndf2\n\n   A1\n0   1\n1   3\n2   5\n\n\n\ntype(df2)\n\npandas.core.frame.DataFrame\n\n\n\n\nIndex objects\nframe = pd.DataFrame(np.arange(6).reshape((2, 3)),\n                     index=pd.Index([\"Ohio\", \"Colorado\"], name=\"state\"),\n                     columns=pd.Index([\"one\", \"two\", \"three\"], name=\"number\"))\nframe\n\n\n\nnumber    one  two  three\nstate                    \nOhio        0    1      2\nColorado    3    4      5\n\n\n\n\nframe.index  # 함수 호출이 아니라 속성(attribute) 접근이므로 ()가 없음\n\nIndex(['Ohio', 'Colorado'], dtype='object', name='state')\n\n\n\nframe.columns # columns도 index object\n\nIndex(['one', 'two', 'three'], dtype='object', name='number')\n\n\nIndex는 times series에 특화\n\nbike = pd.read_csv('data/day.csv', index_col='dteday', parse_dates=True)\nbike.head(3)\n\n            instant  season  yr  mnth  holiday  weekday  workingday  \\\ndteday                                                                \n2011-01-01        1       1   0     1        0        6           0   \n2011-01-02        2       1   0     1        0        0           0   \n2011-01-03        3       1   0     1        0        1           1   \n\n            weathersit  temp  atemp  hum  windspeed  casual  registered   cnt  \ndteday                                                                         \n2011-01-01           2  0.34   0.36 0.81       0.16     331         654   985  \n2011-01-02           2  0.36   0.35 0.70       0.25     131         670   801  \n2011-01-03           1  0.20   0.19 0.44       0.25     120        1229  1349  \n\n\n\nbike.plot(kind='line', y=['casual', 'registered'], figsize=(8, 4), title='Bike Sharing')\nplt.show()\n\n\n\n\n\n\n\n\n\n\nDataFrame의 연산\nNumPy의 ndarray들이 연산되는 방식과 동일하게 series나 DataFrame들의 연산 가능함\n\ndf + 2 * df\n\n   A1  A2\n0   3   6\n1   9  12\n2  15  18\n\n\n\nnp.log(df)\n\n    A1   A2\n0 0.00 0.69\n1 1.10 1.39\n2 1.61 1.79\n\n\n사실 연산은 index를 align해서 시행됨\n\n\n\n\n\n\nnumber    one  two  three\nstate                    \nOhio        0    1      2\nColorado    3    4      5\n\n\nnumber  one  two  three\nstate                  \nOhio      0    2      4\nFloria    6    8     10\n\n\n\nframe1 + frame2\n\n\n\nnumber    one  two  three\nstate                    \nColorado  NaN  NaN    NaN\nFloria    NaN  NaN    NaN\nOhio     0.00 3.00   6.00\n\n\n\n\n##",
+    "objectID": "contents/intro.html#사회적-파장",
+    "href": "contents/intro.html#사회적-파장",
+    "title": "개관",
+    "section": "사회적 파장",
+    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계와의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\nThe Social Dilemma (2020)",
     "crumbs": [
-      "Python Basics",
-      "NumPy & pandas"
+      "Introduction",
+      "Overview"
     ]
   },
   {
-    "objectID": "contents/pandas.html#missing",
-    "href": "contents/pandas.html#missing",
-    "title": "NumPy and pandas",
-    "section": "Missing",
-    "text": "Missing\nNaN, NA, None\n\npandas에서는 missing을 명명하는데 R의 컨벤션을 따라 NA (not available)라 부름.\n\n대부분의 경우에서 NumPy object NaN(np.nan)을 NA을 나타내는데 사용됨.\n\nnp.nan은 실제로 floating-point의 특정 값으로 float64 데이터 타입임. Integer 또는 string type에서 약간 이상하게 작동될 수 있음.\n\nPython object인 None은 pandas에서 NA로 인식함.\n\n현재 NA라는 새로운 pandas object 실험 중임\n\nNA의 handling에 대해서는 교재 참고\n.dropna(), .fillna(), .isna(), .notna()\n\nMckinney’s: 7.1 Handling Missing Data,\nWorking with missing data\n\n\ns = pd.Series([1, 2, np.nan])\ns\n\n0   1.00\n1   2.00\n2    NaN\ndtype: float64\n\n\n\n# type을 변환: float -&gt; int\ns.astype(\"Int64\")\n\n0       1\n1       2\n2    &lt;NA&gt;\ndtype: Int64\n\n\n\ns = pd.Series([\"a\", \"b\", np.nan])\ns\n\n0      a\n1      b\n2    NaN\ndtype: object\n\n\n\n# type을 변환: object -&gt; string\ns.astype(\"string\")\n\n0       a\n1       b\n2    &lt;NA&gt;\ndtype: string\n\n\n\ns = pd.Series([1, 2, np.nan, None, pd.NA])\ns\n\n0       1\n1       2\n2     NaN\n3    None\n4    &lt;NA&gt;\ndtype: object\n\n\nMissing인지를 확인: .isna(), .notna()\n\ns.isna() # or s.isnull()\n\n0    False\n1    False\n2     True\n3     True\ndtype: bool\n\n\n\ns.notna() # or s.notnull()\n\n0     True\n1     True\n2    False\n3    False\ndtype: bool\n\n\npandas에서는 ExtensionDtype이라는 새로운 데이터 타입이 도입되었음.\n\ns2 = pd.Series([2, pd.NA], dtype=pd.Int8Dtype())\ns2.dtype  # date type 확인\n\nInt8Dtype()\n\n\n\nimport pyarrow as pa\ns2 = pd.Series([2, pd.NA], dtype=pd.ArrowDtype(pa.uint16()))\ns2.dtype\n\nuint16[pyarrow]\n\n\npandas dtypes 참고",
+    "objectID": "contents/intro.html#data-science",
+    "href": "contents/intro.html#data-science",
+    "title": "개관",
+    "section": "Data Science",
+    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical Learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
+    "crumbs": [
+      "Introduction",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "contents/intro.html#skills",
+    "href": "contents/intro.html#skills",
+    "title": "개관",
+    "section": "Skills",
+    "text": "Skills\n\n\nDomain knowledge\n\n해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 “one size fits all”은 효과적이지 않음\n추상화된 현실에 대한 모형은 수많은 가정/사전 지식(prior knowledge)을 전제하고 있음.\n각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적\n\nEthics\n\n데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요\n\n배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물\n\n소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움\n\n공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터\n누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집\n\n아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움\n\n사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집\n\n메타데이터(metadata)\n통화 내역만으로 많은 민감한 정보을 유추할 수 있음\n\n알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등\n\n\n한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력\n\n\nWrangling\n\n데이터 소스는 다양한 형식으로 존재\n통합, 정리, 변환, 정규화 등의 작업이 요구\ndata munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림\n\nDatabase & computer science\n\n수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술\n다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용\nML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등\n\nVisualisation\n\n작업 프로세스의 모든 과정에 관여\n\n데이터를 탐색하거나,\n데이터의 의미를 효과적으로 전달\n\n\nStatistics & Probability\n\n데이터 과학 프로세스 전반에 걸쳐 사용됨\n\n초기 수집과 조사\n다양한 모델과 분석의 결과를 해석\n의사결정에 활용\n\n\nMachine Learning\n\n데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용\n응용 측면에서는\n\n수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등\n해결할 문제와 데이터에 가장 적합한 알고리즘을 파악\n\n\nCommunication\n\n데이터에 담긴 스토리를 효과적으로 전달하는 능력\n분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등",
+    "crumbs": [
+      "Introduction",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "contents/intro.html#응용비즈니스에서-정형적인-절차",
+    "href": "contents/intro.html#응용비즈니스에서-정형적인-절차",
+    "title": "개관",
+    "section": "응용/비즈니스에서 정형적인 절차",
+    "text": "응용/비즈니스에서 정형적인 절차\nPhases of the CRISP-DM (CRoss-Industry Standard Process for Data Mining)\nsource: Chapman et al., 2000\n\nGeneric tasks of the CRISP-DM reference model\n\n비즈니스의 이해와 데이터의 이해\n\n프로젝트의 목표를 정의하고, 비즈니스 문제를 이해하는 것\n어떤 데이터를 수집하는 것이 유용한지, 어떤 데이터가 수집 가능한지 등을 탐색\n\n데이터 준비와 모델링\n\n노이즈와 비정형화된 데이터를 정제하고, 모델링을 위한 데이터를 준비\n데이터로부터 의미있는 패턴(signal vs. noise)과 통찰을 찾기 위해 다양한 모델을 검토하고 실행\n\n모델 평가와 배포\n\n모델링 성능을 평가하고 개선, 모델을 배포\n실제 환경에서는 훈련/평가을 위해 사용된 데이터가 보진 못한 새로운 데이터에 적용됨으로 모델의 성능을 지속적으로 모니터링\n\n데이터 질의 중요성\n\n2016년 데이터 과학자를 대상으로 한 설문조사(CrowdFlower report, 2016)\n데이터 준비(데이터 수집, 클린닝)에 79%의 시간이 소요\n프로젝트의 초점이 명확하고, 그에 맞는 올바른 데이터가 수집되었는지, 모델이 프로젝트의 목표에 잘 부응하는지 중요!\nGarbage in, garbage out\n\n\n\nSource: Cleaning Big Data",
+    "crumbs": [
+      "Introduction",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "contents/intro.html#표준-비즈니스-영역에서의-데이터-사이언스-작업",
+    "href": "contents/intro.html#표준-비즈니스-영역에서의-데이터-사이언스-작업",
+    "title": "개관",
+    "section": "표준 비즈니스 영역에서의 데이터 사이언스 작업",
+    "text": "표준 비즈니스 영역에서의 데이터 사이언스 작업\nSource: Data Science (The MIT Press Essential Knowledge Series), 2018, by John D. Kelleher & Brendan Tierney\n\nClustering\nAnomaly detection\nAssociation-rule mining\nPrediction: classification & regression\n\n\nClustering\nWho Are Our Customers?\n\n\n클러스터링을 통해 타깃 고객을 더 세분화된 군집으로 분류하여 마케팅 캠페인의 타겟을 명확히 정의할 수 있음\n\nMeta S. Brown (2014)의 보고서에 따르면,\n\nSoccer Moms? \n\n어린이집에 다니는 어린 자녀를 둔 전업주부\n고등학생 자녀와 함께 파트타임으로 일하는 엄마\n음식과 건강에 관심이 많지만 자녀가 없는 여성\n\n\n\n클러스터링을 통해 얻은 고객 세그먼트에 페르소나를 부여\n각 특성에 맞는 캠패인 전략을 수립\n\n작고 집중된 고객 클러스터를 발견\n많은 매출을 창출하는 고객이 포함된 클러스터에 집중\n\n\n\n  Source: Introduction to Statistical Learning by James et al.\n\n\n\n클러스터링을 위해 사용할 수 있는 속성들: 어떤 속성을 포함하고 어떤 속성을 제외할지 결정하는 것이 중요!\n\n인구통계학적 정보(연령, 성별 등)\n위치(우편번호, 시골 또는 도시 주소 등)\n거래 정보(예: 고객이 어떤 제품이나 서비스를 추구했는지)\n기업이 고객으로부터 창출하는 수익\n고객이 된 지 얼마나 되었는지\n로열티 카드 회원인지\n제품을 반품하거나 서비스에 대해 불만을 제기한 적이 있는지 등\n\n\n\n\n\n\n\n프로젝트의 데이터 이해 단계에서 탐색 도구로 자주 사용됨\n추가 지원이 필요하거나 다른 학습 접근 방식을 선호하는 학생 그룹을 식별\n생물 정보학에서 마이크로어레이 분석에서 유전자 서열을 분석\n\n\n\nAnomaly detection\nIs This Fraud?\n\n잠재적인 사기, 특히 금융 거래 행위를 식별하고 조사\n\n예를 들어, 비정상적인 위치에서 발생한 거래\n비정상적으로 많은 금액이 포함된 거래\n\n어떤 면에서 클러스터링과 반대 개념\n\n클러스터링: 유사한 인스턴스 그룹을 식별\n이상 징후 탐지: 특별한 인스턴스를 식별\n\n이상 징후는 드물다는 그 고유한 특징으로 인해 식별이 어려움\n여러 가지 모델을 결합: 서로 다른 모델이 서로 다른 유형의 이상 징후를 포착\n\n예를 들어, 4개의 모델 중 3~4개 모델에서 거래가 사기성 거래로 식별되는 경우\n\n다양한 분야에서 활용\n\n금융기관: 잠재적 사기 또는 자금 세탁 사례로 추가 조사가 필요한 금융 거래를 식별\n보험기관: 회사의 일반적인 청구와 일치하지 않는 청구를 식별\n사이버 보안: 해킹 가능성, 직원의 비정상적인 행동을 탐지하여 네트워크 침입을 식별\n의료 분야: 의료 기록의 이상 징후를 식별하여 질병을 진단\n사물 인터넷: 데이터를 모니터링하고 비정상적인 센서 이벤트의 발생을 감지, 조치\n\n\n\nSource: The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov\n\n\nAssociation-Rule Mining\nDo You Want Fries with That?\n\n고객에게 다른 관련 제품이나 보완 제품, 혹은 잊어 있었던 제품을 제안\n\n예를 들어, 슈퍼마켓에서 핫도그를 구매한 고객은 케첩과 맥주도 함께 구매할 가능성이 높음.\n이에 맞춰 매장은 제품 레이아웃을 계획할 수 있음\n온라인 마켓의 경우, 웹사이트의 배열, 추천, 광고 등을 설계\n즉, 제품 간 연관성을 이해하고 교차 판매를 촉진\n\n연관 규칙 마이닝은 데이터 세트의 속성(또는 열) 간의 관계를 살펴보는 데 중점을 둠: 속성 간의 상관관계\n위의 경우, 고객의 장바구니 품목을 추적\nIF {핫도그, 케첩}, THEN {맥주}\n\n연관성 규칙의 신뢰도가 75%라면 고객이 핫도그와 케첩을 모두 구매한 경우 75%에서 맥주도 함께 구매했음을 의미\n인구통계학적 정보를 연관성 분석에 포함하여 마케팅 및 타겟팅 광고에 활용\n\n특히, 구매 기록 정보는 없는 경우\n\nIF 성별(남성) & 나이(35세 미만)& {핫도그, 케첩}, THEN {맥주}\n장바구니 분석을 통해 다음과 같은 질문에 답을 탐색\n\n마케팅 캠페인이 효과가 있었는지,\n이 고객의 구매 패턴에 변화가 있었는지,\n고객에게 중요한 인생 이벤트가 있었는지,\n제품 위치가 구매 행동에 영향을 미치는지,\n신제품으로 누구를 타깃팅해야 하는지 등\n\n구매 경향의 시간적 요소를 더하면\n\n적절한 시기에 (재)구매를 추천\n유지보수, 부품 교체 일정\n\n다양한 영역에서도 유용함\n\n통신: 회사의 다양한 서비스를 패키지로 묶는 방법을 설계\n보험: 상품과 보험금 청구 사이에 연관성을 파악\n의료: 기존 치료법과 새로운 치료법 및 의약품 간에 상호 작용이 있는지 확인\n\n추천 시스템(recommnder system)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Machine Learning Class (2016.7.8) from Microsoft Research by Chris Bishop, YouTube\n\n\nClassification (Prediction)\nChurn or No Churn(고객 이탈), That Is the Question\n\n행동 성향 모델링의 목표: 마케팅 응답, 서비스 탈퇴 등 다양한 행동 예측\n휴대폰 서비스 회사의 고객 유지 필요성: 신규 고객 유치 비용 대비 기존 고객 유지 비용의 상대적 높음\n이탈 가능성이 높은 고객 식별의 중요성: 유지 비용 최소화 및 이탈 예측을 통한 효율적인 혜택 제공 필요\n이탈 예측의 의미와 활용: 서비스 이탈 예측을 통해 고객 이탈 가능성을 예측하고 효율적인 대응 가능\n다양한 산업의 이탈 예측 활용: 통신, 유틸리티, 은행, 보험 등에서의 이탈 예측을 통한 비즈니스 전략 개발 및 운영 향상\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n이해보다는 예측에 초점을 두는 deep learning\n\nImage recognition\nSpeech recognition\n\n\n\n\n\n\n\n\n\n\n\n\n\nRegression (Prediction)\nHow Much Will It Cost?\n\n앞서 분류는 범주형 속성의 값을 추정하는 반며, 회귀는 연속적인 값을 추정\n전통적인 통계적 모형의 근간\n예를 들어, 주택의 “가격”을 예측하는 경우\n\n주택의 크기, 방의 개수, 층수, 해당 지역의 평균 주택 가격, 해당 지역의 평균 주택 크기 등의 속성을 포함\n\n자동차의 “가격”을 예측하려며\n\n자동차의 연식, 주행 거리, 엔진 크기, 자동차 제조사, 문 개수 등의 속성을 포함",
+    "crumbs": [
+      "Introduction",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "contents/notice.html#중간고사",
+    "href": "contents/notice.html#중간고사",
+    "title": "Notice",
+    "section": "중간고사",
+    "text": "중간고사",
+    "crumbs": [
+      "Notice"
+    ]
+  },
+  {
+    "objectID": "contents/notice.html#기말고사",
+    "href": "contents/notice.html#기말고사",
+    "title": "Notice",
+    "section": "기말고사",
+    "text": "기말고사",
+    "crumbs": [
+      "Notice"
+    ]
+  },
+  {
+    "objectID": "contents/setup.html",
+    "href": "contents/setup.html",
+    "title": "Python 설정",
+    "section": "",
+    "text": "데이터 사이언스를 위한 Python 개발 환경\n몇 가지 선택지",
+    "crumbs": [
+      "Introduction",
+      "Python Setup"
+    ]
+  },
+  {
+    "objectID": "contents/setup.html#클라우드-환경",
+    "href": "contents/setup.html#클라우드-환경",
+    "title": "Python 설정",
+    "section": "클라우드 환경",
+    "text": "클라우드 환경\nColab\n\n사용법: Colab Welcome\n클라우드 환경 vs. 구글 드라이브 mount\nColab AI assistant",
+    "crumbs": [
+      "Introduction",
+      "Python Setup"
+    ]
+  },
+  {
+    "objectID": "contents/setup.html#로컬-환경",
+    "href": "contents/setup.html#로컬-환경",
+    "title": "Python 설정",
+    "section": "로컬 환경",
+    "text": "로컬 환경\nPython과 Conda Package Manager\nConda Cheatsheet: 기본적인 conda 명령어 요약\n\nMiniconda 설치\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 Command Line Tool 참고\n\nWindows 경우: Anaconda의 응용 프로그램으로 등록된 Anaconda Powershell Prompt를 이용\nMac의 경우: 기본 terminal을 이용\n커서 앞에 (base)가 보이면 conda가 설치된 것\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n(base)&gt; conda info # 콘다 정보 \n(base)&gt; conda update conda # 콘다 업데이트\n\n\nConda Environment\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n(base)&gt; conda create --name myenv  # --name 대신 -n으로 축약 가능\n\n# 특정 버전의 파이썬과 함께 설치시\n(base)&gt; conda create --name myenv python=3.12\n환경 확인\n(base)&gt; conda env list\n# conda environments:\n#\n# base         */.../miniconda3\n# myenv         /.../miniconda3/envs/myenv\n환경 제거\n(base)&gt; conda env remove --name myenv\n환경 activate/deactivate\n(base)&gt; conda activate myenv\n(myenv)&gt; conda deactivate\n특정 환경 안의 파이썬 버전 확인\n(myenv)&gt; python --version\n\n\n환경(activated) 내에서 패키지 설치 및 제거\n\n\n\n\n\n\n패키지 repository(channel) 선택\n\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n(base)&gt; conda config --add channels conda-forge\n(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n(base)&gt; conda search scipy\n\n\n\n# 특정 환경을 activate한 후\n\n# Python을 update하거나 다른 버전을 섦치하려면, 가령 3.12으로 업데이트 하려면\n(myenv)&gt; conda install python=3.12  # python update\n\n# 패키지 설치\n(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n# 특정한 채널, conda-forge 통한 설치: --channel 대신 -c로 축약 가능\n(myenv)&gt; conda install --channel conda-forge &lt;package name&gt;\n\n# 제거\n(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n(myenv)&gt; conda update --all  # all packages\n\n# 패키지 리스트\n(myenv)&gt; conda list\n환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가\n(base)&gt; conda install --name myenv &lt;package name1&gt;  # --name 대신 -n으로 축약 가능\npip을 이용한 패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n수업에 필요한 기본 패키지 설치\n# 수업에 필요한 기본 패키지 설치\n(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn",
+    "crumbs": [
+      "Introduction",
+      "Python Setup"
+    ]
+  },
+  {
+    "objectID": "contents/setup.html#command-line-tool",
+    "href": "contents/setup.html#command-line-tool",
+    "title": "Python 설정",
+    "section": "Command Line Tool",
+    "text": "Command Line Tool\n\nMac의 경우: 기본 terminal을 이용하되 기본 zsh shell 대신 다음 Oh-My-Zsh을 추천\nOh-My-Zsh!: 링크\n\n\nWindows의 경우: Windows Terminal 추천\n\n설치 링크는 구글링…\n명령프롬프트(CMD) vs. Powershell\nPowershell에서 conda를 사용하기 위해서는 몇 가지 설정 필요: 블로그 링크\n잘 안될 경우, conda 설치시 함께 설치되는 응용프로그램 콘다 powershell을 이용",
+    "crumbs": [
+      "Introduction",
+      "Python Setup"
+    ]
+  },
+  {
+    "objectID": "contents/setup.html#sec-vscode",
+    "href": "contents/setup.html#sec-vscode",
+    "title": "Python 설정",
+    "section": "Visual Studio Code",
+    "text": "Visual Studio Code\n\nVS Code 설치\n\n개인마다 선호하는 text editor가 있으나 본 수업에서는 VS Code로 진행: download and install here\n\n\n\nExtensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nPylance: 문법 체크, 자동완성, …\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결\n\nCopilot…\n\n\n\nPreferences\n\nThemes\nFont, font size (notebook, markup, output)\n\n\n\nShortcuts\nShow Command Palette: ctrl(cmd) + shift + p, 또는 F1\nCell 안과 밖에서 다르게 작동\n\nundo / redo : ctrl(cmd) + z / ctrl(cmd) + shift + z\nmove: alt(option) + arrow up/down\ncopy : alt(option) + shift + arrow up/down\n\n코드 실행 방식 3가지: ctrl/shift/alt(option) + enter\nHelp: Keyboard shortcuts reference의 Basic editing 참고\n\n\n그 외\n\ninteractive mode\nexport\ndocs view: sticky mode\nvariables viewer, data viewer\nformatter: “Black formatter”\nsnippets: 구글링…\n\n\n\nVS Code내에서 terminal 사용\nTerminal: Select Default Profile에서 선택\n\nMac: zsh\nWindows: powershell",
+    "crumbs": [
+      "Introduction",
+      "Python Setup"
+    ]
+  },
+  {
+    "objectID": "contents/setup.html#jupyter-notebooklab",
+    "href": "contents/setup.html#jupyter-notebooklab",
+    "title": "Python 설정",
+    "section": "Jupyter Notebook/Lab",
+    "text": "Jupyter Notebook/Lab\n\n\n\n\n\n\n콘다 환경 등록\n\n\n\n\n\n새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서\n(myenv)&gt; ipython kernel install --user --name=myenv\n환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n(myenv)&gt; jupyter kernelspec list\n커널 삭제\n(myenv)&gt; jupyter kernelspec remove myenv\n\n\n\nJupyter Notebook 또는 lab 실행\n\nAnaconda 응용 프로그램을 이용해 실행하거나,\n쉘에서 실행하려면,\n\n# jupytet notebook\n(base)&gt; jupytet notebook\n\n# jupyter lab\n(base)&gt; jupyter lab\n등록한 커널을 선택 후 시작\n커널을 종료하려면, 셀에서 Ctrl-C 두 번",
+    "crumbs": [
+      "Introduction",
+      "Python Setup"
+    ]
+  },
+  {
+    "objectID": "contents/setup.html#python-packages-modules-functions",
+    "href": "contents/setup.html#python-packages-modules-functions",
+    "title": "Python 설정",
+    "section": "Python Packages, Modules, Functions",
+    "text": "Python Packages, Modules, Functions\nJupyter notebook 파일을 생성: filename.ipynb\n\nimport numpy as np\nimport pandas as pd\nfrom numpy.linalg import inv\n\n\n\n\n\n\n\n두 개 이상의 함수/모듈을 import하거나 as로 별칭 지정 가능\n\n\n\n\n\nfrom numpy.linalg import inv as inverse\nfrom numpy.linalg import inv, det\nfrom numpy.linalg import inv as inverse, det as determinant\n\n\n\nnp.linalg?  # 함수에 대한 도움말\nNumPy 패키지(package)의 linalg 모듈(module)\nnp.linalg  # linalg.py 파이썬 스트립트 파일\nlinalg 모듈 파일 안에 def으로 정의된 함수\n\nnp.linalg.inv  # 모듈 안에서 def으로 정의된 함수 inv()\n\n&lt;function inv at 0x106746d30&gt;\n\n\nnp.linalg.inv?  # 함수에 대한 도움말\n예를 들어, 행렬의 역행렬을 구하는 함수 inv를 사용하려면\n\nrng = np.random.default_rng(123)  # random number generator\nx = rng.standard_normal((3, 3))  # 3x3 matrix from standard normal distribution\nx\n\narray([[-0.98912135, -0.36778665,  1.28792526],\n       [ 0.19397442,  0.9202309 ,  0.57710379],\n       [-0.63646365,  0.54195222, -0.31659545]])\n\n\n어떻게 import하느냐에 따라 다른 방식으로 사용\n\ninv(x)  # inverse matrix of x\n\n# inv 함수를 따로 import하지 않은 경우, numpy의 linalg 모듈을 통해 사용\nnp.linalg.inv(x)  # same as above\n\narray([[-0.37762186,  0.36352647, -0.87353193],\n       [-0.19121277,  0.70815019,  0.51298399],\n       [ 0.4318268 ,  0.4814099 , -0.52437858]])\n\n\n주로 모듈 이름을 함께 쓰는 것이 관례인데,\n\n이는 코드의 가독성을 높이고,\n사용자 정의 함수와의 충돌을 방지하기 위함\n\n모듈 안에 정의된 함수들을 확인하려면: dir() 함수\n\ndir(np.linalg)  # 모듈 안에 정의된 함수들\n\n['LinAlgError',\n '__all__',\n '__builtins__',\n '__cached__',\n '__doc__',\n '__file__',\n '__loader__',\n '__name__',\n '__package__',\n '__path__',\n '__spec__',\n '_umath_linalg',\n 'cholesky',\n 'cond',\n 'det',\n 'eig',\n 'eigh',\n 'eigvals',\n 'eigvalsh',\n 'inv',\n 'linalg',\n 'lstsq',\n 'matrix_power',\n 'matrix_rank',\n 'multi_dot',\n 'norm',\n 'pinv',\n 'qr',\n 'slogdet',\n 'solve',\n 'svd',\n 'tensorinv',\n 'tensorsolve',\n 'test']",
+    "crumbs": [
+      "Introduction",
+      "Python Setup"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업 시간: 월, 수 3:00 ~ 4:30PM\nWebsite: dgds101.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#강의-정보",
+    "href": "index.html#강의-정보",
+    "title": "Welcome",
+    "section": "",
+    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업 시간: 월, 수 3:00 ~ 4:30PM\nWebsite: dgds101.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#강의-개요",
+    "href": "index.html#강의-개요",
+    "title": "Welcome",
+    "section": "강의 개요",
+    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n교재\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\n\n\n\n참고도서\n\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#수업-활동",
+    "href": "index.html#수업-활동",
+    "title": "Welcome",
+    "section": "수업 활동",
+    "text": "수업 활동\n출석 (10%), 일반과제 (20%), 중간고사 (35%), 기말고사 (35%)\n코딩 실습 설문",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#수업-계획",
+    "href": "index.html#수업-계획",
+    "title": "Welcome",
+    "section": "수업 계획",
+    "text": "수업 계획\n1주. 데이터 사이언스 소개\n2주. 데이터 분석의 두 문화 1: 전통적 통계\n3주. 데이터 분석의 두 문화 2: 기계 학습\n4주. 탐색적 분석 및 시각화\n5주. 선형 모형(linear model) 소개\n6주. 선형 모형의 활용: 예측과 설명\n7주. 데이터의 해석 및 의미의 추론\n8주. 중간고사\n9주. 기계 학습 소개\n10주. 분류(classification) 1: 로지스틱(logistic) 모형\n11주. 분류(classification) 2: 서포트 벡터 머신\n12주. Tree-based 모형\n13주. 딥러닝\n14주. 비지도 학습(unsupervised learning)\n15주. 기말고사",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "contents/inspection.html",
+    "href": "contents/inspection.html",
+    "title": "Inspecting data",
+    "section": "",
+    "text": "# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")",
     "crumbs": [
       "Python Basics",
-      "NumPy & pandas"
+      "Data Inspection"
+    ]
+  },
+  {
+    "objectID": "contents/inspection.html#useful-method",
+    "href": "contents/inspection.html#useful-method",
+    "title": "Inspecting data",
+    "section": "Useful method",
+    "text": "Useful method\n.head(), .tail(), .sample()\n.info(), .describe(),\n.value_counts(),\n.sort_values(), .nlargest(), .nsmallest()\nData: Tips\n일정기간 한 웨이터가 얻은 팁에 대한 데이터\n\n# load a dataset\ntips = sns.load_dataset(\"tips\")\ntips\n\n     total_bill  tip     sex smoker   day    time  size\n0         16.99 1.01  Female     No   Sun  Dinner     2\n1         10.34 1.66    Male     No   Sun  Dinner     3\n2         21.01 3.50    Male     No   Sun  Dinner     3\n..          ...  ...     ...    ...   ...     ...   ...\n241       22.67 2.00    Male    Yes   Sat  Dinner     2\n242       17.82 1.75    Male     No   Sat  Dinner     2\n243       18.78 3.00  Female     No  Thur  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\ntips.head(3)  # 앞 n개 나열, 기본값은 5\n\n   total_bill  tip     sex smoker  day    time  size\n0       16.99 1.01  Female     No  Sun  Dinner     2\n1       10.34 1.66    Male     No  Sun  Dinner     3\n2       21.01 3.50    Male     No  Sun  Dinner     3\n\n\n\ntips.sample(5)  # 무작위로 n개 표본 추출, 기본값은 1\n\n     total_bill  tip     sex smoker   day    time  size\n129       22.82 2.18    Male     No  Thur   Lunch     3\n30         9.55 1.45    Male     No   Sat  Dinner     2\n234       15.53 3.00    Male    Yes   Sat  Dinner     2\n215       12.90 1.10  Female    Yes   Sat  Dinner     2\n146       18.64 1.36  Female     No  Thur   Lunch     3\n\n\n\ntips.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 244 entries, 0 to 243\nData columns (total 7 columns):\n #   Column      Non-Null Count  Dtype   \n---  ------      --------------  -----   \n 0   total_bill  244 non-null    float64 \n 1   tip         244 non-null    float64 \n 2   sex         244 non-null    category\n 3   smoker      244 non-null    category\n 4   day         244 non-null    category\n 5   time        244 non-null    category\n 6   size        244 non-null    int64   \ndtypes: category(4), float64(2), int64(1)\nmemory usage: 7.4 KB\n\n\n\ntips.describe()  # numerical type만 나열\n\n       total_bill    tip   size\ncount      244.00 244.00 244.00\nmean        19.79   3.00   2.57\nstd          8.90   1.38   0.95\n...           ...    ...    ...\n50%         17.80   2.90   2.00\n75%         24.13   3.56   3.00\nmax         50.81  10.00   6.00\n\n[8 rows x 3 columns]\n\n\n\ntips.describe(include=\"all\")  # all types 나열\n\n        total_bill    tip   sex smoker  day    time   size\ncount       244.00 244.00   244    244  244     244 244.00\nunique         NaN    NaN     2      2    4       2    NaN\ntop            NaN    NaN  Male     No  Sat  Dinner    NaN\n...            ...    ...   ...    ...  ...     ...    ...\n50%          17.80   2.90   NaN    NaN  NaN     NaN   2.00\n75%          24.13   3.56   NaN    NaN  NaN     NaN   3.00\nmax          50.81  10.00   NaN    NaN  NaN     NaN   6.00\n\n[11 rows x 7 columns]\n\n\n\ntips.describe(include=\"category\")\n\n         sex smoker  day    time\ncount    244    244  244     244\nunique     2      2    4       2\ntop     Male     No  Sat  Dinner\nfreq     157    151   87     176\n\n\n\ns1 = tips.value_counts(\"day\") # \"day\" 칼럼에 대한 각 카테고리별 counts\ns2 = tips.value_counts(\"day\", sort=False) # default: sort is true\ns3 = tips.value_counts(\"day\", ascending=True) # default: ascending is False\ns4 = tips.value_counts(\"day\", normalize=True) # 카테고리별 비율\ns5 = tips.value_counts([\"sex\", \"smoker\"]) # \"sex\", \"smoker\" 칼럼에 대한 유니크한 카테고리별 counts\n\n\n\n\n\n\n\n\n\nday\nSat     87\nSun     76\nThur    62\nFri     19\nName: count, dtype: int64\n\n\n(a) s1\n\n\n\n\n\n\n\n\nday\nThur    62\nFri     19\nSat     87\nSun     76\nName: count, dtype: int64\n\n\n(b) s2\n\n\n\n\n\n\n\n\n\n\nday\nFri     19\nThur    62\nSun     76\nSat     87\nName: count, dtype: int64\n\n\n(c) s3\n\n\n\n\n\n\n\n\nday\nSat    0.36\nSun    0.31\nThur   0.25\nFri    0.08\nName: proportion, dtype: float64\n\n\n(d) s4\n\n\n\n\n\n\n\n\n\n\nsex     smoker\nMale    No        97\n        Yes       60\nFemale  No        54\n        Yes       33\nName: count, dtype: int64\n\n\n(e) s5\n\n\n\n\n\n\n\nFigure 1: value_count()의 arguments\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n.value_count()의 결과는 Series이며 그 이름은 ‘count’ 또는 ’proportion’임 (pandas 2.0)\nMissing(NA)을 count하지 않으나 dropna=False을 이용해 나타낼 수 있음\ntips.value_counts(\"day\", dropna=False)\nSeries에 대해서도 적용되며, DataFrame으로 컬럼을 선택해 적용할 수 있음\ntips[\"day\"].value_counts()  # tips[\"day\"]: Series object\ntips[[\"sex\", \"smoker\"]].value_counts()\n\n\n\nData: palmerpenguins\n\n# load a dataset\npenguins = sns.load_dataset(\"penguins\")\npenguins.head()\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0  Adelie  Torgersen           39.10          18.70             181.00   \n1  Adelie  Torgersen           39.50          17.40             186.00   \n2  Adelie  Torgersen           40.30          18.00             195.00   \n3  Adelie  Torgersen             NaN            NaN                NaN   \n4  Adelie  Torgersen           36.70          19.30             193.00   \n\n   body_mass_g     sex  \n0      3750.00    Male  \n1      3800.00  Female  \n2      3250.00  Female  \n3          NaN     NaN  \n4      3450.00  Female  \n\n\n\npenguins.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 344 entries, 0 to 343\nData columns (total 7 columns):\n #   Column             Non-Null Count  Dtype  \n---  ------             --------------  -----  \n 0   species            344 non-null    object \n 1   island             344 non-null    object \n 2   bill_length_mm     342 non-null    float64\n 3   bill_depth_mm      342 non-null    float64\n 4   flipper_length_mm  342 non-null    float64\n 5   body_mass_g        342 non-null    float64\n 6   sex                333 non-null    object \ndtypes: float64(4), object(3)\nmemory usage: 18.9+ KB\n\n\npenguins.describe(include=\"object\")\n\n\n\n       species  island   sex\ncount      344     344   333\nunique       3       3     2\ntop     Adelie  Biscoe  Male\nfreq       152     168   168\n\n\n\n\npenguins.value_counts([\"island\", \"species\"])\n\nisland     species  \nBiscoe     Gentoo       124\nDream      Chinstrap     68\n           Adelie        56\nTorgersen  Adelie        52\nBiscoe     Adelie        44\nName: count, dtype: int64\n\n\n\npenguins.value_counts([\"sex\", \"species\"], dropna=False) # NA은 기본적으로 생략\n\nsex     species  \nFemale  Adelie       73\nMale    Adelie       73\n        Gentoo       61\n                     ..\n        Chinstrap    34\nNaN     Adelie        6\n        Gentoo        5\nName: count, Length: 8, dtype: int64\n\n\n\n# NA의 개수\npenguins.isna().sum()\n\nspecies               0\nisland                0\nbill_length_mm        2\nbill_depth_mm         2\nflipper_length_mm     2\nbody_mass_g           2\nsex                  11\ndtype: int64\n\n\n\n# NA의 비율\npenguins.isna().mean()\n\nspecies             0.00\nisland              0.00\nbill_length_mm      0.01\nbill_depth_mm       0.01\nflipper_length_mm   0.01\nbody_mass_g         0.01\nsex                 0.03\ndtype: float64\n\n\n\ntips.sort_values(\"tip\", ascending=False)\n\n     total_bill   tip     sex smoker  day    time  size\n170       50.81 10.00    Male    Yes  Sat  Dinner     3\n212       48.33  9.00    Male     No  Sat  Dinner     4\n23        39.42  7.58    Male     No  Sat  Dinner     4\n..          ...   ...     ...    ...  ...     ...   ...\n111        7.25  1.00  Female     No  Sat  Dinner     1\n67         3.07  1.00  Female    Yes  Sat  Dinner     1\n92         5.75  1.00  Female    Yes  Fri  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\ntips.sort_values([\"size\", \"tip\"], ascending=[False, True])\n\n     total_bill  tip     sex smoker   day    time  size\n125       29.80 4.20  Female     No  Thur   Lunch     6\n143       27.05 5.00  Female     No  Thur   Lunch     6\n156       48.17 5.00    Male     No   Sun  Dinner     6\n..          ...  ...     ...    ...   ...     ...   ...\n111        7.25 1.00  Female     No   Sat  Dinner     1\n82        10.07 1.83  Female     No  Thur   Lunch     1\n222        8.58 1.92    Male    Yes   Fri   Lunch     1\n\n[244 rows x 7 columns]\n\n\n\ntips.nlargest(3, \"tip\")  # 다수의 동등 순위가 있을 때 처리: keep=\"first\", \"last\", \"all\"\n\n     total_bill   tip   sex smoker  day    time  size\n170       50.81 10.00  Male    Yes  Sat  Dinner     3\n212       48.33  9.00  Male     No  Sat  Dinner     4\n23        39.42  7.58  Male     No  Sat  Dinner     4",
+    "crumbs": [
+      "Python Basics",
+      "Data Inspection"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html",
+    "href": "contents/model-basic.html",
+    "title": "Model Basics",
+    "section": "",
+    "text": "Source: R for Data Science by Wickham & Grolemund\n\n\n모델의 목표는 데이터 세트에 대한 간단한 저차원 요약을 제공하는 것입니다. 이상적으로, 모델은 진정한 ‘신호’(즉, 관심 있는 현상에 의해 생성된 패턴)를 포착하고 ‘노이즈’(즉, 관심 없는 임의의 변동)는 무시합니다. (번역 by DeepL)\n\n\nThe goal of a model is to provide a simple low-dimensional summary of a dataset. Ideally, the model will capture true “signals” (i.e. patterns generated by the phenomenon of interest), and ignore “noise” (i.e. random variation that you’re not interested in).\n\n이상적으로, 모형(model)이 현상으로부터 노이즈가 제거된 진정한 신호를 잡아내 주기를 기대.\n물리 법칙: 물리적 세계에 대한 모델\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n예를 들어, 캐럿과 가격의 진정한 관계를 모델로 표현\nLinear model: \\(y = ax + b + e\\),   \\(e\\): residual | error\n\n\\(price = a * carat + b + e\\)\n\n로그 변환: \\(log(price) = a * log(carat) + b + e\\)\n\ne: Gaussian 분포로 가정\n\n\nResiduals은 노이즈?\n\nReducible error: 모형이 잡아내지 못한 신호; 영향을 미치지만 측정하지 않은 변수가 존재\nIrreducible error:\n\n측정 오차 (measurement error): ex. 성별, 젠더, 키, 온도, 강수량, 지능, 불쾌지수, …\nrandom processes\n\n물리적 세계의 불확실성: stochastic vs. deterministic world\n\n보통 Gaussian 분포를 이루거나 가정: ex. 키, 몸무게, IQ, …\n\n그 외에 자연스럽게 나타나는 분포들이 있음; Binomial, Poisson, Exponential, Gamma, Beta, …\n예를 들어, 동전을 4번 던질 때,\n\nH, H, T, H\nH, T, T, H\nT, T, H, H\nT, H, T, H\nT, T, T, H …\n\n\n\nGaussian/Normal distribution\n\n랜덤한 값들의 합/평균들이 나타내는 분포\n\n측정 오차의 분포(error distribution)\n다양한 힘들의 상호작용으로 인한 분포\n\n분산이 유한한 분포 중에 정보 엔트로피가 최대(maximum entropy)인 분포\n중심극한정리(Central Limit Theorem)\n\n\n\n\n\n\n\n1000 people, each 16 steps tossing a coin: \n [[-1  1 -1 ... -1  1 -1]\n [ 1 -1 -1 ... -1  1  1]\n [-1  1 -1 ... -1  1 -1]\n ...\n [-1  1 -1 ... -1  1 -1]\n [-1  1 -1 ... -1  1 -1]\n [-1 -1  1 ... -1 -1 -1]]\n\n\n\n\n\n\n\n\n\n\n\n\nCoin tossing widget code\n\n\n\n\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.stats import norm\n\nnp.random.seed(0)\ndef plot_Gaussin(n=0, ax=None):\n    N = 200\n    num_people, num_rounds = N, n\n\n    if n == 0:\n        toss = np.zeros(N).reshape(N, -1)\n    else:\n        toss = np.random.choice([-1, 1], size=(num_people, num_rounds))\n    toss_sum = toss.sum(axis=1)\n\n    ax = ax or plt.gca()\n    ax.set_title(f\"{N} people, each tossing a fair coin {n} times\")\n\n    df = pd.DataFrame({\"TossSum\": toss_sum})\n    df2 = df.value_counts().reset_index()\n    x = df2[\"TossSum\"].values.astype(int)\n    y = df2[\"count\"].values\n\n    if n &lt; 10:\n        ax.bar(x, y, color=\"#1f77b4\", alpha=.6, width=.8)\n        ax.set_xlim(-10, 10)\n        ax.set_xticks(x)\n    else:\n        ax.bar(x, y, color=\"#1f77b4\", alpha=.6)\n        ax.set_xticks(x)\n\n    for i, v in enumerate(y):\n        ax.text(x[i], v + 0.5, str(v), ha=\"center\", color=\"r\")\n\nfrom ipywidgets import interact, fixed\ninteract(plot_Gaussin,  n=(0, 100), ax=fixed(None))",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html#a-simple-model",
+    "href": "contents/model-basic.html#a-simple-model",
+    "title": "Model Basics",
+    "section": "A simple model",
+    "text": "A simple model\nData: sim1.csv\n\nsim1 = pd.read_csv(\"data/sim1.csv\")\n\n\n\n\n\n\n\n     x     y\n0    1  4.20\n1    1  7.51\n2    1  2.13\n..  ..   ...\n27  10 24.97\n28  10 23.35\n29  10 21.98\n\n[30 rows x 2 columns]\n\n\n\n\n\n\n\n패턴: 강한 선형 관계\n선형 모델 family인 \\(y = a_2 x + a_1\\)을 세운 후\n무수히 많은 \\(a_1, a_2\\)의 값들 중 위 데이터에 가장 가까운 값을 찾음\n그 예로, 임의로 250개의 선형 모델을 그려보면,\n\n\n\n\n\n\n\n\n\n\n\n이 선형모델 중 데이터에 가장 가까운 모델을 찾고자 하는데, 이를 위해서는 데이터와 모델과의 거리를 정의해야 함.\n  \\(d =|~data - model~|\\)\n예) 모델과 데이터의 수직 거리(residuals)의 총체\n\nModel 1.1: \\(y = 1.5x+7\\)의 경우, 이 모델이 예측하는 값들\n\n\narray([ 8.5,  8.5,  8.5, 10. , 10. , 10. , 11.5, 11.5, 11.5, 13. , 13. ,\n       13. , 14.5, 14.5, 14.5, 16. , 16. , 16. , 17.5, 17.5, 17.5, 19. ,\n       19. , 19. , 20.5, 20.5, 20.5, 22. , 22. , 22. ])\n\n\n\n\n     x     y  pred  resid | e\n0    1  4.20  8.50      -4.30\n1    1  7.51  8.50      -0.99\n2    1  2.13  8.50      -6.37\n..  ..   ...   ...        ...\n27  10 24.97 22.00       2.97\n28  10 23.35 22.00       1.35\n29  10 21.98 22.00      -0.02\n\n[30 rows x 4 columns]\n\n\n\n\n\n\n\n\nRMSE = \\(\\displaystyle\\sqrt{\\frac{1}{n} \\sum_{i=1}^{n}{e^2}}\\) = 2.67\n\n\nMAE = \\(\\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}|~e~|\\) = 1.43\n\n\n\n\n\n\n\n\n\nModel evaluation\n\n\n\nThe prediction accuracy of the models\n\nRoot-mean-squared deviation/error: \\(RMSE = \\displaystyle\\sqrt{\\frac{1}{n} \\sum_{i=1}^{n}{(y_i -\\hat y_i)^2}}\\)\nMean absolute error: \\(MAE = \\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}{|~y_i -\\hat y_i~|}\\) : 극단값들에 덜 민감함\n\nLoss/Cost function: 예측 오차에 대한 실질적 손해/손실의 의미를 부여\n\n\\(L = \\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}{(y_i -\\hat y_i)^2}\\): 오차가 큰 값들에 더 큰 패널티를 적용, 혹은 손해가 크다고 가정. 즉, 예측이 틀릴 때 더 큰 손실을 입는다고 가정\n\\(L = \\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}{|~y_i -\\hat y_i~|}\\): 예측이 틀린 만큼 그에 비례해서 손실을 입는다고 가정\n\n\n\n즉, 데이터셋 sim1과 model 1.1 과의 거리를 RMSE로 정의하면, \\(d=|~sim1 -model1~| = 2.67\\)\n위의 250개의 모델에 대해 각각 거리를 구하면\n\n\n       a1    a2  dist\n0   21.79 -2.92 17.42\n1   -2.83 -0.57 22.83\n2   -6.39  2.16 10.26\n..    ...   ...   ...\n247  0.51  4.19 10.38\n248 27.94 -0.84 11.59\n249 27.93  2.45 25.99\n\n[250 rows x 3 columns]\n\n\n이 중 제일 좋은 모델(dist가 최소) 10개의 모델을 그리면,\n\n\n\n\n\n\n\n\n\n\n250개의 모델 중 10개의 모델을 다음과 같은 \\((a1, a2)\\) 평면으로 살펴보면, 즉, model space에서 살펴보면\n\n오렌지 색은 위에서 구한 10 best models\n\n\n\n\n\n\n\n\n\n\n\n점차 촘촘한 간격으로 grid search를 하면서 거리를 최소로 하는 모델을 찾아가는 것이고, 실제로는 Newton-Raphson search를 통해 최소값을 구하는 알고리즘을 통해 구할 수 있음.\n즉, 거리를 최소로 하는 a1, a2를 찾으면,\n\nfrom scipy.optimize import minimize\nminimize(measure_distance, [0, 0], args=(sim1)).x\n\narray([4.22, 2.05])",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html#summary",
+    "href": "contents/model-basic.html#summary",
+    "title": "Model Basics",
+    "section": "Summary",
+    "text": "Summary\nsim1을 이용한 위의 예는 모든 모델에 적용될 수 있음\n\n즉, \\(y = f(x1, x2,...)\\) 형태의 a family of models을 구성한 후\n모델과 데이터와의 거리 \\(d =|~data - model~|\\)를 정의한 후\n거리 \\(d\\)가 최소가 되는 파라미터를 구하면, a family of models 중 best model을 만들 수 있음\n새로운 a family of models을 구성해서 위를 반복하면, 여러 다른 모델들을 비교할 수 있음\n\n앞서 다룬 선형 모형, linear (regression) model은 일반적인 \\(\\hat{y} = a_0 + a_1 x_1 + a_2 x_2 + ~... ~ + a_n x_n\\) 형태를 띄고,\n앞의 예는 \\(n=1\\) 에 해당하며, \\(\\hat{y} =a_0 +a_1x_1\\)에 대해서\n간결하게 Wilkinson-Rodgers notation이라고 부르는 symbolic notation을 사용하여 접근할 수 있고, 통계에서 주로 사용됨.\nFormula y ~ x는 \\(\\hat{y} =a_0 +a_1x\\)으로 해석되어 처리됨.\n\n모형과 데이터의 거리인 RMSE가 최소가 되도록 하는 ordinary least square (OLS) estimate인 \\(a_0, a_1\\)을 구하면, best model을 구할 수 있고,\n그 fitted line은 \\(\\hat{y} = 4.22 + 2.05x\\)\n\nfrom statsmodels.formula.api import ols\nsim1_mod = ols(\"y ~ x\", data = sim1)\n\nsim1_mod.fit().params  # 모델의 parameter 즉, coefficients를 내줌\n# Intercept   4.22\n# x           2.05     # 위에서 구한 파라미터값과 동일함\n(참고) Linear models의 경우 위에서 처럼 optimization을 이용하지 않고 방정식의 해를 구하듯 exact form으로 최소값을 구함\n\\(n=2\\) 인 경우, 즉 두 변수 x1, x2로 y를 예측하는 경우,\n\nFormula y ~ x1 + x2는 모형 \\(\\hat{y} = a_0 +a_1x_1 + a_2x_2\\) 을 의미\n\n  ols(\"y ~ x1 + x2\", data = df)\n\n예를 들어,\n\nhouses = sm.datasets.get_rdataset(\"SaratogaHouses\", \"mosaicData\").data\n\nmod_houses = ols(\"price ~ livingArea + bedrooms\", data=houses)\nmod_houses.fit().params\n# Intercept     36667.90\n# livingArea      125.40\n# bedrooms     -14196.77\n\\(\\widehat{price} = 36668.9 + 125.4 \\cdot livingArea - 14196.8 \\cdot bedrooms\\)\n이 계수들의 의미를 파악하는 것이 통계에서 매우 중요한 주제임.\n위와 같이 2개의 예측변수로 평면꼴의 선형모형을 세운다면, 다음과 같은 fitted plane을 구할 수 있음.\n\n\n\n\n\n\n\nFormula를 활용할 수 있는 패키지\n\n\n\n\nstatsmodels는 formula notation으로 모형을 세우는 것을 지원함: statsmodels\n\nsklearn은 formula notation을 직접 지원하지 않지만, patsy 패키지를 이용하여 design matrix를 직접 얻어 적용할 수 있음: patsy in scikit-learn 또는 PatsyTransformer\n\n\n\n# patsy\nfrom patsy import dmatrices # design matrix\n\nformula = \"price ~ livingArea + bedrooms\"\ny, X = dmatrices(formula, data=houses, return_type=\"dataframe\")\n\ndisplay(y, X)\n\n\n\n         price\n0    132500.00\n1    181115.00\n2    109000.00\n...        ...\n1725 194900.00\n1726 125000.00\n1727 111300.00\n\n[1728 rows x 1 columns]\n\n\n      Intercept  livingArea  bedrooms\n0          1.00      906.00      2.00\n1          1.00     1953.00      3.00\n2          1.00     1944.00      4.00\n...         ...         ...       ...\n1725       1.00     1099.00      2.00\n1726       1.00     1225.00      3.00\n1727       1.00     1959.00      3.00\n\n[1728 rows x 3 columns]\n\n\n\n# 머신 러닝에서는 보통 직접 입력\ny, X = houses[\"price\"], houses[[\"livingArea\", \"bedrooms\"]]\n\ndisplay(y, X)\n\n\n\n0       132500\n1       181115\n2       109000\n         ...  \n1725    194900\n1726    125000\n1727    111300\nName: price, Length: 1728, dtype: int64\n\n\n      livingArea  bedrooms\n0            906         2\n1           1953         3\n2           1944         4\n...          ...       ...\n1725        1099         2\n1726        1225         3\n1727        1959         3\n\n[1728 rows x 2 columns]",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html#predictions-the-pattern-that-the-model-has-captured",
+    "href": "contents/model-basic.html#predictions-the-pattern-that-the-model-has-captured",
+    "title": "Model Basics",
+    "section": "Predictions: the pattern that the model has captured",
+    "text": "Predictions: the pattern that the model has captured\n우선, 예측 변수들의 데이터 값을 커버하는 grid를 구성\n\nsim1\n\n     x     y\n0    1  4.20\n1    1  7.51\n2    1  2.13\n..  ..   ...\n27  10 24.97\n28  10 23.35\n29  10 21.98\n\n[30 rows x 2 columns]\n\n\n\n# create a grid for the range of x sim1: new data\ngrid = pd.DataFrame(dict(x=np.linspace(sim1.x.min(), sim1.x.max(), 10)))\n\n모델에 grid를 입력하여 prediction값을 추가\n\n# a model for sim1\nfrom statsmodels.formula.api import ols\nsim1_mod = ols(\"y ~ x\", data=sim1).fit()\n\ngrid[\"pred\"] = sim1_mod.predict(grid) # column 이름이 매치되어야 함\ngrid\n\n       x  pred\n0   1.00  6.27\n1   2.00  8.32\n2   3.00 10.38\n..   ...   ...\n7   8.00 20.63\n8   9.00 22.68\n9  10.00 24.74\n\n[10 rows x 2 columns]\n\n\nprediction을 시각화\n\n\nShow the code\n(\n    so.Plot(sim1, x='x', y='y')\n    .add(so.Dot(color=\".8\"))\n    .add(so.Line(marker=\".\", pointsize=10), x=grid.x, y=grid.pred)  # prediction!\n    .layout(size=(4.5, 3.5))\n    .scale(x=so.Continuous().tick(at=grid.x))\n)",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html#residuals-what-the-model-has-missed.",
+    "href": "contents/model-basic.html#residuals-what-the-model-has-missed.",
+    "title": "Model Basics",
+    "section": "Residuals: what the model has missed.",
+    "text": "Residuals: what the model has missed.\n\\(e = Y - \\hat{Y}\\) : 관측값 - 예측값\n\nsim1[\"resid\"] = sim1_mod.resid  # Y - Y_hat\n\n\nsim1\n\n     x     y  fitted  resid\n0    1  4.20    6.27  -2.07\n1    1  7.51    6.27   1.24\n2    1  2.13    6.27  -4.15\n..  ..   ...     ...    ...\n27  10 24.97   24.74   0.23\n28  10 23.35   24.74  -1.39\n29  10 21.98   24.74  -2.76\n\n[30 rows x 4 columns]\n\n\n우선, residuals의 분포를 시각화해서 살펴보면,\n\nsim1[\"resid\"].hist(bins=20)\nplt.show()\n\n\n\n\n\n\n\n\n예측 변수와 residuals의 관계를 시각화해서 보면,\n\n(\n    so.Plot(sim1, x='x', y='resid')\n    .add(so.Dot())\n    .add(so.Line(), so.PolyFit(5))\n    .layout(size=(5, 4))\n)\n\n\n\n\n\n\n\n\n위의 residuals은 특별한 패턴을 보이지 않아야 모델이 데이터의 패턴을 잘 잡아낸 것으로 판단할 수 있음.\n아래는 원래 데이터와 일차 선형 모형에 대한 예측값의 관계를 시각화한 것\n\n\n\n\n\n\n\n\n\nResiduals에 패턴이 보이는 경우",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html#two-continuous",
+    "href": "contents/model-basic.html#two-continuous",
+    "title": "Model Basics",
+    "section": "Two continuous",
+    "text": "Two continuous\n두 연속변수가 서로 상호작용하는 경우: not additive, but multiplicative\n\n각각의 효과가 더해지는 것을 넘어서서 서로의 효과를 증폭시키거나 감소시키는 경우\n강수량과 풍속이 함께 항공편의 지연을 가중시키는 경우\n운동량과 식사량이 함께 체중 감량에 영향을 미치는 경우\n\n\n\nShow the code\nnp.random.seed(123)\nx1 = np.random.uniform(0, 10, 200)\nx2 = 2*x1 - 1 + np.random.normal(0, 12, 200)\ny = x1 + x2 + x1*x2 + np.random.normal(0, 50, 200)\ndf = pd.DataFrame(dict(precip=x1, wind=x2, delay=y))\ndf\n\n\n     precip   wind  delay\n0      6.96   4.04  95.70\n1      2.86   5.60  31.23\n2      2.27   8.37 -30.97\n..      ...    ...    ...\n197    7.45  16.38 186.67\n198    4.73 -18.56 -96.90\n199    1.22  -5.63 -22.95\n\n[200 rows x 3 columns]\n\n\n\n# additive model\nmod1 = ols('delay ~ precip + wind', data=df).fit()\n\n# interaction model\nmod2 = ols('delay ~ precip + wind + precip:wind', data=df).fit()\n\nmod2: y ~ x1 + x2 + x1:x2는 \\(\\hat{y} = a_0 + a_1x_1 + a_2x_2 + a_3x_1x_2\\) 로 변환되고,\n변형하면, \\(\\hat{y} = a_0 + a_1x_1 + (a_2 + a_3x_1)x_2\\)",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html#continuous-and-categorical",
+    "href": "contents/model-basic.html#continuous-and-categorical",
+    "title": "Model Basics",
+    "section": "Continuous and Categorical",
+    "text": "Continuous and Categorical\n연속변수와 범주형 변수가 서로 상호작용하는 경우\n\n운동량이 건강에 미치는 효과: 혼자 vs. 단체\n\nData: sim3.csv\n\nsim3 = pd.read_csv(\"data/sim3.csv\")\nsim3\n\n     x1 x2  rep     y  sd\n0     1  a    1 -0.57   2\n1     1  a    2  1.18   2\n2     1  a    3  2.24   2\n..   .. ..  ...   ...  ..\n117  10  d    1  6.56   2\n118  10  d    2  5.06   2\n119  10  d    3  5.14   2\n\n[120 rows x 5 columns]\n\n\n\n\nCode\n(\n    so.Plot(sim3, x='x1', y='y', color='x2')\n    .add(so.Dot(pointsize=4))\n    .add(so.Line(), so.PolyFit(5), color=None)\n)\n\n\n\n\n\n\n\n\n\n두 가지 모델로 fit할 수 있음\n\nmod1 = ols('y ~ x1 + x2', data=sim3).fit()\nmod2 = ols('y ~ x1 * x2', data=sim3).fit() # 같은 의미 'y ~ x1 + x2 + x1:x2'\n\n일반적으로 formula y ~ x1 * x2는 \\(\\hat{y} = a_0 + a_1x_1 + a_2x_2 + a_3x_1x_2\\)로 변환됨\n\n하지만, 여기서는 x2가 범주형 변수라 dummy-coding후 적용됨.\nDesign matrix를 확인해 보면,\n\ny, X = dmatrices(\"y ~ x1 + x2\", data=sim3, return_type=\"dataframe\")\nX.iloc[:, 1:]\n\n     x2[T.b]  x2[T.c]  x2[T.d]    x1\n0       0.00     0.00     0.00  1.00\n1       0.00     0.00     0.00  1.00\n2       0.00     0.00     0.00  1.00\n..       ...      ...      ...   ...\n117     0.00     0.00     1.00 10.00\n118     0.00     0.00     1.00 10.00\n119     0.00     0.00     1.00 10.00\n\n[120 rows x 4 columns]\n\n\n\ny, X = dmatrices(\"y ~ x1 * x2\", data=sim3, return_type=\"dataframe\")\nX.iloc[:, 1:]\n\n     x2[T.b]  x2[T.c]  x2[T.d]    x1  x1:x2[T.b]  x1:x2[T.c]  x1:x2[T.d]\n0       0.00     0.00     0.00  1.00        0.00        0.00        0.00\n1       0.00     0.00     0.00  1.00        0.00        0.00        0.00\n2       0.00     0.00     0.00  1.00        0.00        0.00        0.00\n..       ...      ...      ...   ...         ...         ...         ...\n117     0.00     0.00     1.00 10.00        0.00        0.00       10.00\n118     0.00     0.00     1.00 10.00        0.00        0.00       10.00\n119     0.00     0.00     1.00 10.00        0.00        0.00       10.00\n\n[120 rows x 7 columns]\n\n\n\ngrid = sim3.value_counts([\"x1\", \"x2\"]).reset_index().drop(columns=\"count\")\ngrid[\"mod1\"] =  mod1.predict(grid)\ngrid[\"mod2\"] =  mod2.predict(grid)\ngrid_long = grid.melt(id_vars=[\"x1\", \"x2\"], var_name=\"model\", value_name=\"pred\")\ngrid_full = grid_long.merge(sim3[[\"x1\", \"x2\", \"y\"]])\n\n\ngrid_full\n\n     x1 x2 model  pred     y\n0     1  a  mod1  1.67 -0.57\n1     1  a  mod1  1.67  1.18\n2     1  a  mod1  1.67  2.24\n..   .. ..   ...   ...   ...\n237  10  d  mod2  3.98  6.56\n238  10  d  mod2  3.98  5.06\n239  10  d  mod2  3.98  5.14\n\n[240 rows x 5 columns]\n\n\n\n\nCode\n(\n    so.Plot(grid_full, x=\"x1\", y=\"y\", color=\"x2\")\n    .add(so.Dot(pointsize=4))\n    .add(so.Line(), y=\"pred\")\n    .facet(\"model\")\n    .layout(size=(8, 5))\n)\n\n\n\n\n\n\n\n\n\n\ninteraction이 없는 모형 mod1의 경우, 네 범주에 대해 기울기가 동일하고 절편의 차이만 존재\ninteraction이 있는 모형 mod2의 경우, 네 범주에 대해 기울기가 다르고 절편도 다름\n\n\n\\(y = a_0 + a_1x_1 + a_2x_2 + a_3x_1x_2\\)에서 \\(x_1x_2\\)항이 기울기를 변할 수 있도록 해줌 \\(y = a_0 + a_2x_2 + (a_1 + a_3x_2)x_1\\)으로 변형하면, \\(x_1\\)의 기울기는 \\(a_1 + a_3 x_2\\)\n\n\n\n\n\n\n\nFitted models\n\n\n\n\n\nmod1 = smf.ols('y ~ x1 + x2', data=sim3).fit()\nmod1.params\n# Intercept    1.87\n# x2[T.b]      2.89\n# x2[T.c]      4.81\n# x2[T.d]      2.36\n# x1          -0.20\n\nmod2 = smf.ols('y ~ x1 * x2', data=sim3).fit() # 같은 의미 'y ~ x1 + x2 + x1:x2'\nmod2.params\n# Intercept     1.30\n# x2[T.b]       7.07\n# x2[T.c]       4.43\n# x2[T.d]       0.83\n# x1           -0.09\n# x1:x2[T.b]   -0.76\n# x1:x2[T.c]    0.07\n# x1:x2[T.d]    0.28\n\n\n\n두 모형을 비교하여 중 더 나은 모형을 선택하기 위해, residuals을 차이를 살펴보면,\n\nsim3[\"mod1\"] = mod1.resid\nsim3[\"mod2\"] = mod2.resid\n\nsim3_long = sim3.melt(\n    id_vars=[\"x1\", \"x2\"],\n    value_vars=[\"mod1\", \"mod2\"],\n    var_name=\"model\",\n    value_name=\"resid\",\n)\nsim3_long\n\n     x1 x2 model  resid\n0     1  a  mod1  -2.25\n1     1  a  mod1  -0.49\n2     1  a  mod1   0.56\n3     1  b  mod1   2.87\n..   .. ..   ...    ...\n236  10  c  mod2  -0.64\n237  10  d  mod2   2.59\n238  10  d  mod2   1.08\n239  10  d  mod2   1.16\n\n[240 rows x 4 columns]\n\n\n\n\nCode\n(\n    so.Plot(sim3_long, x=\"x1\", y=\"resid\", color=\"x2\")\n    .add(so.Dot(pointsize=4))\n    .add(so.Line(linestyle=\":\", color=\".5\"), so.Agg(lambda x: 0))\n    .facet(\"x2\", \"model\")\n    .layout(size=(9, 6))\n    .scale(color=\"Set2\")\n)\n\n\n\n\n\n\n\n\n\n\n둘 중 어떤 모델이 더 나은지에 대한 정확한 통계적 비교가 가능하나 (잔차의 제곱의 평균인 RMSE나 잔차의 절대값의 평균인 MAE 등)\n여기서는 직관적으로 어느 모델이 데이터의 패턴을 더 잘 잡아냈는지를 평가하는 것으로 충분\n잔차를 직접 들여다봄으로써, 어느 부분에서 어떻게 예측이 잘 되었는지, 잘 안 되었는지를 면밀히 검사할 수 있음\ninteraction 항이 있는 모형이 더 나은 모형\n\nSaratogaHouses 데이터에서 가령, livingArea와 centralAir의 interaction을 살펴보면,\n\nhouses = sm.datasets.get_rdataset(\"SaratogaHouses\", \"mosaicData\").data\n(\n    so.Plot(houses, x='livingArea', y='price')\n    .add(so.Dots(color='.6'))\n    .add(so.Line(), so.PolyFit(5))\n    .add(so.Line(color=\"orangered\"), so.PolyFit(1))\n    .facet(\"centralAir\")\n    .layout(size=(8, 4))\n)\n\n\n\n\n\n\n\n\n\nmod = smf.ols('price ~ livingArea * centralAir', data=houses).fit()\nmod.params\n\nIntercept                       44977.64\ncentralAir[T.Yes]              -53225.75\nlivingArea                         87.72\nlivingArea:centralAir[T.Yes]       44.61\ndtype: float64\n\n\n\nsim4[\"mod1\"] = mod1.resid\nsim4[\"mod2\"] = mod2.resid\n\nsim4_long = sim4.melt(\n    id_vars=[\"x1\", \"x2\"],\n    value_vars=[\"mod1\", \"mod2\"],\n    var_name=\"model\",\n    value_name=\"resid\",\n)\nsim4_long\n\n       x1    x2 model  resid\n0   -1.00 -1.00  mod1   3.25\n1   -1.00 -1.00  mod1   0.21\n2   -1.00 -1.00  mod1  -0.64\n3   -1.00 -0.78  mod1  -0.42\n..    ...   ...   ...    ...\n596  1.00  0.78  mod2   1.09\n597  1.00  1.00  mod2   1.47\n598  1.00  1.00  mod2   3.77\n599  1.00  1.00  mod2  -4.15\n\n[600 rows x 4 columns]\n\n\n\nCode\np1 = so.Plot(sim4_long, x=\"resid\", color=\"model\").add(so.Line(), so.Hist(binwidth=0.5))\np2 = so.Plot(\n    sim4_long.assign(resid_abs=lambda x: np.abs(x.resid)), x=\"resid_abs\", color=\"model\"\n).add(so.Line(), so.Hist(binwidth=0.5))\ndisplay(p1, p2)",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/model-basic.html#transformations",
+    "href": "contents/model-basic.html#transformations",
+    "title": "Model Basics",
+    "section": "Transformations",
+    "text": "Transformations\nFormula에서 직접 변수를 변환시킬 수 있음: patsy transform\nNon-linear 형태의 모형을 linear 모형으로 분석할 수 있음.\n\ny ~ x1 + x2\nnp.log(y) ~ np.sqrt(x1) + x2 → \\(\\widehat{log(y)} = a_0 + a_1\\sqrt{x_1} + a_2 x_2\\)\ny ~ standardize(x1) * center(x2); (custom) 함수를 적용할 수 있음\nformula 내에서 +, *, **, - 가 산술의 의미를 가지려면, I()를 사용\n\ny ~ x + I(x**2) → \\(\\hat{y} = a_0 + a_1 x + a_2 x^2 = a_0 + a_1x_1 + a_2x_2\\)\n\nsmf.ols(\"np.log2(price) ~ livingArea + I(livingArea**2)\", data=houses)",
+    "crumbs": [
+      "Linear Models",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "contents/statistics.html",
+    "href": "contents/statistics.html",
+    "title": "Statistics",
+    "section": "",
+    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\n통계 분석은 크게 세 가지 주제로 나눌 수 있음.\n현대적 접근에서는 모호한 모집단에 대해 추론하기보다는 표본 내의 정보만으로 일반화(generalization)을 성취하고자 함.",
+    "crumbs": [
+      "Linear Models",
+      "Regression Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/statistics.html#simple-regressioncorrelation",
+    "href": "contents/statistics.html#simple-regressioncorrelation",
+    "title": "Statistics",
+    "section": "Simple Regression/Correlation",
+    "text": "Simple Regression/Correlation\n예측변수가 한 개인 경우,\n\n두 변수 간의 관계(association)을 파악: \\(Y=f(X)\\)\n\n선형인 경우 기울기를 의미\n\n그 관계의 크기(strength)를 측정\n\n\\(f\\)에 의해 \\(X\\)로 \\(Y\\)를 얼마나 정확히 예측할 수 있는가?\n\\(f\\)에 의해 \\(X\\)의 변량이 \\(Y\\)의 변량을 얼마나 설명할 수 있는가?\n\n\n\n\n\n\n\n\n\nPearson’s correlation coefficient: \\(r\\)\nLinear relationships을 측정\n\nx와 y의 선형적 연관성: [-1, 1]\n\nx로부터 y를 얼마나 정확히 예측가능한가?\nx와 y의 정보는 얼마나 중복(redundant)되는가?\n\n\n\n\n\n\n\n\n\nMultiple correlation coefficient: \\(R\\)\nExtented correlation: 예측치와 관측치의 pearson’s correlation\n\n\\(R\\)을 제곱한 \\(R^2\\)가 설명력의 정도를 나타냄\n\n\n\n\n\n\n\\(R\\): Multiple correlation coefficient\n\n\\(Y\\) 와 \\(\\widehat Y\\) 의 correlation 즉, Y와 회귀모형이 예측한 값의 (선형적) 상관 관계의 정도; 회귀모형의 예측의 정확성\n\n다시말하면, 예측변수들의 최적의 선형 조합과 Y의 상관 관계의 정도.\n\n\\(R^2\\): Coefficient of determination, 결정계수, 설명력\n\n(평면의) 선형모형에 의해 설명된 Y 변량의 비율:\n\n또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y 변량의 비율.\n\n  즉, \\(\\displaystyle\\frac{V(\\widehat{Y})}{V(Y)}\\) 또는 \\(\\displaystyle 1 - \\frac{V(e)}{V(Y)}\\)\n\nAssociatiions과 그 strengths 비교",
+    "crumbs": [
+      "Linear Models",
+      "Regression Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/statistics.html#multiple-regression",
+    "href": "contents/statistics.html#multiple-regression",
+    "title": "Statistics",
+    "section": "Multiple Regression",
+    "text": "Multiple Regression\n예측변수가 2개 이상인 경우: 변수들 간의 진실한 관계를 분석\n미혼자에 대한 임금 차별이 있는가? 차별이 의미하는 바는 무엇인가?\n연령을 고려한 후에도 기혼자의 임금은 미혼자보다 높은가?\n여전히 높다면, 연령을 고려한 후 혹은 연령을 조정한 후(adjusted for age)의 차이는 얼마라고 봐야하는가?\n연령을 고려한 임금 차이를 조사하는 방법은 무엇이 있겠는가?; 연령별로 나누어 비교?\nData from the 1985 Current Population Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n연령을 고려한 마라톤 기록?\n70세 노인과 20세 청년이 동일하게 2시간 30분의 기록을 세웠다면?\n\n“나이 차이가 큰 두 사람의 기록을 비교하는 것은 공평하지 않아”\n나이를 감안한 마라톤 실력?\n다시 말하면, 나이와는 무관한/독립적인 마라톤 능력에 대해 말하고자 함\n이는 동일한 나이의 사람들로만 제한해서 마라톤 기록을 비교하는 것이 공평한 능력의 비교라고 말하는 것과 같은 이치임\n\n\n\nSource: https://doi.org/10.1186/2052-1847-6-31",
+    "crumbs": [
+      "Linear Models",
+      "Regression Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/statistics.html#regression-analysis",
+    "href": "contents/statistics.html#regression-analysis",
+    "title": "Statistics",
+    "section": "Regression analysis",
+    "text": "Regression analysis\n예측 모형 vs. 인과 모형\n\n인과적 연관성을 탐구하고자 한다면 매우 신중한 접근을 요함.\n\n\nCase 1\nSource: Cohen, J., Cohen, P., West, S. G., & Aiken, L. S. (2003). Applied multiple regression/correlation analysis for the behavioral sciences (3rd ed.)\n교수의 연봉(salary)이 학위를 받은 후 지난 시간(time since Ph.D.)과 출판물의 수(pubs)에 의해 어떻게 영향을 받는가?\n\n\n\n\n\n\n\n\n\n\n\n\n\nData: c0301dt.csv\n\nacad0 = pd.read_csv(\"data/c0301dt.csv\")\nacad0.head(5)\n\n   time  pubs  salary\n0     3    18   51876\n1     6     3   54511\n2     3     2   53425\n3     8    17   61863\n4     9    11   52926\n\n\n\nfrom statsmodels.formula.api import ols\n\nmod1 = ols(\"salary ~ time\", data=acad0).fit()\nmod2 = ols(\"salary ~ pubs\", data=acad0).fit()\nmod3 = ols(\"salary ~ time + pubs\", data=acad0).fit()\n\n\n\n\n\n\n\nIntercept   43658.59\ntime         1224.39\ndtype: float64\n\n\nIntercept   46357.45\npubs          335.53\ndtype: float64\n\n\nIntercept   43082.39\ntime          982.87\npubs          121.80\ndtype: float64\n\n\n\n세 모형을 비교하면,\nModel 1: \\(\\widehat{salary} = \\$1,224\\:time + \\$43,659\\)\nModel 2 : \\(\\widehat{salary} = \\$336\\:pubs + \\$46,357\\)\nModel 3: \\(\\widehat{salary} = \\$983\\:time + \\$122\\:pubs + \\$43,082\\)\n\n연차(time)의 효과는 $1,224에서 $984로 낮아졌고,\n논문수(pubs)의 효과는 $336에서 $122로 낮아졌음.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n교수들의 연차와 그들이 쓴 논문 수는 깊이 연관되어 있으며 (r = 0.66), 두 변수의 redunancy가 각 변수들의 효과를 변화시킴.\n두 예측 변수의 산술적 합으로 연봉을 예측하므로 각 예측변수의 효과는 수정될 수 밖에 없음.\n수학적으로 보면, 각 예측변수의 기울기는 다른 예측변수의 값에 상관없이 일정하므로, 다른 예측변수들을 (임의의 값에) 고정시키는 효과를 가짐\n즉, 다른 변수와는 독립적인, 고유한 효과를 추정하게 됨\n\n각 회귀계수를 partial regression coefficient (부분 회귀 계수) 라고 부름.\n부분 회귀 계수의 첫번째 해석:\n\n만약 논문 수가 일정할 때, 예를 들어 10편의 논문을 쓴 경우만 봤을 때, 연차가 1년 늘 때마다 연봉은 $984 증가함; 평면의 선형모형을 가정했기에 이 관계는 논문 수에 상관없음.\n\n연차가 일정할 때, 예를 들어 연차가 12년차인 경우만 봤을 때, 논문이 1편 늘 때마다 연봉은 $336 증가함; 평면의 선형모형을 가정했기에 이 관계는 연차에 상관없음.\n\n이는 다른 변수를 고려 (통제, controlling for) 했을 때 혹은 다른 변수의 효과를 제거 (partial out) 했을 때, 각 변수의 고유한 효과를 의미함; holding constant, controlling for, partialing out, adjusted for, residualizing\n뒤집어 말하면, 연차만 고려했을때 연차가 1년 늘면 $1,224 연봉이 증가하는 효과는 연차가 늘 때 함께 늘어나는 논문 수의 효과가 함께 섞여 나온 효과라고 말할 수 있음.\n이는 인과관계에 있는 변수들의 진정한 효과를 찾는 것이 얼마나 어려운지를 보여줌\n부분 회귀 계수에 대한 두번째 해석\n\n다른 변수들이 partial out 된 후의 효과.\n\n실제로 $122는 연차로 (선형적으로) 예측/설명되지 않는 논문수(residuals)로 [연차로 예측/설명되지 않는] 연봉을 예측할 때의 기울기\n\n  \nDirect and Indirect Effects\n만약, 다음과 같은 인과모형을 세운다면,\n\n\n연차가 연봉에 미치는 효과가 두 경로로 나뉘어지고,\n연차 \\(\\rightarrow\\) 연봉: 직접효과 $983\n연차 \\(\\rightarrow\\) 논문 \\(\\rightarrow\\) 연봉: 간접효과 1.98 x $122 = $241.56\n두 효과를 더하면: $983 + $241.56 = $1224.56 = 논문수를 고려하지 않았을 때 연차의 효과\n\n즉, 연차가 1년 늘때 연봉이 $1224 증가하는 것은 연차 자체의 효과($983)와 논문의 증가에 따른 효과($241)가 합쳐져 나온 결과라고 말할 수 있음.\n\n이 때, 논문의 수가 연차와 연봉의 관계를 매개(mediate)한다고 표현.\n\n만약, 연차의 효과 $1224이 논문수를 고려했을 때 줄어든($983) 수준을 훨씬 넘어 통계적으로 유의하지 않을 정도로 0에 가까워진다면, 연차의 효과는 모두 논문의 효과를 거쳐 나타나는 것이라고 말할 수 있음. 이 때, 완전 매개 (fully mediate)한다고 표현함.\n\n이들는 인과관계의 기제/메커니즘의 일부를 설명해 줌.\n반대로, 만약 다음과 같이 논문의 효과가 거의 사라진다면, 논문의 효과는 가짜 효과, spurious effect라고 표현함. 이는 논문과 연봉 간의 관계가 보이는 이유는 연차라는 common cause가 연결하고 있기 때문임. 이를 confounding이라고 함.",
+    "crumbs": [
+      "Linear Models",
+      "Regression Analysis"
     ]
   },
   {
