@@ -220,7 +220,7 @@
     "href": "index.html#수업-계획",
     "title": "Welcome",
     "section": "수업 계획",
-    "text": "수업 계획\n1주. 데이터 사이언스 소개\n2주. 데이터 분석의 두 문화 1: 전통적 통계\n3주. 데이터 분석의 두 문화 2: 기계 학습\n4주. 탐색적 분석 및 시각화\n5주. 선형 모형(linear model) 소개\n6주. 선형 모형의 활용: 예측과 설명\n7주. 데이터의 해석 및 의미의 추론\n8주. 중간고사\n9주. 기계 학습 소개\n10주. 분류(classification) 1: 로지스틱(logistic) 모형\n11주. 분류(classification) 2: 서포트 벡터 머신\n12주. Tree-based 모형\n13주. 딥러닝\n14주. 비지도 학습(unsupervised learning)\n15주. 기말고사",
+    "text": "수업 계획\n1주. 데이터 사이언스 소개\n2주. 데이터 분석의 두 문화 1: 전통적 통계\n3주. 데이터 분석의 두 문화 2: 기계 학습\n4주. 파이썬 기초\n5주. 탐색적 분석 및 시각화\n6주. 선형 모형(linear model) 소개\n7주. 선형 모형의 활용: 해석과 의미의 추론\n8주. 중간고사\n9주. 기계 학습 소개\n10주. 분류(classification) 1: 로지스틱(logistic) 모형\n11주. 분류(classification) 2: 서포트 벡터 머신\n12주. Tree-based 모형\n13주. 딥러닝\n14주. 비지도 학습(unsupervised learning)\n15주. 기말고사",
     "crumbs": [
       "Welcome"
     ]
