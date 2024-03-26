@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-25">
+<meta name="dcterms.date" content="2024-03-27">
 
 <title> Introduction to Data Science - Python 설정</title>
 <style>
@@ -288,6 +288,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Machine Learning</span></span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
@@ -359,7 +360,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 25, 2024</p>
+      <p class="date">March 27, 2024</p>
     </div>
   </div>
   
@@ -392,6 +393,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <li>사용법: <a href="https://colab.research.google.com/">Colab Welcome</a></li>
 <li>클라우드 환경 vs.&nbsp;구글 드라이브 mount</li>
 <li>Colab AI assistant</li>
+<li>구글 드라이브의 데이터셋을 import: <code>pd.read_csv("drive/MyDrive/...")</code></li>
 </ul>
 </section>
 <section id="로컬-환경" class="level2">
@@ -418,7 +420,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <section id="conda-environment" class="level3">
 <h3 class="anchored" data-anchor-id="conda-environment">Conda Environment</h3>
 <p><a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">conda/user guide</a></p>
-<p>환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 <code>pyenv</code>나 <code>venv</code> 사용하지 않음</p>
+<p>환경 생성: miniconda에서 자체 제공하는 환경 (다른 가상환경 툴인 <code>pyenv</code>나 <code>venv</code>도 있음)</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">create</span> <span class="at">--name</span> myenv  <span class="co"># --name 대신 -n으로 축약 가능</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 특정 버전의 파이썬과 함께 설치시</span></span>
@@ -465,7 +467,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 특정 환경을 activate한 후</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Python을 update하거나 다른 버전을 섦치하려면, 가령 3.12으로 업데이트 하려면</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Python을 update하거나 다른 버전을 설치하려면, 가령 3.12으로 업데이트 하려면</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> python=3.12  <span class="co"># python update</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 패키지 설치</span></span>
@@ -480,7 +482,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">update</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">update</span> <span class="at">--all</span>  <span class="co"># all packages</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 패키지 리스트</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 패키지 리스트 확인</span></span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="at">--name</span> myenv <span class="op">&lt;</span>package name1<span class="op">&gt;</span>  <span class="co"># --name 대신 -n으로 축약 가능</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -613,7 +615,7 @@ Command Line Tools
 <li><p>쉘에서 실행하려면,</p></li>
 </ul>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># jupytet notebook</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> jupytet <span class="ex">notebook</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> jupyter <span class="ex">notebook</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># jupyter lab</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> jupyter <span class="ex">lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -623,7 +625,7 @@ Command Line Tools
 <section id="python-packages-modules-functions" class="level2">
 <h2 class="anchored" data-anchor-id="python-packages-modules-functions">Python Packages, Modules, Functions</h2>
 <p>Jupyter notebook 파일을 생성: <code>filename.ipynb</code></p>
-<div id="dd7d058d" class="cell" data-execution_count="1">
+<div id="261348df" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> inv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -650,31 +652,31 @@ Command Line Tools
 <p><strong>NumPy 패키지(package)의 <code>linalg</code> 모듈(module)</strong></p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>np.linalg  <span class="co"># linalg.py 파이썬 스트립트 파일</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong><code>linalg</code> 모듈 파일 안에 <code>def</code>으로 정의된 함수</strong></p>
-<div id="48216784" class="cell" data-execution_count="2">
+<div id="ebb2a126" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv  <span class="co"># 모듈 안에서 def으로 정의된 함수 inv()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>&lt;function inv at 0x1099ea830&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>&lt;function inv at 0x10a0eb1b0&gt;</code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv?  <span class="co"># 함수에 대한 도움말</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>예를 들어, 행렬의 역행렬을 구하는 함수 <code>inv</code>를 사용하려면</p>
-<div id="d5893113" class="cell" data-execution_count="3">
+<div id="c1ab82aa" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">123</span>)  <span class="co"># random number generator</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.standard_normal((<span class="dv">3</span>, <span class="dv">3</span>))  <span class="co"># 3x3 matrix from standard normal distribution</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>array([[-0.98912135, -0.36778665,  1.28792526],
        [ 0.19397442,  0.9202309 ,  0.57710379],
        [-0.63646365,  0.54195222, -0.31659545]])</code></pre>
 </div>
 </div>
 <p>어떻게 <code>import</code>하느냐에 따라 다른 방식으로 사용</p>
-<div id="baa8006d" class="cell" data-execution_count="4">
+<div id="0595d763" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>inv(x)  <span class="co"># inverse matrix of x</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inv 함수를 따로 import하지 않은 경우, numpy의 linalg 모듈을 통해 사용</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(x)  <span class="co"># same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>array([[-0.37762186,  0.36352647, -0.87353193],
        [-0.19121277,  0.70815019,  0.51298399],
        [ 0.4318268 ,  0.4814099 , -0.52437858]])</code></pre>
@@ -686,9 +688,9 @@ Command Line Tools
 <li>사용자 정의 함수와의 충돌을 방지하기 위함</li>
 </ul>
 <p>모듈 안에 정의된 함수들을 확인하려면: <code>dir()</code> 함수</p>
-<div id="e9cc83c2" class="cell" data-execution_count="5">
+<div id="4e449325" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(np.linalg)  <span class="co"># 모듈 안에 정의된 함수들</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>['LinAlgError',
  '__all__',
  '__builtins__',

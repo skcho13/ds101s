@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-24">
+<meta name="dcterms.date" content="2024-03-26">
 
 <title> Introduction to Data Science - Model Basics</title>
 <style>
@@ -336,6 +336,7 @@ window.Quarto = {
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Machine Learning</span></span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
@@ -408,7 +409,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 24, 2024</p>
+      <p class="date">March 26, 2024</p>
     </div>
   </div>
   
@@ -461,16 +462,16 @@ window.Quarto = {
 </div>
 </div>
 <p>예를 들어, 캐럿과 가격의 진정한 관계를 모델로 표현</p>
-<p>Linear model: <span class="math inline">\(y = ax + b + e\)</span>,   <span class="math inline">\(e\)</span>: <strong>residual | error</strong></p>
+<p>Linear model: <span class="math inline">\(y = ax + b + \epsilon\)</span>,   <span class="math inline">\(\epsilon\)</span>: <strong>errors</strong></p>
 <ul>
-<li><span class="math inline">\(price = a * carat + b + e\)</span><br>
+<li><span class="math inline">\(price = a * carat + b + \epsilon\)</span><br>
 </li>
-<li>로그 변환: <span class="math inline">\(log(price) = a * log(carat) + b + e\)</span>
+<li>로그 변환: <span class="math inline">\(log(price) = a * log(carat) + b + \epsilon\)</span>
 <ul>
-<li>e: Gaussian 분포로 가정</li>
+<li><span class="math inline">\(\epsilon\)</span>: Gaussian 분포로 가정</li>
 </ul></li>
 </ul>
-<p>Residuals은 노이즈?</p>
+<p>Errors은 노이즈?</p>
 <ul>
 <li><strong>Reducible error</strong>: 모형이 잡아내지 못한 신호; 영향을 미치지만 측정하지 않은 변수가 존재</li>
 <li><strong>Irreducible error</strong>:
