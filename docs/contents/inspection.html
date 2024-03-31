@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-17">
+<meta name="dcterms.date" content="2024-03-28">
 
 <title> Introduction to Data Science - Inspecting data</title>
 <style>
@@ -344,7 +344,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 17, 2024</p>
+      <p class="date">March 28, 2024</p>
     </div>
   </div>
   
@@ -704,36 +704,8 @@ NaN     Adelie        6
 Name: count, Length: 8, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NA의 개수</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>penguins.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>species               0
-island                0
-bill_length_mm        2
-bill_depth_mm         2
-flipper_length_mm     2
-body_mass_g           2
-sex                  11
-dtype: int64</code></pre>
-</div>
-</div>
-<div id="cell-24" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NA의 비율</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>penguins.isna().mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>species             0.00
-island              0.00
-bill_length_mm      0.01
-bill_depth_mm       0.01
-flipper_length_mm   0.01
-body_mass_g         0.01
-sex                 0.03
-dtype: float64</code></pre>
-</div>
-</div>
-<div id="cell-25" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values(<span class="st">"tip"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values(<span class="st">"tip"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>     total_bill   tip     sex smoker  day    time  size
 170       50.81 10.00    Male    Yes  Sat  Dinner     3
@@ -747,8 +719,8 @@ dtype: float64</code></pre>
 [244 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values([<span class="st">"size"</span>, <span class="st">"tip"</span>], ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">True</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-24" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values([<span class="st">"size"</span>, <span class="st">"tip"</span>], ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">True</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>     total_bill  tip     sex smoker   day    time  size
 125       29.80 4.20  Female     No  Thur   Lunch     6
@@ -762,8 +734,8 @@ dtype: float64</code></pre>
 [244 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tips.nlargest(<span class="dv">3</span>, <span class="st">"tip"</span>)  <span class="co"># 다수의 동등 순위가 있을 때 처리: keep="first", "last", "all"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tips.nlargest(<span class="dv">3</span>, <span class="st">"tip"</span>)  <span class="co"># 다수의 동등 순위가 있을 때 처리: keep="first", "last", "all"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>     total_bill   tip   sex smoker  day    time  size
 170       50.81 10.00  Male    Yes  Sat  Dinner     3

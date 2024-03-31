@@ -89,8 +89,8 @@ website:
       - text: ---
       - section: Machine Learning
         # contents: 
-        #   - href: contents/mlsl-intro.ipynb
-        #     text: Introduction
+          # - href: contents/mlsl-intro.ipynb
+            # text: Introduction
       - text: ---
       - section: Communicate
         contents:
