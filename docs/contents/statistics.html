@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-26">
+<meta name="dcterms.date" content="2024-04-05">
 
 <title> Introduction to Data Science - Statistics</title>
 <style>
@@ -320,19 +320,67 @@ window.Quarto = {
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Machine Learning</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">Regularization</span>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
+          <li class="sidebar-item">
+ <span class="menu-text">K-Nearest Neighbors</span>
+  </li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">Classification</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+ <span class="menu-text">Logistic Regression</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Linear Discriminant Analysis</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree-based Models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+ <span class="menu-text">Support Vector Machine</span>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">Unsupervised Learning</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Communicate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -388,7 +436,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 26, 2024</p>
+      <p class="date">April 5, 2024</p>
     </div>
   </div>
   
@@ -400,7 +448,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="3">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -510,7 +558,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="4">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="42" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
@@ -520,13 +568,17 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-9" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="6">
+<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="48" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
+<p>카테고리 변수에 대해서도 비슷하게 생각할 수 있음.<br>
+이 경우, 두 그룹 간의 차이에 대한 효과의 크기를 말할 수 있고, <span class="math inline">\(R^2\)</span> 이외에도 <strong><em>Cohen’s d</em></strong>로 표현할 수 있음.<br>
+예를 들어, 결혼과 삶의 만족도 간의 관계(association)와 그 크기(strength)</p>
+<p><img src="images/effect-size-married.png" class="img-fluid" width="720"></p>
 </section>
 </section>
 <section id="multiple-regression" class="level2">
@@ -553,13 +605,13 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1.5, 1.5, 0.5]]" data-execution_count="11">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="11" data-layout="[[1.5, 1.5, 0.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
-<p><img src="statistics_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<p><img src="statistics_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
-<p><img src="statistics_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+<p><img src="statistics_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -620,7 +672,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="30" data-layout-ncol="3">
+<div id="cell-26" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>Intercept   43658.59
@@ -950,6 +1002,74 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 </div>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: Wikipedia, Student’s t-distribution</p>
+</div>
+<div id="cell-40" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-41" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ads <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/nguyen-toan/ISLR/master/dataset/Advertising.csv"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>     Unnamed: 0     TV  Radio  Newspaper  Sales
+0             1 230.10  37.80      69.20  22.10
+1             2  44.50  39.30      45.10  10.40
+2             3  17.20  45.90      69.30   9.30
+..          ...    ...    ...        ...    ...
+197         198 177.00   9.30       6.40  12.80
+198         199 283.60  42.00      66.20  25.50
+199         200 232.10   8.60       8.70  13.40
+
+[200 rows x 5 columns]</code></pre>
+</div>
+</div>
+<div id="cell-42" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"plotly_mimetype+notebook_connected"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-44" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> go.Scatter3d(y<span class="op">=</span>ads.TV, x<span class="op">=</span>ads.Radio, z<span class="op">=</span>ads.Sal b     es, mode<span class="op">=</span><span class="st">'markers'</span>, marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># surface = go.Surface(x=precip_, y=wind_, z=z_)</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[scatter])</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>fig.update_layout(width<span class="op">=</span><span class="dv">700</span>, height<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>fig.update_layout(scene<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">"Radio"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">"TV"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    zaxis_title<span class="op">=</span><span class="st">"Sales"</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>fig.update_layout(template<span class="op">=</span><span class="st">'ggplot2'</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="0bf00eed-d07d-4cf1-8b4e-28811c094e61" class="plotly-graph-div" style="height:600px; width:700px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("0bf00eed-d07d-4cf1-8b4e-28811c094e61")) {                    Plotly.newPlot(                        "0bf00eed-d07d-4cf1-8b4e-28811c094e61",                        [{"marker":{"size":3},"mode":"markers","x":[37.8,39.3,45.9,41.3,10.8,48.9,32.8,19.6,2.1,2.6,5.8,24.0,35.1,7.6,32.9,47.7,36.6,39.6,20.5,23.9,27.7,5.1,15.9,16.9,12.6,3.5,29.3,16.7,27.1,16.0,28.3,17.4,1.5,20.0,1.4,4.1,43.8,49.4,26.7,37.7,22.3,33.4,27.7,8.4,25.7,22.5,9.9,41.5,15.8,11.7,3.1,9.6,41.7,46.2,28.8,49.4,28.1,19.2,49.6,29.5,2.0,42.7,15.5,29.6,42.8,9.3,24.6,14.5,27.5,43.9,30.6,14.3,33.0,5.7,24.6,43.7,1.6,28.5,29.9,7.7,26.7,4.1,20.3,44.5,43.0,18.4,27.5,40.6,25.5,47.8,4.9,1.5,33.5,36.5,14.0,31.6,3.5,21.0,42.3,41.7,4.3,36.3,10.1,17.2,34.3,46.4,11.0,0.3,0.4,26.9,8.2,38.0,15.4,20.6,46.8,35.0,14.3,0.8,36.9,16.0,26.8,21.7,2.4,34.6,32.3,11.8,38.9,0.0,49.0,12.0,39.6,2.9,27.2,33.5,38.6,47.0,39.0,28.9,25.9,43.9,17.0,35.4,33.2,5.7,14.8,1.9,7.3,49.0,40.3,25.8,13.9,8.4,23.3,39.7,21.1,11.6,43.5,1.3,36.9,18.4,18.1,35.8,18.1,36.8,14.7,3.4,37.6,5.2,23.6,10.6,11.6,20.9,20.1,7.1,3.4,48.9,30.2,7.8,2.3,10.0,2.6,5.4,5.7,43.0,21.3,45.1,2.1,28.7,13.9,12.1,41.1,10.8,4.1,42.0,35.6,3.7,4.9,9.3,42.0,8.6],"y":[230.1,44.5,17.2,151.5,180.8,8.7,57.5,120.2,8.6,199.8,66.1,214.7,23.8,97.5,204.1,195.4,67.8,281.4,69.2,147.3,218.4,237.4,13.2,228.3,62.3,262.9,142.9,240.1,248.8,70.6,292.9,112.9,97.2,265.6,95.7,290.7,266.9,74.7,43.1,228.0,202.5,177.0,293.6,206.9,25.1,175.1,89.7,239.9,227.2,66.9,199.8,100.4,216.4,182.6,262.7,198.9,7.3,136.2,210.8,210.7,53.5,261.3,239.3,102.7,131.1,69.0,31.5,139.3,237.4,216.8,199.1,109.8,26.8,129.4,213.4,16.9,27.5,120.5,5.4,116.0,76.4,239.8,75.3,68.4,213.5,193.2,76.3,110.7,88.3,109.8,134.3,28.6,217.7,250.9,107.4,163.3,197.6,184.9,289.7,135.2,222.4,296.4,280.2,187.9,238.2,137.9,25.0,90.4,13.1,255.4,225.8,241.7,175.7,209.6,78.2,75.1,139.2,76.4,125.7,19.4,141.3,18.8,224.0,123.1,229.5,87.2,7.8,80.2,220.3,59.6,0.7,265.2,8.4,219.8,36.9,48.3,25.6,273.7,43.0,184.9,73.4,193.7,220.5,104.6,96.2,140.3,240.1,243.2,38.0,44.7,280.7,121.0,197.6,171.3,187.8,4.1,93.9,149.8,11.7,131.7,172.5,85.7,188.4,163.5,117.2,234.5,17.9,206.8,215.4,284.3,50.0,164.5,19.6,168.4,222.4,276.9,248.4,170.2,276.7,165.6,156.6,218.5,56.2,287.6,253.8,205.0,139.5,191.1,286.0,18.7,39.5,75.5,17.2,166.8,149.7,38.2,94.2,177.0,283.6,232.1],"z":[22.1,10.4,9.3,18.5,12.9,7.2,11.8,13.2,4.8,10.6,8.6,17.4,9.2,9.7,19.0,22.4,12.5,24.4,11.3,14.6,18.0,12.5,5.6,15.5,9.7,12.0,15.0,15.9,18.9,10.5,21.4,11.9,9.6,17.4,9.5,12.8,25.4,14.7,10.1,21.5,16.6,17.1,20.7,12.9,8.5,14.9,10.6,23.2,14.8,9.7,11.4,10.7,22.6,21.2,20.2,23.7,5.5,13.2,23.8,18.4,8.1,24.2,15.7,14.0,18.0,9.3,9.5,13.4,18.9,22.3,18.3,12.4,8.8,11.0,17.0,8.7,6.9,14.2,5.3,11.0,11.8,12.3,11.3,13.6,21.7,15.2,12.0,16.0,12.9,16.7,11.2,7.3,19.4,22.2,11.5,16.9,11.7,15.5,25.4,17.2,11.7,23.8,14.8,14.7,20.7,19.2,7.2,8.7,5.3,19.8,13.4,21.8,14.1,15.9,14.6,12.6,12.2,9.4,15.9,6.6,15.5,7.0,11.6,15.2,19.7,10.6,6.6,8.8,24.7,9.7,1.6,12.7,5.7,19.6,10.8,11.6,9.5,20.8,9.6,20.7,10.9,19.2,20.1,10.4,11.4,10.3,13.2,25.4,10.9,10.1,16.1,11.6,16.6,19.0,15.6,3.2,15.3,10.1,7.3,12.9,14.4,13.3,14.9,18.0,11.9,11.9,8.0,12.2,17.1,15.0,8.4,14.5,7.6,11.7,11.5,27.0,20.2,11.7,11.8,12.6,10.5,12.2,8.7,26.2,17.6,22.6,10.3,17.3,15.9,6.7,10.8,9.9,5.9,19.6,17.3,7.6,9.7,12.8,25.5,13.4],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(51,51,51)"},"error_y":{"color":"rgb(51,51,51)"},"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"baxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"colorscale":{"sequential":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"sequentialminus":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]]},"colorway":["#F8766D","#A3A500","#00BF7D","#00B0F6","#E76BF3"],"font":{"color":"rgb(51,51,51)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"rgb(237,237,237)","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"rgb(237,237,237)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","radialaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"baxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","caxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"}}},"width":700,"height":600,"scene":{"xaxis":{"title":{"text":"Radio"}},"yaxis":{"title":{"text":"TV"}},"zaxis":{"title":{"text":"Sales"}}}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('0bf00eed-d07d-4cf1-8b4e-28811c094e61');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<div id="cell-45" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1385,7 +1505,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
