@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-25">
+<meta name="dcterms.date" content="2024-04-15">
 
 <title> Introduction to Data Science - Two Cultures</title>
 <style>
@@ -286,19 +286,70 @@ window.Quarto = {
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Machine Learning</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regularization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">K-Nearest Neighbors</span>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">Classification</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+ <span class="menu-text">Logistic Regression</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Linear Discriminant Analysis</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree-based Models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+ <span class="menu-text">Support Vector Machine</span>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">Unsupervised Learning</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Communicate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -369,7 +420,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 25, 2024</p>
+      <p class="date">April 15, 2024</p>
     </div>
   </div>
   
@@ -863,7 +914,7 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <li>“현재 치약을 구매한 고객이 가격을 두 배로 올려도 여전히 치약을 구매할 확률은 얼마인가?”</li>
 <li>우리는 현실 세계(고객이 현재 가격으로 치약을 구매했다는 것을 알고 있는)와 가상의 세계(가격이 두 배 높은 경우)와 비교</li>
 <li>보이는 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 있는 새로운 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 없는 세계(보이는 것과 모순)</li>
-<li>이를 위해서는 “이론” 또는 “자연의 법칙”이라고도 근본적인 인과 과정의 모델이 필요</li>
+<li>이를 위해서는 “이론” 또는 “자연의 법칙”이라고 볼 수 있는 근본적인 인과 과정의 모델이 필요</li>
 </ul>
 <p><strong>전형적인 인과적 질문들</strong></p>
 <div class="columns">
@@ -1423,7 +1474,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
