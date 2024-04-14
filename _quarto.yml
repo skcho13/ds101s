@@ -92,7 +92,7 @@ website:
       #   contents: 
       #     - href: contents/mlsl-intro.ipynb
       #       text: Introduction
-      #     - text: Regularization
+      #     - href: contents/regularization.ipynb
       #     - text: K-Nearest Neighbors
       # - section: Classification
       #   contents: 
