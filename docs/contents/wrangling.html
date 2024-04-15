@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-20">
+<meta name="dcterms.date" content="2024-04-15">
 
 <title> Introduction to Data Science - Wrangling</title>
 <style>
@@ -357,7 +357,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 20, 2024</p>
+      <p class="date">April 15, 2024</p>
     </div>
   </div>
   
@@ -925,7 +925,8 @@ hour
 <p><img src="images/join_dup1.png" class="img-fluid" width="350"></p>
 <p>Inner join의 예:<br>
 <img src="images/join_inner.png" class="img-fluid" width="400"></p>
-<div id="cell-60" class="cell" data-execution_count="74">
+<p><a href="https://www.dropbox.com/scl/fi/hk1ixxomc42ha8s2n4plr/nyc_neighborhood.csv?rlkey=wm4dd2o3xm49rb9tv59d0kakv&amp;dl=1">nyc_neighborhood.csv dataset</a></p>
+<div id="cell-61" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>nyc <span class="op">=</span> pd.read_csv(<span class="st">"data/nyc_neighborhood.csv"</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>nyc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
@@ -937,7 +938,7 @@ hour
 4  Staten Island    582   0.62     0.34     8.30   476143</code></pre>
 </div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="82">
+<div id="cell-62" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    taxi.merge(</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>        nyc, left_on<span class="op">=</span><span class="st">"pickup_borough"</span>, right_on<span class="op">=</span><span class="st">"borough"</span>, how<span class="op">=</span><span class="st">"left"</span></span>
@@ -963,7 +964,7 @@ hour
 </div>
 </div>
 <p>Merge를 데이터 필터링에 사용할 수도 있음</p>
-<div id="cell-63" class="cell" data-execution_count="77">
+<div id="cell-64" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>taxi_day_hour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>     day  hour  tip_ratio   n
@@ -978,7 +979,7 @@ hour
 [168 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-64" class="cell" data-execution_count="79">
+<div id="cell-65" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>days_top_ratio <span class="op">=</span> (</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    taxi_day_hour</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'n &gt; 10'</span>)</span>
@@ -993,7 +994,7 @@ hour
 </div>
 </div>
 <p>팁의 비율이 가장 높았던 3개의 (요일, 시간대) 조합에 해당하는 <code>taxi</code> 데이터셋을 추리려면</p>
-<div id="cell-66" class="cell" data-execution_count="80">
+<div id="cell-67" class="cell" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>taxi.merge(days_top_ratio, on<span class="op">=</span>[<span class="st">"day"</span>, <span class="st">"hour"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="80">
 <pre><code>                pickup             dropoff  persons  distance  fare  tip  \
@@ -1031,7 +1032,7 @@ hour
 <h4 class="anchored" data-anchor-id="concatenate">Concatenate</h4>
 <p><code>pd.concat([df1, df2, ...], axis=)</code><br>
 행과 열의 index를 매치시켜 두 DataFrame/Series를 합침</p>
-<div id="cell-69" class="cell">
+<div id="cell-70" class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    np.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>, <span class="dv">2</span>), index<span class="op">=</span>[<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>], columns<span class="op">=</span>[<span class="st">"one"</span>, <span class="st">"two"</span>]</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -1042,7 +1043,7 @@ hour
 <div>
 
 </div>
-<div id="cell-70" class="cell quarto-layout-panel" data-layout-ncol="4">
+<div id="cell-71" class="cell quarto-layout-panel" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <pre><code>   one  two
@@ -1057,7 +1058,7 @@ c      7     8</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-71" class="cell">
+<div id="cell-72" class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>pd.concat([df1, df2], axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>   one  two  three  four
@@ -1066,7 +1067,7 @@ b    2    3    NaN   NaN
 c    4    5   7.00  8.00</code></pre>
 </div>
 </div>
-<div id="cell-72" class="cell">
+<div id="cell-73" class="cell">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>pd.concat([df1, df2])  <span class="co"># default: axis=0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>   one  two  three  four
