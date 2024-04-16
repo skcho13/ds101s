@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-07">
+<meta name="dcterms.date" content="2024-04-17">
 
 <title> Introduction to Data Science - Model Basics</title>
 <style>
@@ -333,19 +333,70 @@ window.Quarto = {
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Machine Learning</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regularization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">K-Nearest Neighbors</span>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">Classification</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+ <span class="menu-text">Logistic Regression</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Linear Discriminant Analysis</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree-based Models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+ <span class="menu-text">Support Vector Machine</span>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">Unsupervised Learning</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Communicate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -411,7 +462,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 7, 2024</p>
+      <p class="date">April 17, 2024</p>
     </div>
   </div>
   
@@ -520,7 +571,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
+<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -640,7 +691,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[[2, 4, 1]]">
+<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -668,7 +719,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[3, 1]]">
+<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
@@ -753,7 +804,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[[3, 1]]">
+<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="20">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" width="591" height="374"></p>
@@ -767,7 +818,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[3, 1]]">
+<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="19">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" width="599" height="374"></p>
@@ -904,8 +955,10 @@ Log likelihood
 </div>
 </div>
 <div id="cell-48" class="cell" data-execution_count="204">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, data<span class="op">=</span>sim1).fit()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>display(mod.summary().tables[<span class="dv">0</span>], mod.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, data<span class="op">=</span>sim1).fit()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>display(mod.summary().tables[<span class="dv">0</span>], mod.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1260,7 +1313,7 @@ Important
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>sim1_mod.fit().params  <span class="co"># 모델의 parameter 즉, coefficients를 내줌</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Intercept   4.22</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># x           2.05     # 위에서 구한 파라미터값과 동일함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>(참고) Linear models의 경우 위에서 처럼 optimization을 이용하지 않고 방정식의 해를 구하듯 exact form으로 최소값을 구함</p>
+<p>(참고) Linear models의 경우 위에서 처럼 optimization을 이용하지 않고 방정식의 해를 구하듯 closed form으로 최소값을 구함</p>
 <p><span class="math inline">\(n=2\)</span> 인 경우, 즉 두 변수 <code>x1, x2</code>로 <code>y</code>를 예측하는 경우,</p>
 <ul>
 <li>Formula <code>y ~ x1 + x2</code>는 모형 <span class="math inline">\(\hat{y} = \beta_0 +\beta_1x_1 + \beta_2x_2\)</span> 을 의미</li>
@@ -1290,8 +1343,10 @@ Important
 </div>
 </div>
 <div id="cell-63" class="cell" data-execution_count="280">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mod_houses <span class="op">=</span> ols(<span class="st">"price ~ livingArea + bedrooms"</span>, data<span class="op">=</span>houses).fit()</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mod_houses.summary(slim<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>mod_houses <span class="op">=</span> ols(<span class="st">"price ~ livingArea + bedrooms"</span>, data<span class="op">=</span>houses).fit()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>mod_houses.summary(slim<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="280">
 <div>
 <table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1367,6 +1422,7 @@ Important
 </div>
 </div>
 </div>
+<p><br></p>
 <p><span class="math inline">\(\widehat{price} = 36668.9 + 125.4 \cdot livingArea - 14196.8 \cdot bedrooms\)</span><br>
 이 <strong>계수들의 의미</strong>를 파악하는 것이 통계에서 매우 중요한 주제임.</p>
 <p>위와 같이 2개의 예측변수로 평면꼴의 선형모형을 세운다면, 다음과 같은 fitted plane을 구할 수 있음.<br>
@@ -1395,7 +1451,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(formula, data<span class="op">=</span>houses, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-67" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
+<div id="cell-67" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>         price
@@ -1427,7 +1483,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> houses[<span class="st">"price"</span>], houses[[<span class="st">"livingArea"</span>, <span class="st">"bedrooms"</span>]]</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[[1, 2]]">
+<div id="cell-68" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>0       132500
@@ -1604,7 +1660,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 </section>
 <section id="categorical-variables" class="level1">
 <h1>Categorical variables</h1>
-<p>카테고리 변수가 predictor인 경우 복잡해짐</p>
+<p>predictor가 카테고리 변수인 경우 이를 numeric으로 바꾸어야 함</p>
 <ul>
 <li>formula <code>y ~ sex</code>의 경우, <span class="math inline">\(y=a_0 +a_1sex\)</span> 로 변환될 수 없음 (성별을 연산할 수 없음)</li>
 <li>실제로, formula는 <span class="math inline">\(sex[T.male]\)</span> 라는 indicator/dummy variable을 새로 만들어 membership을 나타내 줌: <strong>dummy-coding</strong> 또는 <strong>one-hot encoding</strong> 이라고 부름.
@@ -1821,7 +1877,7 @@ dtype: float64</code></pre>
 <li>강수량과 풍속이 함께 항공편의 지연을 가중시키는 경우</li>
 <li>운동량과 식사량이 함께 체중 감량에 영향을 미치는 경우</li>
 </ul>
-<div id="cell-116" class="cell" data-execution_count="244">
+<div id="cell-116" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
@@ -1831,7 +1887,7 @@ dtype: float64</code></pre>
 <span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(precip<span class="op">=</span>x1, wind<span class="op">=</span>x2, delay<span class="op">=</span>y))</span>
 <span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="244">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>     precip   wind  delay
 0      6.96   4.04  95.70
 1      2.86   5.60  31.23
@@ -1844,7 +1900,7 @@ dtype: float64</code></pre>
 [200 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div id="cell-117" class="cell" data-execution_count="245">
+<div id="cell-117" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># additive model</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">'delay ~ precip + wind'</span>, data<span class="op">=</span>df).fit()</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1891,6 +1947,15 @@ if (outputEl) {{
 </div>
 </div>
 </div>
+<div id="cell-126" class="cell" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-78-output-1.png" width="525" height="326" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="continuous-and-categorical" class="level2">
 <h2 class="anchored" data-anchor-id="continuous-and-categorical">Continuous and Categorical</h2>
@@ -1899,7 +1964,7 @@ if (outputEl) {{
 <li>운동량이 건강에 미치는 효과: 혼자 vs.&nbsp;단체</li>
 </ul>
 <p>Data: <a href="https://www.dropbox.com/s/1ezcgjcmj6ibp5u/sim3.csv?dl=1">sim3.csv</a></p>
-<div id="cell-126" class="cell" data-execution_count="127">
+<div id="cell-128" class="cell" data-execution_count="127">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>sim3 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim3.csv"</span>)</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>sim3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="127">
@@ -1915,7 +1980,7 @@ if (outputEl) {{
 [120 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div id="cell-127" class="cell" data-execution_count="135">
+<div id="cell-129" class="cell" data-execution_count="135">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -1927,21 +1992,21 @@ if (outputEl) {{
 <div class="cell-output cell-output-display" data-execution_count="135">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-78-output-1.png" width="675" height="451" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-80-output-1.png" width="675" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>두 가지 모델로 fit할 수 있음</p>
-<div id="cell-129" class="cell" data-execution_count="129">
+<div id="cell-131" class="cell" data-execution_count="129">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">'y ~ x1 + x2'</span>, data<span class="op">=</span>sim3).fit()</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">'y ~ x1 * x2'</span>, data<span class="op">=</span>sim3).fit() <span class="co"># 같은 의미 'y ~ x1 + x2 + x1:x2'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>일반적으로 formula <code>y ~ x1 * x2</code>는 <span class="math inline">\(\hat{y} = a_0 + a_1x_1 + a_2x_2 + a_3x_1x_2\)</span>로 변환됨</p>
+<p>formula <code>y ~ x1 * x2</code>는 <span class="math inline">\(\hat{y} = a_0 + a_1x_1 + a_2x_2 + a_3x_1x_2\)</span>로 변환됨</p>
 <p><img src="images/plot3d2.png" class="img-fluid" width="380"></p>
 <p>하지만, 여기서는 x2가 범주형 변수라 dummy-coding후 적용됨.<br>
 Design matrix를 확인해 보면,</p>
-<div id="cell-131" class="cell" data-execution_count="130">
+<div id="cell-133" class="cell" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"y ~ x1 + x2"</span>, data<span class="op">=</span>sim3, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>X.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="130">
@@ -1957,7 +2022,7 @@ Design matrix를 확인해 보면,</p>
 [120 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-132" class="cell" data-execution_count="131">
+<div id="cell-134" class="cell" data-execution_count="131">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"y ~ x1 * x2"</span>, data<span class="op">=</span>sim3, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>X.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="131">
@@ -1973,14 +2038,14 @@ Design matrix를 확인해 보면,</p>
 [120 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-133" class="cell" data-execution_count="132">
+<div id="cell-135" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> sim3.value_counts([<span class="st">"x1"</span>, <span class="st">"x2"</span>]).reset_index().drop(columns<span class="op">=</span><span class="st">"count"</span>)</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"mod1"</span>] <span class="op">=</span>  mod1.predict(grid)</span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"mod2"</span>] <span class="op">=</span>  mod2.predict(grid)</span>
 <span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>grid_long <span class="op">=</span> grid.melt(id_vars<span class="op">=</span>[<span class="st">"x1"</span>, <span class="st">"x2"</span>], var_name<span class="op">=</span><span class="st">"model"</span>, value_name<span class="op">=</span><span class="st">"pred"</span>)</span>
 <span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>grid_full <span class="op">=</span> grid_long.merge(sim3[[<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"y"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-134" class="cell" data-execution_count="133">
+<div id="cell-136" class="cell" data-execution_count="133">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>grid_full</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="133">
 <pre><code>     x1 x2 model  pred     y
@@ -1995,7 +2060,7 @@ Design matrix를 확인해 보면,</p>
 [240 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div id="cell-135" class="cell" data-execution_count="136">
+<div id="cell-137" class="cell" data-execution_count="136">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -2009,7 +2074,7 @@ Design matrix를 확인해 보면,</p>
 <div class="cell-output cell-output-display" data-execution_count="136">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-84-output-1.png" width="826" height="470" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-86-output-1.png" width="826" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -2033,7 +2098,7 @@ Fitted models
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> smf.ols(<span class="st">'y ~ x1 + x2'</span>, data<span class="op">=</span>sim3).fit()</span>
+<div class="sourceCode" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">'y ~ x1 + x2'</span>, data<span class="op">=</span>sim3).fit()</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>mod1.params</span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Intercept    1.87</span></span>
 <span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="co"># x2[T.b]      2.89</span></span>
@@ -2041,7 +2106,7 @@ Fitted models
 <span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="co"># x2[T.d]      2.36</span></span>
 <span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="co"># x1          -0.20</span></span>
 <span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> smf.ols(<span class="st">'y ~ x1 * x2'</span>, data<span class="op">=</span>sim3).fit() <span class="co"># 같은 의미 'y ~ x1 + x2 + x1:x2'</span></span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">'y ~ x1 * x2'</span>, data<span class="op">=</span>sim3).fit() <span class="co"># 같은 의미 'y ~ x1 + x2 + x1:x2'</span></span>
 <span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>mod2.params</span>
 <span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Intercept     1.30</span></span>
 <span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="co"># x2[T.b]       7.07</span></span>
@@ -2055,7 +2120,7 @@ Fitted models
 </div>
 </div>
 <p>두 모형을 비교하여 중 더 나은 모형을 선택하기 위해, residuals을 차이를 살펴보면,</p>
-<div id="cell-139" class="cell" data-execution_count="28">
+<div id="cell-141" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>sim3[<span class="st">"mod1"</span>] <span class="op">=</span> mod1.resid</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>sim3[<span class="st">"mod2"</span>] <span class="op">=</span> mod2.resid</span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2081,7 +2146,7 @@ Fitted models
 [240 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-140" class="cell" data-execution_count="30">
+<div id="cell-142" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -2096,7 +2161,7 @@ Fitted models
 <div class="cell-output cell-output-display" data-execution_count="30">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-86-output-1.png" width="917" height="561" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-88-output-1.png" width="917" height="561" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -2108,28 +2173,36 @@ Fitted models
 <li>interaction 항이 있는 모형이 더 나은 모형</li>
 </ul>
 <p>SaratogaHouses 데이터에서 가령, <code>livingArea</code>와 <code>centralAir</code>의 interaction을 살펴보면,</p>
-<div id="cell-143" class="cell" data-execution_count="5">
+<div id="cell-145" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>houses <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"SaratogaHouses"</span>, <span class="st">"mosaicData"</span>).data</span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(houses, x<span class="op">=</span><span class="st">'livingArea'</span>, y<span class="op">=</span><span class="st">'price'</span>)</span>
 <span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(color<span class="op">=</span><span class="st">'.6'</span>))</span>
-<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"orangered"</span>), so.PolyFit(<span class="dv">1</span>))</span>
-<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"centralAir"</span>)</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"orangered"</span>), so.PolyFit(<span class="dv">1</span>))</span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"centralAir"</span>)</span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">"Central Air: </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>)</span>
 <span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
 <span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-87-output-1.png" width="753" height="369" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-89-output-1.png" width="758" height="374" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-144" class="cell" data-execution_count="157">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.ols(<span class="st">'price ~ livingArea * centralAir'</span>, data<span class="op">=</span>houses).fit()</span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>mod.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="157">
+<div id="cell-146" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">'price ~ livingArea + centralAir'</span>, data<span class="op">=</span>houses).fit()</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">'price ~ livingArea * centralAir'</span>, data<span class="op">=</span>houses).fit()</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>display(mod1.params, mod2.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Intercept           14144.05
+centralAir[T.Yes]   28450.58
+livingArea            106.76
+dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
 <pre><code>Intercept                       44977.64
 centralAir[T.Yes]              -53225.75
 livingArea                         87.72
@@ -2137,48 +2210,14 @@ livingArea:centralAir[T.Yes]       44.61
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-145" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>sim4[<span class="st">"mod1"</span>] <span class="op">=</span> mod1.resid</span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>sim4[<span class="st">"mod2"</span>] <span class="op">=</span> mod2.resid</span>
-<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>sim4_long <span class="op">=</span> sim4.melt(</span>
-<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">"x1"</span>, <span class="st">"x2"</span>],</span>
-<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"mod1"</span>, <span class="st">"mod2"</span>],</span>
-<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">"model"</span>,</span>
-<span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"resid"</span>,</span>
-<span id="cb89-9"><a href="#cb89-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb89-10"><a href="#cb89-10" aria-hidden="true" tabindex="-1"></a>sim4_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
-<pre><code>       x1    x2 model  resid
-0   -1.00 -1.00  mod1   3.25
-1   -1.00 -1.00  mod1   0.21
-2   -1.00 -1.00  mod1  -0.64
-3   -1.00 -0.78  mod1  -0.42
-..    ...   ...   ...    ...
-596  1.00  0.78  mod2   1.09
-597  1.00  1.00  mod2   1.47
-598  1.00  1.00  mod2   3.77
-599  1.00  1.00  mod2  -4.15
-
-[600 rows x 4 columns]</code></pre>
+<p>R-squared 비교</p>
+<div id="cell-148" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>display(mod1.rsquared, mod2.rsquared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>0.5253223149339137</code></pre>
 </div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> so.Plot(sim4_long, x<span class="op">=</span><span class="st">"resid"</span>, color<span class="op">=</span><span class="st">"model"</span>).add(so.Line(), so.Hist(binwidth<span class="op">=</span><span class="fl">0.5</span>))</span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> so.Plot(</span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>    sim4_long.assign(resid_abs<span class="op">=</span><span class="kw">lambda</span> x: np.<span class="bu">abs</span>(x.resid)), x<span class="op">=</span><span class="st">"resid_abs"</span>, color<span class="op">=</span><span class="st">"model"</span></span>
-<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>).add(so.Line(), so.Hist(binwidth<span class="op">=</span><span class="fl">0.5</span>))</span>
-<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>display(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="cell-146" class="cell quarto-layout-panel" data-execution_count="38" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-90-output-1.png" width="701" height="445"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-90-output-2.png" width="701" height="445"></p>
-</div>
+<div class="cell-output cell-output-display">
+<pre><code>0.5430362101820772</code></pre>
 </div>
 </div>
 

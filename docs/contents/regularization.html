@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-15">
+<meta name="dcterms.date" content="2024-04-17">
 
 <title> Introduction to Data Science - Regularization</title>
 <style>
@@ -66,6 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../contents/tree.html" rel="next">
+<link href="../contents/mlsl-intro.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -316,19 +318,70 @@ window.Quarto = {
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Machine Learning</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Regularization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">K-Nearest Neighbors</span>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">Classification</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+ <span class="menu-text">Logistic Regression</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Linear Discriminant Analysis</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree-based Models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+ <span class="menu-text">Support Vector Machine</span>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">Unsupervised Learning</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Communicate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -368,7 +421,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 15, 2024</p>
+      <p class="date">April 17, 2024</p>
     </div>
   </div>
   
@@ -423,33 +476,24 @@ window.Quarto = {
 <li>이를 shrinkage/regularization이라고 하며, 이는 variance를 줄이는 효과가 있음.</li>
 <li>Shrinkage 종류에 따라 일부 계수는 정확히 0으로 추정될 수 있음; 변수 선택도 수행됨.</li>
 </ul>
-<p>OLS estimation에서는 <span class="math inline">\(\displaystyle RSS = \sum_{i=1}^{n} e^2\)</span>, &nbsp; <span class="math inline">\(e = y - \hat{y}\)</span>를 최소화시켰으나,<br>
+<p>OLS estimation에서는 <span class="math inline">\(\displaystyle RSS = \sum_{i=1}^{n} e^2\)</span>, &nbsp; <span class="math inline">\((e = y - \hat{y})\)</span>&nbsp;를 최소화시켰으나,<br>
 다음과 같이 <strong>shrinkage penalty</strong>를 추가하여 최소화시키는 방법을 사용함.</p>
 <ul>
 <li>Ridge regression (L2 regularization): <span class="math inline">\(\displaystyle \sum_{j=1}^{p} e^2 + \lambda\sum_{j=1}^{p} \beta_j^2\)</span></li>
 <li>Lasso regression (L1 regularization): <span class="math inline">\(\displaystyle \sum_{j=1}^{p} e^2 + \lambda\sum_{j=1}^{p} |\beta_j|\)</span></li>
-<li>Elastic net regression: <span class="math inline">\(\displaystyle \sum_{j=1}^{p} e^2 + \lambda \left( \frac{1-\alpha}{2} \sum_{j=1}^{p} \beta_j^2 + \alpha \sum_{j=1}^{p} |\beta_j|\right)\)</span></li>
+<li>Elastic net regression: ridge와 lasso regression을 결합</li>
 </ul>
+<!-- $\displaystyle \sum_{j=1}^{p} e^2 + \lambda \left( \frac{1-\alpha}{2} \sum_{j=1}^{p} \beta_j^2 + \alpha \sum_{j=1}^{p} |\beta_j|\right)$ -->
 <p><span class="math inline">\(\lambda \geq 0\)</span>는 shrinkage penalty의 크기를 결정하는 tuning parameter(hyperparameter)</p>
 <ul>
-<li>적절한 <span class="math inline">\(\lambda\)</span>를 찾기 위해 cross-validation을 사용함</li>
-<li>절편에 대해서는 shrinkage penalty를 적용하지 않음</li>
-<li>각 X와 Y간의 관계에 대해서만 shrink하길 기대</li>
-</ul>
-<div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge, Lasso, ElasticNet</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ridge, lasso, elastic <span class="op">=</span> Ridge(), Lasso(), ElasticNet()</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model <span class="kw">in</span> [ridge, lasso, elastic]:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    model.fit(pl_X_train, pl_y_train)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>model<span class="sc">.</span>__class__<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">: '</span>  <span class="co"># get model name</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f'</span><span class="sc">{</span>model<span class="sc">.</span>score(pl_X_test, pl_y_test)<span class="sc">:.4}</span><span class="ss">'</span> ...     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
+<li><p>절편에 대해서는 shrinkage penalty를 적용하지 않음</p></li>
+<li><p><span class="math inline">\(\lambda = 0\)</span>이면 OLS와 동일</p></li>
+<li><p><span class="math inline">\(\lambda\)</span>가 커질 수록 penalty의 상대적 중요도가 높아져 파라미터의 크기가 줄어듦; <span class="math inline">\(\beta_j \rightarrow 0\)</span> as <span class="math inline">\(\lambda \rightarrow \infty\)</span> (null model)</p></li>
+<li><p>적절한 <span class="math inline">\(\lambda\)</span>를 찾기 위해 cross-validation을 사용함</p></li>
+<li><p>각 X와 Y간의 관계에 대해서만 shrink하길 기대</p></li>
 <li><p><em>Subset Selection</em> 이 접근 방식에는 응답과 관련이 있다고 생각되는 p 예측 변수의 하위 집합을 식별하는 것입니다. 그런 다음 축소된 변수 집합에 최소 제곱을 사용하여 모델을 맞춥니다.</p></li>
 <li><p><em>Dimension Reduction</em> 이 접근 방식은 예측값을 M 차원으로 투영하는 것을 포함합니다. 예측자를 M차원 하위 공간으로 투영하는 것입니다(여기서 M&lt;p). 이는 변수의 다양한 선형 조합 또는 투영을 M개 계산하여 이루어집니다. 그런 다음 이러한 M개의 예측을 최소 제곱으로 선형 회귀 모델을 맞추기 위한 예측자로 사용합니다.</p></li>
 </ul>
-<p>Translated with DeepL.com (free version)</p>
 
 
 
@@ -859,6 +903,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../contents/mlsl-intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contents/tree.html" class="pagination-link" aria-label="Tree-based Models">
+        <span class="nav-page-text">Tree-based Models</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -873,7 +929,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
