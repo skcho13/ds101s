@@ -89,18 +89,18 @@ website:
       - text: ---
 
       - section: Machine Learning
-        contents: 
-          - href: contents/mlsl-intro.ipynb
-            text: Introduction
-          - href: contents/regularization.ipynb
-          - text: K-Nearest Neighbors
-      - section: Classification
-        contents: 
-          - text: Logistic Regression
-          - text: Linear Discriminant Analysis
-      - href: contents/tree.ipynb 
-      - text: Support Vector Machine
-      - text: Unsupervised Learning
+      #   contents: 
+      #     - href: contents/mlsl-intro.ipynb
+      #       text: Introduction
+      #     - href: contents/regularization.ipynb
+      #     - text: K-Nearest Neighbors
+      # - section: Classification
+      #   contents: 
+      #     - text: Logistic Regression
+      #     - text: Linear Discriminant Analysis
+      # - href: contents/tree.ipynb 
+      # - text: Support Vector Machine
+      # - text: Unsupervised Learning
 
       - text: ---
       - section: Communicate
