@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-15">
+<meta name="dcterms.date" content="2024-04-18">
 
 <title> Introduction to Data Science - Two Cultures</title>
 <style>
@@ -369,7 +369,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 15, 2024</p>
+      <p class="date">April 18, 2024</p>
     </div>
   </div>
   
@@ -406,7 +406,7 @@ Engineering</li>
 </div>
 </div>
 <ul>
-<li>컴퓨터 사이언스의 경우, 데이터로부터 패턴을 찾아 주로 <strong>분류</strong>나 <strong>예측</strong>을 위한 이론과 툴들이 개발되는 반면,</li>
+<li>컴퓨터 사이언스의 경우, 데이터로에 존재하는 패턴을 학습하여 <strong>분류</strong>를 하거나 <strong>예측</strong>을 위한 이론과 툴들이 개발되는 반면,</li>
 <li>과학자들은 예측보다는, 변수들 간의 <strong>진정한 관계</strong> 혹은 <strong>인과 관계</strong>를 탐구</li>
 <li>현재 이 둘은 소위 cross-fertilization을 지향하며 같이 발전, 통합되어가고 있음.</li>
 </ul>
@@ -439,8 +439,8 @@ Engineering</li>
 <p><strong>데이터 분석의 목적</strong></p>
 <p><img src="images/black-box.png" height="100"></p>
 <ul>
-<li>Prediction 예측: 미래의 입력 변수에 대해 어떤 반응이 나올지 예측할 수 있는 기능</li>
-<li>Information 정보: 자연이 응답 변수와 입력 변수를 어떻게 연관시키는지에 대한 정보를 추출</li>
+<li><em>Prediction</em> 예측: 미래의 입력 변수(input, X)에 대해 어떤 반응(reponse, Y)이 나올지 예측할 수 있는 기능</li>
+<li><em>Information</em> 정보: 자연이 응답 변수(reponse, Y)와 입력 변수(input, X)를 어떻게 연관시키는지에 대한 정보를 추출</li>
 </ul>
 <p><strong>전통적 통계의 접근 방식: data modeling<br>
 머신러닝의 접근 방식: algorithmic modeling </strong></p>
@@ -465,7 +465,7 @@ Engineering</li>
 <ul>
 <li>예를 들어, Gaussian, Binormial distribution, …</li>
 </ul></li>
-<li>데이터와 <strong>가장 적합한(best fitted)</strong> 특정 모델을 선택 (즉, <strong>파라미터 <span class="math inline">\(\beta\)</span></strong>를 추정)
+<li>데이터와 <strong>가장 적합한(best fitted)</strong> 특정 모델을 선택 (즉, <strong>파라미터 <span class="math inline">\(\beta s\)</span></strong>를 추정)
 <ul>
 <li>즉, 위의 선형 함수가 X, Y의 1) 관계를 나타내고, 2) 예측을 위해 사용됨</li>
 <li>노이즈(noise)로부터 시그널(signal)을 분리: “true relationships”</li>
@@ -551,24 +551,24 @@ Noise/residual의 분포: <span class="math inline">\(\epsilon_i \sim N(0, \sigm
 <ul>
 <li>특히, 주로 <strong>예-아니오</strong>로 답하는 적합도 테스트를 통해 모델의 적합성을 판단</li>
 </ul></li>
-<li>주로 톡창적인 확률 모형을 찾는데 주력</li>
-<li>모델을 데이터에 맞출 때 결론은 자연의 메커니즘이 아니라 모델의 메커니즘에 관한 것임</li>
+<li>주로 독창적인 확률 모형을 찾는데 주력</li>
+<li>(가정한) 모델을 데이터에 맞출 때 결론은 자연의 메커니즘이 아니라 모델의 메커니즘에 관한 것이 됨</li>
 <li>모델이 자연을 제대로 모방하지 못하면 결론이 잘못될 수 있음</li>
 </ul>
 <p><strong>데이터 모델의 다양성</strong></p>
 <ul>
 <li>데이터 모델링의 가장 큰 장점: 입력 변수와 응답 간의 관계를 간단하고 이해하기 쉬운 그림으로 표현 가능</li>
-<li>하지만, 모델이 데이터에 동일하게 적합한 여러 모델이 존재
+<li>하지만, 데이터에 동일하게 적합한 여러 모델이 존재
 <ul>
 <li>적합성(goodness-of-fit)에 대한 기준이 통계적 검정을 통한 예-아니오로 판별</li>
 </ul></li>
 <li>관찰한 데이터로만 모델의 파라미터를 추정하기 때문에, 과적합이 발생하며, 새로운 데이터에 대한 예측 정확도가 떨어질 수 있음</li>
-<li>편향되지 않은 예측 정확도 추정치를 얻으려면 교차 검증(cross-validation)을 사용하거나 테스트 집합(test set)을 따로 보관할 필요가 있음</li>
+<li>편향되지 않은 예측 정확도 추정치를 얻으려면 교차 검증(cross-validation)을 사용하거나 일부 데이터를 테스트 집합(test set)으로 따로 떼어 놓을 필요가 있음</li>
 </ul>
 <p><strong>모형의 가정에 위배</strong></p>
 <ul>
 <li>일반적으로 의료 데이터, 재무 데이터와 같이 복합 시스템에서 생성된 데이터에 단순한 파라메트릭 모델을 적용하면 알고리즘 모델에 비해 정확성과 정보가 손실될 수 있음</li>
-<li>데이터의 발생 메커니즘(확률 분포)에 대한 가정이 성립되기 어려움</li>
+<li>현실에서 데이터의 발생 메커니즘(확률 분포)에 대한 가정이 성립되기 어려움</li>
 <li>모델을 가정하기보다는 데이터와 실제로 처한 문제로부터 해결책을 찾아 갈 필요가 있음.</li>
 </ul>
 <blockquote class="blockquote">
@@ -598,8 +598,8 @@ Bayesian Models
 <section id="the-algorithmic-modeling-culture" class="level2">
 <h2 class="anchored" data-anchor-id="the-algorithmic-modeling-culture">The Algorithmic Modeling Culture</h2>
 <p><img src="images/black-box-3.png" height="120"></p>
-<p>자연이 복잡하고 신비하며 적어도 부분적으로는 알 수 없는 블랙박스에서 데이터를 생성한다고 가정<br>
-데이터로부터 반응 y를 <strong>예측</strong>을 하기 위해 x에 작용하는 <strong>알고리즘 함수 f(x)</strong>를 찾고자 함</p>
+<p>자연의 복잡하고 신비하며 적어도 부분적으로는 알 수 없는 블랙박스에서부터 데이터가 생성된다고 가정<br>
+데이터로부터 반응 Y를 <strong>예측</strong>을 하기 위해 X에 작용하는 <strong>알고리즘 함수 f(X)</strong>를 찾고자 함</p>
 <ul>
 <li>가정: 데이터가 어떤 분포로부터 독립적으로 발생(i.i.d. Independent &amp; identically distributed)</li>
 <li>모델의 타당도 지표: 예측 정확도 (predictive accuracy)</li>
@@ -649,7 +649,7 @@ The Occam’s Dilemma</p>
 <li>단순하고 해석 가능한 함수는 예측력이 높지 못함</li>
 </ul></li>
 <li>예측 정확도를 먼저 추구한 후 그 이유를 이해하는 것이 더 낫다고 제안</li>
-<li>목표 지향적인 통계적 관점에서 보면 오컴의 딜레마는 존재하지 않음</li>
+<li>목표 지향적인 관점에서 보면 오컴의 딜레마는 존재하지 않음</li>
 </ul>
 <p><strong>차원의 저주 (the curse of dimensionality)</strong><br>
 Digging It Out in Small Pieces</p>
@@ -779,7 +779,7 @@ Digging It Out in Small Pieces</p>
 <ul>
 <li>Positivism: 우주가 인간 사고의 산물이며 과학은 그 사고에 대한 설명일 뿐이라고 주장</li>
 <li>인간의 뇌 밖의 세계에서 일어나는 객관적인 과정으로 해석되는 인과관계는 과학적 의미를 가질 수 없음</li>
-<li>오직 관찰의 패턴만을 반영할 수 있으며, 이는 상관관계로 설명될 수 있음</li>
+<li>오직 관찰된 패턴만을 반영할 수 있으며, 이는 상관관계로 설명될 수 있음</li>
 <li>피어슨은 인과관계를 분석의 언어에서 배제시키고, 이후 그 전통이 통계학에서 어어짐</li>
 </ul>
 <p><strong>Sewall Wright</strong></p>
@@ -1423,7 +1423,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

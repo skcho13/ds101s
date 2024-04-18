@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-15">
+<meta name="dcterms.date" content="2024-04-18">
 
 <title> Introduction to Data Science - Wrangling</title>
 <style>
@@ -357,7 +357,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 15, 2024</p>
+      <p class="date">April 18, 2024</p>
     </div>
   </div>
   
@@ -762,13 +762,13 @@ yellow Card 17.08 12.00  4000
 </div>
 </div>
 <p>가장 일반적인 방식으로 <code>appy()</code>를 사용하여 사용자 정의 함수를 적용</p>
-<div id="cell-44" class="cell" data-execution_count="29">
+<div id="cell-44" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standardize</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> standardize(x):</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (x <span class="op">-</span> x.mean()) <span class="op">/</span> x.std()</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>taxi.groupby(<span class="st">"color"</span>)[<span class="st">"tip_ratio"</span>].<span class="bu">apply</span>(standardize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>taxi.groupby(<span class="st">"color"</span>, group_keys<span class="op">=</span><span class="va">True</span>)[<span class="st">"tip_ratio"</span>].<span class="bu">apply</span>(standardize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>color       
 green   5451     NaN
         5452   -0.95

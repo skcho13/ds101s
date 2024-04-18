@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-15">
+<meta name="dcterms.date" content="2024-04-18">
 
 <title> Introduction to Data Science - Statistics</title>
 <style>
@@ -388,7 +388,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 15, 2024</p>
+      <p class="date">April 18, 2024</p>
     </div>
   </div>
   
@@ -441,7 +441,7 @@ window.Quarto = {
 <ul>
 <li>이는 변수들 간의 관계가 특정 표본에 너무 <strong>overfit</strong>되지 않도록 하여,</li>
 <li><strong>새로운 데이터</strong>에서도 그 관계가 유지되도록 하기 위한 것이며,</li>
-<li>이를 위해 데이터를 training, test set으로 나눠 cross validation과 같은 방법을 이용하여,</li>
+<li>이를 위해 데이터를 training set, validation set으로 나누거나, resampling과 같은 방법을 이용하여; cross validation, bootstrapping</li>
 <li>여러 샘플에 대해 모형을 테스트하는 것과 같은 효과를 얻을 수 있음</li>
 <li>전통적으로 가상의 모집단에 대해 추론하여 일반화를 성취하려는 것과 같은 맥락임</li>
 </ul>
@@ -510,7 +510,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="42">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="42" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
@@ -520,7 +520,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-9" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="48">
+<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="48" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
@@ -557,7 +557,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1.5, 1.5, 0.5]]" data-execution_count="11">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="11" data-layout="[[1.5, 1.5, 0.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
@@ -624,7 +624,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
+<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="30" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>Intercept   43658.59
@@ -704,11 +704,10 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <p>만약, 연차의 효과 $1224이 논문수를 고려했을 때 줄어든($983) 수준을 훨씬 넘어 통계적으로 유의하지 않을 정도로 0에 가까워진다면, 연차의 효과는 모두 논문의 효과를 거쳐 나타나는 것이라고 말할 수 있음. 이 때, 완전 매개 (fully mediate)한다고 표현함.</p>
 <p><img src="images/salary_model3.png" class="img-fluid" width="400"></p>
 <p>이들는 인과관계의 <strong>기제/메커니즘</strong>의 일부를 설명해 줌.</p>
-<p>반대로, 만약 다음과 같이 논문의 효과가 거의 사라진다면, 논문의 효과는 가짜 효과, <strong>spurious effect</strong>라고 표현함. 이는 논문과 연봉 간의 관계가 보이는 이유는 연차라는 <strong>common cause</strong>가 연결하고 있기 때문임. 이를 <strong>confoundin</strong>g이라고 함.</p>
 <p><strong>Spurious Relationships</strong></p>
-<p>한편, 연차를 고려했을 때, 논문수(<code>pubs</code>)의 효과가 거의 사라진다면,<br>
+<p>반대로, 만약 다음과 같이 연차를 고려했을 때, 연차를 고려했을 때, 논문수(<code>pubs</code>)의 효과가 거의 사라진다면,<br>
 논문수(<code>pubs</code>)와 연봉(<code>salary</code>)의 관계는 <strong>spurious</strong>한 관계라고 잠정적으로 말할 수 있음.</p>
-<p>연차(<code>time</code>)를 논문수와 연봉의 <strong>common cause</strong> 라고 말하며, <strong>confounding</strong>이 되어 논문수와 연봉의 인과관계는 실제로 없을 수 있음을 암시함.</p>
+<p>연차를 논문수와 연봉의 <strong>common cause</strong> 라고 말하며, <strong>confounding</strong>이 되어 논문수와 연봉의 인과관계는 실제로 없을 수 있음을 암시함.</p>
 <p><img src="images/salary_model4.png" class="img-fluid" width="500"></p>
 <p><strong>Strength of Associations</strong></p>
 <p>Correlations with <code>salary</code></p>
@@ -1437,7 +1436,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

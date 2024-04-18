@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-13">
+<meta name="dcterms.date" content="2024-04-18">
 
 <title> Introduction to Data Science - 개관</title>
 <style>
@@ -335,7 +335,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 13, 2024</p>
+      <p class="date">April 18, 2024</p>
     </div>
   </div>
   
@@ -542,7 +542,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <ul>
 <li>데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요
 <ul>
-<li>배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물
+<li>배출(exhaust) 데이터: 어떤 목적을 위해 데이터를 얻는 과정에서 얻어지는 부산물
 <ul>
 <li>소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움
 <ul>
@@ -571,7 +571,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <li><strong>Database &amp; computer science</strong>
 <ul>
 <li>수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술</li>
-<li>다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용</li>
+<li>다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용 능력</li>
 <li>ML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등</li>
 </ul></li>
 <li><strong>Visualisation</strong>
@@ -596,14 +596,14 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <li>데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용</li>
 <li>응용 측면에서는
 <ul>
-<li>수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등</li>
+<li>수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등을 파악</li>
 <li>해결할 문제와 데이터에 가장 적합한 알고리즘을 파악</li>
 </ul></li>
 </ul></li>
 <li><strong>Communication</strong>
 <ul>
 <li>데이터에 담긴 스토리를 효과적으로 전달하는 능력</li>
-<li>분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등</li>
+<li>분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등을 파악</li>
 </ul></li>
 </ul>
 </section>
@@ -774,9 +774,9 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <li>연관성 규칙의 신뢰도가 75%라면 고객이 핫도그와 케첩을 모두 구매한 경우 75%에서 맥주도 함께 구매했음을 의미</li>
 <li>인구통계학적 정보를 연관성 분석에 포함하여 마케팅 및 타겟팅 광고에 활용
 <ul>
-<li>특히, 구매 기록 정보는 없는 경우</li>
+<li>특히, 구매 기록 정보가 없는 경우</li>
+<li><em>IF 성별(남성) &amp; 나이(35세 미만) &amp; {핫도그, 케첩}, THEN {맥주}</em></li>
 </ul></li>
-<li><em>IF 성별(남성) &amp; 나이(35세 미만)&amp; {핫도그, 케첩}, THEN {맥주}</em></li>
 <li>장바구니 분석을 통해 다음과 같은 질문에 답을 탐색
 <ul>
 <li>마케팅 캠페인이 효과가 있었는지,</li>
@@ -833,11 +833,13 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <h3 class="anchored" data-anchor-id="classification-prediction">Classification (Prediction)</h3>
 <p><strong>Churn or No Churn(고객 이탈), That Is the Question</strong></p>
 <ul>
-<li>행동 성향 모델링의 목표: 마케팅 응답, 서비스 탈퇴 등 다양한 행동 예측</li>
+<li>개인의 행동 성향에 대한 모델링이 목표: 예, 광고 마케팅에 대한 반응, 서비스 탈퇴 등 다양한 행동 예측
+<ul>
 <li>휴대폰 서비스 회사의 고객 유지 필요성: 신규 고객 유치 비용 대비 기존 고객 유지 비용의 상대적 높음</li>
 <li>이탈 가능성이 높은 고객 식별의 중요성: 유지 비용 최소화 및 이탈 예측을 통한 효율적인 혜택 제공 필요</li>
 <li>이탈 예측의 의미와 활용: 서비스 이탈 예측을 통해 고객 이탈 가능성을 예측하고 효율적인 대응 가능</li>
-<li>다양한 산업의 이탈 예측 활용: 통신, 유틸리티, 은행, 보험 등에서의 이탈 예측을 통한 비즈니스 전략 개발 및 운영 향상</li>
+</ul></li>
+<li>다양한 산업의 이탈 예측에 활용: 통신, 유틸리티, 은행, 보험 등에서의 이탈 예측을 통한 비즈니스 전략 개발 및 운영 향상</li>
 </ul>
 <!-- 개인의 행동 성향을 모델링하는 것이 목표이기 때문입니다. 이러한 행동은 마케팅에 응답하는 것부터 대출 연체 또는 서비스 탈퇴에 이르기까지 다양합니다. 특히 휴대폰 서비스 회사에게는 서비스를 이탈할 가능성이 높은 고객을 식별하는 능력이 중요합니다.
 
@@ -886,13 +888,13 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <h3 class="anchored" data-anchor-id="regression-prediction">Regression (Prediction)</h3>
 <p><strong>How Much Will It Cost?</strong></p>
 <ul>
-<li>앞서 분류는 범주형 속성의 값을 추정하는 반며, 회귀는 연속적인 값을 추정</li>
+<li>앞서, 분류는 범주형 속성의 값을 추정하는 반면, 회귀는 연속적인 값을 추정</li>
 <li>전통적인 통계적 모형의 근간</li>
 <li>예를 들어, 주택의 “가격”을 예측하는 경우
 <ul>
 <li>주택의 크기, 방의 개수, 층수, 해당 지역의 평균 주택 가격, 해당 지역의 평균 주택 크기 등의 속성을 포함</li>
 </ul></li>
-<li>자동차의 “가격”을 예측하려며
+<li>자동차의 “가격”을 예측하려면
 <ul>
 <li>자동차의 연식, 주행 거리, 엔진 크기, 자동차 제조사, 문 개수 등의 속성을 포함</li>
 </ul></li>
@@ -1333,7 +1335,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
