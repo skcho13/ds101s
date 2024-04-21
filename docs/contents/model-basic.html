@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-17">
+<meta name="dcterms.date" content="2024-04-22">
 
 <title> Introduction to Data Science - Model Basics</title>
 <style>
@@ -333,8 +333,44 @@ window.Quarto = {
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Machine Learning</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Machine Learning Basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regularization</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/shrinkage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/knn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">K-Nearest Neighbors</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
@@ -411,7 +447,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 17, 2024</p>
+      <p class="date">April 22, 2024</p>
     </div>
   </div>
   
@@ -440,7 +476,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="4" data-layout-ncol="2">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
@@ -520,7 +556,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
+<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -640,7 +676,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="5">
+<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[[2, 4, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -668,7 +704,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="8">
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
@@ -753,7 +789,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="20">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" width="591" height="374"></p>
@@ -767,7 +803,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="19">
+<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" width="599" height="374"></p>
@@ -1181,7 +1217,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <ul>
 <li><span class="math inline">\(RMSE = \displaystyle\sqrt{{\frac{{1}}{{n}} \sum_{{i=1}}^{{n}}{{e^2}}}}\)</span></li>
 <li><span class="math inline">\(MAE = \displaystyle\frac{{1}}{{n}} \sum_{{i=1}}^{{n}}|~e~|\)</span></li>
-<li><span class="math inline">\(R^2 = 1 - \displaystyle\frac{\frac{1}{n} \sum_{i=1}^{n}{(e-0)^2}}{\frac{1}{n} \sum_{i=1}^{n}{(Y-\overline{Y})^2}} = 1 - \frac{V(e)}{V(Y)}\)</span></li>
+<li><span class="math inline">\(R^2 = 1 - \displaystyle\frac{\frac{1}{n} \sum_{i=1}^{n}{(e-0)^2}}{\frac{1}{n} \sum_{i=1}^{n}{(Y-\overline{Y})^2}} = 1 - \frac{V(e)}{V(Y)} = \frac{V(\widehat Y)}{V(Y)}\)</span>,   <span class="math inline">\(V(Y) = V(\widehat Y) + V(e)\)</span></li>
 </ul>
 <p>전통적으로 X가 Y를 얼마나 잘 “설명”해주는지에 대한 지표로서 <span class="math inline">\(R^2\)</span>를 사용함</p>
 <div id="cell-59" class="cell" data-execution_count="292">
@@ -1400,7 +1436,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(formula, data<span class="op">=</span>houses, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-67" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
+<div id="cell-67" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>         price
@@ -1432,7 +1468,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> houses[<span class="st">"price"</span>], houses[[<span class="st">"livingArea"</span>, <span class="st">"bedrooms"</span>]]</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-68" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="31">
+<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[[1, 2]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>0       132500
@@ -1590,7 +1626,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <div>
 
 </div>
-<div id="cell-90" class="cell quarto-layout-panel" data-execution_count="72" data-layout-ncol="2">
+<div id="cell-90" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="72">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-54-output-1.png" class="img-fluid"></p>

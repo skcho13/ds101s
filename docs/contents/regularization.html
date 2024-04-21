@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-18">
+<meta name="dcterms.date" content="2024-04-21">
 
 <title> Introduction to Data Science - Regularization</title>
 <style>
@@ -66,6 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../contents/shrinkage.html" rel="next">
+<link href="../contents/mlsl-intro.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -316,8 +318,44 @@ window.Quarto = {
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Machine Learning</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Machine Learning Basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Regularization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/shrinkage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/knn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">K-Nearest Neighbors</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
@@ -343,7 +381,17 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#shrinkage" id="toc-shrinkage" class="nav-link active" data-scroll-target="#shrinkage">Shrinkage</a>
+  <ul>
+  <li><a href="#ridge-regression" id="toc-ridge-regression" class="nav-link" data-scroll-target="#ridge-regression">Ridge regression</a></li>
+  <li><a href="#lasso-regression" id="toc-lasso-regression" class="nav-link" data-scroll-target="#lasso-regression">Lasso regression</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -351,7 +399,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Regularization</h1>
-<p class="subtitle lead">An Introduction to Statistical Learning with Applications in Python</p>
+<p class="subtitle lead">An Introduction to Statistical Learning with Applications in Python by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani</p>
 </div>
 
 
@@ -368,7 +416,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 18, 2024</p>
+      <p class="date">April 21, 2024</p>
     </div>
   </div>
   
@@ -409,20 +457,45 @@ window.Quarto = {
 </details>
 </div>
 <p>앞서 flexibility를 조정하기 위해 구체적으로 특정 모델을 선택했다면,<br>
-좀 더 알고리즘적으로 optimal한 bias-variance trade-off를 찾는 방식을 알아봄.</p>
+좀 더 알고리즘적으로 optimal한 bias-variance trade-off를 찾는 방식을 알아보고자 함.</p>
 <p>함수 <span class="math inline">\(h(x) = sin(2\pi x)\)</span>로부터 생성된 데이터셋(N=10)에 대해 다항식의 차수에 따른 flexibility의 변화에 따른 OLS 모델들을 비교하면,</p>
 <p><a href="images/model-complexity.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/model-complexity.png" class="img-fluid" width="600"></a></p>
 <p><a href="images/model-complexity-coefs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/model-complexity-coefs.png" class="img-fluid" width="600"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: pp.&nbsp;10-12, <em>Deep Learning: Foundations and Concepts</em> by Bishop, C. M. &amp; Bishop, H</p>
 </div>
-<p><em>Shrinkage</em></p>
+<section id="shrinkage" class="level1">
+<h1>Shrinkage</h1>
 <ul>
-<li>모든 예측변수를 포함시킨 후</li>
-<li>추정 계수가 너무 커지지 않도록 제약을 가하는 방법</li>
-<li>이를 shrinkage/regularization이라고 하며, 이는 variance를 줄이는 효과가 있음.</li>
-<li>Shrinkage 종류에 따라 일부 계수는 정확히 0으로 추정될 수 있음; 변수 선택도 수행됨.</li>
+<li>예측변수에 대한 가정 혹은 변수를 선택을 하지 않고, 추정 계수가 너무 커지지 않도록 제약을 가하는 방법</li>
+<li>이를 shrinkage/regularization이라고 하며,
+<ul>
+<li><strong>variance를 줄이는 효과가 있음</strong></li>
+<li>즉, overfitting을 줄여, (미래 데이터의) test error를 줄이는 효과가 있음. 즉 예측의 정확도를 높임</li>
+</ul></li>
+<li>제약의 방식에 따라 일부 계수는 정확히 0으로 추정될 수 있음
+<ul>
+<li>변수 선택(variable/feature selection)도 가능</li>
+<li>모델의 <strong>해석(interpertability)이 용이해짐</strong></li>
+</ul></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Variance가 커지는 경우; overfitting</p>
+<ul>
+<li>데이터에 비해 예측변수가 많을 때; <span class="math inline">\(n \gg p\)</span></li>
+<li>Y와 실제 관련없는 변수들이 많을 때; 노이즈에 fitting</li>
+</ul>
+</div>
+</div>
 <p>OLS estimation에서는 <span class="math inline">\(\displaystyle RSS = \sum_{i=1}^{n} e^2\)</span>, &nbsp; <span class="math inline">\((e = y - \hat{y})\)</span>&nbsp;를 최소화시켰으나,<br>
 다음과 같이 <strong>shrinkage penalty</strong>를 추가하여 최소화시키는 방법을 사용함.</p>
 <ul>
@@ -433,16 +506,137 @@ window.Quarto = {
 <!-- $\displaystyle \sum_{j=1}^{p} e^2 + \lambda \left( \frac{1-\alpha}{2} \sum_{j=1}^{p} \beta_j^2 + \alpha \sum_{j=1}^{p} |\beta_j|\right)$ -->
 <p><span class="math inline">\(\lambda \geq 0\)</span>는 shrinkage penalty의 크기를 결정하는 tuning parameter(hyperparameter)</p>
 <ul>
-<li><p>절편에 대해서는 shrinkage penalty를 적용하지 않음</p></li>
-<li><p><span class="math inline">\(\lambda = 0\)</span>이면 OLS와 동일</p></li>
-<li><p><span class="math inline">\(\lambda\)</span>가 커질 수록 penalty의 상대적 중요도가 높아져 파라미터의 크기가 줄어듦; <span class="math inline">\(\beta_j \rightarrow 0\)</span> as <span class="math inline">\(\lambda \rightarrow \infty\)</span> (null model)</p></li>
-<li><p>적절한 <span class="math inline">\(\lambda\)</span>를 찾기 위해 cross-validation을 사용함</p></li>
-<li><p>각 X와 Y간의 관계에 대해서만 shrink하길 기대</p></li>
-<li><p><em>Subset Selection</em> 이 접근 방식에는 응답과 관련이 있다고 생각되는 p 예측 변수의 하위 집합을 식별하는 것입니다. 그런 다음 축소된 변수 집합에 최소 제곱을 사용하여 모델을 맞춥니다.</p></li>
-<li><p><em>Dimension Reduction</em> 이 접근 방식은 예측값을 M 차원으로 투영하는 것을 포함합니다. 예측자를 M차원 하위 공간으로 투영하는 것입니다(여기서 M&lt;p). 이는 변수의 다양한 선형 조합 또는 투영을 M개 계산하여 이루어집니다. 그런 다음 이러한 M개의 예측을 최소 제곱으로 선형 회귀 모델을 맞추기 위한 예측자로 사용합니다.</p></li>
+<li>절편에 대해서는 shrinkage penalty를 적용하지 않음; 각 X와 Y간의 관계에 대해서만 shrink하길 기대</li>
+<li><span class="math inline">\(\lambda = 0\)</span>이면 OLS와 동일</li>
+<li><span class="math inline">\(\lambda\)</span>가 커질 수록 penalty의 상대적 중요도가 높아져 파라미터의 크기가 줄어듦; <span class="math inline">\(\beta_j \rightarrow 0\)</span> as <span class="math inline">\(\lambda \rightarrow \infty\)</span> (null model)</li>
+<li>적절한 <span class="math inline">\(\lambda\)</span>를 찾기 위해 cross-validation을 사용함</li>
 </ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>OLS estimation에서 변수의 scaling에 대해서 그대로 변하는데 반해; <span class="math inline">\(X^{\prime} = c*X\)</span>일 때, <span class="math inline">\(\displaystyle\hat{\beta}^{\prime} = \frac{1}{c} \hat{\beta}\)</span></li>
+<li>Ridge regression은 변수의 scaling에 매우 민감하며, 다른 변수들의 scale에도 영향을 받음</li>
+<li>변수들을 표준화(standardization)하는 것이 필요함; <span class="math inline">\(\displaystyle\frac{X - \bar{X}}{s_X}\)</span></li>
+</ul>
+</div>
+</div>
+<section id="ridge-regression" class="level2">
+<h2 class="anchored" data-anchor-id="ridge-regression">Ridge regression</h2>
+<p><span class="math inline">\(\lambda\)</span>가 커질수록 <span class="math inline">\(\beta\)</span>의 <span class="math inline">\(l2\)</span> norm은 항상 줄어듦</p>
+<ul>
+<li><span class="math inline">\(l2\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}\)</span> &nbsp;:(vector <span class="math inline">\((\beta_1, \beta_2, ..., \beta_p)\)</span>의 길이)</li>
+</ul>
+<p><a href="images/ridge.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/ridge.png" class="img-fluid" width="720"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;241, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
+</div>
+<p>다음과 같이 이상적이지 못한 경우에 정규화를 통해 적절한 bias-variance trade-off를 찾을 수 있음.</p>
+<ul>
+<li>p = 45 predictors, n = 50 observations</li>
+<li>상대적으로 variance의 <em>빠른 감소 효과</em> 덕분에, ridge regression은 OLS보다 더 좋은 예측 성능을 보임
+<ul>
+<li>bias에 대한 약간의 손해를 보지만, variance에 대해서는 큰 이익을 얻어 정확한 예측(test error를 줄임) 가능</li>
+</ul></li>
+<li>심지어, p &gt; n인 경우에도 작동함</li>
+<li>ridge regression은 OLS에서 variance가 높은 경우에 특히 유용함</li>
+<li>파라미터가 작아지지만, 0이 되지는 않아, 모델의 해석이 용이하지는 않음</li>
+<li>정규화 부분으로 인한 estimation에 대한 계산량의 증가 거의 없음; 매우 효율적</li>
+</ul>
+<p><a href="images/ridge-bias-variance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/ridge-bias-variance.png" class="img-fluid" width="720"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;243, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
+</div>
+</section>
+<section id="lasso-regression" class="level2">
+<h2 class="anchored" data-anchor-id="lasso-regression">Lasso regression</h2>
+<p><span class="math inline">\(\lambda\)</span>가 커질수록 <span class="math inline">\(\beta\)</span>의 <span class="math inline">\(l1\)</span> norm은 항상 줄어듦</p>
+<ul>
+<li><span class="math inline">\(l1\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_1 = \sum_{j=1}^{p} |\beta_j|\)</span></li>
+</ul>
+<p>Ridge와는 달리 파라미터가 0이 될 수 있음: 변수 선택(variable/feature selection)이 가능함<br>
+이는 변수가 많은 경우 파라미터 해석을 용이하게 함</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span> 값에 따라, 임의의 갯수의 변수를 포함할 수 있음</li>
+</ul>
+<p><a href="images/lasso.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/lasso.png" class="img-fluid" width="720"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;245, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
+</div>
+<p>Ridge와 마찬가지로 bias에 대한 약간의 손해를 보지만, variance에 대해서는 큰 이익을 얻어 정확한 예측(test error를 줄임) 가능</p>
+<p>그림 6.5와 동일한 데이터셋(p = 45 predictors, n = 50 observations)<br>
+<a href="images/lasso-bias-variance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/lasso-bias-variance.png" class="img-fluid" width="720"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;248, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
+</div>
+<p><strong>Ridge vs.&nbsp;Lasso</strong></p>
+<p>Ridge</p>
+<ul>
+<li>모든 변수를 포함하여, 종종 파라미터를 해석하기 어려워짐</li>
+<li><em>모든 예측변수들이 골고루 Y와 관련이 있을 때</em> 높은 예측성능을 보임
+<ul>
+<li>즉, 예측변수들이 비슷한 효과를 가질 때</li>
+<li>그림 6.8의 오른편에서 variance가 상대적으로 낮게 나타남</li>
+<li>45개의 예측변수가 모두 Y와 관련되도록 생성된 데이터셋</li>
+</ul></li>
+<li>모든 계수들이 비슷한 “비율”로 줄어듬</li>
+</ul>
+<p>Lasso</p>
+<ul>
+<li>일부 계수가 0이 되어 변수 선택이 가능하며, 따라서 해석이 용이해짐</li>
+<li><em>예측변수들 중 일부만이 Y와 관련이 있을 때</em> 높은 예측성능을 보임
+<ul>
+<li>즉, 상대적으로 소수의 예측변수들만이 큰 효과를 가질 때</li>
+<li>그림 6.9의 오른편에서 bias가 크게 작으며, variance도 낮음; 즉 모든 면에서 더 좋은 성능을 보임</li>
+<li>45개의 예측변수 중 2개만이 Y와 관련되도록 생성된 데이터셋</li>
+</ul></li>
+<li>모든 계수들이 비슷한 “크기”로 줄어듬; 작은 계수들은 0이 될 수 있음</li>
+</ul>
+<p><a href="images/lasso-bias-variance-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/lasso-bias-variance-2.png" class="img-fluid" width="720"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;249, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
+</div>
+<p>현실에서는 변수들 간의 true relationship을 미리 알 수 없으므로,<br>
+적절한 모델의 선택과 <span class="math inline">\(\lambda\)</span>를 찾기 위해 cross-validation을 사용함</p>
+<p><a href="images/lasso-cv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/lasso-cv.png" class="img-fluid" width="720"></a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Linear model selection">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Linear model selection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>앞서 shrinkage 방식으로 variance을 감소시키는 방법을 다루었는데, 이외에도 다른 방법의 접근이 있음.</p>
+<ul>
+<li><em>Subset Selection</em>: 예측변수들 중 Y와 연관되어 있다고 생각되는 변수들을 선택
+<ul>
+<li>설명력이 높은 조합의 변수들을 걸러내는 여러 방법이 있음</li>
+<li>어떤 기준으로 계산하느냐에 따라 결과가 달라질 수 있음</li>
+<li>많은 계산량이 필요하며, 변수의 수가 많을 때는 적용하기 어려움</li>
+<li><em>Best Subset Selection</em>, <em>Forward Stepwise Selection</em>, <em>Backward Stepwise Selection</em></li>
+</ul></li>
+<li><em>Dimension Reduction</em>: 예측변수들의 선형 조합으로 새로운 변수들을 얻어(설명 변량의 큰 손실없이) 변수의 갯수를 줄이고자 함
+<ul>
+<li>Principal Component Analysis(PCA)</li>
+<li>Partial Least Squares(PLS)</li>
+</ul></li>
+</ul>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -850,6 +1044,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../contents/mlsl-intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contents/shrinkage.html" class="pagination-link" aria-label="Implementations">
+        <span class="nav-page-text">Implementations</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -864,7 +1070,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -88,17 +88,21 @@ website:
           # - text: Example
       - text: ---
 
-      - section: Machine Learning
-      #   contents: 
-      #     - href: contents/mlsl-intro.ipynb
-      #       text: Introduction
-      #     - href: contents/regularization.ipynb
-      #     - text: K-Nearest Neighbors
+      - section: Machine Learning Basics
+        contents: 
+          - href: contents/mlsl-intro.ipynb
+            text: Introduction
+          - href: contents/regularization.ipynb
+            contents: 
+              - href: contents/shrinkage.ipynb
+                text: Implementations
+          - href: contents/knn.ipynb
+            text: K-Nearest Neighbors
       # - section: Classification
       #   contents: 
       #     - text: Logistic Regression
       #     - text: Linear Discriminant Analysis
-      # - href: contents/tree.ipynb 
+      # - text: Tree-base Models
       # - text: Support Vector Machine
       # - text: Unsupervised Learning
 

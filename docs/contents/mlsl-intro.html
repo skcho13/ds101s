@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-15">
+<meta name="dcterms.date" content="2024-04-21">
 
 <title> Introduction to Data Science - Machine/Statistical Learning</title>
 <style>
@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../contents/regularization.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -319,8 +320,44 @@ window.Quarto = {
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Machine Learning</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Machine Learning Basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regularization</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/shrinkage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/knn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">K-Nearest Neighbors</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
@@ -360,7 +397,11 @@ window.Quarto = {
   <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
   <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model evaluation</a>
   <ul>
-  <li><a href="#resampling-methods" id="toc-resampling-methods" class="nav-link" data-scroll-target="#resampling-methods">Resampling methods</a></li>
+  <li><a href="#resampling-methods" id="toc-resampling-methods" class="nav-link" data-scroll-target="#resampling-methods">Resampling methods</a>
+  <ul class="collapse">
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><strong>Cross-Validation</strong></a></li>
+  <li><a href="#bootstraping" id="toc-bootstraping" class="nav-link" data-scroll-target="#bootstraping"><strong>Bootstraping</strong></a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -388,7 +429,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 15, 2024</p>
+      <p class="date">April 21, 2024</p>
     </div>
   </div>
   
@@ -572,7 +613,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" height="300"></a></p>
@@ -773,7 +814,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <ul>
 <li>두 범주의 경우, 간단히 <span class="math inline">\(Y \in \{0, 1\}\)</span></li>
 </ul></li>
-<li><span class="math inline">\(f(x_i): P(Y = C_k|X=x_i)\)</span>가 최대인 클래스 에 할당; <span class="math inline">\(\underset{k}{\mathrm{argmax}}~ P(Y = C_k|X=x)\)</span>
+<li><span class="math inline">\(f(x_i): P(Y = C_k|X=x_i)\)</span>가 최대인 클래스에 할당; <span class="math inline">\(\underset{k}{\mathrm{argmax}}~ P(Y = C_k|X=x)\)</span>
 <ul>
 <li>Conditional class probabilities</li>
 <li>Bayes classifier: 최대치</li>
@@ -900,7 +941,8 @@ Gentoo         30       0</code></pre>
 </ul>
 <section id="resampling-methods" class="level3">
 <h3 class="anchored" data-anchor-id="resampling-methods">Resampling methods</h3>
-<p><strong>Cross-Validation</strong></p>
+<section id="cross-validation" class="level4">
+<h4 class="anchored" data-anchor-id="cross-validation"><strong>Cross-Validation</strong></h4>
 <p>데이터셋을 훈련셋과 검증셋으로 나누어 보면; <em>validation set approach</em><br>
 예를 들어, <code>auto</code> dataset (ISLP 패키지)에서 연비(<code>mpg</code>)를 마력(<code>horsepower</code>)로 예측하는 모델을 만든다면,</p>
 <ul>
@@ -2085,8 +2127,13 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <pre><code>4.001611502465339</code></pre>
 </div>
 </div>
+<hr>
+</section>
+<section id="bootstraping" class="level4">
+<h4 class="anchored" data-anchor-id="bootstraping"><strong>Bootstraping</strong></h4>
 
 
+</section>
 </section>
 </section>
 
@@ -2496,6 +2543,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contents/regularization.html" class="pagination-link" aria-label="Regularization">
+        <span class="nav-page-text">Regularization</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -2510,7 +2566,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
