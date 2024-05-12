@@ -98,10 +98,11 @@ website:
                 text: Implementations
           - href: contents/knn.ipynb
             text: K-Nearest Neighbors
-      # - section: Classification
-      #   contents: 
-      #     - text: Logistic Regression
-      #     - text: Linear Discriminant Analysis
+      - section: Classification
+        contents: 
+          - text: Logistic Regression
+          - href: contents/lda.ipynb
+            text: Generative Models
       # - text: Tree-base Models
       # - text: Support Vector Machine
       # - text: Unsupervised Learning

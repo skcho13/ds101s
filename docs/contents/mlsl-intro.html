@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-21">
+<meta name="dcterms.date" content="2024-05-13">
 
 <title> Introduction to Data Science - Machine/Statistical Learning</title>
 <style>
@@ -359,16 +359,36 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">Classification</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+ <span class="menu-text">Logistic Regression</span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/lda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generative Models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Communicate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -429,7 +449,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 21, 2024</p>
+      <p class="date">May 13, 2024</p>
     </div>
   </div>
   
@@ -441,7 +461,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="3">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -470,7 +490,8 @@ window.Quarto = {
 </details>
 </div>
 <p><img src="images/black-box-3.png" height="120"></p>
-<p><span class="math inline">\(f\)</span>: <span class="math inline">\(X_1, X_2, ..., X_p\)</span>가 <span class="math inline">\(Y\)</span>에 관해 제공하는 <strong><em>systematic</em> information</strong>; <strong>unknown function</strong> <span class="math inline">\(Y = f(X_1, X_2, ..., X_p) + \epsilon\)</span>, &nbsp; <span class="math inline">\(Y \perp\!\!\!\perp \epsilon\)</span><br>
+<p><span class="math inline">\(f\)</span>: <span class="math inline">\(X_1, X_2, ..., X_p\)</span>가 <span class="math inline">\(Y\)</span>에 관해 제공하는 <strong><em>systematic</em> information</strong>; <strong>unknown function</strong><br>
+<span class="math inline">\(Y = f(X_1, X_2, ..., X_p) + \epsilon\)</span>, &nbsp; <span class="math inline">\(Y \perp\!\!\!\perp \epsilon\)</span><br>
 <span class="math inline">\(\epsilon\)</span>: 불확실성의 소스들; reducible error &amp; irreducible error<br>
 (epistemic uncertainty &amp; aleatory uncertainty)</p>
 <ul>
@@ -591,21 +612,20 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <p><a href="images/predictive-distribution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/predictive-distribution.png" class="img-fluid" width="420"></a></p>
 <ul>
 <li>분포 <span class="math inline">\(p(Y|X)\)</span>를 통해 예측의 불확실성을 파악할 수 있음</li>
-<li>만약, 주어진 <span class="math inline">\(X\)</span>에서 대해 예측값 <span class="math inline">\(f(X)\)</span>을 하나 결정하는데, 실제 true 값을 t라고 하면,</li>
+<li>만약, 주어진 <span class="math inline">\(X\)</span>에서 대해 예측값 <span class="math inline">\(f(X)\)</span>을 하나 결정하는데, 실제 true 값을 <span class="math inline">\(y\)</span>라고 하면,</li>
 <li>그 오차에 대해 발생되는 어떤 penalty 또는 cost를 정의; <em>loss function</em></li>
 <li>loss function을 통해 “최적”의 예측값에 대한 기준을 제공</li>
 <li><span class="math inline">\(f(x) = E(Y|X=x)\)</span>로 예측하는 것이 많은 경우 적절하지만 일반적으로 그런 것은 아님</li>
 </ul>
 <p><strong>Loss/Cost Function</strong></p>
-<p><em>Loss function</em>: <span class="math inline">\(L(t, f(x))\)</span><br>
-<span class="math inline">\(t\)</span>: true value, <span class="math inline">\(f\)</span>: predicted value</p>
+<p><em>Loss function</em>: <span class="math inline">\(L(y, f(x))\)</span><br>
+<span class="math inline">\(y\)</span>: true value, <span class="math inline">\(f\)</span>: predicted value</p>
 <ul>
 <li>이 loss를 최소화하는 것이 목표</li>
-<li>실제 t를 모르기 때문에, 평균치인 expected loss를 최소화하는 것이 목표</li>
-<li>즉, <span class="math inline">\(E(L) = \displaystyle \iint L(t, f(x))p(x, t) dt dy\)</span>를 최소화하도록 예측값(<span class="math inline">\(f\)</span>)을 결정
+<li>True <span class="math inline">\(y\)</span>를 모르기 때문에, 평균치인 expected loss를 최소화하는 것이 목표</li>
+<li>즉, <span class="math inline">\(E(L) = \displaystyle \iint L(y, f(x))p(x, y) dx dy\)</span>를 최소화하도록 예측값(<span class="math inline">\(f\)</span>)을 결정
 <ul>
-<li>각 <span class="math inline">\(x\)</span>에 대해 <span class="math inline">\(\displaystyle \int L(t, f(x))p(t|x)dt\)</span>를 최소화</li>
-<li>주어진 <span class="math inline">\(x\)</span>값에 대한 <span class="math inline">\(t\)</span>가 의미하는 바를 생각해볼 것!</li>
+<li>각 <span class="math inline">\(x\)</span>에 대해 <span class="math inline">\(\displaystyle \int L(y, f(x))p(y|x)dy\)</span>를 최소화</li>
 </ul></li>
 <li>예를 들어, 다이아몬드의 무게로 가격을 예측한다면: 1 carat 다이아몬드의 true price?</li>
 <li>또는, 목소리(특정 frequency)로 성별을 예측한다면; 분류 문제의 경우 뒤에서 다룸</li>
@@ -613,7 +633,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" height="300"></a></p>
@@ -626,15 +646,15 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 </div>
 <p>앞서 회귀 모형에서는 기본적으로 squared loss 사용;</p>
 <ul>
-<li><span class="math inline">\(L_2 = \displaystyle(f(x) - t)^2\)</span>
+<li><span class="math inline">\(L_2 = \displaystyle(f(x) - y)^2\)</span>
 <ul>
-<li><span class="math inline">\(E(L)\)</span>을 최소로 하는 함수: <span class="math inline">\(f(x_0) = E(t|X=x_0)\)</span>: <em>regression function</em> <!-- - Erorr가 Gaussian을 따를 때, parametric function $f$와 같아짐 ($f(X) + \epsilon$) --></li>
+<li><span class="math inline">\(E(L)\)</span>을 최소로 하는 함수: <span class="math inline">\(f(x_0) = E(Y|X=x_0)\)</span>: <em>regression function</em> <!-- - Erorr가 Gaussian을 따를 때, parametric function $f$와 같아짐 ($f(X) + \epsilon$) --></li>
 </ul></li>
-<li><span class="math inline">\(L_1 = \displaystyle |~f(x) - t~|\)</span>
+<li><span class="math inline">\(L_1 = \displaystyle |~f(x) - y~|\)</span>
 <ul>
-<li><span class="math inline">\(E(L)\)</span>을 최소로 하는 함수: <span class="math inline">\(f(x_0) = median(t|X=x_0)\)</span> <!-- - Error가 Laplace 분포를 따를 때, parametric function $f$와 같아짐 --></li>
+<li><span class="math inline">\(E(L)\)</span>을 최소로 하는 함수: <span class="math inline">\(f(x_0) = median(Y|X=x_0)\)</span> <!-- - Error가 Laplace 분포를 따를 때, parametric function $f$와 같아짐 --></li>
 </ul></li>
-<li><span class="math inline">\(L_q = \displaystyle |~f(x) - t~|^q\)</span><br>
+<li><span class="math inline">\(L_q = \displaystyle |~f(x) - y~|^q\)</span><br>
 <a href="images/norms.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/norms.png" class="img-fluid" width="700"></a></li>
 </ul>
 <div style="line-height: 1.5em; font-size: .9em">
@@ -689,7 +709,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <div>
 
 </div>
-<div id="cell-14" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="51">
+<div id="cell-14" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="7">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
@@ -709,21 +729,16 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="52">
+<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<pre><code>&lt;Figure size 600x600 with 0 Axes&gt;</code></pre>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="mlsl-intro_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-11-output-3.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-11-output-4.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -757,13 +772,13 @@ The mean of <span class="math inline">\(X=\displaystyle \frac{a + b + a + a + b 
 <p>위의 논의는 특정 데이터셋에 의존할 수밖에 없는데, (참고: Bayesian의 경우 다른 접근)<br>
 데이터셋마다 다른 <span class="math inline">\(f\)</span>를 얻게 된다는 점을 감안했을 때, <span class="math inline">\(f\)</span>의 변동성을 살펴보면,</p>
 <p><span class="math inline">\(L_2\)</span> loss의 경우,</p>
-<p><span class="math inline">\(h(x) := E(t|X=x)\)</span>: optimal prediction of Y at any point x</p>
-<p><span class="math inline">\(E(L_2) = \displaystyle \iint \left( f(x) - t \right)^2 p(x, t) dxdt = \iint \left( f(x) - h(x) + h(x) - t \right)^2 p(x, t) dxdt\)</span> <span class="math inline">\(~~~~~~~~~~~ = \displaystyle \int \left( f(x) - h(x) \right)^2 p(x) dx + \iint \left( h(x) - t) \right)^2p(x, t) dxdt\)</span></p>
+<p><span class="math inline">\(h(x) := E(Y|X=x)\)</span>: optimal prediction of <span class="math inline">\(Y\)</span> at any point <span class="math inline">\(x\)</span></p>
+<p><span class="math inline">\(E(L_2) = \displaystyle \iint \left( f(x) - y \right)^2 p(x, y) dxdt = \iint \left( f(x) - h(x) + h(x) - y \right)^2 p(x, y) dxdt\)</span> <span class="math inline">\(~~~~~~~~~~~ = \displaystyle \int \left( f(x) - h(x) \right)^2 p(x) dx + \iint \left( h(x) - y) \right)^2p(x, y) dxdt\)</span></p>
 <ul>
 <li>두 번째 항: optimal prediction <span class="math inline">\(h(x)\)</span>가 true value와 얼마나 떨어져 있는가?(분산) - irreducible error</li>
 <li>첫 번째 항: <span class="math inline">\(h(x)\)</span>와의 차이를 최소화하도록 <span class="math inline">\(f(x)\)</span>를 선택하는데 하는데, 유한한 데이터셋에서는 그 간극이 존재
 <ul>
-<li>이제, 분포 <span class="math inline">\(p(t, x)\)</span>로부터 수많은 데이터셋들 <span class="math inline">\(D_i\)</span>를 얻었다고 가정했을 때,</li>
+<li>이제, 분포 <span class="math inline">\(p(y, x)\)</span>로부터 수많은 데이터셋들 <span class="math inline">\(D_i\)</span>를 얻었다고 가정했을 때,</li>
 <li>특정 <span class="math inline">\(x_0\)</span>에 대해서</li>
 </ul></li>
 </ul>
@@ -774,23 +789,23 @@ The mean of <span class="math inline">\(X=\displaystyle \frac{a + b + a + a + b 
 <li>즉, <em>최적의 예측보다 평균적으로 얼마나 틀린 예측을 하는가?</em></li>
 <li>the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model.</li>
 </ul>
-<p><strong>Variance</strong>: 각 데이터로부터 얻은 예측값이 (여러 데이터부터 얻은) “평균적인 예측값”에서 얼마나 떨어져 있는가?(분산)</p>
+<p><strong>Variance</strong>: 각 데이터로셋에서 얻은 예측값이 (여러 데이터셋에서 얻은) “평균적인 예측값”에서 얼마나 떨어져 있는가?(분산)</p>
 <ul>
 <li>즉, <em>데이터셋에 따라 <span class="math inline">\(f(x_0;D_i)\)</span>가 얼마나 민감하게 변하는지 측정</em></li>
 </ul>
-<p>모든 <span class="math inline">\(X\)</span>에 대한 평균값으로 이해하면,<br>
+<p>모든 <span class="math inline">\(x\)</span>에 대한 평균값으로 이해하면,<br>
 Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bias)^2 + \int variance \right) + noise\)</span></p>
 <p>Bias와 variance간에는 trade-off가 존재함</p>
 <ul>
-<li>Flexible한 모델의 경우 데이터에 더 잘 적합하여, variance가 높아짐. 즉 데이터마다 너무 다른 예측을 하게 됨
+<li>Flexible한 모델의 경우 데이터에 더 잘 적합하여, variance가 높아짐. 즉 데이터셋마다 너무 다른 예측을 하게 됨
 <ul>
 <li>데이터에 overfitting이 된다고 말할 수 있음.</li>
-<li>한편, 평균값이 실제값에 가까워져 bias가 줄어듦</li>
-<li>단, N이 증가하면(데이터 사이즈가 커지면), flexible한 모델의 variance가 줄어듦.</li>
+<li>단, N이 증가하면(데이터셋 사이즈가 커지면), flexible한 모델의 variance가 줄어듦.</li>
+<li>여러 데이터셋으로부터 평균을 얻으면, 실제값에 가까워짐.</li>
 </ul></li>
-<li>Rigid한 모델의 경우 데이터에 덜 적합하지만, bias가 높아짐. 즉, 평균적으로 더 틀린 예측을 하게 됨
+<li>Rigid한 모델의 경우 데이터셋에 덜 적합하지만, bias가 높아짐. 즉, 평균적으로 더 틀린 예측을 하게 됨
 <ul>
-<li>한편, 데이터에 덜 민감하여 variance가 줄어듦</li>
+<li>한편, 데이터셋에 덜 민감하여 variance가 줄어듦</li>
 <li>작은 데이터셋에서 더 유리</li>
 </ul></li>
 <li>이 둘의 적절한 균형을 갖는 모델이 최적의 예측 모델임</li>
@@ -831,7 +846,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-21" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="53">
+<div id="cell-21" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="9">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
@@ -846,7 +861,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-23" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="54">
+<div id="cell-23" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="10">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
@@ -867,7 +882,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-28" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="58">
+<div id="cell-28" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="14">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
@@ -898,25 +913,11 @@ Gentoo         30       0</code></pre>
 <span class="math inline">\(E(L) = \displaystyle \frac{1}{N} \sum_{i=1}^N I(y_i \neq \hat y_i)\)</span> where <span class="math inline">\(I\)</span> is the indicator function: 0 if <span class="math inline">\(y_i = \hat y_i\)</span>, 1 otherwise</p>
 <p><em>잘못된 예측에 대한 비용이 다르다면, 이에 대응하는 expected loss를 기준으로 모델을 평가</em></p>
 <ul>
-<li>만약, 농작물에 대한 피해라고 가정하면,
-<ul>
-<li>Costs: 농작물 피해, 펜스 설치비, 노동력 등</li>
-<li>Benefits: 수확물의 가치</li>
-<li>거짓 음성을 낮춰야 하는 경우: 예를 들어, 농작물의 작은 피해도 심각한 결과를 초래하는 경우</li>
-<li>거짓 양성을 낮춰야 하는 경우: 예를 들어, 농작물의 피해 예방을 위한 비용이 큰 경우</li>
-</ul></li>
-<li>만약, 와인 셀러가 와인의 품질(high:양성 vs.&nbsp;low:음성)을 성분들로 예측하는 모형을 만든다면, (in <em>Stefanie Molin</em>’s book)
-<ul>
-<li>Costs: 높은 품질의 와인을 낮은 품질로 예측하면, 와인 품평가에게 신뢰를 잃을 수 있음</li>
-<li>Benefits: 낮은 품질의 와인을 높은 품질로 예측하면, 낮은 품질의 와인을 높은 가격에 팔아 수익으로 이어질 수 있음</li>
+<li>만약, 와인 셀러가 와인의 품질(high:양성 vs.&nbsp;low:음성)을 성분들로 예측하는 모형을 만든다면,</li>
+<li>높은 품질의 와인을 낮은 품질로 예측하면, 수익의 악화</li>
+<li>낮은 품질의 와인을 높은 품질로 예측하면, 와인 품평가에게 신뢰를 잃을 수 있음</li>
 <li>거짓 음성을 낮춰야 하는 경우: 예를 들어, 영세한 와이너리가 수익이 중요한 경우</li>
 <li>거짓 양성을 낮춰야 하는 경우: 예를 들어, 고품질의 와인을 생산하는 것으로 유명한 와이너리; 네임밸류를 유지하기 위해. 반면, 비싼 와인이 싸게 팔리는 것은 감당할 수 있음.</li>
-</ul></li>
-<li>확률을 정확히 예측하는 모형의 추구;
-<ul>
-<li>확률값으로 communicate</li>
-<li>Decision maker는 당사자</li>
-</ul></li>
 </ul>
 </section>
 <section id="model-evaluation" class="level2">
@@ -957,9 +958,9 @@ Gentoo         30       0</code></pre>
 <div id="cell-38" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>auto <span class="op">=</span> load_data(<span class="st">"Auto"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>auto.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>auto <span class="op">=</span> load_data(<span class="st">"Auto"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>auto.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>    mpg  cylinders  displacement  horsepower  weight  acceleration  year  \
@@ -974,19 +975,19 @@ Gentoo         30       0</code></pre>
 </div>
 </div>
 <div id="cell-39" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>auto_train, auto_valid <span class="op">=</span> train_test_split(auto, test_size<span class="op">=</span><span class="fl">.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>auto_train, auto_valid <span class="op">=</span> train_test_split(auto, test_size<span class="op">=</span><span class="fl">.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(auto_train, x<span class="op">=</span><span class="st">'horsepower'</span>, y<span class="op">=</span><span class="st">'mpg'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(color<span class="op">=</span><span class="st">".5"</span>))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>p.show()</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    p.add(so.Line(), so.PolyFit(i)).label(title<span class="op">=</span><span class="ss">f"M = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(auto_train, x<span class="op">=</span><span class="st">'horsepower'</span>, y<span class="op">=</span><span class="st">'mpg'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(color<span class="op">=</span><span class="st">".5"</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>p.show()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    p.add(so.Line(), so.PolyFit(i)).label(title<span class="op">=</span><span class="ss">f"M = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="cell-40" class="cell quarto-layout-panel" data-layout="[1, 1, 1]" data-execution_count="7">
 <div class="quarto-layout-row">
@@ -1056,20 +1057,20 @@ Gentoo         30       0</code></pre>
 <p>k-fold CV estimate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k MSE_i\)</span></p>
 <p>분류의 경우, misclassification error rate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k \frac{1}{n_i} \sum_{j=1}^{n_i} I(y_j \neq \hat y_j)\)</span></p>
 <div id="cell-43" class="cell" data-execution_count="129">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_validate, cross_val_score, KFold, ShuffleSplit</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(<span class="dv">2</span>), LinearRegression())  <span class="co"># 2차 다항함수</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>mod_auto_cv <span class="op">=</span> <span class="op">-</span>cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># default scoring is R2</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"10-fold Cross-validation </span><span class="ch">\n</span><span class="ss">MSEs: </span><span class="sc">{</span>mod_auto_cv<span class="sc">}</span><span class="ss">, </span><span class="ch">\n</span><span class="ss">Average: </span><span class="sc">{</span>mod_auto_cv<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_validate, cross_val_score, KFold, ShuffleSplit</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(<span class="dv">2</span>), LinearRegression())  <span class="co"># 2차 다항함수</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>mod_auto_cv <span class="op">=</span> <span class="op">-</span>cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># default scoring is R2</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"10-fold Cross-validation </span><span class="ch">\n</span><span class="ss">MSEs: </span><span class="sc">{</span>mod_auto_cv<span class="sc">}</span><span class="ss">, </span><span class="ch">\n</span><span class="ss">Average: </span><span class="sc">{</span>mod_auto_cv<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>10-fold Cross-validation 
 MSEs: [15.98 15.84 18.39 25.88 18.71 23.58 23.58 23.83 11.19 14.88], 
@@ -1077,7 +1078,7 @@ Average: 19.185331419374997</code></pre>
 </div>
 </div>
 <div id="cell-44" class="cell" data-execution_count="127">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="127">
 <pre><code>array([-15.98, -15.84, -18.39, -25.88, -18.71, -23.58, -23.58, -23.83,
        -11.19, -14.88])</code></pre>
@@ -1086,12 +1087,12 @@ Average: 19.185331419374997</code></pre>
 <div id="cell-45" class="cell" data-execution_count="131">
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(<span class="dv">2</span>), LinearRegression())  <span class="co"># 2차 다항함수</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>mod_auto_cv <span class="op">=</span> <span class="op">-</span>cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># default scoring is R2</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shuffle &amp; Spllit Cross-validation with 20% test sets </span><span class="ch">\n</span><span class="ss">MSEs: </span><span class="sc">{</span>mod_auto_cv<span class="sc">}</span><span class="ss">, </span><span class="ch">\n</span><span class="ss">Average: </span><span class="sc">{</span>mod_auto_cv<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(<span class="dv">2</span>), LinearRegression())  <span class="co"># 2차 다항함수</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>mod_auto_cv <span class="op">=</span> <span class="op">-</span>cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># default scoring is R2</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shuffle &amp; Spllit Cross-validation with 20% test sets </span><span class="ch">\n</span><span class="ss">MSEs: </span><span class="sc">{</span>mod_auto_cv<span class="sc">}</span><span class="ss">, </span><span class="ch">\n</span><span class="ss">Average: </span><span class="sc">{</span>mod_auto_cv<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Shuffle &amp; Spllit Cross-validation with 20% test sets 
@@ -1101,50 +1102,50 @@ Average: 16.326567350428938</code></pre>
 </div>
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ev_error1 <span class="op">=</span> np.zeros([<span class="dv">10</span>, <span class="dv">10</span>])</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)):</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(d), LinearRegression())</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># cross_validate에 대한 wrapper</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    ev_error1[i, :] <span class="op">=</span> <span class="op">-</span>mod_auto_cv</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error1[:, i])</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error1[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>plt.xticks(np.arange(<span class="dv">1</span>, <span class="dv">11</span>))</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Degree of Polynomial"</span>)</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean Squared Error"</span>)</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-fold Cross-validation </span><span class="ch">\n</span><span class="st">over 10 degrees of Polynomial"</span>)</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle &amp; Split Cross-validation</span></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>ev_error2 <span class="op">=</span> np.zeros([<span class="dv">10</span>, <span class="dv">10</span>])</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)):</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(d), LinearRegression())</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    ev_error2[i, :] <span class="op">=</span> <span class="op">-</span>mod_auto_cv</span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error2[:, i])</span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error2[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>plt.xticks(np.arange(<span class="dv">1</span>, <span class="dv">11</span>))</span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Degree of Polynomial"</span>)</span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean Squared Error"</span>)</span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-split Shuffle &amp; Split Cross-validation </span><span class="ch">\n</span><span class="st">with 20% test sets over 10 degrees of Polynomial"</span>)</span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ev_error1 <span class="op">=</span> np.zeros([<span class="dv">10</span>, <span class="dv">10</span>])</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)):</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(d), LinearRegression())</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># cross_validate에 대한 wrapper</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    ev_error1[i, :] <span class="op">=</span> <span class="op">-</span>mod_auto_cv</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error1[:, i])</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error1[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>plt.xticks(np.arange(<span class="dv">1</span>, <span class="dv">11</span>))</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Degree of Polynomial"</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean Squared Error"</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-fold Cross-validation </span><span class="ch">\n</span><span class="st">over 10 degrees of Polynomial"</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle &amp; Split Cross-validation</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>ev_error2 <span class="op">=</span> np.zeros([<span class="dv">10</span>, <span class="dv">10</span>])</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)):</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(d), LinearRegression())</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    ev_error2[i, :] <span class="op">=</span> <span class="op">-</span>mod_auto_cv</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error2[:, i])</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error2[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>plt.xticks(np.arange(<span class="dv">1</span>, <span class="dv">11</span>))</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Degree of Polynomial"</span>)</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean Squared Error"</span>)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-split Shuffle &amp; Split Cross-validation </span><span class="ch">\n</span><span class="st">with 20% test sets over 10 degrees of Polynomial"</span>)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="cell-46" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="250">
 <div class="quarto-layout-row">
@@ -1158,39 +1159,39 @@ Average: 16.326567350428938</code></pre>
 </div>
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ev_error3 <span class="op">=</span> np.zeros([<span class="dv">10</span>, <span class="dv">2</span>])</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(i<span class="op">+</span><span class="dv">1</span>), LinearRegression())</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># cross_validate에 대한 wrapper</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    ev_error3[i, <span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span>mod_auto_cv.mean()</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(i<span class="op">+</span><span class="dv">1</span>), LinearRegression())</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># cross_validate에 대한 wrapper</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    ev_error3[i, <span class="dv">1</span>] <span class="op">=</span> <span class="op">-</span>mod_auto_cv.mean()</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"10-fold CV"</span>, <span class="st">"10-split Shuffle &amp; Split CV with 20% test set"</span>]</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error3[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error3[:, i], label<span class="op">=</span>labels[i])</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>plt.xticks(np.arange(<span class="dv">1</span>, <span class="dv">11</span>))</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Degree of Polynomial"</span>)</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean Squared Error"</span>)</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average of 10-fold Cross-validation </span><span class="ch">\n</span><span class="st">over 10 degrees of Polynomial"</span>)</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">15</span>, <span class="dv">30</span>)</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ev_error3 <span class="op">=</span> np.zeros([<span class="dv">10</span>, <span class="dv">2</span>])</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(i<span class="op">+</span><span class="dv">1</span>), LinearRegression())</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># cross_validate에 대한 wrapper</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    ev_error3[i, <span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span>mod_auto_cv.mean()</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    mod_auto <span class="op">=</span> make_pipeline(PolynomialFeatures(i<span class="op">+</span><span class="dv">1</span>), LinearRegression())</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    mod_auto_cv <span class="op">=</span> cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># cross_validate에 대한 wrapper</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    ev_error3[i, <span class="dv">1</span>] <span class="op">=</span> <span class="op">-</span>mod_auto_cv.mean()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"10-fold CV"</span>, <span class="st">"10-split Shuffle &amp; Split CV with 20% test set"</span>]</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error3[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error3[:, i], label<span class="op">=</span>labels[i])</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>plt.xticks(np.arange(<span class="dv">1</span>, <span class="dv">11</span>))</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Degree of Polynomial"</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Mean Squared Error"</span>)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average of 10-fold Cross-validation </span><span class="ch">\n</span><span class="st">over 10 degrees of Polynomial"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">15</span>, <span class="dv">30</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="cell-47" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="275">
 <div class="quarto-layout-row">
@@ -1242,25 +1243,25 @@ Average: 16.326567350428938</code></pre>
 <li>test set으로 모델의 성능을 평가</li>
 </ul>
 <div id="cell-50" class="cell" data-execution_count="328">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Shuffle &amp; Split</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># cv = ShuffleSplit(n_splits=10, test_size=.2, random_state=0)</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>mod_auto <span class="op">=</span> Pipeline([(<span class="st">"poly"</span>, PolynomialFeatures()), (<span class="st">"lm"</span>, LinearRegression())])</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Search</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {<span class="st">"poly__degree"</span>: np.arange(<span class="dv">1</span>, <span class="dv">11</span>)}  <span class="co"># name__parameter</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(mod_auto, param_grid, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> auto[[<span class="st">"horsepower"</span>]]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> auto[<span class="st">"mpg"</span>]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Shuffle &amp; Split</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># cv = ShuffleSplit(n_splits=10, test_size=.2, random_state=0)</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>mod_auto <span class="op">=</span> Pipeline([(<span class="st">"poly"</span>, PolynomialFeatures()), (<span class="st">"lm"</span>, LinearRegression())])</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Search</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {<span class="st">"poly__degree"</span>: np.arange(<span class="dv">1</span>, <span class="dv">11</span>)}  <span class="co"># name__parameter</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(mod_auto, param_grid, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="328">
 <style>#sk-container-id-37 {
   /* Definition of color scheme common for light and dark mode */
@@ -1678,20 +1679,20 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div id="cell-51" class="cell" data-execution_count="329">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best parameter!</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>grid_search.best_params_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best parameter!</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>grid_search.best_params_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="329">
 <pre><code>{'poly__degree': 10}</code></pre>
 </div>
 </div>
 <div id="cell-52" class="cell" data-execution_count="330">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"degree"</span>: grid_search.cv_results_.get(<span class="st">"param_poly__degree"</span>).data,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mean_test_score"</span>: <span class="op">-</span>grid_search.cv_results_.get(<span class="st">"mean_test_score"</span>),</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>).sort_values(<span class="st">"mean_test_score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"degree"</span>: grid_search.cv_results_.get(<span class="st">"param_poly__degree"</span>).data,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mean_test_score"</span>: <span class="op">-</span>grid_search.cv_results_.get(<span class="st">"mean_test_score"</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>).sort_values(<span class="st">"mean_test_score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="330">
 <pre><code>  degree  mean_test_score
 9     10            19.94
@@ -1707,8 +1708,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div id="cell-53" class="cell" data-execution_count="331">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mod_auto_best <span class="op">=</span> Pipeline([(<span class="st">"poly"</span>, PolynomialFeatures(<span class="dv">2</span>)), (<span class="st">"lm"</span>, LinearRegression())])</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>mod_auto_best.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mod_auto_best <span class="op">=</span> Pipeline([(<span class="st">"poly"</span>, PolynomialFeatures(<span class="dv">2</span>)), (<span class="st">"lm"</span>, LinearRegression())])</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mod_auto_best.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="331">
 <style>#sk-container-id-38 {
   /* Definition of color scheme common for light and dark mode */
@@ -2118,11 +2119,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div id="cell-54" class="cell" data-execution_count="332">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get root_mean_squared_error and median_absolute_error</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> root_mean_squared_error</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> mod_auto_best.predict(X_test)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>root_mean_squared_error(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get root_mean_squared_error and median_absolute_error</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> root_mean_squared_error</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> mod_auto_best.predict(X_test)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>root_mean_squared_error(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="332">
 <pre><code>4.001611502465339</code></pre>
 </div>
@@ -2566,7 +2567,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
