@@ -99,11 +99,12 @@ website:
           - href: contents/knn.ipynb
             text: K-Nearest Neighbors
       - section: Classification
-        contents: 
-          - text: Logistic Regression
+        contents:
+          - href: contents/logistic.ipynb
+            text: Logistic Regression
           - href: contents/lda.ipynb
             text: Generative Models
-      # - text: Tree-base Models
+      # - href: contents/tree.ipynb
       # - text: Support Vector Machine
       # - text: Unsupervised Learning
 

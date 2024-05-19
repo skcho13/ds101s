@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/lda.html" rel="next">
+<link href="../contents/logistic.html" rel="next">
 <link href="../contents/shrinkage.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -370,8 +370,11 @@ window.Quarto = {
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Logistic Regression</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../contents/logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/lda.html" class="sidebar-item-text sidebar-link">
@@ -503,7 +506,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[2, 1]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[2, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><a href="images/knn-decision-boundary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/knn-decision-boundary.png" height="350"></a></p>
@@ -1163,7 +1166,7 @@ Plot validation curves
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-23" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="83">
+<div id="cell-23" class="cell quarto-layout-panel" data-execution_count="83" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="knn_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
@@ -1666,7 +1669,7 @@ Gentoo          2          2      35</code></pre>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'K'</span>)</span>
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cross-validated accuracy'</span>)</span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-29" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="89">
+<div id="cell-29" class="cell quarto-layout-panel" data-execution_count="89" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="knn_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
@@ -1733,7 +1736,7 @@ weighted avg       0.95      0.94      0.94        86
 <span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="93">
+<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="93" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="knn_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
@@ -2233,7 +2236,7 @@ C3          0   0   6</code></pre>
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'K'</span>)</span>
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cross-validated accuracy'</span>)</span>
 <span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-40" class="cell quarto-layout-panel" data-layout="[2, 1]" data-execution_count="99">
+<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="99" data-layout="[2, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="knn_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
@@ -2675,8 +2678,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/lda.html" class="pagination-link" aria-label="Generative Models">
-        <span class="nav-page-text">Generative Models</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contents/logistic.html" class="pagination-link" aria-label="Logistic Regression">
+        <span class="nav-page-text">Logistic Regression</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2694,7 +2697,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
