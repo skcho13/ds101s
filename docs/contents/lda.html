@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-10">
+<meta name="dcterms.date" content="2024-05-20">
 
 <title> Introduction to Data Science - Generative Models</title>
 <style>
@@ -119,6 +119,22 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.31.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -449,7 +465,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 10, 2024</p>
+      <p class="date">May 20, 2024</p>
     </div>
   </div>
   
@@ -461,7 +477,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="2">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -543,7 +559,7 @@ Note
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="130" data-layout="[5, 1]">
+<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="3" data-layout="[5, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
@@ -555,7 +571,7 @@ Note
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="131" data-layout="[[1, 1]]">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="4" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
@@ -593,7 +609,7 @@ Note
 <div>
 
 </div>
-<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="132" data-layout="[[6, 1]]">
+<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[[6, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 85.7%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
@@ -619,7 +635,7 @@ Note
 <div>
 
 </div>
-<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="21" data-layout="[[1, 1.5]]">
+<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[1, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <pre><code>             mu  sigma  prior
@@ -647,7 +663,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="136" data-layout="[[7, 1]]">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[[7, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 87.5%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
@@ -657,7 +673,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="156" data-layout="[[10, 1]]">
+<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[10, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 90.9%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-20-output-1.png" width="794" height="230"></p>
@@ -678,8 +694,8 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 </li>
 <li><span class="math inline">\(\delta_2(x_1) = \delta_3(x_1)\)</span>: &nbsp; <span class="math inline">\(x_1 = 52.05\)</span></li>
 </ul>
-<div id="cell-32" class="cell" data-execution_count="206">
-<div class="cell-output cell-output-display" data-execution_count="206">
+<div id="cell-32" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <figure class="figure">
 <p><img src="lda_files/figure-html/cell-23-output-1.png" width="645" height="240" class="figure-img"></p>
@@ -707,7 +723,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-36" class="cell quarto-layout-panel" data-execution_count="21" data-layout="[[4, 4, 1.5]]">
+<div id="cell-36" class="cell quarto-layout-panel" data-execution_count="24" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -723,7 +739,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="243" data-layout="[[1, -0.2, 1]]">
+<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="26" data-layout="[[1, -0.2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>             Adelie  Chinstrap  Gentoo
@@ -740,8 +756,8 @@ sigma_2     1.74     1.25</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-41" class="cell" data-execution_count="244">
-<div class="cell-output cell-output-display" data-execution_count="244">
+<div id="cell-41" class="cell" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>       Adelie  Chinstrap  Gentoo
 prior    0.44       0.20    0.36</code></pre>
 </div>
@@ -766,7 +782,7 @@ prior    0.44       0.20    0.36</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="249">
+<div id="cell-48" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
@@ -795,7 +811,7 @@ weighted avg       0.96      0.96      0.96       342
 <div>
 
 </div>
-<div id="cell-53" class="cell quarto-layout-panel" data-execution_count="327" data-layout="[[4, 4, 1.5]]">
+<div id="cell-53" class="cell quarto-layout-panel" data-execution_count="45" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
@@ -809,7 +825,7 @@ weighted avg       0.96      0.96      0.96       342
 <div>
 
 </div>
-<div id="cell-55" class="cell quarto-layout-panel" data-execution_count="310" data-layout="[[1, -0.2, 1]]">
+<div id="cell-55" class="cell quarto-layout-panel" data-execution_count="46" data-layout="[[1, -0.2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>                   Adelie  Chinstrap  Gentoo
@@ -825,7 +841,7 @@ flipper_length_mm  189.95     195.82  217.19</code></pre>
 <div>
 
 </div>
-<div id="cell-57" class="cell quarto-layout-panel" data-execution_count="311" data-layout="[[1, -0.1, 1, -0.1, 1]]">
+<div id="cell-57" class="cell quarto-layout-panel" data-execution_count="47" data-layout="[[1, -0.1, 1, -0.1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
 <pre><code>Adelie   sigma_1  sigma_2
@@ -850,8 +866,8 @@ sigma_2    13.21    42.05</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="312">
-<div class="cell-output cell-output-display" data-execution_count="312">
+<div id="cell-58" class="cell" data-execution_count="48">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>       Adelie  Chinstrap  Gentoo
 prior    0.44       0.20    0.36</code></pre>
 </div>
@@ -896,7 +912,7 @@ prior    0.44       0.20    0.36</code></pre>
 <div>
 
 </div>
-<div id="cell-67" class="cell quarto-layout-panel" data-execution_count="45" data-layout="[[4, 4, 1.5]]">
+<div id="cell-67" class="cell quarto-layout-panel" data-execution_count="53" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
@@ -1501,7 +1517,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

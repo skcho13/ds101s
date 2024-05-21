@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-20">
+<meta name="dcterms.date" content="2024-05-22">
 
 <title> Introduction to Data Science - Machine/Statistical Learning</title>
 <style>
@@ -452,7 +452,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 20, 2024</p>
+      <p class="date">May 22, 2024</p>
     </div>
   </div>
   
@@ -464,7 +464,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -636,7 +636,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" height="300"></a></p>
@@ -849,7 +849,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-21" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[[1, 1]]">
+<div id="cell-21" class="cell quarto-layout-panel" data-execution_count="27" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
@@ -892,16 +892,16 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 </div>
 </div>
 </div>
-<p>Confusion matrix; misclassifed된 관측치</p>
-<div id="cell-30" class="cell" data-execution_count="59">
-<div class="cell-output cell-output-display" data-execution_count="59">
+<p>Confusion matrix with the threshold=0.5</p>
+<div id="cell-30" class="cell" data-execution_count="30">
+<div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>Truth      Adelie  Gentoo
 Predicted                
 Adelie        144       7
 Gentoo          7     116</code></pre>
 </div>
 </div>
-<p>Loss function; loss matrix</p>
+<p>만약, 다음과 같은 loss function (loss matrix)가 주어진다면,</p>
 <div id="cell-32" class="cell" data-execution_count="60">
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>Truth      Adelie  Gentoo
@@ -911,7 +911,7 @@ Gentoo         30       0</code></pre>
 </div>
 </div>
 <p>Expected loss:<br>
-<span class="math inline">\(E(L) = \displaystyle \sum_{i=1} \sum_{j=1} L_{ij}P(y\in C_i, \hat y\in C_j) = \frac{1}{274}(144*0 + 7*10 + 30*30 + 116*0)\)</span></p>
+<span class="math inline">\(E(L) = \displaystyle \sum_{i=1} \sum_{j=1} L_{ij}P(y\in C_i, \hat y\in C_j) = \frac{1}{274}(144*0 + 7*10 + 7*30 + 116*0)\)</span></p>
 <p>보통의 경우, 0-1 loss를 사용. 즉, misclassified된 관측치에 대한 비율; <strong><em>misclassification error rate</em></strong><br>
 <span class="math inline">\(E(L) = \displaystyle \frac{1}{N} \sum_{i=1}^N I(y_i \neq \hat y_i)\)</span> where <span class="math inline">\(I\)</span> is the indicator function: 0 if <span class="math inline">\(y_i = \hat y_i\)</span>, 1 otherwise</p>
 <p><em>잘못된 예측에 대한 비용이 다르다면, 이에 대응하는 expected loss를 기준으로 모델을 평가</em></p>
@@ -944,7 +944,8 @@ Gentoo         30       0</code></pre>
 <li>데이터셋을 <strong>훈련셋(training set)</strong>과 <strong>테스트셋(test set)</strong>으로 나누어, 훈련셋으로 모델을 구축하고</li>
 <li>모형이 훈련과정에서 보지 못한 새로운 데이터셋인 테스트셋에서 얼마나 잘 작동하는지를 평가함.</li>
 <li>이는 모델의 일반화(generalization)가 얼마나 잘 되는지를 평가하는 접근이라고 볼 수 있음.</li>
-<li>모델이 특정 데이터셋에 따라 변하는 것(variance)을 고려하기 위해, 훈련셋을 다시 여러 개의 서브셋으로 나누어 교차검증(cross-validation)을 수행; <strong>검증셋(validation set)</strong></li>
+<li>모델의 과적합을 조정하기 위해(bias-variance trade-off)을 고려하기 위해, 훈련셋을 다시 여러 개의 서브셋으로 나누어 <strong>교차검증(cross-validation)</strong>을 수행; <strong>검증셋(validation set)</strong></li>
+<li>데이터셋에 따라 모델이 얼마나 바뀌는지를 살펴보기 위해, <strong>부트스트랩(bootstrap)</strong>을 사용</li>
 </ul></li>
 </ul>
 <section id="resampling-methods" class="level3">
@@ -3155,7 +3156,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
