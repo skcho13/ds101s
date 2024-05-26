@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-21">
+<meta name="dcterms.date" content="2024-05-27">
 
 <title> Introduction to Data Science - Regularization</title>
 <style>
@@ -439,7 +439,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 21, 2024</p>
+      <p class="date">May 27, 2024</p>
     </div>
   </div>
   
@@ -514,20 +514,20 @@ Note
 <div class="callout-body-container callout-body">
 <p>Variance가 커지는 경우; overfitting</p>
 <ul>
-<li>데이터에 비해 예측변수가 많을 때; <span class="math inline">\(n \gg p\)</span></li>
+<li>데이터에 비해 예측변수가 많을 때; <span class="math inline">\(p \gg n\)</span></li>
 <li>Y와 실제 관련없는 변수들이 많을 때; 노이즈에 fitting</li>
 </ul>
 </div>
 </div>
-<p>OLS estimation에서는 <span class="math inline">\(\displaystyle RSS = \sum_{i=1}^{n} e^2\)</span>, &nbsp; <span class="math inline">\((e = y - \hat{y})\)</span>&nbsp;를 최소화시켰으나,<br>
-다음과 같이 <strong>shrinkage penalty</strong>를 추가하여 최소화시키는 방법을 사용함.</p>
+<p>OLS estimation에서는 <span class="math inline">\(\displaystyle RSS = \sum_{i=1}^{n} e_{i}^2\)</span>, &nbsp; <span class="math inline">\((e_i = y_i - \hat{y_i})\)</span>&nbsp;를 최소화시켰으나,<br>
+다음과 같이 <strong>shrinkage penalty</strong>를 추가하여 이를 최소화시키는 방법을 사용함</p>
 <ul>
-<li>Ridge regression (L2 regularization): <span class="math inline">\(\displaystyle \sum_{j=1}^{p} e^2 + \lambda\sum_{j=1}^{p} \beta_j^2\)</span></li>
-<li>Lasso regression (L1 regularization): <span class="math inline">\(\displaystyle \sum_{j=1}^{p} e^2 + \lambda\sum_{j=1}^{p} |\beta_j|\)</span></li>
+<li>Ridge regression (L2 regularization): <span class="math inline">\(\displaystyle \sum_{i=1}^{n} e_{i}^2 + \lambda\sum_{j=1}^{p} \beta_j^2\)</span></li>
+<li>Lasso regression (L1 regularization): <span class="math inline">\(\displaystyle \sum_{i=1}^{n} e_{i}^2 + \lambda\sum_{j=1}^{p} |\beta_j|\)</span></li>
 <li>Elastic net regression: ridge와 lasso regression을 결합</li>
 </ul>
 <!-- $\displaystyle \sum_{j=1}^{p} e^2 + \lambda \left( \frac{1-\alpha}{2} \sum_{j=1}^{p} \beta_j^2 + \alpha \sum_{j=1}^{p} |\beta_j|\right)$ -->
-<p><span class="math inline">\(\lambda \geq 0\)</span>는 shrinkage penalty의 크기를 결정하는 tuning parameter(hyperparameter)</p>
+<p><span class="math inline">\(\lambda \geq 0\)</span>는 shrinkage penalty의 크기를 결정하는 <em>tuning parameter (hyper-parameter)</em></p>
 <ul>
 <li>절편에 대해서는 shrinkage penalty를 적용하지 않음; 각 X와 Y간의 관계에 대해서만 shrink하길 기대</li>
 <li><span class="math inline">\(\lambda = 0\)</span>이면 OLS와 동일</li>
@@ -545,9 +545,9 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>OLS estimation에서 변수의 scaling에 대해서 그대로 변하는데 반해; <span class="math inline">\(X^{\prime} = c*X\)</span>일 때, <span class="math inline">\(\displaystyle\hat{\beta}^{\prime} = \frac{1}{c} \hat{\beta}\)</span></li>
-<li>Ridge regression은 변수의 scaling에 매우 민감하며, 다른 변수들의 scale에도 영향을 받음</li>
-<li>변수들을 표준화(standardization)하는 것이 필요함; <span class="math inline">\(\displaystyle\frac{X - \bar{X}}{s_X}\)</span></li>
+<li>OLS estimation에서는 변수의 scaling에 대해서 계수가 그대로 변하는데 반해; 즉, <span class="math inline">\(X^{\prime} = c*X\)</span>일 때, <span class="math inline">\(\displaystyle\hat{\beta}^{\prime} = \frac{1}{c} \hat{\beta}\)</span></li>
+<li>Regularization은 변수의 scaling에 매우 민감하며, 다른 변수들의 scale에도 영향을 받음</li>
+<li>변수들을 표준화(standardization)해서 단위를 통일할 필요가 있음; <span class="math inline">\(\displaystyle\frac{X - \bar{X}}{s_X}\)</span></li>
 </ul>
 </div>
 </div>
@@ -555,7 +555,7 @@ Important
 <h2 class="anchored" data-anchor-id="ridge-regression">Ridge regression</h2>
 <p><span class="math inline">\(\lambda\)</span>가 커질수록 <span class="math inline">\(\beta\)</span>의 <span class="math inline">\(l2\)</span> norm은 항상 줄어듦</p>
 <ul>
-<li><span class="math inline">\(l2\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}\)</span> &nbsp;:(vector <span class="math inline">\((\beta_1, \beta_2, ..., \beta_p)\)</span>의 길이)</li>
+<li><span class="math inline">\(l2\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}\)</span> &nbsp;: 벡터 <span class="math inline">\(\beta = (\beta_1, \beta_2, ..., \beta_p)\)</span>의 길이</li>
 </ul>
 <p><a href="images/ridge.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/ridge.png" class="img-fluid" width="720"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
@@ -563,7 +563,7 @@ Important
 </div>
 <p>다음과 같이 이상적이지 못한 경우에 정규화를 통해 적절한 bias-variance trade-off를 찾을 수 있음.</p>
 <ul>
-<li>p = 45 predictors, n = 50 observations</li>
+<li>에를 들어, 예측변수가 데이터에 비해 매우 많은 경우 (50개의 관측치에 45개의 예측변수)</li>
 <li>상대적으로 variance의 <em>빠른 감소 효과</em> 덕분에, ridge regression은 OLS보다 더 좋은 예측 성능을 보임
 <ul>
 <li>bias에 대한 약간의 손해를 보지만, variance에 대해서는 큰 이익을 얻어 정확한 예측(test error를 줄임) 가능</li>
@@ -584,7 +584,7 @@ Important
 <ul>
 <li><span class="math inline">\(l1\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_1 = \sum_{j=1}^{p} |\beta_j|\)</span></li>
 </ul>
-<p>Ridge와는 달리 파라미터가 0이 될 수 있음: 변수 선택(variable/feature selection)이 가능함<br>
+<p>Ridge와는 달리 파라미터가 0이 될 수 있음: <strong>변수 선택(variable/feature selection)</strong>이 가능함<br>
 이는 변수가 많은 경우 파라미터 해석을 용이하게 함</p>
 <ul>
 <li><span class="math inline">\(\lambda\)</span> 값에 따라, 임의의 갯수의 변수를 포함할 수 있음</li>
@@ -594,7 +594,7 @@ Important
 <p>Source: p.&nbsp;245, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
 </div>
 <p>Ridge와 마찬가지로 bias에 대한 약간의 손해를 보지만, variance에 대해서는 큰 이익을 얻어 정확한 예측(test error를 줄임) 가능</p>
-<p>그림 6.5와 동일한 데이터셋(p = 45 predictors, n = 50 observations)<br>
+<p>그림 6.5와 동일한 데이터셋 <em>(p = 45, n = 50)</em><br>
 <a href="images/lasso-bias-variance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/lasso-bias-variance.png" class="img-fluid" width="720"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;248, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
@@ -606,8 +606,8 @@ Important
 <li><em>모든 예측변수들이 골고루 Y와 관련이 있을 때</em> 높은 예측성능을 보임
 <ul>
 <li>즉, 예측변수들이 비슷한 효과를 가질 때</li>
-<li>그림 6.8의 오른편에서 variance가 상대적으로 낮게 나타남</li>
-<li>45개의 예측변수가 모두 Y와 관련되도록 생성된 데이터셋</li>
+<li>그림 6.8의 오른편에서 variance가 상대적으로 낮게 나타남.</li>
+<li>실제로 45개의 예측변수가 모두 Y와 관련되도록 생성된 데이터셋임.</li>
 </ul></li>
 <li>모든 계수들이 비슷한 “비율”로 줄어듬</li>
 </ul>
@@ -618,7 +618,7 @@ Important
 <ul>
 <li>즉, 상대적으로 소수의 예측변수들만이 큰 효과를 가질 때</li>
 <li>그림 6.9의 오른편에서 bias가 크게 작으며, variance도 낮음; 즉 모든 면에서 더 좋은 성능을 보임</li>
-<li>45개의 예측변수 중 2개만이 Y와 관련되도록 생성된 데이터셋</li>
+<li>실제로 45개의 예측변수 중 2개만이 Y와 관련되도록 생성된 데이터셋임.</li>
 </ul></li>
 <li>모든 계수들이 비슷한 “크기”로 줄어듬; 작은 계수들은 0이 될 수 있음</li>
 </ul>
@@ -650,10 +650,11 @@ Linear model selection
 </ul></li>
 <li><em>Dimension Reduction</em>: 예측변수들의 선형 조합으로 새로운 변수들을 얻어(설명 변량의 큰 손실없이) 변수의 갯수를 줄이고자 함
 <ul>
-<li>Principal Component Analysis(PCA)</li>
-<li>Partial Least Squares(PLS)</li>
+<li>Principal Component Analysis (PCA)</li>
+<li>Partial Least Squares (PLS)</li>
 </ul></li>
 </ul>
+<p><a href="images/PCA.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/PCA.png" class="img-fluid" width="400"></a></p>
 </div>
 </div>
 
@@ -1093,7 +1094,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
