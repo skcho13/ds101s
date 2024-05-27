@@ -553,9 +553,9 @@ Important
 </div>
 <section id="ridge-regression" class="level2">
 <h2 class="anchored" data-anchor-id="ridge-regression">Ridge regression</h2>
-<p><span class="math inline">\(\lambda\)</span>가 커질수록 <span class="math inline">\(\beta\)</span>의 <span class="math inline">\(l2\)</span> norm은 항상 줄어듦</p>
+<p><span class="math inline">\(\lambda\)</span>가 커질수록 <span class="math inline">\(\beta\)</span>의 <span class="math inline">\(l_2\)</span> norm은 항상 줄어듦</p>
 <ul>
-<li><span class="math inline">\(l2\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}\)</span> &nbsp;: 벡터 <span class="math inline">\(\beta = (\beta_1, \beta_2, ..., \beta_p)\)</span>의 길이</li>
+<li><span class="math inline">\(l_2\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}\)</span> &nbsp;: 벡터 <span class="math inline">\(\beta = (\beta_1, \beta_2, ..., \beta_p)\)</span>의 길이</li>
 </ul>
 <p><a href="images/ridge.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/ridge.png" class="img-fluid" width="720"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
@@ -580,9 +580,9 @@ Important
 </section>
 <section id="lasso-regression" class="level2">
 <h2 class="anchored" data-anchor-id="lasso-regression">Lasso regression</h2>
-<p><span class="math inline">\(\lambda\)</span>가 커질수록 <span class="math inline">\(\beta\)</span>의 <span class="math inline">\(l1\)</span> norm은 항상 줄어듦</p>
+<p><span class="math inline">\(\lambda\)</span>가 커질수록 <span class="math inline">\(\beta\)</span>의 <span class="math inline">\(l_1\)</span> norm은 항상 줄어듦</p>
 <ul>
-<li><span class="math inline">\(l1\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_1 = \sum_{j=1}^{p} |\beta_j|\)</span></li>
+<li><span class="math inline">\(l_1\)</span> norm: <span class="math inline">\(\displaystyle ||\beta||_1 = \sum_{j=1}^{p} |\beta_j|\)</span></li>
 </ul>
 <p>Ridge와는 달리 파라미터가 0이 될 수 있음: <strong>변수 선택(variable/feature selection)</strong>이 가능함<br>
 이는 변수가 많은 경우 파라미터 해석을 용이하게 함</p>
@@ -1094,7 +1094,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
