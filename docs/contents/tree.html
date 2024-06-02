@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-29">
+<meta name="dcterms.date" content="2024-05-30">
 
 <title> Introduction to Data Science - Tree-based Models</title>
 <style>
@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../contents/lda.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -379,6 +380,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/tree.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tree-based Models</span></a>
+  </div>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -435,7 +442,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 29, 2024</p>
+      <p class="date">May 30, 2024</p>
     </div>
   </div>
   
@@ -982,7 +989,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>plot_tree(reg_tree, feature_names<span class="op">=</span>reg_tree.feature_names_in_.tolist(), ax<span class="op">=</span>ax)</span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-10" class="cell quarto-layout-panel" data-layout="[3, 4]" data-execution_count="8">
+<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[3, 4]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
@@ -1060,12 +1067,12 @@ Interactive Plots
 <p><strong>Top-down, greedy approach (recursive binary splitting)</strong></p>
 <ul>
 <li>모든 예측변수들과 각 예측변수의 모든 가능한 분할점에 대해 RSS가 최소가 되는 예측변수(<span class="math inline">\(X_j\)</span>)와 분할점(<span class="math inline">\(s\)</span>)을 찾음</li>
-<li>즉, <span class="math inline">\(RSS = \sum_{i: x_i \in R_1(j, s)}(y_i - \hat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j, s)}(y_i - \hat{y}_{R_2})^2\)</span>을 최소화하는 <span class="math inline">\(j\)</span>와 <span class="math inline">\(s\)</span>를 찾음
+<li>즉, <span class="math inline">\(\displaystyle RSS = \sum_{i: x_i \in R_1(j, s)}(y_i - \hat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j, s)}(y_i - \hat{y}_{R_2})^2\)</span>을 최소화하는 <span class="math inline">\(j\)</span>와 <span class="math inline">\(s\)</span>를 찾음
 <ul>
 <li><span class="math inline">\(\hat{y}_{R_1}\)</span>: <span class="math inline">\(R_1\)</span>에 있는 관측치들의 <span class="math inline">\(y\)</span>값들의 평균</li>
 <li><span class="math inline">\(\hat{y}_{R_2}\)</span>: <span class="math inline">\(R_2\)</span>에 있는 관측치들의 <span class="math inline">\(y\)</span>값들의 평균</li>
 </ul></li>
-<li>이를 통해 영역을 나눔: <span class="math inline">\(R_1(j, s) = \{X|X_j &lt; s\}\)</span>, <span class="math inline">\(R_2(j, s) = {X|X_j \geq s}\)</span></li>
+<li>이를 통해 영역을 나눔: <span class="math inline">\(R_1(j, s) = \{X|X_j &lt; s\}\)</span>, <span class="math inline">\(R_2(j, s) = \{X|X_j \geq s\}\)</span></li>
 <li>각 영역에서 반복적으로 이러한 분할을 수행</li>
 <li>특정 기준점에 도달할 때까지 반복;
 <ul>
@@ -1086,7 +1093,7 @@ Interactive Plots
 <li>즉, 과적합(overfitting)이 발생할 수 있음</li>
 </ul></li>
 <li>과적합을 조절하기 위해 매우 깊은 트리(<span class="math inline">\(T_0\)</span>)를 우선 만들고, 이후에 가지치기(pruning)를 수행</li>
-<li>각 <span class="math inline">\(\alpha\)</span>에 대해 다음을 최소화하는 subtres <span class="math inline">\(T \in T_0\)</span>가 존재함.<br>
+<li>각 <span class="math inline">\(\alpha\)</span>에 대해 다음을 최소화하는 subtree <span class="math inline">\(T \subset T_0\)</span>가 존재함.<br>
 <span class="math inline">\(\displaystyle \sum_{m=1}^{|T|} \sum_{i: x_i \in R_m}(y_i - \hat{y}_{R_m})^2 + \alpha|T|\)</span></li>
 <li><span class="math inline">\(\alpha\)</span>가 커질수록, 트리의 크기에 대한 페널티가 커짐</li>
 <li>Cross-validation을 통해 최적의 <span class="math inline">\(\alpha\)</span>를 찾음</li>
@@ -1971,7 +1978,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>          feature_names<span class="op">=</span>grid.best_estimator_.feature_names_in_.tolist(),</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>          ax<span class="op">=</span>ax)</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-22" class="cell quarto-layout-panel" data-layout="[8, 2]" data-execution_count="17">
+<div id="cell-22" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[8, 2]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
@@ -2019,7 +2026,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>ax.get_legend().set_frame_on(<span class="va">False</span>)</span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-27" class="cell quarto-layout-panel" data-layout="[7, 3]" data-execution_count="22">
+<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="22" data-layout="[7, 3]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
@@ -2029,7 +2036,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div>
 
 </div>
-<div id="cell-29" class="cell quarto-layout-panel" data-layout="[7, 3]" data-execution_count="24">
+<div id="cell-29" class="cell quarto-layout-panel" data-execution_count="24" data-layout="[7, 3]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -2469,14 +2476,34 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li>회귀에서 RSS를 최소화하는 대신, 분류에서는 classification error rate, Gini index, cross-entropy 등을 최소화하는 분할을 찾음</li>
 </ul>
 <p><strong>Classification error rate</strong></p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[75, 25]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
 <ul>
-<li><span class="math inline">\(E = 1 - \max_k(\hat{p}_{mk})\)</span>, &nbsp; <span class="math inline">\(\hat{p}_{mk}\)</span>: 영역 <span class="math inline">\(R_m\)</span>에서 클래스 <span class="math inline">\(C_k\)</span>에 속한 관측치의 비율</li>
+<li><span class="math inline">\(E = 1 - \max_k(\hat{p}_{mk})\)</span>, &nbsp; <span class="math inline">\(\hat{p}_{mk}\)</span>: 영역 <span class="math inline">\(R_m\)</span>에서 클래스 <span class="math inline">\(C_k\)</span>에 속한 관측치의 비율
+<ul>
+<li>동그라미: 0.7, 세모: 0.2, 네모: 0.1</li>
+<li>Misclassication error = 1 - 0.7 = 0.4</li>
+</ul></li>
 <li>예측의 정확도를 높이기 위해 선호됨</li>
 <li>반면, 트리의 분할에 대해 덜 민감해 큰 트리를 만들 수 없음.</li>
 </ul>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="images/gini-index.png" class="img-fluid" width="250"></p>
+</div>
+</div>
+</div>
 <p><strong>Gini index</strong></p>
 <ul>
-<li><span class="math inline">\(G = \sum_{k=1}^K \hat{p}_{mk}(1 - \hat{p}_{mk}) = 1 - \sum_{k=1}^K \hat{p}_{mk}^2\)</span>, &nbsp; <span class="math inline">\(\hat{p}_{mk}\)</span>: 영역 <span class="math inline">\(R_m\)</span>에서 클래스 <span class="math inline">\(C_k\)</span>에 속한 관측치의 비율</li>
+<li><span class="math inline">\(G = \sum_{k=1}^K \hat{p}_{mk}(1 - \hat{p}_{mk}) = 1 - \sum_{k=1}^K \hat{p}_{mk}^2\)</span>, &nbsp; <span class="math inline">\(\hat{p}_{mk}\)</span>: 영역 <span class="math inline">\(R_m\)</span>에서 클래스 <span class="math inline">\(C_k\)</span>에 속한 관측치의 비율
+<ul>
+<li>G: 0.7<em>0.3 + 0.2</em>0.8 + 0.1*0.9 = 0.46</li>
+<li>G:</li>
+</ul></li>
 <li>a measure of total variance across the K classes</li>
 <li>노드의 순수도(purity)를 측정</li>
 <li><span class="math inline">\(G\)</span>가 작을수록, 한 개의 클래스에 주로 속해있음을 의미</li>
@@ -2486,128 +2513,146 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li><span class="math inline">\(D = -\sum_{k=1}^K \hat{p}_{mk} \log(\hat{p}_{mk})\)</span></li>
 <li>Gini index와 유사하며, 노드의 순수도를 측정</li>
 </ul>
-<div id="cell-33" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The different impurity indices for different class-membership probabilities between 0 and 1, comparing between classifcation error, gini index, cross-entropy</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>gini <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> p <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> p)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>cross_entropy <span class="op">=</span> <span class="op">-</span>p <span class="op">*</span> np.log2(p) <span class="op">-</span> (<span class="dv">1</span> <span class="op">-</span> p) <span class="op">*</span> np.log2(<span class="dv">1</span> <span class="op">-</span> p)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>misclassification_error <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.maximum(p, <span class="dv">1</span> <span class="op">-</span> p)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>p, y<span class="op">=</span>gini, label<span class="op">=</span><span class="st">"Gini Index"</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>p, y<span class="op">=</span>cross_entropy<span class="op">/</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Cross-Entropy"</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>p, y<span class="op">=</span>misclassification_error, label<span class="op">=</span><span class="st">"Misclassification Error"</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">":"</span>)</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"p"</span>, ylabel<span class="op">=</span><span class="st">"Impurity Index"</span>)</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-33" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.7</span><span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> <span class="fl">0.7</span><span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.2</span><span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.2</span><span class="op">*</span><span class="fl">0.7</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span><span class="fl">0.7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>0.46</code></pre>
+</div>
+</div>
+<div id="cell-34" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">-</span> (<span class="fl">0.7</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>0.4600000000000001</code></pre>
+</div>
+</div>
+<div id="cell-35" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.7</span><span class="op">*</span><span class="fl">0.3</span> <span class="op">+</span> <span class="fl">0.2</span><span class="op">*</span><span class="fl">0.8</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span><span class="fl">0.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>0.46</code></pre>
+</div>
+</div>
+<div id="cell-36" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The different impurity indices for different class-membership probabilities between 0 and 1, comparing between classifcation error, gini index, cross-entropy</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>gini <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> p <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> p)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>cross_entropy <span class="op">=</span> <span class="op">-</span>p <span class="op">*</span> np.log2(p) <span class="op">-</span> (<span class="dv">1</span> <span class="op">-</span> p) <span class="op">*</span> np.log2(<span class="dv">1</span> <span class="op">-</span> p)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>misclassification_error <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.maximum(p, <span class="dv">1</span> <span class="op">-</span> p)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>p, y<span class="op">=</span>gini, label<span class="op">=</span><span class="st">"Gini Index"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>p, y<span class="op">=</span>cross_entropy<span class="op">/</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Cross-Entropy"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>p, y<span class="op">=</span>misclassification_error, label<span class="op">=</span><span class="st">"Misclassification Error"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">":"</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"p"</span>, ylabel<span class="op">=</span><span class="st">"Impurity Index"</span>)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="tree_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="tree_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-37" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 
 </div>
-<div id="cell-35" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="48">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="48" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
-<p><img src="tree_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<p><img src="tree_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
-<p><img src="tree_files/figure-html/cell-30-output-2.png" class="img-fluid"></p>
+<p><img src="tree_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<div id="cell-36" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_classifier2(model, X, y, ax<span class="op">=</span><span class="va">None</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> ax <span class="kw">or</span> plt.gca()</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the training points</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>cmap,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>               clim<span class="op">=</span>(y.<span class="bu">min</span>(), y.<span class="bu">max</span>()), zorder<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'tight'</span>)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'off'</span>)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> ax.get_xlim()</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> ax.get_ylim()</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit the estimator</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    model.fit(X, y)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">*</span>xlim, num<span class="op">=</span><span class="dv">200</span>),</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>                         np.linspace(<span class="op">*</span>ylim, num<span class="op">=</span><span class="dv">200</span>))</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a color plot with the results</span></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    n_classes <span class="op">=</span> <span class="bu">len</span>(np.unique(y))</span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    contours <span class="op">=</span> ax.contourf(xx, yy, Z, alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>                           levels<span class="op">=</span>np.arange(n_classes <span class="op">+</span> <span class="dv">1</span>) <span class="op">-</span> <span class="fl">0.5</span>,</span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>                           cmap<span class="op">=</span>cmap, zorder<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>xlim, ylim<span class="op">=</span>ylim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_classifier2(model, X, y, ax<span class="op">=</span><span class="va">None</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>):</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> ax <span class="kw">or</span> plt.gca()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the training points</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>cmap,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>               clim<span class="op">=</span>(y.<span class="bu">min</span>(), y.<span class="bu">max</span>()), zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'tight'</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> ax.get_xlim()</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> ax.get_ylim()</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit the estimator</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    model.fit(X, y)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">*</span>xlim, num<span class="op">=</span><span class="dv">200</span>),</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>                         np.linspace(<span class="op">*</span>ylim, num<span class="op">=</span><span class="dv">200</span>))</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a color plot with the results</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    n_classes <span class="op">=</span> <span class="bu">len</span>(np.unique(y))</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    contours <span class="op">=</span> ax.contourf(xx, yy, Z, alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>                           levels<span class="op">=</span>np.arange(n_classes <span class="op">+</span> <span class="dv">1</span>) <span class="op">-</span> <span class="fl">0.5</span>,</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>                           cmap<span class="op">=</span>cmap, zorder<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>xlim, ylim<span class="op">=</span>ylim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier <span class="im">as</span> DTC</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins[[<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>]]</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> penguins[<span class="st">"species"</span>]</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>clf_tree <span class="op">=</span> DTC(max_depth<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>clf_tree.fit(X, y)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">6.5</span>))</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>visualize_classifier2(clf_tree, X, y)</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-40" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier <span class="im">as</span> DTC</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins[[<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>]]</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> penguins[<span class="st">"species"</span>]</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>clf_tree <span class="op">=</span> DTC(max_depth<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>clf_tree.fit(X, y)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">6.5</span>))</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>visualize_classifier2(clf_tree, X, y)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>InvalidIndexError: (slice(None, None, None), 0)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="tree_files/figure-html/cell-32-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="tree_files/figure-html/cell-35-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_classifier(model, X, y, ax<span class="op">=</span><span class="va">None</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>):</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> ax <span class="kw">or</span> plt.gca()</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the training points</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X.iloc[:, <span class="dv">0</span>], X.iloc[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span><span class="st">"Blues"</span>,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>               clim<span class="op">=</span>(y.<span class="bu">min</span>(), y.<span class="bu">max</span>()), zorder<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> ax.get_xlim()</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> ax.get_ylim()</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit the estimator</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    model.fit(X, y)</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">*</span>xlim, num<span class="op">=</span><span class="dv">200</span>),</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>                         np.linspace(<span class="op">*</span>ylim, num<span class="op">=</span><span class="dv">200</span>))</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> np.<span class="bu">round</span>(Z, <span class="dv">2</span>)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a color plot with the results</span></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    contours <span class="op">=</span> ax.contour(xx, yy, Z, colors<span class="op">=</span><span class="st">"#fc4f30"</span>, linewidths<span class="op">=</span><span class="fl">.5</span>, zorder<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plt.clabel(contours, inline=True, fontsize=8)</span></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>xlim, ylim<span class="op">=</span>ylim)</span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">6.5</span>))</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>visualize_classifier(reg_tree, X_train, y_train)</span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>plot_tree(reg_tree, feature_names<span class="op">=</span>reg_tree.feature_names_in_.tolist(), ax<span class="op">=</span>ax)</span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_classifier(model, X, y, ax<span class="op">=</span><span class="va">None</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> ax <span class="kw">or</span> plt.gca()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the training points</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X.iloc[:, <span class="dv">0</span>], X.iloc[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span><span class="st">"Blues"</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>               clim<span class="op">=</span>(y.<span class="bu">min</span>(), y.<span class="bu">max</span>()), zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> ax.get_xlim()</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> ax.get_ylim()</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit the estimator</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    model.fit(X, y)</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">*</span>xlim, num<span class="op">=</span><span class="dv">200</span>),</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>                         np.linspace(<span class="op">*</span>ylim, num<span class="op">=</span><span class="dv">200</span>))</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> np.<span class="bu">round</span>(Z, <span class="dv">2</span>)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a color plot with the results</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>    contours <span class="op">=</span> ax.contour(xx, yy, Z, colors<span class="op">=</span><span class="st">"#fc4f30"</span>, linewidths<span class="op">=</span><span class="fl">.5</span>, zorder<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plt.clabel(contours, inline=True, fontsize=8)</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>xlim, ylim<span class="op">=</span>ylim)</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">6.5</span>))</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>visualize_classifier(reg_tree, X_train, y_train)</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>plot_tree(reg_tree, feature_names<span class="op">=</span>reg_tree.feature_names_in_.tolist(), ax<span class="op">=</span>ax)</span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-38" class="cell quarto-layout-panel" data-layout="[3, 4]">
+<div id="cell-41" class="cell quarto-layout-panel" data-layout="[3, 4]">
 
 </div>
 
@@ -3020,6 +3065,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../contents/lda.html" class="pagination-link" aria-label="Generative Models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Generative Models</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

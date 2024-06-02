@@ -104,7 +104,7 @@ website:
             text: Logistic Regression
           - href: contents/lda.ipynb
             text: Generative Models
-      # - href: contents/tree.ipynb
+      - href: contents/tree.ipynb
       # - text: Support Vector Machine
       # - text: Unsupervised Learning
 
