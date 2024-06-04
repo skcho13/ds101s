@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-04">
+<meta name="dcterms.date" content="2024-06-05">
 
 <title> Introduction to Data Science - Logistic Regression</title>
 <style>
@@ -450,7 +450,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 4, 2024</p>
+      <p class="date">June 5, 2024</p>
     </div>
   </div>
   
@@ -1480,59 +1480,74 @@ Important
 <h3 class="anchored" data-anchor-id="분류모형의-성능을-평가하기-위한-여러-지표들">분류모형의 성능을 평가하기 위한 여러 지표들</h3>
 <p><strong><em>Precision &amp; Recall</em></strong>: 정보 검색 시스템의 탐색 능력을 평가하는데에서 유래</p>
 <ul>
-<li>Precision(정밀도): <span class="math inline">\(\hat{y}=1\)</span>일 때, <span class="math inline">\(y=1\)</span>일 확률
+<li>Precision (정밀도): <span class="math inline">\(\hat{y}=1\)</span>일 때, <span class="math inline">\(y=1\)</span>일 확률
 <ul>
 <li>시스템이 스팸으로 분류한 이메일 중 실제 스팸인 이메일의 비율
 <ul>
-<li>높은 precision은 정상 이메일이 스팸으로 잘못 분류되는 경우가 적다는 것을 의미</li>
+<li>높은 precision은 스팸으로 잘못 분류된 정상 이메일이 적다는 것을 의미</li>
 </ul></li>
 <li>정보검색에서 반환된 문서들 중 실제로 관련 있는 문서의 비율
 <ul>
 <li>높은 precision은 사용자가 검색 결과에서 불필요한 정보를 적게 얻고, 대부분 유용한 정보를 얻는다는 것을 의미</li>
+<li>관련은 있지만 놓친 정보는 많을 수 있음.</li>
 <li>검색 결과의 정확도를 평가</li>
 </ul></li>
-<li>시스템이 실제 양성을 얼마나 잘 잡아내는지를 측정</li>
-<li>검사를 통해 암으로 진단받은 사람이 실제로 암을 가지고 있을 확률</li>
+<li>검사를 통해 암으로 진단받은 사람이 실제로 암을 가지고 있을 확률
+<ul>
+<li>높은 precision은 암 진단을 받은 사람에게 잘못된 암 진단을 내리지 않는 것을 의미</li>
 </ul></li>
-<li>Recall(재현율): <span class="math inline">\(y=1\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률
+</ul></li>
+<li>Recall (재현율): <span class="math inline">\(y=1\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률
 <ul>
 <li>실제 스팸 이메일 중에서 시스템이 스팸으로 올바르게 분류한 비율
 <ul>
 <li>높은 recall은 대부분의 스팸 이메일이 정확히 스팸으로 분류된다는 것을 의미</li>
 </ul></li>
-<li>전체 관련 문서들 중에서 실제로 반환된 문서의 비율
+<li>정보검색에서 관련 문서들 중에서 실제로 시스템이 반환한 문서의 비율
 <ul>
 <li>높은 recall은 사용자가 찾고자 하는 모든 관련 정보를 검색 결과에서 얻을 수 있다는 것을 의미</li>
 <li>검색 시스템의 탐색 능력을 평가</li>
 </ul></li>
-<li>참 양성, True positive rate (TPR), 또는 sensitivity라고도 함</li>
+<li>실제로 암을 가진 사람 중에서 검사를 통해 암으로 진단받은 사람의 비율
+<ul>
+<li>높은 recall은 암 환자를 놓치지 않고 모두 찾아낸다는 것을 의미</li>
+</ul></li>
+<li>참 양성, true positive rate (TPR), 또는 sensitivity라고도 함</li>
 </ul></li>
 </ul>
 <p><em>precision &amp; recall trade-off</em>: 이 둘 사이에는 종종 상충 관계가 있음. Precision을 높이기 위해 더 엄격한 기준을 사용하면 recall이 낮아질 수 있고, 반대로 recall을 높이기 위해 더 느슨한 기준을 사용하면 precision이 낮아질 수 있음.</p>
 <ul>
-<li><p>정보 검색에서 관련성 유지: 정보 검색 시스템에서는 사용자가 필요로 하는 정보만을 제공하는 것이 중요한데, 높은 precision은 사용자가 불필요한 정보를 받지 않게 해주며, 높은 recall은 필요한 정보를 놓치지 않게 해줌.</p></li>
-<li><p>스팸 필터링에서 사용자 경험 개선: 스팸 필터링에서는 precision이 높아야 중요한 이메일이 스팸으로 잘못 분류되지 않아 사용자에게 불편을 주지 않고, 동시에 recall이 높아야 대부분의 스팸 이메일이 차단되어 사용자가 스팸 메일을 확인하지 않아도 됨.</p></li>
+<li><p>정보 검색의 맥락: precision을 높여 사용자가 불필요한 정보를 받지 않게 해주며, recall을 높여 필요한 정보를 놓치지 않도록 함.</p></li>
+<li><p>스팸 필터링의 맥락: precision을 높여 자주 스팸 메일함을 확인하지 않아도 되도록 하며, recall을 높여 대부분의 스팸 이메일이 차단되어 메일함에서 보여지지 않도록 쾌적한 환경을 제공 할 수 있음.</p></li>
 </ul>
 <p><strong><em>Sensitivity &amp; specificity</em></strong>: 의학 분야에서 진단 테스트의 정확성을 평가하는데에서 유래</p>
 <ul>
-<li>Sensitivity(민감도): <span class="math inline">\(y=1\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률
+<li>Sensitivity (민감도): <span class="math inline">\(y=1\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률
 <ul>
 <li>Recall, true positive rate (TPR)</li>
-<li>환자가 검사를 통해 정확하게 질병이 발견될 확률</li>
-<li>실제로 질병이 있는 환자를 얼마나 잘 찾아내는지(참 양성 비율)를 나타냄</li>
-<li>높은 민감도는 질병이 있는 사람을 놓치지 않고 모두 찾아내는 것을 의미</li>
+<li>높은 민감도는 질병이 있는 사람을 놓치지 않고 모두 찾아내는 것(참 양성)을 의미</li>
 </ul></li>
-<li>Specificity(특이도): <span class="math inline">\(y=0\)</span>일 때, <span class="math inline">\(\hat{y}=0\)</span>일 확률
+<li>Specificity (특이도): <span class="math inline">\(y=0\)</span>일 때, <span class="math inline">\(\hat{y}=0\)</span>일 확률
 <ul>
+<li>실제로 질병이 없는 사람을 얼마나 잘 (질병이 없다고) 식별하는지(참 음성)를 나타냄</li>
+<li>높은 특이도는 질병이 없는 사람에게 질병이 있다고 잘못 진단하지 않는 것을 의미함.</li>
 <li>True negative rate (TNR)</li>
-<li>실제로 질병이 없는 사람을 얼마나 잘 식별하는지(참 음성 비율)를 나타냄</li>
-<li>높은 특이도는 질병이 없는 사람에게 질병이 있다고 잘못 진단하지 않는 것을 의미함.
-<ul>
-<li>예를 들어, 높은 특이도는 건강한 사람에게 불필요한 추가 검사를 받게 하지 않음.</li>
-</ul></li>
-<li>테스트가 실제 음성을 얼마나 잘 잡아내는지를 측정</li>
+<li>1 - FPR</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>거짓 음성: False negative rate (FNR); <span class="math inline">\(y=1\)</span>일 때, <span class="math inline">\(\hat{y}=0\)</span>일 확률: 1 - TPR<br>
+- 정상이라고 진단된 환자가 실제로 암인 확률</p>
+<p>거짓 양성: False positive rate (FPR) 또는 False alarm; <span class="math inline">\(y=0\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률: 1 - TNR<br>
+- 정상인 사람이 검사를 통해 암으로 진단받을 확률</p>
+</div>
+</div>
+</div>
 <!-- 
 Sensitivity의 개념은 질병을 가진 환자를 놓치지 않는 능력, 즉 테스트의 민감도를 나타내며, 환자를 진단하는 과정에서 중요한 역할을 합니다.  
 Specificity의 개념은 질병이 없는 사람에게 잘못된 양성 판정을 내리지 않는 능력, 즉 테스트의 특이성을 나타내며, 불필요한 치료나 추가 검사를 피하는 데 중요한 역할을 합니다.
@@ -1761,7 +1776,7 @@ Note
 <ul>
 <li><span class="math inline">\(\hat y = w_0 + w_1 \phi_1(\mathbf{x}) + w_2 \phi_2(\mathbf{x}) + \cdots + w_{k} \phi_{k}(\mathbf{x})\)</span></li>
 <li>Polynomial basis: <span class="math inline">\(\phi_i(x) = x^i\)</span></li>
-<li>Spine basis</li>
+<li>Spline basis</li>
 <li>Gaussian basis: <span class="math inline">\(\displaystyle \phi_i(x) = exp\left(-\frac{(x-\mu_i)^2}{2 s^2}\right)\)</span></li>
 <li>Sigmoidal basis: <span class="math inline">\(\displaystyle \phi_i(x) = \sigma \left(\frac{x-\mu_i}{s}\right)\)</span></li>
 </ul></li>
@@ -2241,7 +2256,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
