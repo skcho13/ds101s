@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-30">
+<meta name="dcterms.date" content="2024-06-04">
 
 <title> Introduction to Data Science - Tree-based Models</title>
 <style>
@@ -435,7 +435,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 30, 2024</p>
+      <p class="date">June 4, 2024</p>
     </div>
   </div>
   
@@ -2512,19 +2512,19 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <pre><code>0.46</code></pre>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="25">
+<div id="cell-34" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">-</span> (<span class="fl">0.7</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>0.4600000000000001</code></pre>
 </div>
 </div>
-<div id="cell-35" class="cell" data-execution_count="24">
+<div id="cell-35" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.7</span><span class="op">*</span><span class="fl">0.3</span> <span class="op">+</span> <span class="fl">0.2</span><span class="op">*</span><span class="fl">0.8</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span><span class="fl">0.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>0.46</code></pre>
 </div>
 </div>
-<div id="cell-36" class="cell" data-execution_count="46">
+<div id="cell-36" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The different impurity indices for different class-membership probabilities between 0 and 1, comparing between classifcation error, gini index, cross-entropy</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
@@ -2548,13 +2548,13 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="47">
+<div id="cell-37" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 
 </div>
-<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="48" data-layout="[[4, 4, 1.5]]">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="32" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
@@ -2564,7 +2564,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="51">
+<div id="cell-39" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_classifier2(model, X, y, ax<span class="op">=</span><span class="va">None</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>):</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> ax <span class="kw">or</span> plt.gca()</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -2590,7 +2590,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>xlim, ylim<span class="op">=</span>ylim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-40" class="cell" data-execution_count="52">
+<div id="cell-40" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier <span class="im">as</span> DTC</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins[[<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>]]</span>

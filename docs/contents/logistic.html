@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-26">
+<meta name="dcterms.date" content="2024-06-04">
 
 <title> Introduction to Data Science - Logistic Regression</title>
 <style>
@@ -450,7 +450,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 26, 2024</p>
+      <p class="date">June 4, 2024</p>
     </div>
   </div>
   
@@ -532,13 +532,13 @@ window.Quarto = {
 </blockquote>
 <p><code>d</code>: 나무의 지름(cm),  <code>y</code>: 나무가 죽은 경우 1, 그렇지 않으면 0<br>
 <code>spp</code>: 나무의 종,  <code>s</code>: 특정 지역의 폭풍의 심각도</p>
-<div id="6d92b5e8" class="cell" data-execution_count="156">
+<div id="6d92b5e8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>blowdown <span class="op">=</span> pd.read_csv(<span class="st">'data/blowdown2.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># black spruce에 제한</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>blowbs <span class="op">=</span> blowdown.query(<span class="st">'spp == "black spruce"'</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blowbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="156">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>         d    s  y           spp  log2d
 17    9.00 0.02  0  black spruce   3.17
 24   11.00 0.03  0  black spruce   3.46
@@ -578,7 +578,7 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="9708bb61" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="158">
+<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
@@ -601,7 +601,7 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'log d = </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="448e7ed0" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="159">
+<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
@@ -618,10 +618,10 @@ window.Quarto = {
 <li>사실, 이 <code>p</code>는 binary response (0, 1)의 conditional mean(평균)인데,</li>
 <li>통계적으로 표현하면 <span class="math inline">\(E(Y|d=d_i)\)</span>이며 선형모형의 mean function를 제공. (모형은 variance function과 함께 설정됨)</li>
 </ul>
-<div id="3b5055de" class="cell" data-execution_count="160">
+<div id="3b5055de" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs.groupby(<span class="st">"d"</span>)[<span class="st">"y"</span>].agg([(<span class="st">"died"</span>, <span class="st">"sum"</span>), (<span class="st">"m"</span>, <span class="st">"count"</span>), (<span class="st">"p"</span>, <span class="st">"mean"</span>)]).reset_index()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="160">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>       d  died   m    p
 0   5.00     7  90 0.08
 1   6.00     7  92 0.08
@@ -647,7 +647,7 @@ window.Quarto = {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Diameter (cm)'</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="d6fbd6f2" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="161">
+<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
@@ -672,7 +672,7 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="162">
+<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
@@ -711,12 +711,12 @@ Important
 <p><img src="images/odds.png" class="img-fluid" width="350"></p>
 </div>
 </div>
-<div id="612f4d4b" class="cell" data-execution_count="163">
+<div id="612f4d4b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(odds <span class="op">=</span> <span class="kw">lambda</span> x: x.p <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.p))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p = 1인 경우 odds가 무한대가 되므로 편의상 inf 값을 50으로 대체</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>blowbs_bn[<span class="st">"odds"</span>] <span class="op">=</span> blowbs_bn[<span class="st">"odds"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">50</span> <span class="cf">if</span> x <span class="op">==</span> np.inf <span class="cf">else</span> x)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="163">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>       d  died   m    p  log2d  odds
 0   5.00     7  90 0.08   2.32  0.08
 1   6.00     7  92 0.08   2.58  0.08
@@ -745,7 +745,7 @@ Important
 <div>
 
 </div>
-<div id="fa280612" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="164">
+<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="11" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-12-output-1.png" width="478" height="230"></p>
@@ -804,7 +804,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Log of Diameter (cm)"</span>, y<span class="op">=</span><span class="st">"Density"</span>, color<span class="op">=</span><span class="st">"Label"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="7fef49b7" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="165">
+<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
@@ -815,10 +815,10 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 </div>
 </div>
 <p>이제, log odds을 구해, <span class="math inline">\(X\)</span>에 대해 선형적인 패턴이 있는지 확인해보면,</p>
-<div id="5afe94e6" class="cell" data-execution_count="166">
+<div id="5afe94e6" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(log_odds <span class="op">=</span> <span class="kw">lambda</span> x: np.log(x.odds))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="166">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>       d  died   m    p  log2d  odds  log_odds
 0   5.00     7  90 0.08   2.32  0.08     -2.47
 1   6.00     7  92 0.08   2.58  0.08     -2.50
@@ -852,7 +852,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Emperical Probability"</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="8d91902a" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="167">
+<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="14" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
@@ -892,7 +892,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># y = np.polyval(np.polyfit(blowbs_bn.log2d, blowbs_bn.log_odds, 1), x)</span></span>
 <span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lineplot(x=x, y=y, ax=ax, color=".6")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a4f966e4" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="168">
+<div id="a4f966e4" class="cell quarto-layout-panel" data-execution_count="15" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
@@ -915,7 +915,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <div>
 
 </div>
-<div id="2d803e77" class="cell quarto-layout-panel" data-layout="[10, -1, 10, -1]" data-execution_count="169">
+<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="16" data-layout="[10, -1, 10, -1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
@@ -931,9 +931,9 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 </div>
 </div>
 </div>
-<div id="417761cc" class="cell" data-execution_count="170">
+<div id="417761cc" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>blowbs.sort_values(<span class="st">"log2d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="170">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>         d    s  y           spp  log2d  label
 2102  5.00 0.45  0  black spruce   2.32  alive
 724   5.00 0.18  0  black spruce   2.32  alive
@@ -968,7 +968,7 @@ Note
 <span class="math inline">\(L = -\frac{1}{n} \sum_{i=1}^{n} y_i \cdot log(p_i) + (1-y_i) \cdot log(1-p_i)\)</span></p>
 </div>
 </div>
-<div id="65a795b7" class="cell" data-execution_count="171">
+<div id="65a795b7" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.logit(<span class="st">'y ~ log2d'</span>, data<span class="op">=</span>blowbs).fit()</span>
@@ -982,8 +982,8 @@ Note
 Dep. Variable:                      y   No. Observations:                  659
 Model:                          Logit   Df Residuals:                      657
 Method:                           MLE   Df Model:                            1
-Date:                Thu, 16 May 2024   Pseudo R-squ.:                  0.2316
-Time:                        04:49:40   Log-Likelihood:                -328.95
+Date:                Tue, 04 Jun 2024   Pseudo R-squ.:                  0.2316
+Time:                        20:28:53   Log-Likelihood:                -328.95
 converged:                       True   LL-Null:                       -428.10
 Covariance Type:            nonrobust   LLR p-value:                 4.888e-45
 ==============================================================================
@@ -995,28 +995,36 @@ log2d          2.2408      0.190     11.773      0.000       1.868       2.614
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Scikit-learn implementation">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Scikit-learn implementation
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> blowbs[[<span class="st">'log2d'</span>]]</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> blowbs[<span class="st">'y'</span>]</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression(penalty<span class="op">=</span><span class="va">None</span>)  <span class="co"># l1, l2 regularization 가능</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>lr.fit(X, y)</span>
+<p>Scikit-learn의 <code>LogisticRegression()</code>은 디폴트로 <span class="math inline">\(l2\)</span> regularization을 사용함: <a href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">참고 문서</a></p>
+<p>우선, train-test split을 통해 데이터를 나눈 후, <code>LogisticRegression()</code>을 적용하면,</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> blowbs[[<span class="st">'log2d'</span>]]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> blowbs[<span class="st">'y'</span>]</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lr.coef_, lr.intercept_)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># [[2.24]] [-7.82]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression(penalty<span class="op">=</span><span class="va">None</span>)  <span class="co"># l1, l2 regularization 가능</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lr.coef_, lr.intercept_)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># [[2.08]] [-7.26]</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co"># As a DataFrame with column names</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>coefs <span class="op">=</span> pd.DataFrame({<span class="st">"coef"</span>: lr.coef_[<span class="dv">0</span>], <span class="st">"name"</span>: X.columns})</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>coefs</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co">#    coef   name</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 0  2.08  log2d</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>위 fitted model의 예측값들</p>
@@ -1044,7 +1052,7 @@ Scikit-learn implementation
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a8234351" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="172">
+<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
@@ -1061,7 +1069,7 @@ Scikit-learn implementation
 <li>Log odds: &nbsp; <span class="math inline">\(\displaystyle logit = b_0 + b_1 \cdot x\)</span></li>
 </ul>
 <p>이 확률값을 이용해 binary outcome인 클래스를 예측할 수 있음.</p>
-<div id="e1010a35" class="cell" data-execution_count="173">
+<div id="e1010a35" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>blowbs_pred <span class="op">=</span> blowbs.assign(</span>
@@ -1071,7 +1079,7 @@ Scikit-learn implementation
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>blowbs_pred.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="173">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>        s  y           spp  log2d  label  pred_prob  pred_odds  pred_logit
 17   0.02  0  black spruce   3.17  alive       0.33       0.49       -0.71
 24   0.03  0  black spruce   3.46  alive       0.48       0.94       -0.06
@@ -1082,35 +1090,6 @@ Scikit-learn implementation
 3661 0.98  1  black spruce   3.00   died       0.25       0.33       -1.09
 
 [659 rows x 8 columns]</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Scikit-learn implementation">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Scikit-learn implementation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> blowbs[[<span class="st">'log2d'</span>]]</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> blowbs[<span class="st">'y'</span>]</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression(penalty<span class="op">=</span><span class="va">None</span>)  <span class="co"># l1, l2 regularization 가능</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>lr.fit(X, y)</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>blowbs.assign(</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    pred_prob <span class="op">=</span> lr.predict_proba(blowbs[[<span class="st">"log2d"</span>]])[:, <span class="dv">1</span>],</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    pred_odds <span class="op">=</span> <span class="kw">lambda</span> x: x.pred_prob <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.pred_prob),</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    pred_logit <span class="op">=</span> <span class="kw">lambda</span> x: np.log(x.pred_odds)</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </div>
 <p>예를 들어, 두께(<code>log2d</code>)가 3인 나무의 경우,</p>
@@ -1125,7 +1104,7 @@ Scikit-learn implementation
 <li>Log odds (logit): 확률 p의 [0, 1]의 값을 무한한 값으로 늘려 linearly fit할 수 있게 함.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="모형의 파라미터 해석">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1134,7 +1113,7 @@ Scikit-learn implementation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Odds의 비율 (odds ratio, OR)</strong>을 통해 해석</p>
 <ul>
@@ -1151,6 +1130,51 @@ Scikit-learn implementation
 <li>나무의 두께 (원래 d)로 말하면, 두께가 10% 두꺼워지면, <span class="math inline">\(e^{2.24 \cdot log_2(1.1)}=1.36\)</span> 배, 즉 odds가 36% 증가함.</li>
 </ul>
 <p><span class="math inline">\(b_0\)</span>: d = 1일 때의 odds이므로 <span class="math inline">\(\displaystyle e^{-7.82 + 2.34 \cdot 0} = e^{-7.82} = 0.004\)</span>, 즉 두께가 1cm 일 때 태풍에 나무가 쓰러지지 않을 가능성 대비 쓰러질 가능성은 0.004임.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Scikit-learn implementation">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Scikit-learn implementation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Scikit-learn의 <code>LogisticRegression()</code>은 디폴트로 <span class="math inline">\(l2\)</span> regularization을 사용함: <a href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">참고 문서</a></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> blowbs[[<span class="st">'log2d'</span>]]</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> blowbs[<span class="st">'y'</span>]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression(penalty<span class="op">=</span><span class="va">None</span>)  <span class="co"># l1, l2 regularization 가능</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># predictions</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># predict_proba: 각 클래스에 대한 확률을 반환</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># predict: 예측된 클래스를 반환 (threshold=0.5)</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>test_pred <span class="op">=</span> X_test.assign(</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>y_test,</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    pred_prob<span class="op">=</span>lr.predict_proba(X_test)[:, <span class="dv">1</span>],</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    pred_class<span class="op">=</span>lr.predict(X_test),</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    pred_odds<span class="op">=</span><span class="kw">lambda</span> x: x.pred_prob <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.pred_prob),</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    pred_logit<span class="op">=</span><span class="kw">lambda</span> x: np.log(x.pred_odds),</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>test_pred.head(<span class="dv">5</span>)</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="co">#       log2d  y  pred_prob  pred_class  pred_odds  pred_logit</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 2890   3.46  1       0.48           0       0.94       -0.07</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 574    3.81  0       0.66           1       1.93        0.66</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 96     3.17  0       0.34           0       0.51       -0.67</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 2773   3.46  1       0.48           0       0.94       -0.07</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 1813   3.58  1       0.55           1       1.21        0.19</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1215,19 +1239,19 @@ Evaluation of predicted probability
 </div>
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>blowbs_pred[<span class="st">"y2"</span>] <span class="op">=</span> blowbs_pred.y.<span class="bu">map</span>({<span class="dv">0</span>: <span class="st">"survived (y=0)"</span>, <span class="dv">1</span>: <span class="st">"died (y=1)"</span>})</span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>test_pred[<span class="st">"y2"</span>] <span class="op">=</span> test_pred[<span class="st">"y"</span>].<span class="bu">map</span>({<span class="dv">0</span>: <span class="st">"survived (y=0)"</span>, <span class="dv">1</span>: <span class="st">"died (y=1)"</span>})</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(blowbs_pred, x<span class="op">=</span><span class="st">'pred_prob'</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist())</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(test_pred, x<span class="op">=</span><span class="st">'pred_prob'</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(bins<span class="op">=</span><span class="dv">12</span>))</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"y2"</span>)</span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Predicted Probability"</span>, y<span class="op">=</span><span class="st">"Count"</span>)</span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="0103760d" class="cell quarto-layout-panel" data-layout="[2, 1]" data-execution_count="174">
+<div id="2b191547" class="cell quarto-layout-panel" data-execution_count="46" data-layout="[2, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -1254,38 +1278,38 @@ Important
 <div>
 
 </div>
-<div id="70c5a856" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="175">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<div>
-
-</div>
-<div id="67b8c19c" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="176">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<div>
-
-</div>
-<div id="46c722a0" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="177">
+<div id="70c5a856" class="cell quarto-layout-panel" data-execution_count="47" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<p>Threshold: 0.5인 경우, accuracy rate: 0.76</p>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[30, -5, 50, 20]" style="font-size: .9em; line-height: 1em;">
+<div id="67b8c19c" class="cell quarto-layout-panel" data-execution_count="48" data-layout="[4, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
+<p><img src="logistic_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div id="46c722a0" class="cell quarto-layout-panel" data-execution_count="49" data-layout="[4, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
+<p><img src="logistic_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>Threshold: 0.5인 경우, accuracy rate: 0.78</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -5, 50, 20]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: center;">
 <table class="table">
@@ -1304,13 +1328,13 @@ Important
 </tr>
 <tr class="even">
 <td style="text-align: left;">survied(0)</td>
-<td style="text-align: left;">377</td>
-<td style="text-align: left;">107</td>
+<td style="text-align: left;">203</td>
+<td style="text-align: left;">54</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">died(1)</td>
-<td style="text-align: left;">49</td>
-<td style="text-align: left;">126</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">54</td>
 </tr>
 </tbody>
 </table>
@@ -1352,7 +1376,7 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[30, -8, 40, -22]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -8, 40, -22]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <p>Threshold: 0.3인 경우,</p>
@@ -1372,13 +1396,13 @@ Important
 </tr>
 <tr class="even">
 <td style="text-align: left;">survied(0)</td>
-<td style="text-align: left;">298</td>
-<td style="text-align: left;">45</td>
+<td style="text-align: left;">157</td>
+<td style="text-align: left;">22</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">died(1)</td>
-<td style="text-align: left;">128</td>
-<td style="text-align: left;">188</td>
+<td style="text-align: left;">65</td>
+<td style="text-align: left;">86</td>
 </tr>
 </tbody>
 </table>
@@ -1405,8 +1429,8 @@ Important
 </tr>
 <tr class="even">
 <td style="text-align: left;">survied(0)</td>
-<td style="text-align: left;">426</td>
-<td style="text-align: left;">233</td>
+<td style="text-align: left;">222</td>
+<td style="text-align: left;">108</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">died(1)</td>
@@ -1415,7 +1439,7 @@ Important
 </tr>
 </tbody>
 </table>
-<p>Accuracy rate: 0.65</p>
+<p>Accuracy rate: 0.67</p>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 22.0%;justify-content: flex-start;">
 <p>&nbsp;</p>
@@ -1427,21 +1451,28 @@ Important
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> confusion_table</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 0.3</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(blowbs_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>, blowbs[<span class="st">"y"</span>])</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(blowbs[<span class="st">"y"</span>], blowbs_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 0.5</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(test_pred[<span class="st">"pred_class"</span>], test_pred[<span class="st">"y"</span>])</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(test_pred[<span class="st">"y"</span>], test_pred[<span class="st">"pred_class"</span>])</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 1</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(blowbs_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="dv">1</span>, blowbs[<span class="st">"y"</span>])</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(blowbs[<span class="st">"y"</span>], blowbs_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 0.3</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>, test_pred[<span class="st">"y"</span>])</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(test_pred[<span class="st">"y"</span>], test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>)</span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 1</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="dv">1</span>, test_pred[<span class="st">"y"</span>])</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(test_pred[<span class="st">"y"</span>], test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="b1b466d7" class="cell quarto-layout-panel" data-layout="[20, -5, 30, 45]" data-execution_count="178">
+<div id="b1b466d7" class="cell quarto-layout-panel" data-execution_count="54" data-layout="[20, -5, 30, 45]">
 
 </div>
 </section>
@@ -1544,12 +1575,12 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 의료 진단 테스트는 이러한 False Positive Rate과 False Negative Rate를 최소화하는 방향으로 설계되고 평가되어야 합니다. 최적의 진단 테스트는 높은 정확도뿐만 아니라, 환자 안전과 효율적인 의료 자원 사용을 보장하는 데 기여해야 합니다. -->
 <p><strong>Receiver operating characteristic (ROC) curve</strong></p>
 <p>예측된 확률에 대한 임계치를 조정함에 따라 옳은 예측과 틀린 예측의 비율이 어떻게 달라지는지 살펴봄으로써 임계치를 설정하는데 도움을 줌</p>
-<div id="27f1a469" class="cell" data-execution_count="284">
+<div id="27f1a469" class="cell" data-execution_count="55">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>fpr, tpr, thresholds <span class="op">=</span> roc_curve(blowbs_pred.y, blowbs_pred.pred_prob)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>fpr, tpr, thresholds <span class="op">=</span> roc_curve(test_pred.y, test_pred.pred_prob)</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>roc <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"thresholds"</span>: thresholds.<span class="bu">round</span>(<span class="dv">2</span>),</span>
@@ -1565,23 +1596,23 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="afb388d5" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="294">
+<div id="afb388d5" class="cell quarto-layout-panel" data-execution_count="56" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-36-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<div id="b5835016" class="cell" data-execution_count="295">
+<div id="b5835016" class="cell" data-execution_count="57">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_recall_curve</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>precision, recall, thresholds <span class="op">=</span> precision_recall_curve(blowbs_pred.y, </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>blowbs_pred.pred_prob)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>precision, recall, thresholds <span class="op">=</span> precision_recall_curve(test_pred.y, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>test_pred.pred_prob)</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>pr <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"thresholds"</span>: np.append(thresholds.<span class="bu">round</span>(<span class="dv">2</span>), <span class="dv">1</span>),</span>
@@ -1596,76 +1627,74 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="836f22b1" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="297">
+<div id="836f22b1" class="cell quarto-layout-panel" data-execution_count="58" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<p><strong>ROC curve 전체를 특징지어주는 지표들</strong></p>
+<p><strong>ROC curve 전체를 특징지어주는 지표들</strong><br>
+<em>잘못된 예측에 대한 비용이 다르다면, 특정 임계치를 선택하는 것을 고려해야 함</em></p>
 <ul>
-<li><p>AUC: Area Under the Curve = concordance index</p>
+<li>AUC: Area Under the Curve = concordance index
 <ul>
-<li>AUC: 각 specificity값에 대한 sensitivity의 합; 모형 예측력에 대한 전반적 평가
-<ul>
+<li>각 specificity값에 대한 sensitivity의 합; 모형 예측력에 대한 전반적 평가</li>
 <li>0.5: random guess, 1: perfect prediction</li>
 </ul></li>
 <li>Concordance index(c): 모든 Y의 쌍, 예를 들어 <span class="math inline">\((0_i, 1_j)\)</span>에 대해서 해당하는 예측된 확률의 크기가 <span class="math inline">\(p_i &lt; p_j\)</span> 인 비율, 즉 순서가 맞는(concordance) 비율</li>
-<li><em>잘못된 예측에 대한 비용이 다르다면, 특정 임계치를 선택</em></li>
-</ul></li>
 </ul>
-<div id="0da9f61e" class="cell" data-execution_count="187">
+<div id="0da9f61e" class="cell" data-execution_count="59">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score, auc</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(blowbs_pred.y, blowbs_pred.pred_prob)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(test_pred.y, test_pred.pred_prob)</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"AUC: </span><span class="sc">{</span>roc_auc<span class="sc">:.2f}</span><span class="ss">"</span>)  <span class="co"># 또는 auc(fpr, tpr)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>AUC: 0.82</code></pre>
+<pre><code>AUC: 0.81</code></pre>
+</div>
+</div>
+<p><strong>The classification report in scikit-learn</strong><br>
+<em>Thershold: 0.4인 경우,</em></p>
+<div id="b9b47351" class="cell">
+<details class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">.4</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>pred_class <span class="op">=</span> test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;=</span> threshold</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(test_pred[<span class="st">"y"</span>], pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.86      0.82      0.84       222
+           1       0.66      0.73      0.69       108
+
+    accuracy                           0.79       330
+   macro avg       0.76      0.77      0.77       330
+weighted avg       0.80      0.79      0.79       330
+</code></pre>
 </div>
 </div>
 <ul>
 <li>F1-score = <span class="math inline">\(\displaystyle \frac{1}{\frac{1}{2} \cdot \frac{1}{\text{precision}} + \frac{1}{2} \cdot \frac{1}{\text{recall}}}\)</span>
 <ul>
-<li>Precision과 Recall의 조화평균</li>
+<li>Precision과 recall의 조화평균</li>
 <li>보수적인 지표임. 즉, precision과 recall 중 하나라도 낮은면 F1-score도 낮아짐</li>
 </ul></li>
 </ul>
 <div>
 
 </div>
-<div id="607d0bd3" class="cell quarto-layout-panel" data-layout="[5, 4]" data-execution_count="274">
+<div id="607d0bd3" class="cell quarto-layout-panel" data-execution_count="274" data-layout="[5, 4]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
 </div>
-</div>
-</div>
-<p>The classification report in scikit-learn<br>
-<em>Thershold: 0.4인 경우,</em></p>
-<div id="8c040f79" class="cell" data-execution_count="282">
-<details class="code-fold">
-<summary>code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">.4</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>pred_class <span class="op">=</span> blowbs_pred.pred_prob <span class="op">&gt;=</span> threshold</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(blowbs.y, pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>              precision    recall  f1-score   support
-
-           0       0.85      0.78      0.81       426
-           1       0.65      0.74      0.69       233
-
-    accuracy                           0.77       659
-   macro avg       0.75      0.76      0.75       659
-weighted avg       0.78      0.77      0.77       659
-</code></pre>
 </div>
 </div>
 <p><strong><em>Classifier로서 전반적인 모형의 성능 vs.&nbsp;특정 임계치에서의 모형의 성능 vs.&nbsp;확률모형</em></strong></p>
@@ -2212,7 +2241,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
