@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-27">
+<meta name="dcterms.date" content="2024-06-07">
 
 <title> Introduction to Data Science - Regularization</title>
 <style>
@@ -439,7 +439,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 27, 2024</p>
+      <p class="date">June 7, 2024</p>
     </div>
   </div>
   
@@ -491,7 +491,7 @@ window.Quarto = {
 <h1>Shrinkage</h1>
 <ul>
 <li>예측변수에 대한 가정 혹은 변수를 선택을 하지 않고, 추정 계수가 너무 커지지 않도록 제약을 가하는 방법</li>
-<li>이를 shrinkage/regularization이라고 하며,
+<li>이를 shrinkage/regularization(규제)이라고 하며,
 <ul>
 <li><strong>variance를 줄이는 효과가 있음</strong></li>
 <li>즉, overfitting을 줄여, (미래 데이터의) test error를 줄이는 효과가 있음. 즉 예측의 정확도를 높임</li>
@@ -561,17 +561,19 @@ Important
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;241, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
 </div>
-<p>다음과 같이 이상적이지 못한 경우에 정규화를 통해 적절한 bias-variance trade-off를 찾을 수 있음.</p>
+<p>다음과 같이 이상적이지 못한 경우에 regularization를 통해 적절한 bias-variance trade-off를 찾을 수 있음.</p>
 <ul>
-<li>에를 들어, 예측변수가 데이터에 비해 매우 많은 경우 (50개의 관측치에 45개의 예측변수)</li>
-<li>상대적으로 variance의 <em>빠른 감소 효과</em> 덕분에, ridge regression은 OLS보다 더 좋은 예측 성능을 보임
+<li>에를 들어, 예측변수가 데이터에 비해 매우 많은 경우 (50개의 관측치에 45개의 예측변수)
+<ul>
+<li>즉, OLS에서 variance가 높은 경우에 특히 유용함</li>
+<li>심지어, p &gt; n인 경우에도 작동함</li>
+</ul></li>
+<li>상대적으로 variance의 <em>빠른 감소 효과</em> 덕분에 (아래 그림), ridge regression은 OLS보다 더 좋은 예측 성능을 보임
 <ul>
 <li>bias에 대한 약간의 손해를 보지만, variance에 대해서는 큰 이익을 얻어 정확한 예측(test error를 줄임) 가능</li>
 </ul></li>
-<li>심지어, p &gt; n인 경우에도 작동함</li>
-<li>ridge regression은 OLS에서 variance가 높은 경우에 특히 유용함</li>
 <li>파라미터가 작아지지만, 0이 되지는 않아, 모델의 해석이 용이하지는 않음</li>
-<li>정규화 부분으로 인한 estimation에 대한 계산량의 증가 거의 없음; 매우 효율적</li>
+<li>shrinkage penalty 부분으로 인한 estimation에 대한 계산량의 증가가 거의 없도록 알고리즘 개발; 매우 효율적</li>
 </ul>
 <p><a href="images/ridge-bias-variance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/ridge-bias-variance.png" class="img-fluid" width="720"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
@@ -587,7 +589,7 @@ Important
 <p>Ridge와는 달리 파라미터가 0이 될 수 있음: <strong>변수 선택(variable/feature selection)</strong>이 가능함<br>
 이는 변수가 많은 경우 파라미터 해석을 용이하게 함</p>
 <ul>
-<li><span class="math inline">\(\lambda\)</span> 값에 따라, 임의의 갯수의 변수를 포함할 수 있음</li>
+<li><span class="math inline">\(\lambda\)</span> 값에 따라 임의의 갯수의 변수를 포함할 수 있음</li>
 </ul>
 <p><a href="images/lasso.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/lasso.png" class="img-fluid" width="720"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
@@ -602,7 +604,7 @@ Important
 <p><strong>Ridge vs.&nbsp;Lasso</strong></p>
 <p>Ridge</p>
 <ul>
-<li>모든 변수를 포함하여, 종종 파라미터를 해석하기 어려워짐</li>
+<li>모든 변수를 포함하기 때문에(극히 작은 파라미터값을 포함) 종종 파라미터를 해석하기 어려워짐</li>
 <li><em>모든 예측변수들이 골고루 Y와 관련이 있을 때</em> 높은 예측성능을 보임
 <ul>
 <li>즉, 예측변수들이 비슷한 효과를 가질 때</li>
@@ -639,9 +641,9 @@ Linear model selection
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>앞서 shrinkage 방식으로 variance을 감소시키는 방법을 다루었는데, 이외에도 다른 방법의 접근이 있음.</p>
+<p>앞서 shrinkage 방식으로 variance을 감소시키는 방법을 다루었는데, variance를 줄이는 다른 접근 방식이 있음.</p>
 <ul>
-<li><em>Subset Selection</em>: 예측변수들 중 Y와 연관되어 있다고 생각되는 변수들을 선택
+<li><em>Subset Selection</em>: 예측변수들 중 Y와 연관되어 있다고 생각되는 변수들을 선택해 변수의 수를 줄이는 방법
 <ul>
 <li>설명력이 높은 조합의 변수들을 걸러내는 여러 방법이 있음</li>
 <li>어떤 기준으로 계산하느냐에 따라 결과가 달라질 수 있음</li>
@@ -1094,7 +1096,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
