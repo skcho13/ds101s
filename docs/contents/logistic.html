@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-05">
+<meta name="dcterms.date" content="2024-06-07">
 
 <title> Introduction to Data Science - Logistic Regression</title>
 <style>
@@ -450,7 +450,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 5, 2024</p>
+      <p class="date">June 7, 2024</p>
     </div>
   </div>
   
@@ -616,7 +616,7 @@ window.Quarto = {
 <li>그 중에 태풍으로 죽은 나무의 수 (<code>died</code>)를 고려하면,</li>
 <li>나무의 두께에 따라 죽은 나무 수의 비율 (<code>p</code>= <code>died</code>/<code>m</code>)을 계산할 수 있음. 이를 emperical probability라고 함.</li>
 <li>사실, 이 <code>p</code>는 binary response (0, 1)의 conditional mean(평균)인데,</li>
-<li>통계적으로 표현하면 <span class="math inline">\(E(Y|d=d_i)\)</span>이며 선형모형의 mean function를 제공. (모형은 variance function과 함께 설정됨)</li>
+<li>통계적으로 표현하면 <span class="math inline">\(E(Y|d=d_i)\)</span>이며 선형모형의 mean function를 제공.</li>
 </ul>
 <div id="3b5055de" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs.groupby(<span class="st">"d"</span>)[<span class="st">"y"</span>].agg([(<span class="st">"died"</span>, <span class="st">"sum"</span>), (<span class="st">"m"</span>, <span class="st">"count"</span>), (<span class="st">"p"</span>, <span class="st">"mean"</span>)]).reset_index()</span>
@@ -906,7 +906,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <li>이를 위해서 적절한 확률모형을 결합시켜야 함.</li>
 <li>기본적으로 선택하는 확률모형은 Bernoulli 분포임.
 <ul>
-<li>binominal distribution (이항분포)로 전개할 수도 있음.</li>
+<li>binomial distribution (이항분포)로 전개하는 방식도 있음; binomial logit model</li>
 </ul></li>
 <li><strong>관찰값은 Bernoulli 분포로부터 발생했다고 가정</strong>함으로써, 실제 관찰값들의 error를 모형에 반영할 수 있음.</li>
 </ul>
@@ -949,10 +949,10 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <p><img src="images/blowdown.png" class="img-fluid" width="650"></p>
 <p>각 likelihood는 관측치들이 모두 <strong>독립</strong>적으로 발생했다고 가정했을 때의 확률값이고,<br>
 모든 데이터가 관찰될 likelihood = <span class="math inline">\(p_1^7 (1-p_1)^{83} \cdot p_2^7 (1-p_2)^{85} \cdot p_3^{18} \cdot (1-p_3)^{73} \cdots\)</span></p>
-<p>이 때, 모형을 예측변수 <span class="math inline">\(X\)</span>의 1차 다항함수로 fit한다면, &nbsp; <span class="math inline">\(\displaystyle log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 \cdot x\)</span> 인데,<br>
+<p>이 때, 모형을 예측변수 <span class="math inline">\(X\)</span>의 1차 다항함수로 fit한다면, &nbsp; <span class="math inline">\(\displaystyle log\left(\frac{p_i}{1-p_i}\right) = \beta_0 + \beta_1 \cdot x_i\)</span> 인데,<br>
 변형하면 &nbsp; <span class="math inline">\(\displaystyle p_i = \sigma(\beta_0 + \beta_1 x_i) = \frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot x_i)}}\)</span></p>
 <p>Likelihood = <span class="math inline">\(\displaystyle \left(\frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.32)}}\right)^7 \left(1 - \frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.32)}}\right)^{83} \cdot \left(\frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.58)}}\right)^7 \left(1 - \frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.58)}}\right)^{85} \cdots\)</span></p>
-<p>이 Likelihood를 최대가 되도록 <span class="math inline">\(\beta_0, \beta_1\)</span>의 추정치를 찾음.</p>
+<p>이 Likelihood가 최대가 되도록 <span class="math inline">\(\beta_0, \beta_1\)</span>의 추정치를 찾음.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1739,7 +1739,7 @@ weighted avg       0.80      0.79      0.79       330
 </section>
 <section id="multiclass-k-2의-경우" class="level2">
 <h2 class="anchored" data-anchor-id="multiclass-k-2의-경우">Multiclass (K &gt; 2)의 경우</h2>
-<p><strong>Multinoimal logistic regression</strong></p>
+<p><strong>Multinomial logistic regression</strong></p>
 <p>클래스 <span class="math inline">\(C_k\)</span>에 속할 확률을 예측하는 모형</p>
 <p><span class="math inline">\(\displaystyle P(Y=C_k|X=x) = \frac{e^{\beta_{k0} + \beta_{k1} \cdot x}}{1 + \sum_{j=1}^{K-1} e^{\beta_{j0} + \beta_{j1} \cdot x}}\)</span></p>
 <p>이 때, 마지막 클래스 <span class="math inline">\(C_K\)</span>에 대한 클래스 <span class="math inline">\(C_k\)</span>의 log odds는</p>
@@ -1796,7 +1796,7 @@ Note
 <li>1980년대 후반 숫자를 인식하는 문제가 신경망 기술의 발전에 큰 촉매로 작용했음.</li>
 <li>신경망의 구조의 개선을 거쳐 인간 수준의 성능을 달성하는데 30년 이상 걸렸음.</li>
 </ul>
-<p>아래 28x28 pixel의 음영을 나타내는 0~255(8bit) 값을 입력값으로 받음.</p>
+<p>아래 28x28 pixels의 음영을 나타내는 0~255(8bit) 값을 입력값으로 받음.</p>
 <div>
 
 </div>
@@ -1805,9 +1805,9 @@ Note
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <ul>
 <li>60,000개의 training set을 이용하여 학습</li>
-<li>인풋 레이어의 유닛(unit)의 수: 28x28 = 784개</li>
+<li>인풋 레이어의 유닛(unit)의 수: 28x28 = 784개 (예측변수의 수)</li>
 <li>각각의 hidden layer의 유닛의 수는 256개, 128개</li>
-<li>총 파라미터의 수는 235,146개;</li>
+<li>총 파라미터의 수는 235,146개; 예측변수보다 월등히 많음</li>
 <li>한편 multinomial logistic으로 필요한 파라미터의 수는 785x9 = 7,065개</li>
 </ul>
 </div>
@@ -2256,7 +2256,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
