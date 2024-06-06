@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-06">
+<meta name="dcterms.date" content="2024-06-07">
 
 <title> Introduction to Data Science - Generative Models</title>
 <style>
@@ -466,7 +466,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2024</p>
+      <p class="date">June 7, 2024</p>
     </div>
   </div>
   
@@ -478,7 +478,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="116">
+<div id="cell-1" class="cell" data-execution_count="168">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -560,7 +560,7 @@ Note
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="118" data-layout="[5, 1]">
+<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="170" data-layout="[5, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
@@ -572,7 +572,7 @@ Note
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="119" data-layout="[[1, 1]]">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="171" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
@@ -610,7 +610,7 @@ Note
 <div>
 
 </div>
-<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="120" data-layout="[[6, 1]]">
+<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="172" data-layout="[[6, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 85.7%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
@@ -632,11 +632,22 @@ Note
 로그를 취해 정리하면,<br>
 <span class="math inline">\(\displaystyle \delta_k(x) = \frac{\mu_k}{\sigma^2}x - \frac{\mu_k^2}{2\sigma^2} + \log(P(Y=C_k))\)</span> &nbsp; : <em>discriminant function</em></p>
 <p>추정치로 바꾸면, <span class="math inline">\(\displaystyle \hat\delta_k(x) = \frac{\hat\mu_k}{\hat\sigma^2}x - \frac{\hat\mu_k^2}{2\hat\sigma^2} + \log(\frac{n_k}{n})\)</span> &nbsp; : <span class="math inline">\(x\)</span>에 대한 일차함수 형태</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Logistic regression에서 log-odds의 형태로 선형모형을 세운 이유로 볼 수 있음.</p>
+<p><span class="math inline">\(\displaystyle log~odds = log\left(\frac{p}{1-p}\right) = log\left(\frac{P(Y=1|X=x)}{P(Y=0|X=x)}\right) = \beta_{0} + \beta_{1}x\)</span></p>
+</div>
+</div>
+</div>
 <p><span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, prior의 추정치와 몇 개의 <span class="math inline">\(X\)</span>값에 대한 예측 확률을 구해보면,</p>
 <div>
 
 </div>
-<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="123" data-layout="[[1, 1.5]]">
+<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="175" data-layout="[[1, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <pre><code>             mu  sigma  prior
@@ -664,7 +675,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="124" data-layout="[[7, 1]]">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="176" data-layout="[[7, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 87.5%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
@@ -674,7 +685,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="134" data-layout="[[10, 1]]">
+<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="186" data-layout="[[10, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 90.9%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-20-output-1.png" width="794" height="230"></p>
@@ -695,8 +706,8 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 </li>
 <li><span class="math inline">\(\delta_2(x_1) = \delta_3(x_1)\)</span>: &nbsp; <span class="math inline">\(x_1 = 52.05\)</span></li>
 </ul>
-<div id="cell-32" class="cell" data-execution_count="137">
-<div class="cell-output cell-output-display" data-execution_count="137">
+<div id="cell-32" class="cell" data-execution_count="189">
+<div class="cell-output cell-output-display" data-execution_count="189">
 <div>
 <figure class="figure">
 <p><img src="lda_files/figure-html/cell-23-output-1.png" width="645" height="240" class="figure-img"></p>
@@ -724,7 +735,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-36" class="cell quarto-layout-panel" data-execution_count="139" data-layout="[[4, 4, 1.5]]">
+<div id="cell-36" class="cell quarto-layout-panel" data-execution_count="191" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -740,7 +751,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="141" data-layout="[[1, -0.2, 1]]">
+<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="193" data-layout="[[1, -0.2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>             Adelie  Chinstrap  Gentoo
@@ -757,8 +768,8 @@ sigma_2     1.74     1.25</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-41" class="cell" data-execution_count="142">
-<div class="cell-output cell-output-display" data-execution_count="142">
+<div id="cell-41" class="cell" data-execution_count="194">
+<div class="cell-output cell-output-display" data-execution_count="194">
 <pre><code>       Adelie  Chinstrap  Gentoo
 prior    0.44       0.20    0.36</code></pre>
 </div>
@@ -783,6 +794,20 @@ prior    0.44       0.20    0.36</code></pre>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="Regularization">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Regularization
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Regularization의 원리를 마찬가지로 적용하여, 파라미터 추정치를 shrink하여 overfitting을 방지할 수 있음.</p>
+<p>단, 이 경우 covarance matrix에 대해 shrinkage가 적용됨.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="quadratic-discriminant-analysis-qda" class="level2">
@@ -798,7 +823,7 @@ prior    0.44       0.20    0.36</code></pre>
 <div>
 
 </div>
-<div id="cell-52" class="cell quarto-layout-panel" data-execution_count="45" data-layout="[[4, 4, 1.5]]">
+<div id="cell-53" class="cell quarto-layout-panel" data-execution_count="201" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
@@ -812,7 +837,7 @@ prior    0.44       0.20    0.36</code></pre>
 <div>
 
 </div>
-<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="46" data-layout="[[1, -0.2, 1]]">
+<div id="cell-55" class="cell quarto-layout-panel" data-execution_count="202" data-layout="[[1, -0.2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>                   Adelie  Chinstrap  Gentoo
@@ -828,7 +853,7 @@ flipper_length_mm  189.95     195.82  217.19</code></pre>
 <div>
 
 </div>
-<div id="cell-56" class="cell quarto-layout-panel" data-execution_count="47" data-layout="[[1, -0.1, 1, -0.1, 1]]">
+<div id="cell-57" class="cell quarto-layout-panel" data-execution_count="203" data-layout="[[1, -0.1, 1, -0.1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
 <pre><code>Adelie   sigma_1  sigma_2
@@ -853,8 +878,8 @@ sigma_2    13.21    42.05</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-57" class="cell" data-execution_count="48">
-<div class="cell-output cell-output-display" data-execution_count="48">
+<div id="cell-58" class="cell" data-execution_count="204">
+<div class="cell-output cell-output-display" data-execution_count="204">
 <pre><code>       Adelie  Chinstrap  Gentoo
 prior    0.44       0.20    0.36</code></pre>
 </div>
@@ -899,7 +924,7 @@ prior    0.44       0.20    0.36</code></pre>
 <div>
 
 </div>
-<div id="cell-66" class="cell quarto-layout-panel" data-execution_count="53" data-layout="[[4, 4, 1.5]]">
+<div id="cell-67" class="cell quarto-layout-panel" data-execution_count="209" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
@@ -1074,14 +1099,14 @@ Note
 </section>
 <section id="python-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="python-implementation">Python Implementation</h2>
-<div id="cell-79" class="cell" data-execution_count="33">
+<div id="cell-80" class="cell" data-execution_count="216">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>wine <span class="op">=</span> datasets.load_wine(as_frame<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>wine_df <span class="op">=</span> wine[<span class="st">'frame'</span>]</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>wine_df[<span class="st">'target'</span>] <span class="op">=</span> wine_df[<span class="st">'target'</span>].<span class="bu">map</span>({<span class="dv">0</span>: <span class="st">'C0'</span>, <span class="dv">1</span>: <span class="st">'C1'</span>, <span class="dv">2</span>: <span class="st">'C2'</span>})</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>wine_df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="216">
 <pre><code>   alcohol  malic_acid  ash  alcalinity_of_ash  magnesium  total_phenols  \
 0    14.23        1.71 2.43              15.60     127.00           2.80   
 1    13.20        1.78 2.14              11.20     100.00           2.65   
@@ -1098,7 +1123,8 @@ Note
 2                          3.17  1185.00     C0  </code></pre>
 </div>
 </div>
-<div id="cell-80" class="cell" data-execution_count="34">
+<p>Decision boundary를 시각화하기 위해, 2차원 예측변수를 사용하여 LDA, QDA, Naive Bayes를 적용</p>
+<div id="cell-82" class="cell" data-execution_count="229">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> wine_df[[<span class="st">'color_intensity'</span>, <span class="st">'alcohol'</span>]]</span>
@@ -1106,41 +1132,56 @@ Note
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-81" class="cell" data-execution_count="35">
+<div id="cell-83" class="cell" data-execution_count="232">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> LinearDiscriminantAnalysis <span class="im">as</span> LDA</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>lda <span class="op">=</span> LDA(store_covariance<span class="op">=</span><span class="va">True</span>).fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>lda <span class="op">=</span> LDA(store_covariance<span class="op">=</span><span class="va">True</span>, shrinkage<span class="op">=</span><span class="st">"auto"</span>, solver<span class="op">=</span><span class="st">"lsqr"</span>).fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Shrinkage">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Shrinkage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Covariance matrix에 shrinkage를 적용하려면 가령,<br>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis">sklearn 문서 참고</a></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>LDA(store_covariance<span class="op">=</span><span class="va">True</span>, shrinkage<span class="op">=</span><span class="st">"auto"</span>, solver<span class="op">=</span><span class="st">"lsqr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <p>각 클래스별 평균, 공분산 행렬 추정</p>
 <ul>
 <li>Maximum Likelihood Estimation (MLE) 사용</li>
 <li>과적합을 방지하기 위해 shrinkage를 사용한 추정치도 사용 가능; <a href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html">sklearn 문서 참조</a></li>
 </ul>
-<div id="cell-83" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 분포 평균 추정치</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df_mean <span class="op">=</span> pd.DataFrame(lda.means_.T, index<span class="op">=</span>X.columns, columns<span class="op">=</span>lda.classes_)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div id="cell-86" class="cell" data-execution_count="233">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 분포 평균 추정치</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_mean <span class="op">=</span> pd.DataFrame(lda.means_.T, index<span class="op">=</span>X.columns, columns<span class="op">=</span>lda.classes_)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="233">
 <pre><code>                   C0    C1    C2
 color_intensity  5.28  3.12  7.14
 alcohol         13.62 12.31 13.16</code></pre>
 </div>
 </div>
-<div id="cell-84" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 공분산 행렬 추정치</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_cov <span class="op">=</span> pd.DataFrame(lda.covariance_, columns<span class="op">=</span>[<span class="st">"sigma_1"</span>, <span class="st">"sigma_2"</span>], index<span class="op">=</span>pd.Index([<span class="st">"sigma_1"</span>, <span class="st">"sigma_2"</span>]))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df_cov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div id="cell-87" class="cell" data-execution_count="234">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 공분산 행렬 추정치</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_cov <span class="op">=</span> pd.DataFrame(lda.covariance_, columns<span class="op">=</span>[<span class="st">"sigma_1"</span>, <span class="st">"sigma_2"</span>], index<span class="op">=</span>pd.Index([<span class="st">"sigma_1"</span>, <span class="st">"sigma_2"</span>]))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df_cov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="234">
 <pre><code>         sigma_1  sigma_2
-sigma_1     2.56     0.29
-sigma_2     0.29     0.29</code></pre>
+sigma_1     2.56     0.10
+sigma_2     0.10     0.29</code></pre>
 </div>
 </div>
-<div id="cell-85" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 사전 확률 추정치</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df_priors <span class="op">=</span> pd.DataFrame(lda.priors_, index<span class="op">=</span>lda.classes_, columns<span class="op">=</span>[<span class="st">"prior"</span>])</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>df_priors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div id="cell-88" class="cell" data-execution_count="235">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 사전 확률 추정치</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df_priors <span class="op">=</span> pd.DataFrame(lda.priors_, index<span class="op">=</span>lda.classes_, columns<span class="op">=</span>[<span class="st">"prior"</span>])</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df_priors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="235">
 <pre><code>    prior
 C0   0.29
 C1   0.42
@@ -1148,29 +1189,29 @@ C2   0.29</code></pre>
 </div>
 </div>
 <p>다음은 decision boundary를 시각화하기 위한 코드</p>
-<div id="cell-87" class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grid data</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.linspace(X_train[<span class="st">'color_intensity'</span>].<span class="bu">min</span>(), X_train[<span class="st">'color_intensity'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.linspace(X_train[<span class="st">'alcohol'</span>].<span class="bu">min</span>(), X_train[<span class="st">'alcohol'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>X_grid <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">list</span>(product(x1, x2)),</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"color_intensity"</span>, <span class="st">"alcohol"</span>],</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>y_grid <span class="op">=</span> lda.predict(X_grid)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>X_grid[<span class="st">"target"</span>] <span class="op">=</span> y_grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(X_grid, x<span class="op">=</span><span class="st">"color_intensity"</span>, y<span class="op">=</span><span class="st">"alcohol"</span>, hue<span class="op">=</span><span class="st">"target"</span>, s<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">.3</span>, palette<span class="op">=</span>[<span class="st">"0"</span>, <span class="st">".3"</span>, <span class="st">".6"</span>], legend<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>X_test[<span class="st">"color_intensity"</span>], y<span class="op">=</span>X_test[<span class="st">"alcohol"</span>], hue<span class="op">=</span>y_test)</span>
+<div id="cell-90" class="cell" data-execution_count="222">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grid data</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.linspace(X_train[<span class="st">'color_intensity'</span>].<span class="bu">min</span>(), X_train[<span class="st">'color_intensity'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.linspace(X_train[<span class="st">'alcohol'</span>].<span class="bu">min</span>(), X_train[<span class="st">'alcohol'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'color intensity'</span>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'alcohol'</span>)</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"LDA Decision Boundary"</span>)</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-88" class="cell quarto-layout-panel" data-execution_count="102" data-layout="[[1, 1]]">
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>X_grid <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">list</span>(product(x1, x2)),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"color_intensity"</span>, <span class="st">"alcohol"</span>],</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>y_grid <span class="op">=</span> lda.predict(X_grid)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>X_grid[<span class="st">"target"</span>] <span class="op">=</span> y_grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(X_grid, x<span class="op">=</span><span class="st">"color_intensity"</span>, y<span class="op">=</span><span class="st">"alcohol"</span>, hue<span class="op">=</span><span class="st">"target"</span>, s<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">.3</span>, palette<span class="op">=</span>[<span class="st">"0"</span>, <span class="st">".3"</span>, <span class="st">".6"</span>], legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>X_test[<span class="st">"color_intensity"</span>], y<span class="op">=</span>X_test[<span class="st">"alcohol"</span>], hue<span class="op">=</span>y_test)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'color intensity'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'alcohol'</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"LDA Decision Boundary"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-91" class="cell quarto-layout-panel" data-execution_count="223" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-58-output-1.png" class="img-fluid"></p>
@@ -1178,13 +1219,13 @@ C2   0.29</code></pre>
 </div>
 </div>
 <p>각 클래스별 예측된 확률과 예측된 클래스 (데이터프레임으로 표시)</p>
-<div id="cell-90" class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pred_class <span class="op">=</span> pd.DataFrame(lda.predict(X_test), columns<span class="op">=</span>[<span class="st">"pred"</span>])</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>pred_prob <span class="op">=</span> pd.DataFrame(lda.predict_proba(X_test), columns<span class="op">=</span>lda.classes_)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.concat([X_test.reset_index(drop<span class="op">=</span><span class="va">True</span>), pred_class, pred_prob], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>results_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="99">
+<div id="cell-93" class="cell" data-execution_count="224">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pred_class <span class="op">=</span> pd.DataFrame(lda.predict(X_test), columns<span class="op">=</span>[<span class="st">"pred"</span>])</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pred_prob <span class="op">=</span> pd.DataFrame(lda.predict_proba(X_test), columns<span class="op">=</span>lda.classes_)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.concat([X_test.reset_index(drop<span class="op">=</span><span class="va">True</span>), pred_class, pred_prob], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>results_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="224">
 <pre><code>    color_intensity  alcohol pred   C0   C1   C2
 0              5.88    13.69   C0 0.72 0.03 0.25
 1              2.06    12.42   C1 0.03 0.96 0.01
@@ -1198,10 +1239,10 @@ C2   0.29</code></pre>
 </div>
 </div>
 <p>Confusion matrix</p>
-<div id="cell-92" class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> confusion_table</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>confusion_table(lda.predict(X_test), y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="109">
+<div id="cell-95" class="cell" data-execution_count="225">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> confusion_table</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>confusion_table(lda.predict(X_test), y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="225">
 <pre><code>Truth      C0  C1  C2
 Predicted            
 C0         26   1   3
@@ -1210,22 +1251,31 @@ C2          2   0  12</code></pre>
 </div>
 </div>
 <p>Classification report: precision, recall은 각 클래스에 대한 나머지 클래스들에 대한 관계를 의미</p>
-<div id="cell-94" class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> qda.predict(X_test)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-97" class="cell" data-execution_count="226">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lda.predict(X_test)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-          C0       0.87      0.96      0.92        28
-          C1       0.96      0.96      0.96        27
-          C2       0.93      0.76      0.84        17
+          C0       0.87      0.93      0.90        28
+          C1       0.93      0.96      0.95        27
+          C2       0.86      0.71      0.77        17
 
-    accuracy                           0.92        72
-   macro avg       0.92      0.90      0.91        72
-weighted avg       0.92      0.92      0.92        72
+    accuracy                           0.89        72
+   macro avg       0.88      0.87      0.87        72
+weighted avg       0.89      0.89      0.89        72
 </code></pre>
 </div>
+</div>
+<p>QDA와 Naive Bayes도 동일한 방식으로 사용 가능<br>
+각각, 다음과 같이 <code>QuadraticDiscriminantAnalysis</code>와 <code>GaussianNB</code>를 사용해 estimator를 생성</p>
+<div id="cell-99" class="cell" data-execution_count="228">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> QuadraticDiscriminantAnalysis <span class="im">as</span> QDA</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>qda <span class="op">=</span> QDA(store_covariance<span class="op">=</span><span class="va">True</span>).fit(X_train, y_train)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>nb <span class="op">=</span> GaussianNB().fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1660,7 +1710,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
