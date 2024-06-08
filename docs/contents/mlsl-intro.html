@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-07">
+<meta name="dcterms.date" content="2024-06-08">
 
 <title> Introduction to Data Science - Machine/Statistical Learning</title>
 <style>
@@ -452,7 +452,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 7, 2024</p>
+      <p class="date">June 8, 2024</p>
     </div>
   </div>
   
@@ -636,7 +636,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" height="300"></a></p>
@@ -677,7 +677,8 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <ul>
 <li>단, 관측치의 수에 대해 상대적으로 predictor의 갯수가 늘어남에 따라 점차 효율성이 떨어짐; the curse of dimensionality
 <ul>
-<li>예를 들어, <span class="math inline">\(\hat f(1.5) = E(Y|carat=1.5,~ cut=Fair,~ clarity=I1)\)</span></li>
+<li>예를 들어, 다이아몬드 가격을 carat, cut, clarity의 세 변수로 예측하는 경우,</li>
+<li><span class="math inline">\(\hat f(1.5, Fair, I1) = E(Y|carat=1.5,~ cut=Fair,~ clarity=I1)\)</span></li>
 </ul></li>
 </ul>
 <div>
@@ -709,10 +710,11 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 </div>
 </div>
 </div>
+<p>만약, 부리의 길이로 부리의 깊이를 예측한는 모형에 대해 <span class="math inline">\(\hat f\)</span>를 구한다면,</p>
 <div>
 
 </div>
-<div id="cell-14" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="28">
+<div id="cell-15" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="28">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
@@ -732,7 +734,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="29">
+<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="29">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
@@ -849,7 +851,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-21" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="30">
+<div id="cell-22" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="30">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
@@ -864,7 +866,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-23" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="31">
+<div id="cell-24" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
@@ -874,7 +876,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-24" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="32">
+<div id="cell-25" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="32">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
@@ -885,7 +887,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 <div>
 
 </div>
-<div id="cell-28" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="35">
+<div id="cell-29" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="35">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
@@ -893,7 +895,7 @@ Expected loss <span class="math inline">\(\displaystyle E(L_2) = \left( \int (bi
 </div>
 </div>
 <p>Confusion matrix with the threshold=0.5</p>
-<div id="cell-30" class="cell" data-execution_count="36">
+<div id="cell-31" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>Truth      Adelie  Gentoo
 Predicted                
@@ -902,7 +904,7 @@ Gentoo          7     116</code></pre>
 </div>
 </div>
 <p>만약, 다음과 같은 loss function (loss matrix)가 주어진다면,</p>
-<div id="cell-32" class="cell" data-execution_count="37">
+<div id="cell-33" class="cell" data-execution_count="37">
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Truth      Adelie  Gentoo
 Predicted                
@@ -964,7 +966,7 @@ Gentoo         30       0</code></pre>
 <li>다수의 훈련셋과 검증셋을 생성하여, 평균값으로 모형의 성능을 평가</li>
 <li>다양한 변형이 존재</li>
 </ul>
-<div id="cell-36" class="cell" data-execution_count="38">
+<div id="cell-37" class="cell" data-execution_count="38">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install ISLP package</span></span>
@@ -986,7 +988,7 @@ Gentoo         30       0</code></pre>
 2       1         plymouth satellite  </code></pre>
 </div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="39">
+<div id="cell-38" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>auto_train, auto_valid <span class="op">=</span> train_test_split(auto, test_size<span class="op">=</span><span class="fl">.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1001,7 +1003,7 @@ Gentoo         30       0</code></pre>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    p.add(so.Line(), so.PolyFit(i)).label(title<span class="op">=</span><span class="ss">f"M = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-38" class="cell quarto-layout-panel" data-layout="[1, 1, 1]" data-execution_count="40">
+<div id="cell-39" class="cell quarto-layout-panel" data-layout="[1, 1, 1]" data-execution_count="40">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
@@ -1069,7 +1071,7 @@ Gentoo         30       0</code></pre>
 <p>k개의 훈련셋에서 각각에서 얻은 모델에 대해서 검증셋으로부터 모형의 평가치를 얻음: 주로 MSE(mean squared error)</p>
 <p>k-fold CV estimate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k MSE_i\)</span></p>
 <p>분류의 경우, misclassification error rate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k \frac{1}{n_i} \sum_{j=1}^{n_i} I(y_j \neq \hat y_j)\)</span></p>
-<div id="cell-41" class="cell" data-execution_count="41">
+<div id="cell-42" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_validate, cross_val_score, KFold, ShuffleSplit</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
@@ -1091,7 +1093,7 @@ MSEs: [15.98 15.84 18.39 25.88 18.71 23.58 23.58 23.83 11.19 14.88],
 Average: 19.185331419374926</code></pre>
 </div>
 </div>
-<div id="cell-42" class="cell" data-execution_count="42">
+<div id="cell-43" class="cell" data-execution_count="42">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1155,7 +1157,7 @@ Average: 16.32656735042892</code></pre>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-split Shuffle &amp; Split Cross-validation </span><span class="ch">\n</span><span class="st">with 20% test sets over 10 degrees of Polynomial"</span>)</span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-43" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="43">
+<div id="cell-44" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="43">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -1201,7 +1203,7 @@ Average: 16.32656735042892</code></pre>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-44" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="44">
+<div id="cell-45" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="44">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
@@ -1256,7 +1258,7 @@ Average: 16.32656735042892</code></pre>
 <li>최적의 flexibility를 선택한 후, 전체 training set으로 fitting한 모델을 선택 후</li>
 <li>test set으로 모델의 성능을 평가</li>
 </ul>
-<div id="cell-47" class="cell" data-execution_count="45">
+<div id="cell-48" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, GridSearchCV</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1693,14 +1695,14 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
              scoring='neg_mean_squared_error')</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox"><label for="sk-estimator-id-11" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">estimator: Pipeline</label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[('poly', PolynomialFeatures()), ('lm', LinearRegression())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox"><label for="sk-estimator-id-12" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;PolynomialFeatures<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">?<span>Documentation for PolynomialFeatures</span></a></label><div class="sk-toggleable__content fitted"><pre>PolynomialFeatures()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox"><label for="sk-estimator-id-13" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div></div></div></div></div></div>
 </div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="46">
+<div id="cell-49" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best parameter!</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>grid_search.best_params_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>{'poly__degree': 10}</code></pre>
 </div>
 </div>
-<div id="cell-49" class="cell" data-execution_count="51">
+<div id="cell-50" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best estimator!</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>grid_search.best_estimator_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
@@ -2114,20 +2116,20 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <p><code>grid_search.cv_results_</code>에 교차검증의 여러 지표들이 포함되어 있음</p>
-<div id="cell-51" class="cell" data-execution_count="47">
+<div id="cell-52" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>grid_search.cv_results_[<span class="st">"mean_test_score"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>array([-24.82, -20.29, -20.37, -20.67, -20.2 , -20.16, -20.4 , -20.49,
        -20.28, -19.94])</code></pre>
 </div>
 </div>
-<div id="cell-52" class="cell" data-execution_count="48">
+<div id="cell-53" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>grid_search.cv_results_[<span class="st">"param_poly__degree"</span>].data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-53" class="cell" data-execution_count="49">
+<div id="cell-54" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    {</span>
@@ -2150,7 +2152,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <p>2차 다항함수로 충분하다고 판단하고, 전체 training set으로 다시 fitting한 후, test set으로 성능을 평가</p>
-<div id="cell-55" class="cell" data-execution_count="53">
+<div id="cell-56" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mod_auto_best <span class="op">=</span> Pipeline([(<span class="st">"poly"</span>, PolynomialFeatures(<span class="dv">2</span>)), (<span class="st">"lm"</span>, LinearRegression())])</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mod_auto_best.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
@@ -2561,7 +2563,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </a></style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[('poly', PolynomialFeatures()), ('lm', LinearRegression())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-17" type="checkbox"><label for="sk-estimator-id-17" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;Pipeline<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[('poly', PolynomialFeatures()), ('lm', LinearRegression())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-18" type="checkbox"><label for="sk-estimator-id-18" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;PolynomialFeatures<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">?<span>Documentation for PolynomialFeatures</span></a></label><div class="sk-toggleable__content fitted"><pre>PolynomialFeatures()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-19" type="checkbox"><label for="sk-estimator-id-19" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div>
 </div>
 </div>
-<div id="cell-56" class="cell" data-execution_count="54">
+<div id="cell-57" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get root_mean_squared_error and median_absolute_error</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> root_mean_squared_error, median_absolute_error</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2601,7 +2603,7 @@ Median Absolute Error: 2.486</code></pre>
 </div>
 </div>
 <p><a href="https://islp.readthedocs.io/en/latest/datasets/Carseats.html">Sales of Child Car Seats</a>(<code>Carseats</code>) 데이터셋으로 예를 들면,</p>
-<div id="cell-60" class="cell" data-execution_count="56">
+<div id="cell-61" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>carseats <span class="op">=</span> load_data(<span class="st">"Carseats"</span>)</span>
@@ -2618,7 +2620,7 @@ Median Absolute Error: 2.486</code></pre>
 2         12   Yes  Yes  </code></pre>
 </div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="57">
+<div id="cell-62" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> carseats[[<span class="st">"Income"</span>, <span class="st">"Advertising"</span>, <span class="st">"Population"</span>, <span class="st">"Price"</span>, <span class="st">"Age"</span>]]</span>
@@ -3035,7 +3037,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </a></style><div id="sk-container-id-7" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-20" type="checkbox" checked=""><label for="sk-estimator-id-20" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div>
 </div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="58">
+<div id="cell-63" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> pd.DataFrame(lm_carseats.coef_, index<span class="op">=</span>X.columns, columns<span class="op">=</span>[<span class="st">"params"</span>])</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
@@ -3047,7 +3049,7 @@ Price       -0.0574
 Age         -0.0490</code></pre>
 </div>
 </div>
-<div id="cell-64" class="cell" data-execution_count="60">
+<div id="cell-65" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.utils <span class="im">import</span> resample</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
@@ -3060,7 +3062,7 @@ Age         -0.0490</code></pre>
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    params_new <span class="op">=</span> pd.DataFrame(lm_carseats.coef_, index<span class="op">=</span>X.columns, columns<span class="op">=</span>[<span class="ss">f"sample_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>])</span>
 <span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    params_boot <span class="op">=</span> pd.concat([params_boot, params_new], axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="61">
+<div id="cell-66" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>params_boot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>             params  sample_0  sample_1  sample_2  sample_3  ...  sample_995  \
@@ -3081,7 +3083,7 @@ Age             -0.0486     -0.0535     -0.0394     -0.0375
 </div>
 </div>
 <p>1000개 표본에서 파라미터 추정치의 표준편차; <em>standard error</em></p>
-<div id="cell-67" class="cell" data-execution_count="62">
+<div id="cell-68" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>params_boot.std(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>Income        0.0038
@@ -3096,7 +3098,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>params_boot.T.hist(bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">.7</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>), layout<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-69" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="63">
+<div id="cell-70" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="63">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
@@ -3134,7 +3136,7 @@ Short version
 </div>
 </div>
 <p>선형회귀에서 OLS estimation 결과와 비교하면,</p>
-<div id="cell-73" class="cell" data-execution_count="175">
+<div id="cell-74" class="cell" data-execution_count="175">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>lm_carseats2 <span class="op">=</span> ols(<span class="st">"Sales ~ Income + Advertising + Population + Price + Age"</span>, data<span class="op">=</span>carseats).fit()</span>
@@ -3599,7 +3601,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
