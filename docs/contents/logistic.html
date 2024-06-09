@@ -783,7 +783,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <ul>
 <li>여기서는 쓰러진 나무와 산 나무의 두께가 Gaussian 분포를 따르고,</li>
 <li>그 두 분포의 분산이 동일하다면, log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결될 수 있음.</li>
-<li>나무의 길이(d)를 log2 변환한 이유임 (오른쪽 그림)</li>
+<li>나무의 두께(d)를 log2 변환한 이유임 (오른쪽 그림)</li>
 </ul>
 <details class="code-fold">
 <summary>code</summary>
@@ -2257,7 +2257,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
