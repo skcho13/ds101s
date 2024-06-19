@@ -475,7 +475,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="4">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -503,7 +503,7 @@ window.Quarto = {
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-3" class="cell" data-execution_count="6">
+<div id="cell-3" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>sckit-learn packages</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.model_selection <span class="im">as</span> skm</span>
@@ -546,13 +546,13 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="regression">Regression</h2>
 <p><a href="https://islp.readthedocs.io/en/latest/datasets/Hitters.html">Baseball Data</a><br>
 Major League Baseball Data from the 1986 and 1987 seasons.</p>
-<div id="cell-6" class="cell" data-execution_count="7">
+<div id="cell-6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Hitters <span class="op">=</span> load_data(<span class="st">'Hitters'</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Hitters <span class="op">=</span> Hitters.dropna()  <span class="co"># 결측치 제거</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Hitters.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>   AtBat  Hits  HmRun  Runs  RBI  Walks  Years  CAtBat  CHits  CHmRun  CRuns  \
 1    315    81      7    24   38     39     14    3449    835      69    321   
 2    479   130     18    66   72     76      3    1624    457      63    224   
@@ -564,7 +564,7 @@ Major League Baseball Data from the 1986 and 1987 seasons.</p>
 3   838     354      N        E      200       11       3 500.00000         N  </code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-7" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -574,7 +574,7 @@ Major League Baseball Data from the 1986 and 1987 seasons.</p>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <figure class="figure">
 <p><img src="tree_files/figure-html/cell-6-output-1.png" width="568" height="374" class="figure-img"></p>
@@ -582,7 +582,7 @@ Major League Baseball Data from the 1986 and 1987 seasons.</p>
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="9">
+<div id="cell-8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor <span class="im">as</span> DTR, plot_tree, export_text</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> Hitters[[<span class="st">"Years"</span>, <span class="st">"Hits"</span>]]</span>
@@ -593,7 +593,7 @@ Major League Baseball Data from the 1986 and 1987 seasons.</p>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>reg_tree <span class="op">=</span> DTR(max_depth<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">0</span>)        </span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>reg_tree.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <style>#sk-container-id-1 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: black;
@@ -1032,7 +1032,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>plot_tree(reg_tree, feature_names<span class="op">=</span>reg_tree.feature_names_in_.tolist(), ax<span class="op">=</span>ax)</span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[3, 4]">
+<div id="cell-10" class="cell quarto-layout-panel" data-layout="[3, 4]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
@@ -1042,7 +1042,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="29">
+<div id="cell-11" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(export_text(reg_tree, feature_names<span class="op">=</span>reg_tree.feature_names_in_.tolist(), show_weights<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>|--- Years &lt;= 4.50
@@ -2012,7 +2012,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plot_tree(grid.best_estimator_, precision<span class="op">=</span><span class="dv">1</span>,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          feature_names<span class="op">=</span>grid.best_estimator_.feature_names_in_.tolist(),</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>          ax<span class="op">=</span>ax)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-23" class="cell quarto-layout-panel" data-execution_count="37" data-layout="[8, 2]">
+<div id="cell-23" class="cell quarto-layout-panel" data-layout="[8, 2]" data-execution_count="37">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
@@ -2059,7 +2059,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>ax.get_legend().set_frame_on(<span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-28" class="cell quarto-layout-panel" data-execution_count="43" data-layout="[7, 3]">
+<div id="cell-28" class="cell quarto-layout-panel" data-layout="[7, 3]" data-execution_count="43">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
@@ -2069,7 +2069,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div>
 
 </div>
-<div id="cell-30" class="cell quarto-layout-panel" data-execution_count="45" data-layout="[7, 3]">
+<div id="cell-30" class="cell quarto-layout-panel" data-layout="[7, 3]" data-execution_count="45">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -2602,7 +2602,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div>
 
 </div>
-<div id="cell-37" class="cell quarto-layout-panel" data-execution_count="48" data-layout="[6, 4]">
+<div id="cell-37" class="cell quarto-layout-panel" data-layout="[6, 4]" data-execution_count="48">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
@@ -2615,7 +2615,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div>
 
 </div>
-<div id="cell-39" class="cell quarto-layout-panel" data-execution_count="51" data-layout="[[4, 4, 1.5]]">
+<div id="cell-39" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="51">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
@@ -2669,7 +2669,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>visualize_classifier2(clf_tree_10, X, y, cmap<span class="op">=</span>custom_cmap)</span>
 <span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-41" class="cell quarto-layout-panel" data-execution_count="54" data-layout="[1, 1]">
+<div id="cell-41" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="54">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
@@ -2681,7 +2681,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plot_tree(clf_tree_2, feature_names<span class="op">=</span>clf_tree_2.feature_names_in_.tolist(), ax<span class="op">=</span>ax)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-42" class="cell quarto-layout-panel" data-execution_count="55" data-layout="[8, 2]">
+<div id="cell-42" class="cell quarto-layout-panel" data-layout="[8, 2]" data-execution_count="55">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
@@ -4739,7 +4739,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div>
 
 </div>
-<div id="cell-81" class="cell quarto-layout-panel" data-execution_count="149" data-layout="[7, 4]">
+<div id="cell-81" class="cell quarto-layout-panel" data-layout="[7, 4]" data-execution_count="149">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 63.6%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-61-output-1.png" class="img-fluid"></p>
@@ -5202,7 +5202,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div>
 
 </div>
-<div id="cell-88" class="cell quarto-layout-panel" data-execution_count="207" data-layout="[7, 4]">
+<div id="cell-88" class="cell quarto-layout-panel" data-layout="[7, 4]" data-execution_count="207">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 63.6%;justify-content: center;">
 <p><img src="tree_files/figure-html/cell-66-output-1.png" class="img-fluid"></p>
@@ -6086,7 +6086,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
