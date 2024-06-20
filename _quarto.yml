@@ -21,6 +21,8 @@ website:
   description: "Introduction to Data Science, Dongguk University, 2024-1"
   site-url: "https://dgds101.modellings.art"
   site-path: "/"
+  open-graph: 
+    site-name: Introduction to Data Science
   # repo-url:
   # repo-actions: [edit, issue]
 
