@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-09">
+<meta name="dcterms.date" content="2024-07-21">
 
-<title> Introduction to Data Science - Logistic Regression</title>
+<title>Logistic Regression –  Introduction to Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -121,7 +121,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -151,6 +151,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="Logistic Regression –  Introduction to Data Science">
+<meta property="og:description" content="Mixed">
+<meta property="og:site_name" content="Introduction to Data Science">
 </head>
 
 <body class="nav-sidebar floating">
@@ -159,13 +162,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
           <h1 class="quarto-secondary-nav-title">Logistic Regression</h1>
         </a>     
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -208,9 +211,9 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -238,9 +241,9 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Python Basics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -268,9 +271,9 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Exploratory Data Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -298,9 +301,9 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Linear Models</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -322,9 +325,9 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Machine Learning Basics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -339,7 +342,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regularization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -362,9 +365,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Classification</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -392,9 +395,9 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -456,7 +459,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 9, 2024</p>
+      <p class="date">July 21, 2024</p>
     </div>
   </div>
   
@@ -584,13 +587,13 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[1, 1]">
+<div id="9708bb61" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid" width="589"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-6-output-2.png" class="img-fluid" width="589"></p>
 </div>
 </div>
 </div>
@@ -607,10 +610,10 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'log d = </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[3, 1]">
+<div id="448e7ed0" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="6">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid" width="789"></p>
 </div>
 </div>
 </div>
@@ -653,10 +656,10 @@ window.Quarto = {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Diameter (cm)'</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[3, 1]">
+<div id="d6fbd6f2" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid" width="790"></p>
 </div>
 </div>
 </div>
@@ -678,10 +681,10 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[3, 1]">
+<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="9">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="790"></p>
 </div>
 </div>
 </div>
@@ -751,10 +754,10 @@ Important
 <div>
 
 </div>
-<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="11" data-layout="[3, 1]">
+<div id="fa280612" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="11">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-12-output-1.png" width="478" height="230"></p>
+<p><img src="logistic_files/figure-html/cell-12-output-1.png" class="img-fluid" width="478"></p>
 </div>
 </div>
 </div>
@@ -811,13 +814,13 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Log of Diameter (cm)"</span>, y<span class="op">=</span><span class="st">"Density"</span>, color<span class="op">=</span><span class="st">"Label"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[1, 1]">
+<div id="7fef49b7" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="12">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-13-output-1.png" class="img-fluid" width="790"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-13-output-2.png" class="img-fluid" width="790"></p>
 </div>
 </div>
 </div>
@@ -859,10 +862,10 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Emperical Probability"</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="14" data-layout="[4, 1]">
+<div id="8d91902a" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="14">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-15-output-1.png" class="img-fluid" width="846"></p>
 </div>
 </div>
 </div>
@@ -899,10 +902,10 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># y = np.polyval(np.polyfit(blowbs_bn.log2d, blowbs_bn.log_odds, 1), x)</span></span>
 <span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lineplot(x=x, y=y, ax=ax, color=".6")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a4f966e4" class="cell quarto-layout-panel" data-execution_count="15" data-layout="[4, 1]">
+<div id="a4f966e4" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="15">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid" width="856"></p>
 </div>
 </div>
 </div>
@@ -922,16 +925,16 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <div>
 
 </div>
-<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="16" data-layout="[10, -1, 10, -1]">
+<div id="2d803e77" class="cell quarto-layout-panel" data-layout="[10, -1, 10, -1]" data-execution_count="16">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-17-output-1.png" class="img-fluid" width="545"></p>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 4.6%;justify-content: flex-start;">
 <p>&nbsp;</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-17-output-2.png" class="img-fluid" width="545"></p>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 4.6%;justify-content: flex-start;">
 <p>&nbsp;</p>
@@ -1059,10 +1062,10 @@ Scikit-learn implementation
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[4, 1]">
+<div id="a8234351" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="20">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-21-output-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </div>
@@ -1255,10 +1258,10 @@ Evaluation of predicted probability
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="2b191547" class="cell quarto-layout-panel" data-execution_count="46" data-layout="[2, 1]">
+<div id="2b191547" class="cell quarto-layout-panel" data-layout="[2, 1]" data-execution_count="46">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-26-output-1.png" class="img-fluid" width="689"></p>
 </div>
 </div>
 </div>
@@ -1285,30 +1288,30 @@ Important
 <div>
 
 </div>
-<div id="70c5a856" class="cell quarto-layout-panel" data-execution_count="47" data-layout="[4, 1]">
+<div id="70c5a856" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="47">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-27-output-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </div>
 <div>
 
 </div>
-<div id="67b8c19c" class="cell quarto-layout-panel" data-execution_count="48" data-layout="[4, 1]">
+<div id="67b8c19c" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="48">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-28-output-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </div>
 <div>
 
 </div>
-<div id="46c722a0" class="cell quarto-layout-panel" data-execution_count="49" data-layout="[4, 1]">
+<div id="46c722a0" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="49">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-29-output-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </div>
@@ -1316,10 +1319,10 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -5, 50, 20]">
+<div class="quarto-layout-panel" data-layout="[30, -5, 50, 20]" style="font-size: .9em; line-height: 1em;">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: center;">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Predicted</th>
@@ -1350,7 +1353,7 @@ Important
 <p>&nbsp;</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 47.6%;justify-content: center;">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Predicted</th>
@@ -1383,11 +1386,11 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -8, 40, -22]">
+<div class="quarto-layout-panel" data-layout="[30, -8, 40, -22]" style="font-size: .9em; line-height: 1em;">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <p>Threshold: 0.3인 경우,</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Predicted</th>
@@ -1420,7 +1423,7 @@ Important
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
 <p>Threshold: 1인 경우; no information,</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Predicted</th>
@@ -1479,7 +1482,7 @@ Important
 <span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="b1b466d7" class="cell quarto-layout-panel" data-execution_count="54" data-layout="[20, -5, 30, 45]">
+<div id="b1b466d7" class="cell quarto-layout-panel" data-layout="[20, -5, 30, 45]" data-execution_count="54">
 
 </div>
 </section>
@@ -1618,13 +1621,13 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="afb388d5" class="cell quarto-layout-panel" data-execution_count="56" data-layout="[1, 1]">
+<div id="afb388d5" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="56">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-36-output-1.png" class="img-fluid" width="490"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-36-output-2.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-36-output-2.png" class="img-fluid" width="490"></p>
 </div>
 </div>
 </div>
@@ -1649,10 +1652,10 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="836f22b1" class="cell quarto-layout-panel" data-execution_count="58" data-layout="[1, 1]">
+<div id="836f22b1" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="58">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-39-output-1.png" class="img-fluid" width="490"></p>
 </div>
 </div>
 </div>
@@ -1712,10 +1715,10 @@ weighted avg       0.80      0.79      0.79       330
 <div>
 
 </div>
-<div id="607d0bd3" class="cell quarto-layout-panel" data-execution_count="274" data-layout="[5, 4]">
+<div id="607d0bd3" class="cell quarto-layout-panel" data-layout="[5, 4]" data-execution_count="274">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
+<p><img src="logistic_files/figure-html/cell-43-output-1.png" class="img-fluid" width="552"></p>
 </div>
 </div>
 </div>
@@ -1747,8 +1750,9 @@ weighted avg       0.80      0.79      0.79       330
 <section id="multiclass-k-2의-경우" class="level2">
 <h2 class="anchored" data-anchor-id="multiclass-k-2의-경우">Multiclass (K &gt; 2)의 경우</h2>
 <p><strong>Multinomial logistic regression</strong></p>
-<p>클래스 <span class="math inline">\(C_k\)</span>에 속할 확률을 예측하는 모형</p>
-<p><span class="math inline">\(\displaystyle P(Y=C_k|X=x) = \frac{e^{\beta_{k0} + \beta_{k1} \cdot x}}{1 + \sum_{j=1}^{K-1} e^{\beta_{j0} + \beta_{j1} \cdot x}}\)</span></p>
+<p>클래스 <span class="math inline">\(C_k\)</span>에 속할 확률을 예측하는 모형: Base 클래스를 기준으로 나머지 클래스에 대한 확률을 예측</p>
+<p><span class="math inline">\(\displaystyle P(Y=C_k|X=x) = \frac{e^{\beta_{k0} + \beta_{k1} \cdot x}}{1 + \sum_{j=1}^{K-1} e^{\beta_{j0} + \beta_{j1} \cdot x}}, ~~ k = 1, 2, ..., K-1\)</span></p>
+<p><span class="math inline">\(\displaystyle P(Y=C_K|X=x) = \frac{1}{1 + \sum_{j=1}^{K-1} e^{\beta_{j0} + \beta_{j1} \cdot x}}\)</span></p>
 <p>이 때, 마지막 클래스 <span class="math inline">\(C_K\)</span>에 대한 클래스 <span class="math inline">\(C_k\)</span>의 log odds는</p>
 <p><span class="math inline">\(\displaystyle log\left(\frac{P(Y=C_k|X=x)}{P(Y=C_K|X=x)}\right) = \beta_{k0} + \beta_{k1} \cdot x\)</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1761,6 +1765,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>Base 클래스 없이 모든 클래스에 대한 확률을 예측:</p>
 <p>Softmax coding: <span class="math inline">\(\displaystyle P(Y=C_k|X=x) = \frac{e^{\beta_{k0} + \beta_{k1} \cdot x}}{\sum_{j=1}^{K} e^{\beta_{j0} + \beta_{j1} \cdot x}}\)</span></p>
 <p>두 클래스 <span class="math inline">\(C_k\)</span>와 <span class="math inline">\(C_{k'}\)</span>의 사이의 log odds는</p>
 <p><span class="math inline">\(\displaystyle log\left(\frac{P(Y=C_k|X=x)}{P(Y=C_{k'}|X=x)}\right) = (\beta_{k0} - \beta_{k'0}) + (\beta_{k1} - \beta_{k'1}) \cdot x\)</span></p>
@@ -1867,18 +1872,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1910,7 +1904,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/dgds101\.modellings\.art");
@@ -1918,10 +1934,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1963,7 +1984,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -2263,30 +2288,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false,"selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

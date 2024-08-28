@@ -307,7 +307,7 @@
     "href": "contents/logistic.html#multiclass-k-2의-경우",
     "title": "Logistic Regression",
     "section": "Multiclass (K > 2)의 경우",
-    "text": "Multiclass (K &gt; 2)의 경우\nMultinomial logistic regression\n클래스 \\(C_k\\)에 속할 확률을 예측하는 모형\n\\(\\displaystyle P(Y=C_k|X=x) = \\frac{e^{\\beta_{k0} + \\beta_{k1} \\cdot x}}{1 + \\sum_{j=1}^{K-1} e^{\\beta_{j0} + \\beta_{j1} \\cdot x}}\\)\n이 때, 마지막 클래스 \\(C_K\\)에 대한 클래스 \\(C_k\\)의 log odds는\n\\(\\displaystyle log\\left(\\frac{P(Y=C_k|X=x)}{P(Y=C_K|X=x)}\\right) = \\beta_{k0} + \\beta_{k1} \\cdot x\\)\n\n\n\n\n\n\nNote\n\n\n\nSoftmax coding: \\(\\displaystyle P(Y=C_k|X=x) = \\frac{e^{\\beta_{k0} + \\beta_{k1} \\cdot x}}{\\sum_{j=1}^{K} e^{\\beta_{j0} + \\beta_{j1} \\cdot x}}\\)\n두 클래스 \\(C_k\\)와 \\(C_{k'}\\)의 사이의 log odds는\n\\(\\displaystyle log\\left(\\frac{P(Y=C_k|X=x)}{P(Y=C_{k'}|X=x)}\\right) = (\\beta_{k0} - \\beta_{k'0}) + (\\beta_{k1} - \\beta_{k'1}) \\cdot x\\)",
+    "text": "Multiclass (K &gt; 2)의 경우\nMultinomial logistic regression\n클래스 \\(C_k\\)에 속할 확률을 예측하는 모형: Base 클래스를 기준으로 나머지 클래스에 대한 확률을 예측\n\\(\\displaystyle P(Y=C_k|X=x) = \\frac{e^{\\beta_{k0} + \\beta_{k1} \\cdot x}}{1 + \\sum_{j=1}^{K-1} e^{\\beta_{j0} + \\beta_{j1} \\cdot x}}, ~~ k = 1, 2, ..., K-1\\)\n\\(\\displaystyle P(Y=C_K|X=x) = \\frac{1}{1 + \\sum_{j=1}^{K-1} e^{\\beta_{j0} + \\beta_{j1} \\cdot x}}\\)\n이 때, 마지막 클래스 \\(C_K\\)에 대한 클래스 \\(C_k\\)의 log odds는\n\\(\\displaystyle log\\left(\\frac{P(Y=C_k|X=x)}{P(Y=C_K|X=x)}\\right) = \\beta_{k0} + \\beta_{k1} \\cdot x\\)\n\n\n\n\n\n\nNote\n\n\n\nBase 클래스 없이 모든 클래스에 대한 확률을 예측:\nSoftmax coding: \\(\\displaystyle P(Y=C_k|X=x) = \\frac{e^{\\beta_{k0} + \\beta_{k1} \\cdot x}}{\\sum_{j=1}^{K} e^{\\beta_{j0} + \\beta_{j1} \\cdot x}}\\)\n두 클래스 \\(C_k\\)와 \\(C_{k'}\\)의 사이의 log odds는\n\\(\\displaystyle log\\left(\\frac{P(Y=C_k|X=x)}{P(Y=C_{k'}|X=x)}\\right) = (\\beta_{k0} - \\beta_{k'0}) + (\\beta_{k1} - \\beta_{k'1}) \\cdot x\\)",
     "crumbs": [
       "Classification",
       "Logistic Regression"
@@ -733,7 +733,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 3:00 ~ 4:30PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 1:00 ~ 2:30PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n출석:\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "Welcome"
     ]
@@ -743,7 +743,7 @@
     "href": "index.html#강의-정보",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 3:00 ~ 4:30PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 1:00 ~ 2:30PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n출석:\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "Welcome"
     ]
@@ -753,7 +753,7 @@
     "href": "index.html#강의-개요",
     "title": "Welcome",
     "section": "강의 개요",
-    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n교재\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\n\n\n\n참고도서\n\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석",
+    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n교재 및 참고도서\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석",
     "crumbs": [
       "Welcome"
     ]
@@ -763,7 +763,7 @@
     "href": "index.html#수업-활동",
     "title": "Welcome",
     "section": "수업 활동",
-    "text": "수업 활동\n출석 (10%), 일반과제 (20%), 중간고사 (35%), 기말고사 (35%)\n코딩 실습 설문",
+    "text": "수업 활동\n출석 (10%), 일반과제 (20%), 중간고사 (35%), 기말고사 (35%)",
     "crumbs": [
       "Welcome"
     ]
