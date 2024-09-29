@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-09-23">
+<meta name="dcterms.date" content="2024-09-30">
 
 <title>Two Cultures –  Introduction to Data Science</title>
 <style>
@@ -395,7 +395,7 @@ window.Quarto = {
   <li><a href="#결론" id="toc-결론" class="nav-link" data-scroll-target="#결론">결론</a></li>
   <li><a href="#올바른-모델의-필요성" id="toc-올바른-모델의-필요성" class="nav-link" data-scroll-target="#올바른-모델의-필요성">올바른 모델의 필요성</a></li>
   </ul></li>
-  <li><a href="#the-third-school-causal-inference" id="toc-the-third-school-causal-inference" class="nav-link" data-scroll-target="#the-third-school-causal-inference">The Third School: Causal Inference</a>
+  <li><a href="#the-third-camp-causal-inference" id="toc-the-third-camp-causal-inference" class="nav-link" data-scroll-target="#the-third-camp-causal-inference">The Third Camp: Causal Inference</a>
   <ul>
   <li><a href="#causal-revolution" id="toc-causal-revolution" class="nav-link" data-scroll-target="#causal-revolution">Causal Revolution</a>
   <ul class="collapse">
@@ -431,7 +431,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 23, 2024</p>
+      <p class="date">September 30, 2024</p>
     </div>
   </div>
   
@@ -655,6 +655,10 @@ Bayesian Models
 </div>
 </div>
 </div>
+<!-- 동전던지기의 예를 기존 가설 검증의 논리와 베이지안 방법론을 비교하여 설명
+동전 던지기의 샘플: HHTH의 경우
+![](images/bayseian.JPG){width=500}
+-->
 </section>
 </section>
 <section id="the-algorithmic-modeling-culture" class="level2">
@@ -733,7 +737,7 @@ Digging It Out in Small Pieces</p>
 <p><em>“정확성(accuracy)과 해석 가능성(interpretability) 중 하나를 선택해야 한다면, 그들은 해석 가능성을 택할 것입니다. <br> 정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. <br> 모델의 핵심은 응답(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. <br> 해석 가능성은 정보를 얻는 한 가지 방법입니다. <br> 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
 </blockquote>
 <ul>
-<li>예측 정확도가 높을수록 기본 데이터 메커니즘에 대한 더 신뢰할 수 있는 정보가 내재함</li>
+<li>예측 정확도가 높을수록 기저에 있는 데이터 메커니즘에 대한 더 신뢰할 수 있는 정보가 내재함</li>
 <li>예측 정확도가 낮으면 의심스러운 결론을 내릴 수 있음</li>
 <li>알고리즘 모델은 데이터 모델보다 예측 정확도가 더 높으며, 기본 메커니즘에 대한 더 나은 정보를 제공할 수 있음.</li>
 </ul>
@@ -748,7 +752,7 @@ Digging It Out in Small Pieces</p>
 <section id="결론" class="level2">
 <h2 class="anchored" data-anchor-id="결론">결론</h2>
 <blockquote class="blockquote">
-<p><em>통계의 목표는 데이터를 사용하여 예측하고 기본 데이터 메커니즘에 대한 정보를 얻는 것입니다. 데이터와 관련된 문제를 해결하기 위해 어떤 종류의 모델을 사용해야 하는지는 석판에 적혀 있지 않습니다. 제 입장을 분명히 말씀드리자면, 저는 데이터 모델 자체를 반대하는 것이 아닙니다. 어떤 상황에서는 데이터 모델이 문제를 해결하는 가장 적절한 방법일 수 있습니다. 하지만 문제와 데이터에 중점을 두어야 합니다.</em> (번역 by DeepL)</p>
+<p><em>통계의 목표는 데이터를 사용하여 예측하고 기저에 있는 데이터 메커니즘에 대한 정보를 얻는 것입니다. 데이터와 관련된 문제를 해결하기 위해 어떤 종류의 모델을 사용해야 하는지는 석판에 적혀 있지 않습니다. 제 입장을 분명히 말씀드리자면, 저는 데이터 모델 자체를 반대하는 것이 아닙니다. 어떤 상황에서는 데이터 모델이 문제를 해결하는 가장 적절한 방법일 수 있습니다. 하지만 문제와 데이터에 중점을 두어야 합니다.</em> (번역 by DeepL)</p>
 </blockquote>
 <div style="line-height: 1.5em; font-size: .9em">
 <blockquote class="blockquote">
@@ -764,7 +768,7 @@ Digging It Out in Small Pieces</p>
 <p><strong>천체의 움직임에 대한 모델</strong><br>
 프톨레마이오스(CE 100년 출생, 이집트)의 지동설 모델</p>
 <ul>
-<li>행성의 움직임에 수학적 모델은 매우 정확했으며, 천 년 넘게 활용되었음</li>
+<li>행성의 움직임에 대한 수학적 모델은 매우 정확했으며, 천 년 넘게 활용되었음</li>
 <li>적절한 위치에 충분한 에피사이클을 배치하면 행성의 움직임을 매우 정확하게 예측할 수 있음</li>
 </ul>
 <!-- 프톨레마이오스와 그와 같은 사람들은 컴퓨터의 도움 없이 이 모든 것을 해결했습니다. 누구든 프톨레마이오스와 비교되는 것을 영광스럽게 생각해야 합니다. 물론 문제는 지동 중심 모델이 여러 면에서 잘못되었다는 점입니다. 이 모델을 사용하여 화성 탐사선의 경로를 그리면 붉은 행성을 꽤 멀리 놓칠 수 있습니다. 하지만 밤하늘에서 화성을 발견하는 데는 여전히 훌륭한 모델입니다. 어떤 천체를 찾고자 하는지에 따라 1세기 정도마다 다시 보정해야 합니다. 그러나 지구 중심 모델은 좁은 의문 영역 내에서 예측을 유지한다면 계속해서 유용한 예측을 할 수 있습니다. -->
@@ -814,8 +818,8 @@ Digging It Out in Small Pieces</p>
 <hr>
 </section>
 </section>
-<section id="the-third-school-causal-inference" class="level1">
-<h1>The Third School: Causal Inference</h1>
+<section id="the-third-camp-causal-inference" class="level1">
+<h1>The Third Camp: Causal Inference</h1>
 <blockquote class="blockquote">
 <p><em>Data is a window, not a mirror to reality!</em></p>
 </blockquote>
@@ -848,7 +852,7 @@ Digging It Out in Small Pieces</p>
 <div class="columns">
 <div class="column" style="width:70%;">
 <ul>
-<li>Path diagrams라는 데이터에서 인과 관계에 대한 질문에 답하는 수학적 방법을 최초로 개발</li>
+<li>Path diagrams라는 데이터로부터 인과 관계에 대한 질문에 답하는 수학적 방법을 최초로 개발</li>
 <li>실제로 인과 분석의 툴로 이어지지는 못하였고,</li>
 <li>Path analysis(경로 분석)이라는 통계 기법으로 어어졌으나 뿌리 깊은 오해의 씨앗이 되었음.</li>
 </ul>
@@ -1505,7 +1509,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
