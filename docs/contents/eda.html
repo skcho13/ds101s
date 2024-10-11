@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-08">
+<meta name="dcterms.date" content="2024-10-12">
 
 <title>Exploratory Data Analysis –  Introduction to Data Science</title>
 <style>
@@ -445,7 +445,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 8, 2024</p>
+      <p class="date">October 12, 2024</p>
     </div>
   </div>
   
@@ -522,7 +522,7 @@ window.Quarto = {
 <section id="california-housing-prices" class="level1">
 <h1>California Housing Prices</h1>
 <p>Source: <em>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</em> by Aurélien Géron</p>
-<div id="cell-6" class="cell" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/ageron/data/main/housing/housing.csv"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> pd.read_csv(url)</span>
@@ -531,7 +531,7 @@ window.Quarto = {
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"median_age_cat"</span>] <span class="op">=</span> pd.cut(housing[<span class="st">"housing_median_age"</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, np.inf], labels<span class="op">=</span>[<span class="st">"0-10"</span>, <span class="st">"10-20"</span>, <span class="st">"20-30"</span>, <span class="st">"30-40"</span>, <span class="st">"40-52"</span>])</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>housing.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>   longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \
 0    -122.23     37.88               41.00       880.00          129.00   
 1    -122.22     37.86               21.00      7099.00         1106.00   
@@ -635,7 +635,7 @@ Show Matplotlib styles
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the style</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="13">
+<div id="cell-13" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lat, lon <span class="op">=</span> housing[<span class="st">'latitude'</span>], housing[<span class="st">'longitude'</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">## MATLAB 스타일</span></span>
@@ -654,15 +654,15 @@ Show Matplotlib styles
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-9-output-1.png" width="300" height="219" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-10-output-1.png" width="601" height="441" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="11">
+<div id="cell-14" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 객체 방식</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># figure, axes라는 객체를 생성 후 메서드를 호출</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>)) </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">5</span>)) </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ax의 메서드인 .scatter로 그래프를 그림</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>ax.scatter(x<span class="op">=</span>lon, y<span class="op">=</span>lat, label<span class="op">=</span><span class="va">None</span>, edgecolors<span class="op">=</span><span class="st">"w"</span>, linewidths<span class="op">=</span><span class="fl">.4</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
@@ -676,12 +676,12 @@ Show Matplotlib styles
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-10-output-1.png" width="222" height="142" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-11-output-1.png" width="601" height="441" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="9">
+<div id="cell-15" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas의 plot 메서드를 사용하는 방식</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>housing.plot.scatter(x<span class="op">=</span><span class="st">"longitude"</span>, y<span class="op">=</span><span class="st">"latitude"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -694,11 +694,11 @@ Show Matplotlib styles
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'equal'</span>) <span class="co"># set the aspect of the plot to be equal</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="10">
+<div id="cell-16" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-12-output-1.png" width="300" height="219" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-13-output-1.png" width="601" height="441" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -717,7 +717,7 @@ Show Matplotlib styles
 <li>‘scatter’ : scatter plot (DataFrame only)</li>
 <li>‘hexbin’ : hexbin plot (DataFrame only)</li>
 </ul>
-<div id="cell-17" class="cell" data-execution_count="11">
+<div id="cell-18" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NEAR OCEAN에 해당하는 부분만 시각화</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>housing2 <span class="op">=</span> housing.query(<span class="st">'ocean_proximity == "NEAR OCEAN"'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -728,12 +728,12 @@ Show Matplotlib styles
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-13-output-1.png" width="300" height="219" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-14-output-1.png" width="601" height="441" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="12">
+<div id="cell-19" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seaborn을 사용하는 방식</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">5</span>))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(housing, x<span class="op">=</span><span class="st">"longitude"</span>, y<span class="op">=</span><span class="st">"latitude"</span>, hue<span class="op">=</span><span class="st">"ocean_proximity"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -756,7 +756,7 @@ Show Matplotlib styles
 </div>
 </div>
 <p>집값과의 관계를 보기 위해, 집값을 컬러에 매핑하면,</p>
-<div id="cell-22" class="cell" data-execution_count="14">
+<div id="cell-23" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>housing.plot.scatter(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"longitude"</span>,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"latitude"</span>,</span>
@@ -770,11 +770,11 @@ Show Matplotlib styles
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'equal'</span>) <span class="co"># set the aspect of the plot to be equal</span></span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="15">
+<div id="cell-24" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-17-output-1.png" width="337" height="241" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-18-output-1.png" width="677" height="484" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -821,31 +821,31 @@ Color 사용에 관한 체계적 가이드
 <section id="데이터의-분포" class="level2">
 <h2 class="anchored" data-anchor-id="데이터의-분포">데이터의 분포</h2>
 <p>Histogram, density plot, boxplot</p>
-<div id="cell-27" class="cell" data-execution_count="16">
+<div id="cell-28" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas의 DataFrame 메서드인 hist()를 사용</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>housing.hist(bins<span class="op">=</span><span class="dv">50</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-18-output-1.png" width="376" height="259" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-19-output-1.png" width="753" height="520" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="17">
+<div id="cell-29" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># density plot</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>housing.plot.density(bw_method<span class="op">=</span><span class="fl">0.2</span>, subplots<span class="op">=</span><span class="va">True</span>, layout<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), sharex<span class="op">=</span><span class="va">False</span>, sharey<span class="op">=</span><span class="va">False</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-19-output-1.png" width="391" height="250" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-20-output-1.png" width="783" height="502" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="18">
+<div id="cell-30" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using matplotlib</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.5</span>, wspace<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -857,19 +857,19 @@ Color 사용에 관한 체계적 가이드
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-20-output-1.png" width="376" height="259" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-21-output-1.png" width="753" height="520" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="18">
+<div id="cell-31" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 한 변수의 각 레벨/카테고리별로 그리기, using pandas</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>housing.plot.hist(column<span class="op">=</span>[<span class="st">"median_house_value"</span>], by<span class="op">=</span><span class="st">"ocean_proximity"</span>, sharey<span class="op">=</span><span class="va">False</span>, sharex<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">8</span>), bins<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-21-output-1.png" width="266" height="336" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-22-output-1.png" width="533" height="674" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -892,19 +892,19 @@ source: R for Data Science</p>
 </div>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="19">
+<div id="cell-33" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using pandas</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>housing.plot.box(column<span class="op">=</span><span class="st">"median_house_value"</span>, by<span class="op">=</span><span class="st">"ocean_proximity"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-22-output-1.png" width="268" height="182" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-23-output-1.png" width="536" height="366" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-33" class="cell" data-execution_count="20">
+<div id="cell-34" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using seaborn</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(housing, x<span class="op">=</span><span class="st">"ocean_proximity"</span>, y<span class="op">=</span><span class="st">"median_house_value"</span>, hue<span class="op">=</span><span class="st">"median_age_cat"</span>, fill<span class="op">=</span><span class="va">False</span>, gap<span class="op">=</span><span class="fl">.2</span>)</span>
@@ -912,7 +912,7 @@ source: R for Data Science</p>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-23-output-1.png" width="393" height="219" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-24-output-1.png" width="787" height="441" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -920,19 +920,19 @@ source: R for Data Science</p>
 </section>
 <section id="두-연속-변수간의-관계" class="level2">
 <h2 class="anchored" data-anchor-id="두-연속-변수간의-관계">두 연속 변수간의 관계</h2>
-<div id="cell-35" class="cell" data-execution_count="21">
+<div id="cell-36" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"rooms_per_household"</span>] <span class="op">=</span> housing[<span class="st">"total_rooms"</span>] <span class="op">/</span> housing[<span class="st">"households"</span>]</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"bedrooms_per_household"</span>] <span class="op">=</span> housing[<span class="st">"total_bedrooms"</span>] <span class="op">/</span> housing[<span class="st">"households"</span>]</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"people_per_household"</span>] <span class="op">=</span> housing[<span class="st">"population"</span>] <span class="op">/</span> housing[<span class="st">"households"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>또는 <code>assign()</code>를 사용</p>
-<div id="cell-37" class="cell" data-execution_count="212">
+<div id="cell-38" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>housing.assign(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    rooms_per_household <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">"total_rooms"</span>] <span class="op">/</span> x[<span class="st">"households"</span>],</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    bedrooms_per_household <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">"total_bedrooms"</span>] <span class="op">/</span> x[<span class="st">"households"</span>],</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    people_per_household <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">"population"</span>] <span class="op">/</span> x[<span class="st">"households"</span>]</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>).head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="212">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>   longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \
 0    -122.23     37.88               41.00       880.00          129.00   
 
@@ -946,27 +946,25 @@ source: R for Data Science</p>
 0                  2.56  </code></pre>
 </div>
 </div>
-<div id="cell-38" class="cell" data-execution_count="23">
+<div id="cell-39" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>housing.value_counts(<span class="st">"median_house_value"</span>).sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>median_house_value
 14999.00       4
 17500.00       1
 22500.00       4
-25000.00       1
             ... 
-499000.00      1
 499100.00      1
 500000.00     27
 500001.00    965
 Name: count, Length: 3842, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="24">
+<div id="cell-40" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># median_house_value &lt; 500001 값으로 필터링</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> housing.query(<span class="st">'median_house_value &lt; 500001'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-41" class="cell" data-execution_count="26">
+<div id="cell-42" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>xvar <span class="op">=</span> <span class="st">"rooms_per_household"</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>yvar <span class="op">=</span> <span class="st">"median_house_value"</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -984,7 +982,7 @@ Name: count, Length: 3842, dtype: int64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-29-output-1.png" width="319" height="221" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-30-output-1.png" width="653" height="454" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1013,7 +1011,7 @@ Natural spline fit
 </div>
 </div>
 <p>해변에 가까운 정도(<code>ocean_proximity</code>) 따라 나누어 보면,</p>
-<div id="cell-44" class="cell" data-execution_count="27">
+<div id="cell-45" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># divide plots by ocean_proximity</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">4</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.5</span>, wspace<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -1036,13 +1034,13 @@ Natural spline fit
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-30-output-1.png" width="509" height="152" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-31-output-1.png" width="1019" height="307" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>seaborn.object 방식</p>
-<div id="cell-47" class="cell" data-execution_count="29">
+<div id="cell-48" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(housing, x<span class="op">=</span><span class="st">'rooms_per_household'</span>, y<span class="op">=</span><span class="st">'median_house_value'</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
@@ -1051,10 +1049,10 @@ Natural spline fit
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    .limit(x<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">12</span>), y<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">500000</span>))</span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="fl">8.9</span>, <span class="dv">3</span>))</span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-32-output-1.png" width="839" height="273" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-33-output-1.png" width="839" height="273" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1078,7 +1076,7 @@ Natural spline fit
 </div>
 </div>
 <p>해변에 가까운 정도(<code>ocean_proximity</code>)와 집의 연령(<code>median_age_cat</code>)에 따라 나누어 보면,</p>
-<div id="cell-50" class="cell" data-execution_count="30">
+<div id="cell-51" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>        housing.query(<span class="st">'ocean_proximity != "ISLAND"'</span>),</span>
@@ -1091,17 +1089,17 @@ Natural spline fit
 <span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    .limit(x<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">12</span>), y<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">500000</span>))</span>
 <span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-33-output-1.png" width="753" height="753" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-34-output-1.png" width="753" height="753" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>해안에 가까운 정도(<code>ocean_proximity</code>)가 고정되어 있을 때, 그 안에서 여전히<br>
 경도(<code>longitude</code>)가 작을수록, 집값(<code>median_house_value</code>)이 변화하는지 살펴보면,</p>
-<div id="cell-52" class="cell" data-execution_count="31">
+<div id="cell-53" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        housing.query(<span class="st">'ocean_proximity != "ISLAND"'</span>),</span>
@@ -1113,10 +1111,10 @@ Natural spline fit
 <span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="fl">8.9</span>, <span class="dv">3</span>))</span>
 <span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    .share(x<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-34-output-1.png" width="839" height="273" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-35-output-1.png" width="839" height="273" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1135,7 +1133,7 @@ Natural spline fit
 </div>
 </div>
 <p>Population과의 관계가 있을까?</p>
-<div id="cell-56" class="cell" data-execution_count="34">
+<div id="cell-57" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>housing2 <span class="op">=</span> housing.copy()</span>
@@ -1155,20 +1153,20 @@ Natural spline fit
 <span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    .limit(y<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">3000</span>))</span>
 <span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-36-output-1.png" width="839" height="273" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-37-output-1.png" width="839" height="273" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Panelized spline fit: <a href="https://pygam.readthedocs.io/en/latest/index.html#">pyGAM 참고</a></p>
-<div id="cell-58" class="cell" data-execution_count="52">
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div id="cell-59" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-37-output-1.png" width="839" height="273" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-38-output-1.png" width="839" height="273" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1178,12 +1176,12 @@ Natural spline fit
 <section id="telco-customer-churn" class="level1">
 <h1>Telco Customer Churn</h1>
 <p>Data: <a href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn">Telco Customer Churn</a></p>
-<div id="cell-60" class="cell" data-execution_count="14">
+<div id="cell-61" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>churn <span class="op">=</span> pd.read_csv(<span class="st">"data/WA_Fn-UseC_-Telco-Customer-Churn.csv"</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_columns <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>churn.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>   customerID  gender  SeniorCitizen Partner Dependents  tenure PhoneService  \
 0  7590-VHVEG  Female              0     Yes         No       1           No   
 1  5575-GNVDE    Male              0      No         No      34          Yes   
@@ -1205,22 +1203,22 @@ Natural spline fit
 2              Yes      Mailed check           53.85       108.15   Yes  </code></pre>
 </div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="16">
+<div id="cell-62" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>))  <span class="co"># 생략 가능</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>churn, x<span class="op">=</span><span class="st">"StreamingTV"</span>, y<span class="op">=</span><span class="st">"tenure"</span>, hue<span class="op">=</span><span class="st">"Churn"</span>, width<span class="op">=</span><span class="fl">.7</span>, gap<span class="op">=</span><span class="fl">.2</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-39-output-1.png" width="300" height="142" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-40-output-1.png" width="609" height="294" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="5">
+<div id="cell-63" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>churn_count <span class="op">=</span> churn.groupby([<span class="st">"InternetService"</span>, <span class="st">"Churn"</span>]).size().reset_index(name<span class="op">=</span><span class="st">"count"</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>churn_count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>  InternetService Churn  count
 0             DSL    No   1962
 1             DSL   Yes    459
@@ -1230,22 +1228,22 @@ Natural spline fit
 5              No   Yes    113</code></pre>
 </div>
 </div>
-<div id="cell-63" class="cell" data-execution_count="6">
+<div id="cell-64" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>))</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(churn_count, y<span class="op">=</span><span class="st">"InternetService"</span>, x<span class="op">=</span><span class="st">"count"</span>, hue<span class="op">=</span><span class="st">"Churn"</span>)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-41-output-1.png" width="333" height="147" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-42-output-1.png" width="666" height="294" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-64" class="cell" data-execution_count="7">
+<div id="cell-65" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>churn_perc <span class="op">=</span> pd.crosstab(churn[<span class="st">"InternetService"</span>], churn[<span class="st">"Churn"</span>], normalize<span class="op">=</span><span class="st">"index"</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>churn_perc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>Churn             No  Yes
 InternetService          
 DSL             0.81 0.19
@@ -1253,33 +1251,33 @@ Fiber optic     0.58 0.42
 No              0.93 0.07</code></pre>
 </div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="8">
+<div id="cell-66" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>churn_perc.plot(kind<span class="op">=</span><span class="st">"barh"</span>, stacked<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>))</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-43-output-1.png" width="332" height="137" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-44-output-1.png" width="664" height="274" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-66" class="cell" data-execution_count="34">
+<div id="cell-67" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(churn, y<span class="op">=</span><span class="st">'InternetService'</span>, color<span class="op">=</span><span class="st">'Churn'</span>)</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Hist(<span class="st">"proportion"</span>, common_norm<span class="op">=</span>[<span class="st">"y"</span>]), so.Stack())</span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">2</span>))</span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-44-output-1.png" width="745" height="177" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-45-output-1.png" width="745" height="177" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-67" class="cell" data-execution_count="15">
+<div id="cell-68" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(churn, x<span class="op">=</span><span class="st">"tenure"</span>, hue<span class="op">=</span><span class="st">"Churn"</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1289,22 +1287,19 @@ No              0.93 0.07</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-45-output-1.png" width="425" height="228" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-46-output-1.png" width="850" height="456" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-68" class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sns.color_palette()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-69" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(churn, x<span class="op">=</span><span class="st">'tenure'</span>, color <span class="op">=</span> <span class="st">'Churn'</span>)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Count(), so.Stack())</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div id="cell-69" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(churn, x<span class="op">=</span><span class="st">'tenure'</span>, color <span class="op">=</span> <span class="st">'Churn'</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Count(), so.Stack())</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <figure class="figure">
 <p><img src="eda_files/figure-html/cell-47-output-1.png" width="839" height="465" class="figure-img"></p>
@@ -1312,18 +1307,18 @@ No              0.93 0.07</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-70" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Yes, No를 각각 1, 0으로 변환해서 Churn_n에 저장</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>churn[<span class="st">"Churn_n"</span>] <span class="op">=</span> churn[<span class="st">"Churn"</span>].<span class="bu">map</span>({<span class="st">"Yes"</span>: <span class="dv">1</span>, <span class="st">"No"</span>: <span class="dv">0</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-70" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Yes, No를 각각 1, 0으로 변환해서 Churn_n에 저장</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>churn[<span class="st">"Churn_n"</span>] <span class="op">=</span> churn[<span class="st">"Churn"</span>].<span class="bu">map</span>({<span class="st">"Yes"</span>: <span class="dv">1</span>, <span class="st">"No"</span>: <span class="dv">0</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-71" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(churn, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'Churn_n'</span>)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.05</span>), so.Jitter(x<span class="op">=</span><span class="dv">1</span>, y<span class="op">=</span><span class="fl">.05</span>))</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div id="cell-71" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(churn, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'Churn_n'</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.05</span>), so.Jitter(x<span class="op">=</span><span class="dv">1</span>, y<span class="op">=</span><span class="fl">.05</span>))</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 <figure class="figure">
 <p><img src="eda_files/figure-html/cell-49-output-1.png" width="599" height="445" class="figure-img"></p>
@@ -1332,14 +1327,14 @@ No              0.93 0.07</code></pre>
 </div>
 </div>
 <p>인터넷 서비스 사용여부(<code>InternetService</code>)에 따른 고객 이탈여부(<code>Churn</code>)의 비율이 다른가?</p>
-<div id="cell-73" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(churn, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'Churn_n'</span>, color<span class="op">=</span><span class="st">"InternetService"</span>)</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.05</span>), so.Jitter(x<span class="op">=</span><span class="dv">1</span>, y<span class="op">=</span><span class="fl">.05</span>))</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div id="cell-73" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(churn, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'Churn_n'</span>, color<span class="op">=</span><span class="st">"InternetService"</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.05</span>), so.Jitter(x<span class="op">=</span><span class="dv">1</span>, y<span class="op">=</span><span class="fl">.05</span>))</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 <figure class="figure">
 <p><img src="eda_files/figure-html/cell-50-output-1.png" width="733" height="445" class="figure-img"></p>
@@ -1347,16 +1342,16 @@ No              0.93 0.07</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-74" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> churn.groupby([<span class="st">"tenure"</span>, <span class="st">"InternetService"</span>])[<span class="st">"Churn_n"</span>].mean().reset_index()</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(df, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'Churn_n'</span>, color<span class="op">=</span><span class="st">"InternetService"</span>)</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">2</span>))</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    .label(y<span class="op">=</span><span class="st">"Churn rate"</span>)</span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div id="cell-74" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> churn.groupby([<span class="st">"tenure"</span>, <span class="st">"InternetService"</span>])[<span class="st">"Churn_n"</span>].mean().reset_index()</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(df, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'Churn_n'</span>, color<span class="op">=</span><span class="st">"InternetService"</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">2</span>))</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    .label(y<span class="op">=</span><span class="st">"Churn rate"</span>)</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 <figure class="figure">
 <p><img src="eda_files/figure-html/cell-51-output-1.png" width="733" height="445" class="figure-img"></p>
@@ -1365,18 +1360,18 @@ No              0.93 0.07</code></pre>
 </div>
 </div>
 <p>Logit 값으로 변환한 값을 살펴보면; <span class="math inline">\(\displaystyle logit(p) = \log\left(\frac{p}{1-p}\right)\)</span></p>
-<div id="cell-76" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"logit"</span>] <span class="op">=</span> np.log((df[<span class="st">"Churn_n"</span>] <span class="op">+</span> <span class="fl">0.01</span>) <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> df[<span class="st">"Churn_n"</span>] <span class="op">-</span> <span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-76" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"logit"</span>] <span class="op">=</span> np.log((df[<span class="st">"Churn_n"</span>] <span class="op">+</span> <span class="fl">0.01</span>) <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> df[<span class="st">"Churn_n"</span>] <span class="op">-</span> <span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-77" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(df, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'logit'</span>, color<span class="op">=</span><span class="st">"InternetService"</span>)</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">2</span>))</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    .label(y<span class="op">=</span><span class="st">"Churn rate"</span>)</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div id="cell-77" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(df, x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'logit'</span>, color<span class="op">=</span><span class="st">"InternetService"</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">2</span>))</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    .label(y<span class="op">=</span><span class="st">"Churn rate"</span>)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"Set1"</span>)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 <figure class="figure">
 <p><img src="eda_files/figure-html/cell-53-output-1.png" width="733" height="445" class="figure-img"></p>
@@ -1394,13 +1389,13 @@ No              0.93 0.07</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.font_manager <span class="im">as</span> fm</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 현재 시스템에 있는 폰트 이름 확인</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>([f.name <span class="cf">for</span> f <span class="kw">in</span> fm.fontManager.ttflist])</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 폰트 설정</span></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'font'</span>, family<span class="op">=</span><span class="st">'AppleGothic'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.font_manager <span class="im">as</span> fm</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 현재 시스템에 있는 폰트 이름 확인</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>([f.name <span class="cf">for</span> f <span class="kw">in</span> fm.fontManager.ttflist])</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 폰트 설정</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'font'</span>, family<span class="op">=</span><span class="st">'AppleGothic'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1886,7 +1881,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
