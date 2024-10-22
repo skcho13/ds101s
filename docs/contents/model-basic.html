@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-10-14">
+<meta name="dcterms.date" content="2024-10-23">
 
 <title>Model Basics –  Introduction to Data Science</title>
 <style>
@@ -473,7 +473,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2024</p>
+      <p class="date">October 23, 2024</p>
     </div>
   </div>
   
@@ -797,7 +797,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="12">
+<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[[1, 2]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -1270,6 +1270,9 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <li><span class="math inline">\(R^2 = 1 - \displaystyle\frac{\frac{1}{n} \sum_{i=1}^{n}{(e-0)^2}}{\frac{1}{n} \sum_{i=1}^{n}{(Y-\overline{Y})^2}} = 1 - \frac{V(e)}{V(Y)} = \frac{V(\widehat Y)}{V(Y)}\)</span>,   <span class="math inline">\(V(Y) = V(\widehat Y) + V(e)\)</span></li>
 </ul>
 <p>전통적으로 X가 Y를 얼마나 잘 “설명”해주는지에 대한 지표로서 <span class="math inline">\(R^2\)</span>를 사용함</p>
+<ul>
+<li>정규분포에서 벗어난 경우, 분포를 고려한 (log)likelihood를 기반으로 한 지표들</li>
+</ul>
 <div id="cell-59" class="cell" data-execution_count="292">
 <details class="code-fold">
 <summary>calculate RMSE, MAE, R2</summary>
