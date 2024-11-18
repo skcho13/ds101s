@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-07-21">
+<meta name="dcterms.date" content="2024-11-18">
 
 <title>Logistic Regression –  Introduction to Data Science</title>
 <style>
@@ -200,12 +200,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Notice</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/pollr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">설문</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -430,6 +424,7 @@ window.Quarto = {
   <li><a href="#evaluation-of-predicted-class" id="toc-evaluation-of-predicted-class" class="nav-link" data-scroll-target="#evaluation-of-predicted-class">Evaluation of predicted class</a></li>
   <li><a href="#분류모형의-성능을-평가하기-위한-여러-지표들" id="toc-분류모형의-성능을-평가하기-위한-여러-지표들" class="nav-link" data-scroll-target="#분류모형의-성능을-평가하기-위한-여러-지표들">분류모형의 성능을 평가하기 위한 여러 지표들</a></li>
   </ul></li>
+  <li><a href="#decision-boundary" id="toc-decision-boundary" class="nav-link" data-scroll-target="#decision-boundary">Decision boundary</a></li>
   <li><a href="#multiclass-k-2의-경우" id="toc-multiclass-k-2의-경우" class="nav-link" data-scroll-target="#multiclass-k-2의-경우">Multiclass (K &gt; 2)의 경우</a></li>
   </ul></li>
   <li><a href="#other-model-families" id="toc-other-model-families" class="nav-link" data-scroll-target="#other-model-families">Other model families</a></li>
@@ -459,7 +454,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 21, 2024</p>
+      <p class="date">November 18, 2024</p>
     </div>
   </div>
   
@@ -541,13 +536,13 @@ window.Quarto = {
 </blockquote>
 <p><code>d</code>: 나무의 지름(cm),  <code>y</code>: 나무가 죽은 경우 1, 그렇지 않으면 0<br>
 <code>spp</code>: 나무의 종,  <code>s</code>: 특정 지역의 폭풍의 심각도</p>
-<div id="6d92b5e8" class="cell" data-execution_count="3">
+<div id="6d92b5e8" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>blowdown <span class="op">=</span> pd.read_csv(<span class="st">'data/blowdown2.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># black spruce에 제한</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>blowbs <span class="op">=</span> blowdown.query(<span class="st">'spp == "black spruce"'</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blowbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>         d    s  y           spp  log2d
 17    9.00 0.02  0  black spruce   3.17
 24   11.00 0.03  0  black spruce   3.46
@@ -627,10 +622,10 @@ window.Quarto = {
 <li>사실, 이 <code>p</code>는 binary response (0, 1)의 conditional mean(평균)인데,</li>
 <li>통계적으로 표현하면 <span class="math inline">\(E(Y|d=d_i)\)</span>이며 선형모형의 mean function를 제공.</li>
 </ul>
-<div id="3b5055de" class="cell" data-execution_count="7">
+<div id="3b5055de" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs.groupby(<span class="st">"d"</span>)[<span class="st">"y"</span>].agg([(<span class="st">"died"</span>, <span class="st">"sum"</span>), (<span class="st">"m"</span>, <span class="st">"count"</span>), (<span class="st">"p"</span>, <span class="st">"mean"</span>)]).reset_index()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>       d  died   m    p
 0   5.00     7  90 0.08
 1   6.00     7  92 0.08
@@ -681,7 +676,7 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="9">
+<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="7">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="790"></p>
@@ -720,12 +715,12 @@ Important
 <p><img src="images/odds.png" class="img-fluid" width="350"></p>
 </div>
 </div>
-<div id="612f4d4b" class="cell" data-execution_count="10">
+<div id="612f4d4b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(odds <span class="op">=</span> <span class="kw">lambda</span> x: x.p <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.p))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p = 1인 경우 odds가 무한대가 되므로 편의상 inf 값을 50으로 대체</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>blowbs_bn[<span class="st">"odds"</span>] <span class="op">=</span> blowbs_bn[<span class="st">"odds"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">50</span> <span class="cf">if</span> x <span class="op">==</span> np.inf <span class="cf">else</span> x)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>       d  died   m    p  log2d  odds
 0   5.00     7  90 0.08   2.32  0.08
 1   6.00     7  92 0.08   2.58  0.08
@@ -825,10 +820,10 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 </div>
 </div>
 <p>이제, log odds을 구해, <span class="math inline">\(X\)</span>에 대해 선형적인 패턴이 있는지 확인해보면,</p>
-<div id="5afe94e6" class="cell" data-execution_count="13">
+<div id="5afe94e6" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(log_odds <span class="op">=</span> <span class="kw">lambda</span> x: np.log(x.odds))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>       d  died   m    p  log2d  odds  log_odds
 0   5.00     7  90 0.08   2.32  0.08     -2.47
 1   6.00     7  92 0.08   2.58  0.08     -2.50
@@ -1747,6 +1742,40 @@ weighted avg       0.80      0.79      0.79       330
 </ul>
 </section>
 </section>
+<section id="decision-boundary" class="level2">
+<h2 class="anchored" data-anchor-id="decision-boundary">Decision boundary</h2>
+<p>앞선, Log odds(logit): &nbsp; <span class="math inline">\(\displaystyle log\left(\frac{\hat{p}}{1 - \hat{p}}\right)  = b_0 + b_1 \cdot X\)</span><br>
+예측변수가 2개라면,</p>
+<p>Log odds(logit): &nbsp; <span class="math inline">\(\displaystyle log\left(\frac{\hat{p}}{1 - \hat{p}}\right)  = b_0 + b_1 \cdot X_1 + b_2 \cdot X_2\)</span></p>
+<ul>
+<li>왼편의 logit 함수는 증가함수이므로, threshold를 정하면 선형 결정 경계(decision boundary)가 나타남: hyperplane</li>
+<li>비선형 함수로 모형을 세우면, decision boundary가 비선형으로 나타남.
+<ul>
+<li>예를 들어, <span class="math inline">\(b_0 + b_1 \cdot X + b_2 \cdot X^2\)</span> 등</li>
+</ul></li>
+</ul>
+<p>밑은 두 예측변수 <span class="math inline">\(X_1= log2d\)</span> (diameter)와 <span class="math inline">\(X_2=s\)</span> (severity)로 나무가 쓰러질지 여부를 선형함수로 만들었을 때의 decision boundary (threshold=0.5) 즉, Log odds(logit): &nbsp; <span class="math inline">\(\displaystyle log\left(\frac{\hat{p}}{1 - \hat{p}}\right)  = b_0 + b_1 \cdot X_1 + b_2 \cdot X_2\)</span></p>
+<div id="4fb9d3cc" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-47-output-1.png" width="536" height="448" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>밑은 두 예측변수 <span class="math inline">\(X_1= log2d\)</span> (diameter)와 <span class="math inline">\(X_2=s\)</span> (severity)에 대한 모든 2, 3차항을 추가했을 때 decision boundary; 10개의 파라미터<br>
+예를 들어, <span class="math inline">\(X_1^2, ~ X_1 \cdot X_2, ~X_1^3, ~X_1^2 \cdot X_2, ~X_2^3\)</span></p>
+<div id="cbfaf3d8" class="cell" data-execution_count="251">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-50-output-1.png" width="536" height="448" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="multiclass-k-2의-경우" class="level2">
 <h2 class="anchored" data-anchor-id="multiclass-k-2의-경우">Multiclass (K &gt; 2)의 경우</h2>
 <p><strong>Multinomial logistic regression</strong></p>
@@ -2288,7 +2317,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false,"selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
