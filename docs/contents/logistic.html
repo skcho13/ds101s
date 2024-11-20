@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-18">
+<meta name="dcterms.date" content="2024-11-20">
 
 <title>Logistic Regression –  Introduction to Data Science</title>
 <style>
@@ -454,7 +454,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 18, 2024</p>
+      <p class="date">November 20, 2024</p>
     </div>
   </div>
   
@@ -536,13 +536,13 @@ window.Quarto = {
 </blockquote>
 <p><code>d</code>: 나무의 지름(cm),  <code>y</code>: 나무가 죽은 경우 1, 그렇지 않으면 0<br>
 <code>spp</code>: 나무의 종,  <code>s</code>: 특정 지역의 폭풍의 심각도</p>
-<div id="6d92b5e8" class="cell" data-execution_count="47">
+<div id="6d92b5e8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>blowdown <span class="op">=</span> pd.read_csv(<span class="st">'data/blowdown2.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># black spruce에 제한</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>blowbs <span class="op">=</span> blowdown.query(<span class="st">'spp == "black spruce"'</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blowbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>         d    s  y           spp  log2d
 17    9.00 0.02  0  black spruce   3.17
 24   11.00 0.03  0  black spruce   3.46
@@ -1754,8 +1754,9 @@ weighted avg       0.80      0.79      0.79       330
 <li>예를 들어, <span class="math inline">\(b_0 + b_1 \cdot X + b_2 \cdot X^2\)</span> 등</li>
 </ul></li>
 </ul>
-<p>밑은 두 예측변수 <span class="math inline">\(X_1= log2d\)</span> (diameter)와 <span class="math inline">\(X_2=s\)</span> (severity)로 나무가 쓰러질지 여부를 선형함수로 만들었을 때의 decision boundary (threshold=0.5) 즉, Log odds(logit): &nbsp; <span class="math inline">\(\displaystyle log\left(\frac{\hat{p}}{1 - \hat{p}}\right)  = b_0 + b_1 \cdot X_1 + b_2 \cdot X_2\)</span></p>
-<div id="4fb9d3cc" class="cell">
+<p>밑은 두 예측변수 <span class="math inline">\(X_1= log2d\)</span> (diameter)와 <span class="math inline">\(X_2=s\)</span> (severity)로 나무가 쓰러질지 여부를 선형함수로 만들었을 때의 decision boundary (threshold=0.5)<br>
+즉, Log odds(logit): &nbsp; <span class="math inline">\(\displaystyle log\left(\frac{\hat{p}}{1 - \hat{p}}\right)  = b_0 + b_1 \cdot X_1 + b_2 \cdot X_2\)</span></p>
+<div id="4fb9d3cc" class="cell" data-execution_count="29">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1766,15 +1767,6 @@ weighted avg       0.80      0.79      0.79       330
 </div>
 <p>밑은 두 예측변수 <span class="math inline">\(X_1= log2d\)</span> (diameter)와 <span class="math inline">\(X_2=s\)</span> (severity)에 대한 모든 2, 3차항을 추가했을 때 decision boundary; 10개의 파라미터<br>
 예를 들어, <span class="math inline">\(X_1^2, ~ X_1 \cdot X_2, ~X_1^3, ~X_1^2 \cdot X_2, ~X_2^3\)</span></p>
-<div id="cbfaf3d8" class="cell" data-execution_count="251">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="logistic_files/figure-html/cell-50-output-1.png" width="536" height="448" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
 <section id="multiclass-k-2의-경우" class="level2">
 <h2 class="anchored" data-anchor-id="multiclass-k-2의-경우">Multiclass (K &gt; 2)의 경우</h2>
@@ -2317,7 +2309,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

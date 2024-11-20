@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-13">
+<meta name="dcterms.date" content="2024-11-20">
 
 <title>Regularization –  Introduction to Data Science</title>
 <style>
@@ -442,7 +442,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 13, 2024</p>
+      <p class="date">November 20, 2024</p>
     </div>
   </div>
   
@@ -454,7 +454,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -581,6 +581,17 @@ Important
 <p><a href="images/ridge-bias-variance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/ridge-bias-variance.png" class="img-fluid" width="720"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;243, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
+</div>
+<p>앞서 <span class="math inline">\(y = sin(2\pi x)\)</span>로부터 생성된 데이터셋(N=10)에 대해 다항식의 차수에 따른 flexibility의 변화에 따른 OLS 모델과 Ridge regression 모델을 비교하면,<br>
+여기서 각각 <span class="math inline">\(\lambda = 0.005\)</span>, <span class="math inline">\(\lambda = 1\)</span></p>
+<div id="cell-7" class="cell" data-execution_count="25">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regularization_files/figure-html/cell-5-output-1.png" width="547" height="392" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="lasso-regression" class="level2">
@@ -1119,7 +1130,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
