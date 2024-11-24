@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-24">
+<meta name="dcterms.date" content="2024-11-25">
 
 <title>K-Nearest Neighbors –  Intro to Data Science</title>
 <style>
@@ -343,7 +343,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 24, 2024</p>
+      <p class="date">November 25, 2024</p>
     </div>
   </div>
   
@@ -452,13 +452,13 @@ Bayes classifier가 되는 즉, <span class="math inline">\(P(Y=orange|X) = P(Y=
 <p>Source: p.&nbsp;112, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
 </div>
 <p><strong>Linear regression과의 비교</strong></p>
-<p>X와 Y가 선형관계를 가질 때,</p>
+<p>X와 Y가 선형관계를 가질 때 (N = 50),</p>
 <p><a href="images/knn-regression-linear.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/knn-regression-linear.png" class="img-fluid" width="600"></a><br>
 <a href="images/knn-regression-comp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/knn-regression-comp.png" class="img-fluid" width="600"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;113, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
 </div>
-<p>X와 Y가 선형관계에서 벗어날 때,</p>
+<p>X와 Y가 선형관계에서 벗어날 때 (N = 50),</p>
 <p><a href="images/knn-regression-nonlinear.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/knn-regression-nonlinear.png" class="img-fluid" width="620"></a></p>
 <p><a href="images/knn-regression-nonlinear-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/knn-regression-nonlinear-2.png" class="img-fluid" width="620"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
@@ -468,9 +468,15 @@ Bayes classifier가 되는 즉, <span class="math inline">\(P(Y=orange|X) = P(Y=
 <li>실제 X, Y의 관계가 비선형적일 수록 KNN이 더 나은 예측을 할 수 있음</li>
 <li>하지만, 변수의 수가 증가하면 테스트 관측치 <span class="math inline">\(x_0\)</span>에서 가까운 관측치 수가 기하급수적으로 줄어</li>
 <li><span class="math inline">\(x_0\)</span>에 가장 가까운 K 관측치는 매우 멀리 떨어져 있어, 그 평균값들인 예측값의 정확도가 떨어질 수 있음; the curse of dimensionality</li>
-<li>특히, Y와 관련이 적은 예측변수들이 많을 경우에는 더욱 그러함</li>
 </ul>
-<p><a href="images/knn-dimensionality.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/knn-dimensionality.png" class="img-fluid" width="700"></a></p>
+<p><a href="images/ESLII-fig2-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/ESLII-fig2-7.png" class="img-fluid" width="650"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;25, <em>The Elements of Statistical Learning (2e)</em> by Hastie, T., Tibshirani, R., &amp; Friedman, J.</p>
+</div>
+<p>특히, Y와 관련이 적은 예측변수들이 많을 경우에는 더욱 그러함<br>
+아래 그림은 Y와 관련이 별로 없는 변수들이 늘어날 때, KNN과 선형회귀의 성능의 변화를 보여줌 (N = 50);<br>
+KNN의 성능이 빠르게 떨어짐<br>
+<a href="images/knn-dimensionality.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="images/knn-dimensionality.png" class="img-fluid" width="700"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;115, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
 </div>
@@ -2778,7 +2784,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
