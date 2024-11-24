@@ -418,6 +418,7 @@ window.Quarto = {
 <p>변수들 간의 관계에 있어서, 예측에 사용되는 변수(X)와 예측되는 변수(Y)를 구분하기 위해 여러 용어들이 사용됨.</p>
 <p>X: <em><strong>feature</strong>, predictor, independent variable</em><br>
 Y: <em><strong>target/label</strong>, response, dependent variable, outcome variable, criterion</em></p>
+<p>관측치(데이터의 행): example, instance, observation, record, data point, case</p>
 </div>
 </div>
 <section id="왜-분석하는가" class="level2">
@@ -531,7 +532,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" class="img-fluid"></a></p>
@@ -3694,7 +3695,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
