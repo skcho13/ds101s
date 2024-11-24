@@ -31,6 +31,61 @@ website:
     left: This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
     # background: 
 
+  navbar: 
+    pinned: false
+    background: "#3d3d3d"
+    search: true
+
+    left:
+      # - href: index.qmd
+      #   text: Welcome
+      - text: Introduction
+        menu:
+          - href: contents/intro.qmd
+            text: Overview
+          - href: contents/two-cultures.qmd
+            text: Two Cultures
+          - href: contents/setup.qmd
+            text: Python Setup
+      - text: Python Basics
+        menu:
+          - href: contents/pandas.ipynb
+            text: NumPy & pandas
+          - href: contents/inspection.ipynb
+            text: Data Inspection
+          - href: contents/subsetting.ipynb
+            text: Subsetting
+      - text: EDA
+        menu:
+          - href: contents/vis-intro.ipynb
+            text: Visualize
+          - href: contents/eda.ipynb
+            text: Explore
+          - href: contents/wrangling.ipynb
+            text: Wrangling
+      - text: Linear Models
+        menu:
+          - href: contents/model-basic.ipynb
+            text: Model Basics
+          - href: contents/statistics.ipynb
+            text: Regression Analysis
+      - text: ML Basics
+        menu:
+          - href: contents/mlsl-intro.ipynb
+            text: Introduction
+          - href: contents/regularization.ipynb
+            text: Regularization
+          - href: contents/knn.ipynb
+            text: K-Nearest Neighbors
+      - text: Classification
+        menu:
+          - href: contents/logistic.ipynb
+            text: Logistic Regression
+          - href: contents/lda.ipynb
+            text: Generative Models
+      - href: contents/tree.ipynb
+        text: Trees
+  
   sidebar:
     # background: "#F6F6FF"
     # logo: 
@@ -89,7 +144,6 @@ website:
             text: Regression Analysis
           # - text: Example
       - text: ---
-
       - section: Machine Learning Basics
         contents: 
           - href: contents/mlsl-intro.ipynb
@@ -132,11 +186,13 @@ format:
     code-fold: false
     code-overflow: wrap
     code-summary: "Show the code"
-    theme: [sandstone, theme-light.scss]
+    theme: 
+      light: [sandstone, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
     fontsize: 1.1em
     linestretch: 1.8
     code-copy: true
-    highlight-style: ayu-light
+    highlight-style: gruvbox
     link-external-newwindow: true
     # link-external-icon: true
     grid:
