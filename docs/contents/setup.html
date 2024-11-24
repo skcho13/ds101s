@@ -9,7 +9,7 @@
 <meta name="author" content="Sungkyun Cho">
 <meta name="dcterms.date" content="2024-06-21">
 
-<title>Python 설정 –  Introduction to Data Science</title>
+<title>Python 설정 –  Intro to Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="Python 설정 –  Introduction to Data Science">
+<meta property="og:title" content="Python 설정 –  Intro to Data Science">
 <meta property="og:description" content="Mixed">
 <meta property="og:site_name" content="Introduction to Data Science">
 </head>
@@ -130,7 +130,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title"><iconify-icon inline="" icon="fa-solid:fingerprint" aria-label="Icon fingerprint from fa-solid Iconify.design set." title="Icon fingerprint from fa-solid Iconify.design set."></iconify-icon> Introduction to Data Science</span>
+    <span class="navbar-title"><iconify-icon inline="" icon="fa-solid:fingerprint" aria-label="Icon fingerprint from fa-solid Iconify.design set." title="Icon fingerprint from fa-solid Iconify.design set."></iconify-icon> Intro to Data Science</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -223,6 +223,10 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
         <li>
     <a class="dropdown-item" href="../contents/regularization.html">
  <span class="dropdown-text">Regularization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/shrinkage.html">
+ <span class="dropdown-text">Implementations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../contents/knn.html">
@@ -584,7 +588,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <li>Colab AI assistant</li>
 <li>구글 드라이브의 데이터셋을 import:</li>
 </ul>
-<div id="3334ed1f" class="cell">
+<div id="053fcf17" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"drive/MyDrive/..."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -821,7 +825,7 @@ Command Line Tools
 <section id="python-packages-modules-functions" class="level2">
 <h2 class="anchored" data-anchor-id="python-packages-modules-functions">Python Packages, Modules, Functions</h2>
 <p>Jupyter notebook 파일을 생성: <code>filename.ipynb</code></p>
-<div id="2fa69c10" class="cell">
+<div id="689f7db7" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> inv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -848,18 +852,18 @@ Command Line Tools
 <p><strong>NumPy 패키지(package)의 <code>linalg</code> 모듈(module)</strong></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>np.linalg  <span class="co"># linalg.py 파이썬 스트립트 파일</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong><code>linalg</code> 모듈 파일 안에 <code>def</code>으로 정의된 함수</strong></p>
-<div id="1094faf1" class="cell">
+<div id="4e955f06" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv  <span class="co"># 모듈 안에서 def으로 정의된 함수 inv()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv?  <span class="co"># 함수에 대한 도움말</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>예를 들어, 행렬의 역행렬을 구하는 함수 <code>inv</code>를 사용하려면</p>
-<div id="29f2d0da" class="cell">
+<div id="6b221771" class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">123</span>)  <span class="co"># random number generator</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.standard_normal((<span class="dv">3</span>, <span class="dv">3</span>))  <span class="co"># 3x3 matrix from standard normal distribution</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>어떻게 <code>import</code>하느냐에 따라 다른 방식으로 사용</p>
-<div id="4813cdf5" class="cell">
+<div id="c164429f" class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>inv(x)  <span class="co"># inverse matrix of x</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inv 함수를 따로 import하지 않은 경우, numpy의 linalg 모듈을 통해 사용</span></span>
@@ -871,7 +875,7 @@ Command Line Tools
 <li>사용자 정의 함수와의 충돌을 방지하기 위함</li>
 </ul>
 <p>모듈 안에 정의된 함수들을 확인하려면: <code>dir()</code> 함수</p>
-<div id="8a6cea13" class="cell">
+<div id="1ce19ce3" class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(np.linalg)  <span class="co"># 모듈 안에 정의된 함수들</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 

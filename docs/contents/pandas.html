@@ -9,7 +9,7 @@
 <meta name="author" content="Sungkyun Cho">
 <meta name="dcterms.date" content="2024-04-01">
 
-<title>NumPy and pandas –  Introduction to Data Science</title>
+<title>NumPy and pandas –  Intro to Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,7 +146,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="NumPy and pandas –  Introduction to Data Science">
+<meta property="og:title" content="NumPy and pandas –  Intro to Data Science">
 <meta property="og:description" content="Mixed">
 <meta property="og:site_name" content="Introduction to Data Science">
 </head>
@@ -159,7 +159,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title"><iconify-icon inline="" icon="fa-solid:fingerprint" aria-label="Icon fingerprint from fa-solid Iconify.design set." title="Icon fingerprint from fa-solid Iconify.design set."></iconify-icon> Introduction to Data Science</span>
+    <span class="navbar-title"><iconify-icon inline="" icon="fa-solid:fingerprint" aria-label="Icon fingerprint from fa-solid Iconify.design set." title="Icon fingerprint from fa-solid Iconify.design set."></iconify-icon> Intro to Data Science</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -252,6 +252,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../contents/regularization.html">
  <span class="dropdown-text">Regularization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/shrinkage.html">
+ <span class="dropdown-text">Implementations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../contents/knn.html">
@@ -947,7 +951,7 @@ Source: <a href="https://www.practicaldatascience.org/html/index.html">Practical
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>                     index<span class="op">=</span>pd.Index([<span class="st">"Ohio"</span>, <span class="st">"Colorado"</span>], name<span class="op">=</span><span class="st">"state"</span>),</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>                     columns<span class="op">=</span>pd.Index([<span class="st">"one"</span>, <span class="st">"two"</span>, <span class="st">"three"</span>], name<span class="op">=</span><span class="st">"number"</span>))</span>
 <span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>frame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-57" class="cell quarto-layout-panel" data-execution_count="21" data-layout-ncol="3">
+<div id="cell-57" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="21">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>number    one  two  three
@@ -1024,7 +1028,7 @@ dteday
 <div>
 
 </div>
-<div id="cell-67" class="cell quarto-layout-panel" data-tbl-cap="[&quot;frame1&quot;,&quot;frame2&quot;]" data-execution_count="31" data-layout-ncol="3">
+<div id="cell-67" class="cell quarto-layout-panel" data-tbl-cap="[&quot;frame1&quot;,&quot;frame2&quot;]" data-layout-ncol="3" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>number    one  two  three
@@ -1041,7 +1045,7 @@ Floria    6    8     10</code></pre>
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>frame1 <span class="op">+</span> frame2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="32" data-layout-ncol="3">
+<div id="cell-68" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="32">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>number    one  two  three

@@ -17,7 +17,7 @@ website:
   page-navigation: true
   bread-crumbs: false
   # navbar: true
-  title: "{{< iconify fa-solid fingerprint >}} Introduction to Data Science"
+  title: "{{< iconify fa-solid fingerprint >}} Intro to Data Science"
   description: "Introduction to Data Science, Dongguk University, 2024-1"
   site-url: "https://dgds101.modellings.art"
   site-path: "/"
@@ -75,6 +75,8 @@ website:
             text: Introduction
           - href: contents/regularization.ipynb
             text: Regularization
+          - href: contents/shrinkage.ipynb
+            text: Implementations
           - href: contents/knn.ipynb
             text: K-Nearest Neighbors
       - text: Classification
