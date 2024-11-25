@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-24">
+<meta name="dcterms.date" content="2024-11-25">
 
 <title>Logistic Regression –  Intro to Data Science</title>
 <style>
@@ -346,7 +346,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 24, 2024</p>
+      <p class="date">November 25, 2024</p>
     </div>
   </div>
   
@@ -474,7 +474,7 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="72" data-layout="[1, 1]">
+<div id="9708bb61" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="72">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid" width="589"></p>
@@ -497,7 +497,7 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'log d = </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="73" data-layout="[3, 1]">
+<div id="448e7ed0" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="73">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid" width="758"></p>
@@ -543,7 +543,7 @@ window.Quarto = {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Diameter (cm)'</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="74" data-layout="[3, 1]">
+<div id="d6fbd6f2" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="74">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid" width="834"></p>
@@ -568,7 +568,7 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="75" data-layout="[3, 1]">
+<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="75">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="834"></p>
@@ -641,7 +641,7 @@ Important
 <div>
 
 </div>
-<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="77" data-layout="[3, 1]">
+<div id="fa280612" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="77">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-12-output-1.png" class="img-fluid" width="478"></p>
@@ -674,7 +674,7 @@ Note
 <p>sigmoid 함수는 logisitic 함수라고도 부름.</p>
 </div>
 </div>
-<p>한편, 각 클래스 내에서 <span class="math inline">\(X\)</span>가 Gaussian 분포를 따르고, 클래스 간에 covariance matrix가 동일하다고 가정하면,<br>
+<p>한편, 각 클래스 내에서 <span class="math inline">\(X\)</span>가 multivariate Gaussian 분포를 따르고, 클래스 간에 covariance matrix가 동일하다고 가정하면,<br>
 log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된다는 것을 보일 수 있음.</p>
 <ul>
 <li>여기서는 쓰러진 나무와 산 나무의 두께가 Gaussian 분포를 따르고,</li>
@@ -701,7 +701,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Log of Diameter (cm)"</span>, y<span class="op">=</span><span class="st">"Density"</span>, color<span class="op">=</span><span class="st">"Label"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="96" data-layout="[1, 1]">
+<div id="7fef49b7" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="96">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="790"></p>
@@ -749,7 +749,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Emperical Probability"</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="99" data-layout="[4, 1]">
+<div id="8d91902a" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="99">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid" width="846"></p>
@@ -811,7 +811,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된
 <div>
 
 </div>
-<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="128" data-layout="[10, -1, 10, -1]">
+<div id="2d803e77" class="cell quarto-layout-panel" data-layout="[10, -1, 10, -1]" data-execution_count="128">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-18-output-1.png" class="img-fluid" width="545"></p>
@@ -948,7 +948,7 @@ Scikit-learn implementation
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="133" data-layout="[4, 1]">
+<div id="a8234351" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="133">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-22-output-1.png" class="img-fluid" width="768"></p>
@@ -1176,7 +1176,7 @@ Important
 <div>
 
 </div>
-<div id="70c5a856" class="cell quarto-layout-panel" data-execution_count="140" data-layout="[4, 1]">
+<div id="70c5a856" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="140">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-28-output-1.png" class="img-fluid" width="768"></p>
@@ -1186,7 +1186,7 @@ Important
 <div>
 
 </div>
-<div id="67b8c19c" class="cell quarto-layout-panel" data-execution_count="141" data-layout="[4, 1]">
+<div id="67b8c19c" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="141">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-29-output-1.png" class="img-fluid" width="768"></p>
@@ -1196,7 +1196,7 @@ Important
 <div>
 
 </div>
-<div id="46c722a0" class="cell quarto-layout-panel" data-execution_count="142" data-layout="[4, 1]">
+<div id="46c722a0" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="142">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-30-output-1.png" class="img-fluid" width="768"></p>
@@ -1207,7 +1207,7 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -5, 50, 20]">
+<div class="quarto-layout-panel" data-layout="[30, -5, 50, 20]" style="font-size: .9em; line-height: 1em;">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: center;">
 <table class="caption-top table">
@@ -1274,7 +1274,7 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -8, 40, -22]">
+<div class="quarto-layout-panel" data-layout="[30, -8, 40, -22]" style="font-size: .9em; line-height: 1em;">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <p>Threshold: 0.3인 경우,</p>
@@ -1370,7 +1370,7 @@ Important
 <span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="b1b466d7" class="cell quarto-layout-panel" data-execution_count="143" data-layout="[20, -5, 30, 45]">
+<div id="b1b466d7" class="cell quarto-layout-panel" data-layout="[20, -5, 30, 45]" data-execution_count="143">
 
 </div>
 </section>
@@ -1509,7 +1509,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="afb388d5" class="cell quarto-layout-panel" data-execution_count="159" data-layout="[1, 1]">
+<div id="afb388d5" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="159">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-37-output-1.png" class="img-fluid" width="490"></p>
@@ -1540,7 +1540,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="836f22b1" class="cell quarto-layout-panel" data-execution_count="162" data-layout="[1, 1]">
+<div id="836f22b1" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="162">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-40-output-1.png" class="img-fluid" width="490"></p>
@@ -1603,7 +1603,7 @@ weighted avg       0.80      0.79      0.79       330
 <div>
 
 </div>
-<div id="607d0bd3" class="cell quarto-layout-panel" data-execution_count="168" data-layout="[5, 4]">
+<div id="607d0bd3" class="cell quarto-layout-panel" data-layout="[5, 4]" data-execution_count="168">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-44-output-1.png" class="img-fluid" width="552"></p>
@@ -2355,7 +2355,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
