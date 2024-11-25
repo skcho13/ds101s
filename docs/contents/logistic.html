@@ -675,7 +675,7 @@ Note
 </div>
 </div>
 <p>한편, 각 클래스 내에서 <span class="math inline">\(X\)</span>가 multivariate Gaussian 분포를 따르고, 클래스 간에 covariance matrix가 동일하다고 가정하면,<br>
-log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결된다는 것을 보일 수 있음.</p>
+log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연결된다는 것을 보일 수 있음.</p>
 <ul>
 <li>여기서는 쓰러진 나무와 산 나무의 두께가 Gaussian 분포를 따르고,</li>
 <li>그 두 분포의 분산이 동일하다면, log odds가 <span class="math inline">\(X\)</span>에 대해 선형적 연결될 수 있음.</li>
@@ -965,15 +965,16 @@ Scikit-learn implementation
 <li>Log odds: &nbsp; <span class="math inline">\(\displaystyle logit = b_0 + b_1 \cdot x\)</span></li>
 </ul>
 <p>이 확률값을 이용해 binary outcome인 클래스를 예측할 수 있음.</p>
-<div id="e1010a35" class="cell" data-execution_count="134">
+<div id="e1010a35" class="cell">
 <details class="code-fold">
 <summary>code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>blowbs_pred <span class="op">=</span> blowbs.assign(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    pred_prob <span class="op">=</span> mod.predict(blowbs[<span class="st">"log2d"</span>]),</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    pred_odds <span class="op">=</span> <span class="kw">lambda</span> x: x.pred_prob <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.pred_prob),</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    pred_logit <span class="op">=</span> <span class="kw">lambda</span> x: mod.predict(blowbs[<span class="st">"log2d"</span>], which<span class="op">=</span><span class="st">"linear"</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>blowbs_pred.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using statsmodels package, not sckit-learn</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>blowbs_pred <span class="op">=</span> blowbs.assign(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    pred_prob <span class="op">=</span> mod.predict(blowbs[<span class="st">"log2d"</span>]),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    pred_odds <span class="op">=</span> <span class="kw">lambda</span> x: x.pred_prob <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.pred_prob),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    pred_logit <span class="op">=</span> <span class="kw">lambda</span> x: mod.predict(blowbs[<span class="st">"log2d"</span>], which<span class="op">=</span><span class="st">"linear"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>blowbs_pred.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="134">
 <pre><code>        s  y           spp  log2d  label  pred_prob  pred_odds  pred_logit
@@ -2355,7 +2356,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
