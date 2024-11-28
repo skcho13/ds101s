@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-24">
+<meta name="dcterms.date" content="2024-11-28">
 
 <title>Shrinkage Implementations –  Intro to Data Science</title>
 <style>
@@ -343,7 +343,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 24, 2024</p>
+      <p class="date">November 28, 2024</p>
     </div>
   </div>
   
@@ -393,11 +393,11 @@ window.Quarto = {
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> root_mean_squared_error, r2_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://islp.readthedocs.io/en/latest/datasets/Hitters.html">Major League Baseball Data from the 1986 and 1987 seasons</a></p>
-<div id="cell-5" class="cell" data-execution_count="4">
+<div id="cell-5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Hitters <span class="op">=</span> load_data(<span class="st">'Hitters'</span>) <span class="co"># from ISLP</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Hitters <span class="op">=</span> Hitters.dropna()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Hitters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>     AtBat  Hits  HmRun  Runs  RBI  Walks  Years  CAtBat  CHits  CHmRun  \
 1      315    81      7    24   38     39     14    3449    835      69   
 2      479   130     18    66   72     76      3    1624    457      63   
@@ -2576,7 +2576,7 @@ Test R-squared = 0.21</code></pre>
 <p>Ridge에서와 마찬가지로, 우선 training/test set으로 나눈 후,<br>
 training set에서 cross-validation을 이용해 최적의 <span class="math inline">\(\lambda\)</span>를 찾은 후,<br>
 test set을 이용해 test error를 구해보면,</p>
-<div id="cell-48" class="cell" data-execution_count="180">
+<div id="cell-48" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and test sets</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> skm.train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3107,13 +3107,13 @@ Test R-squared = 0.37</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="188">
+<div id="cell-58" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>lasso_l20 <span class="op">=</span> sklm.Lasso(alpha<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>lasso_l20.fit(X_train_scaled, y_train)</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>coefs <span class="op">=</span> lasso_l20.coef_</span>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>coefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="188">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>array([ -0.     ,  52.94574,   0.     ,   0.     ,   0.     ,  69.58717,
          0.     ,   0.     ,   0.     ,  22.35575,   0.     , 184.34984,
          0.     , 113.96798,  -0.     ,  -0.     ,   0.     , -51.76979,
@@ -3122,9 +3122,9 @@ Test R-squared = 0.37</code></pre>
 </div>
 <p>19개의 변수 중 다음 6개의 변수만 선택하여, 소위 <strong>variable/feature selection</strong>을 수행하게 됨.<br>
 반면, 앞서 최적의 <span class="math inline">\(\lambda=0.75\)</span>에서는 17개의 변수가 선택되었음.</p>
-<div id="cell-60" class="cell" data-execution_count="189">
+<div id="cell-60" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>X.columns[coefs.nonzero()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="189">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>Index(['Hits', 'Walks', 'CHmRun', 'CRBI', 'PutOuts', 'Division_W'], dtype='object')</code></pre>
 </div>
 </div>
@@ -3136,6 +3136,31 @@ Test R-squared = 0.37</code></pre>
 Test R-squared = 0.39</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Feature selection using SelectFromModel">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Feature selection using SelectFromModel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>SelectFromModel()</code>를 이용해, Lasso regression을 통해 선택된 변수만을 사용할 수 있음</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> SelectFromModel</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>model_reduced <span class="op">=</span> SelectFromModel(lasso_l20, prefit<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> model_reduced.transform(X)</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>X_new</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="co"># array([[  81,   39,   69,  414,  632,    1],</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co">#        [ 130,   76,   63,  266,  880,    1],</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="co">#        [ 141,   37,  225,  838,  200,    0],</span></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="co">#        ...,</span></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="co">#        [ 126,   52,    7,   93,   37,    1],</span></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a><span class="co">#        [ 144,   78,   97,  420, 1314,    0],</span></span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a><span class="co">#        [ 170,   31,   30,  357,  408,    1]])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 </section>
 <section id="comparisons" class="level2">
@@ -3144,24 +3169,24 @@ Test R-squared = 0.39</code></pre>
 <p><code>Hitters</code>의 예는 19개의 예측변수와 N=263개의 관측값만으로 연봉을 예측하는 문제임.<br>
 그 중 50%의 training set으로 모델을 fitting한 후, 나머지 50%의 test set으로 모델을 평가함.</p>
 <p>만약, 선형회귀모델을 사용한다면,</p>
-<div id="cell-65" class="cell" data-execution_count="191">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> sklm.LinearRegression()</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train_scaled, y_train)</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>print_metrics(y_test, lr.predict(X_test_scaled))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-66" class="cell" data-execution_count="191">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> sklm.LinearRegression()</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train_scaled, y_train)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>print_metrics(y_test, lr.predict(X_test_scaled))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test RMSE = 341.60
 Test R-squared = 0.32</code></pre>
 </div>
 </div>
 <p>이전 Ridge, Ridge with a higher order polynomial, Lasso, Lasso with variable selection에 대한 결과를 비교해보면,</p>
-<div id="cell-67" class="cell" data-execution_count="192">
+<div id="cell-68" class="cell" data-execution_count="192">
 <div class="cell-output cell-output-stdout">
 <pre><code>Ridge
 Test RMSE = 318.85
 Test R-squared = 0.41</code></pre>
 </div>
 </div>
-<div id="cell-68" class="cell" data-execution_count="193">
+<div id="cell-69" class="cell" data-execution_count="193">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Ridge with polynomial of degree 2
@@ -3169,7 +3194,7 @@ Test RMSE = 304.79
 Test R-squared = 0.46</code></pre>
 </div>
 </div>
-<div id="cell-69" class="cell" data-execution_count="194">
+<div id="cell-70" class="cell" data-execution_count="194">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Lasso
@@ -3177,7 +3202,7 @@ Test RMSE = 328.84
 Test R-squared = 0.37</code></pre>
 </div>
 </div>
-<div id="cell-70" class="cell" data-execution_count="195">
+<div id="cell-71" class="cell" data-execution_count="195">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Lasso with 6 predictors only (lambda = 20)
