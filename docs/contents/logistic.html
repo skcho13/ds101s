@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-28">
+<meta name="dcterms.date" content="2024-12-04">
 
 <title>Logistic Regression –  Intro to Data Science</title>
 <style>
@@ -346,7 +346,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 28, 2024</p>
+      <p class="date">December 4, 2024</p>
     </div>
   </div>
   
@@ -358,7 +358,7 @@ window.Quarto = {
 </header>
 
 
-<div id="5ef883ab" class="cell" data-execution_count="2">
+<div id="5ef883ab" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -428,13 +428,13 @@ window.Quarto = {
 </blockquote>
 <p><code>d</code>: 나무의 지름(cm),  <code>y</code>: 나무가 죽은 경우 1, 그렇지 않으면 0<br>
 <code>spp</code>: 나무의 종,  <code>s</code>: 특정 지역의 폭풍의 심각도</p>
-<div id="6d92b5e8" class="cell" data-execution_count="26">
+<div id="6d92b5e8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>blowdown <span class="op">=</span> pd.read_csv(<span class="st">'data/blowdown2.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># black spruce에 제한</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>blowbs <span class="op">=</span> blowdown.query(<span class="st">'spp == "black spruce"'</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blowbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>         d    s  y           spp  log2d
 17    9.00 0.02  0  black spruce   3.17
 24   11.00 0.03  0  black spruce   3.46
@@ -474,7 +474,7 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="72" data-layout="[1, 1]">
+<div id="9708bb61" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="72">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid" width="589"></p>
@@ -497,7 +497,7 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'log d = </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="73" data-layout="[3, 1]">
+<div id="448e7ed0" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="73">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid" width="758"></p>
@@ -514,10 +514,10 @@ window.Quarto = {
 <li>사실, 이 <code>p</code>는 binary response (0, 1)의 conditional mean(평균)인데,</li>
 <li>통계적으로 표현하면 <span class="math inline">\(E(Y|d=d_i)\)</span>이며 선형모형의 mean function를 제공.</li>
 </ul>
-<div id="3b5055de" class="cell" data-execution_count="42">
+<div id="3b5055de" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs.groupby(<span class="st">"d"</span>)[<span class="st">"y"</span>].agg([(<span class="st">"died"</span>, <span class="st">"sum"</span>), (<span class="st">"m"</span>, <span class="st">"count"</span>), (<span class="st">"p"</span>, <span class="st">"mean"</span>)]).reset_index()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>       d  died   m    p
 0   5.00     7  90 0.08
 1   6.00     7  92 0.08
@@ -543,7 +543,7 @@ window.Quarto = {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Diameter (cm)'</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="74" data-layout="[3, 1]">
+<div id="d6fbd6f2" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="74">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid" width="834"></p>
@@ -568,7 +568,7 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="75" data-layout="[3, 1]">
+<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="75">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="834"></p>
@@ -607,22 +607,22 @@ Important
 <p><img src="images/odds.png" class="img-fluid" width="350"></p>
 </div>
 </div>
-<div id="612f4d4b" class="cell" data-execution_count="76">
+<div id="612f4d4b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(odds <span class="op">=</span> <span class="kw">lambda</span> x: x.p <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.p))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p = 1인 경우 odds가 무한대가 되므로 편의상 inf 값을 50으로 대체</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>blowbs_bn[<span class="st">"odds"</span>] <span class="op">=</span> blowbs_bn[<span class="st">"odds"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">50</span> <span class="cf">if</span> x <span class="op">==</span> np.inf <span class="cf">else</span> x)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
-<pre><code>       d  died   m    p  log2d  odds
-0   5.00     7  90 0.08   2.32  0.08
-1   6.00     7  92 0.08   2.58  0.08
-2   7.00    18  91 0.20   2.81  0.25
-..   ...   ...  ..  ...    ...   ...
-22 28.00     2   2 1.00   4.81 50.00
-23 29.00     1   2 0.50   4.86  1.00
-24 32.00     1   1 1.00   5.00 50.00
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>       d  died   m    p  odds
+0   5.00     7  90 0.08  0.08
+1   6.00     7  92 0.08  0.08
+2   7.00    18  91 0.20  0.25
+..   ...   ...  ..  ...   ...
+22 28.00     2   2 1.00 50.00
+23 29.00     1   2 0.50  1.00
+24 32.00     1   1 1.00 50.00
 
-[25 rows x 6 columns]</code></pre>
+[25 rows x 5 columns]</code></pre>
 </div>
 </div>
 <p>이 odds를 선형모형으로 나무두께로 예측하려고 하는 것인데, 예를 들어,</p>
@@ -641,7 +641,7 @@ Important
 <div>
 
 </div>
-<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="77" data-layout="[3, 1]">
+<div id="fa280612" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="77">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-12-output-1.png" class="img-fluid" width="478"></p>
@@ -701,7 +701,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Log of Diameter (cm)"</span>, y<span class="op">=</span><span class="st">"Density"</span>, color<span class="op">=</span><span class="st">"Label"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="96" data-layout="[1, 1]">
+<div id="7fef49b7" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="96">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="790"></p>
@@ -749,7 +749,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Emperical Probability"</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="99" data-layout="[4, 1]">
+<div id="8d91902a" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="99">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid" width="846"></p>
@@ -800,18 +800,18 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <ul>
 <li>아이디어는 관측치가 전체적으로 관찰될 likelihood가 최대가 되도록 <span class="math inline">\(b_0, b_1\)</span>을 선택하는 것임</li>
 <li>이를 위해서 적절한 확률모형을 결합시켜야 함.</li>
-<li>기본적으로 선택하는 확률모형은 Bernoulli 분포임.
+<li>0 선택하는 확률모형은 Bernoulli 분포임.
 <ul>
-<li>binomial distribution (이항분포)로 전개하는 방식도 있음; binomial logit model</li>
+<li>발생 비율값으로 변환해 Binomial distribution (이항분포)로 전개하는 방식도 있음; binomial logit model</li>
 </ul></li>
-<li><strong>관찰값은 Bernoulli 분포로부터 발생했다고 가정</strong>함으로써, 실제 관찰값들의 error를 모형에 반영할 수 있음.</li>
+<li><strong>관찰값은 Bernoulli 분포로부터 발생했다고 가정</strong>함으로써, 실제 관찰값들이 관찰될 확률/가능도를 기준으로 파라미터를 추정할 수 있음.</li>
 </ul>
 <!-- 참고: 이항분포 (Y: 사건의 횟수) -->
 <!-- ![](images/binomial.png){width=750} -->
 <div>
 
 </div>
-<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="128" data-layout="[10, -1, 10, -1]">
+<div id="2d803e77" class="cell quarto-layout-panel" data-layout="[10, -1, 10, -1]" data-execution_count="128">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-18-output-1.png" class="img-fluid" width="545"></p>
@@ -880,7 +880,7 @@ Regularization
 <p><span class="math inline">\(\displaystyle L = \frac{1}{n} \left[ - \sum_{i=1}^{n} \left(y_i \cdot log(p_i) + (1-y_i) \cdot log(1-p_i)\right) + \frac{\lambda}{2} \sum_{j=1}^{p} \beta_j^2 \right]\)</span></p>
 </div>
 </div>
-<div id="65a795b7" class="cell" data-execution_count="130">
+<div id="65a795b7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.logit(<span class="st">'y ~ log2d'</span>, data<span class="op">=</span>blowbs).fit()</span>
@@ -894,8 +894,8 @@ Regularization
 Dep. Variable:                      y   No. Observations:                  659
 Model:                          Logit   Df Residuals:                      657
 Method:                           MLE   Df Model:                            1
-Date:                Fri, 22 Nov 2024   Pseudo R-squ.:                  0.2316
-Time:                        02:09:04   Log-Likelihood:                -328.95
+Date:                Tue, 03 Dec 2024   Pseudo R-squ.:                  0.2316
+Time:                        14:16:11   Log-Likelihood:                -328.95
 converged:                       True   LL-Null:                       -428.10
 Covariance Type:            nonrobust   LLR p-value:                 4.888e-45
 ==============================================================================
@@ -964,7 +964,7 @@ Scikit-learn implementation
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="133" data-layout="[4, 1]">
+<div id="a8234351" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="133">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-22-output-1.png" class="img-fluid" width="768"></p>
@@ -981,7 +981,7 @@ Scikit-learn implementation
 <li>Log odds: &nbsp; <span class="math inline">\(\displaystyle logit = b_0 + b_1 \cdot x\)</span></li>
 </ul>
 <p>이 확률값을 이용해 binary outcome인 클래스를 예측할 수 있음.</p>
-<div id="e1010a35" class="cell">
+<div id="e1010a35" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using statsmodels package, not scikit-learn</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>blowbs_pred <span class="op">=</span> blowbs.assign(</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    pred_prob <span class="op">=</span> mod.predict(blowbs[<span class="st">"log2d"</span>]),</span>
@@ -989,17 +989,17 @@ Scikit-learn implementation
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    pred_logit <span class="op">=</span> <span class="kw">lambda</span> x: mod.predict(blowbs[<span class="st">"log2d"</span>], which<span class="op">=</span><span class="st">"linear"</span>)</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>blowbs_pred.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="134">
-<pre><code>        s  y           spp  log2d  label  pred_prob  pred_odds  pred_logit
-17   0.02  0  black spruce   3.17  alive       0.33       0.49       -0.71
-24   0.03  0  black spruce   3.46  alive       0.48       0.94       -0.06
-25   0.03  0  black spruce   3.17  alive       0.33       0.49       -0.71
-...   ... ..           ...    ...    ...        ...        ...         ...
-3646 0.94  1  black spruce   3.17   died       0.33       0.49       -0.71
-3647 0.94  1  black spruce   4.09   died       0.79       3.83        1.34
-3661 0.98  1  black spruce   3.00   died       0.25       0.33       -1.09
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>        s  y           spp  log2d  pred_prob  pred_odds  pred_logit
+17   0.02  0  black spruce   3.17       0.33       0.49       -0.71
+24   0.03  0  black spruce   3.46       0.48       0.94       -0.06
+25   0.03  0  black spruce   3.17       0.33       0.49       -0.71
+...   ... ..           ...    ...        ...        ...         ...
+3646 0.94  1  black spruce   3.17       0.33       0.49       -0.71
+3647 0.94  1  black spruce   4.09       0.79       3.83        1.34
+3661 0.98  1  black spruce   3.00       0.25       0.33       -1.09
 
-[659 rows x 8 columns]</code></pre>
+[659 rows x 7 columns]</code></pre>
 </div>
 </div>
 <p>예를 들어, 두께(<code>log2d</code>)가 3인 나무의 경우,</p>
@@ -1044,7 +1044,7 @@ Scikit-learn implementation
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Scikit-learn implementation">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1053,7 +1053,7 @@ Scikit-learn implementation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Scikit-learn의 <code>LogisticRegression()</code>은 디폴트로 <span class="math inline">\(l2\)</span> regularization을 사용함: <a href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">참고 문서</a></p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -1067,24 +1067,23 @@ Scikit-learn implementation
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression(penalty<span class="op">=</span><span class="va">None</span>)  <span class="co"># l1, l2 regularization 가능</span></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># predictions</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># predict_proba: 각 클래스에 대한 확률을 반환</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># predict: 예측된 클래스를 반환 (threshold=0.5)</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>test_pred <span class="op">=</span> X_test.assign(</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>y_test,</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    pred_prob<span class="op">=</span>lr.predict_proba(X_test)[:, <span class="dv">1</span>],</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    pred_class<span class="op">=</span>lr.predict(X_test),</span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    pred_odds<span class="op">=</span><span class="kw">lambda</span> x: x.pred_prob <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.pred_prob),</span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    pred_logit<span class="op">=</span><span class="kw">lambda</span> x: np.log(x.pred_odds),</span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>test_pred.head(<span class="dv">5</span>)</span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="co">#       log2d  y  pred_prob  pred_class  pred_odds  pred_logit</span></span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 2890   3.46  1       0.48           0       0.94       -0.07</span></span>
-<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 574    3.81  0       0.66           1       1.93        0.66</span></span>
-<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 96     3.17  0       0.34           0       0.51       -0.67</span></span>
-<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 2773   3.46  1       0.48           0       0.94       -0.07</span></span>
-<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 1813   3.58  1       0.55           1       1.21        0.19</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># predict_proba: 각 클래스에 대한 확률을 반환</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># predict: 예측된 클래스를 반환 (threshold=0.5)</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>test_pred <span class="op">=</span> X_test.assign(</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>y_test,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    pred_prob<span class="op">=</span>lr.predict_proba(X_test)[:, <span class="dv">1</span>],  <span class="co"># 확률값</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    pred_class<span class="op">=</span>lr.predict(X_test),  <span class="co"># 클래스</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    pred_odds<span class="op">=</span><span class="kw">lambda</span> x: x.pred_prob <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.pred_prob),  <span class="co"># odds</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    pred_logit<span class="op">=</span><span class="kw">lambda</span> x: np.log(x.pred_odds),  <span class="co"># log odds</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>test_pred.head(<span class="dv">5</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co">#       log2d  y  pred_prob  pred_class  pred_odds  pred_logit</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 2890   3.46  1       0.48           0       0.94       -0.07</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 574    3.81  0       0.66           1       1.93        0.66</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 96     3.17  0       0.34           0       0.51       -0.67</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 2773   3.46  1       0.48           0       0.94       -0.07</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 1813   3.58  1       0.55           1       1.21        0.19</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1125,12 +1124,12 @@ Evaluation of predicted probability
 <p>Binomial version</p>
 <ul>
 <li>Pearson residual: <span class="math inline">\(\displaystyle \frac{actual ~ count ~ - predicted ~ count}{SD ~ of ~ count} = \frac{y_i - m_i \hat{p}_i}{\sqrt{m_i \hat{p}_i (1-\hat{p}_i)}}\)</span></li>
-<li>Deviance residual: <span class="math inline">\(\displaystyle sign(y_i - m_i\hat{p}_i) \sqrt{2[y_i log(\frac{y_i}{m_i\hat{p}_i}) + (m_i-y_i) log(\frac{m_i - y_i}{m_i-m_i\hat{p}_i})]}\)</span></li>
+<li>Deviance residual: <span class="math inline">\(\displaystyle sign(y_i - m_i\hat{p}_i) \sqrt{-2[y_i log(\frac{y_i}{m_i\hat{p}_i}) + (m_i-y_i) log(\frac{m_i - y_i}{m_i-m_i\hat{p}_i})]}\)</span></li>
 </ul>
 <p>Binary version</p>
 <ul>
 <li>Pearson residual: <span class="math inline">\(\displaystyle \frac{y_i - \hat{p}_i}{\sqrt{\hat{p}_i (1-\hat{p}_i)}}\)</span></li>
-<li>Deviance residual: <span class="math inline">\(\displaystyle sign(y_i - \hat{p}_i) \sqrt{-2[-y_i log(\hat{p}_i) - (1-y_i) log(1-\hat{p}_i)]}\)</span></li>
+<li>Deviance residual: <span class="math inline">\(\displaystyle sign(y_i - \hat{p}_i) \sqrt{-2[y_i log(\hat{p}_i) + (1-y_i) log(1-\hat{p}_i)]}=sign(y_i - \hat{p}_i)\sqrt{-2log(likelihood)}\)</span></li>
 </ul>
 <p>Deviance를 이용해 OLS에서의 <span class="math inline">\(R^2\)</span>와 비슷한 개념을 구성: <strong>Pseudo R-squared</strong></p>
 <p>Model deviance, <span class="math inline">\(D_k = -2[log(likelihood_k) - log(likelihood_{perfect})]\)</span></p>
@@ -1190,7 +1189,7 @@ Important
 <div>
 
 </div>
-<div id="70c5a856" class="cell quarto-layout-panel" data-execution_count="140" data-layout="[4, 1]">
+<div id="70c5a856" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="140">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-28-output-1.png" class="img-fluid" width="768"></p>
@@ -1200,7 +1199,7 @@ Important
 <div>
 
 </div>
-<div id="67b8c19c" class="cell quarto-layout-panel" data-execution_count="141" data-layout="[4, 1]">
+<div id="67b8c19c" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="141">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-29-output-1.png" class="img-fluid" width="768"></p>
@@ -1210,7 +1209,7 @@ Important
 <div>
 
 </div>
-<div id="46c722a0" class="cell quarto-layout-panel" data-execution_count="142" data-layout="[4, 1]">
+<div id="46c722a0" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="142">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-30-output-1.png" class="img-fluid" width="768"></p>
@@ -1221,7 +1220,7 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -5, 50, 20]">
+<div class="quarto-layout-panel" data-layout="[30, -5, 50, 20]" style="font-size: .9em; line-height: 1em;">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: center;">
 <table class="caption-top table">
@@ -1288,10 +1287,10 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -8, 40, -22]">
+<div class="quarto-layout-panel" data-layout="[30, -8, 40, -22]" style="font-size: .9em; line-height: 1em;">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
-<p>Threshold: 0.3인 경우,</p>
+<p>Threshold: 0.1인 경우,</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1308,23 +1307,23 @@ Important
 </tr>
 <tr class="even">
 <td style="text-align: left;">survied(0)</td>
-<td style="text-align: left;">157</td>
-<td style="text-align: left;">22</td>
+<td style="text-align: left;">42</td>
+<td style="text-align: left;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">died(1)</td>
-<td style="text-align: left;">65</td>
-<td style="text-align: left;">86</td>
+<td style="text-align: left;">180</td>
+<td style="text-align: left;">104</td>
 </tr>
 </tbody>
 </table>
-<p>Accuracy rate: 0.74</p>
+<p>Accuracy rate: 0.44</p>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 8.0%;justify-content: flex-start;">
 <p>&nbsp;</p>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
-<p>Threshold: 1인 경우; no information,</p>
+<p>Threshold: 0.9인 경우</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1342,16 +1341,16 @@ Important
 <tr class="even">
 <td style="text-align: left;">survied(0)</td>
 <td style="text-align: left;">222</td>
-<td style="text-align: left;">108</td>
+<td style="text-align: left;">104</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">died(1)</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: left;">4</td>
 </tr>
 </tbody>
 </table>
-<p>Accuracy rate: 0.67</p>
+<p>Accuracy rate: 0.68</p>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 22.0%;justify-content: flex-start;">
 <p>&nbsp;</p>
@@ -1370,21 +1369,21 @@ Important
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 0.3</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>, test_pred[<span class="st">"y"</span>])</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(test_pred[<span class="st">"y"</span>], test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 0.1</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.1</span>, test_pred[<span class="st">"y"</span>])</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(test_pred[<span class="st">"y"</span>], test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.1</span>)</span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 1</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="dv">1</span>, test_pred[<span class="st">"y"</span>])</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(test_pred[<span class="st">"y"</span>], test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff = 0.9</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_table(test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.9</span>, test_pred[<span class="st">"y"</span>])</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> accuracy_score(test_pred[<span class="st">"y"</span>], test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;</span> <span class="fl">0.9</span>)</span>
 <span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="b1b466d7" class="cell quarto-layout-panel" data-execution_count="143" data-layout="[20, -5, 30, 45]">
+<div id="b1b466d7" class="cell quarto-layout-panel" data-layout="[20, -5, 30, 45]" data-execution_count="69">
 
 </div>
 </section>
@@ -1397,11 +1396,12 @@ Important
 <li>시스템이 스팸으로 분류한 이메일 중 실제 스팸인 이메일의 비율
 <ul>
 <li>높은 precision은 스팸으로 잘못 분류된 정상 이메일이 적다는 것을 의미</li>
+<li>하지만, 스팸 이메일이 정상 이메일함에 나타날 수 있음.</li>
 </ul></li>
 <li>정보검색에서 반환된 문서들 중 실제로 관련 있는 문서의 비율
 <ul>
 <li>높은 precision은 사용자가 검색 결과에서 불필요한 정보를 적게 얻고, 대부분 유용한 정보를 얻는다는 것을 의미</li>
-<li>관련은 있지만 놓친 정보는 많을 수 있음.</li>
+<li>하지만, 관련은 있지만 놓친 정보는 많을 수 있음.</li>
 <li>검색 결과의 정확도를 평가</li>
 </ul></li>
 <li>검사를 통해 암으로 진단받은 사람이 실제로 암을 가지고 있을 확률
@@ -1414,10 +1414,12 @@ Important
 <li>실제 스팸 이메일 중에서 시스템이 스팸으로 올바르게 분류한 비율
 <ul>
 <li>높은 recall은 대부분의 스팸 이메일이 정확히 스팸으로 분류된다는 것을 의미</li>
+<li>하지만, 정상 이메일이 스팸함으로 분류될 수 있음.</li>
 </ul></li>
 <li>정보검색에서 관련 문서들 중에서 실제로 시스템이 반환한 문서의 비율
 <ul>
 <li>높은 recall은 사용자가 찾고자 하는 모든 관련 정보를 검색 결과에서 얻을 수 있다는 것을 의미</li>
+<li>하지만, 관련 없는 정보도 많이 포함될 수 있음.</li>
 <li>검색 시스템의 탐색 능력을 평가</li>
 </ul></li>
 <li>실제로 암을 가진 사람 중에서 검사를 통해 암으로 진단받은 사람의 비율
@@ -1427,12 +1429,14 @@ Important
 <li>참 양성, true positive rate (TPR), 또는 sensitivity라고도 함</li>
 </ul></li>
 </ul>
-<p><em>precision &amp; recall trade-off</em>: 이 둘 사이에는 종종 상충 관계가 있음. Precision을 높이기 위해 더 엄격한 기준을 사용하면 recall이 낮아질 수 있고, 반대로 recall을 높이기 위해 더 느슨한 기준을 사용하면 precision이 낮아질 수 있음.</p>
+<p><em>precision &amp; recall trade-off</em>: 이 둘 사이에는 종종 상충 관계가 있음. Precision을 높이기 위해 예측 확률에 대한 더 엄격한 기준을 사용하면 recall이 낮아질 수 있고, 반대로 recall을 높이기 위해 더 느슨한 기준을 사용하면 precision이 낮아질 수 있음.</p>
 <ul>
 <li><p>정보 검색의 맥락: precision을 높여 사용자가 불필요한 정보를 받지 않게 해주며, recall을 높여 필요한 정보를 놓치지 않도록 함.</p></li>
-<li><p>스팸 필터링의 맥락: precision을 높여 자주 스팸 메일함을 확인하지 않아도 되도록 하며, recall을 높여 대부분의 스팸 이메일이 차단되어 메일함에서 보여지지 않도록 쾌적한 환경을 제공 할 수 있음.</p></li>
+<li><p>스팸 필터링의 맥락: precision을 높여 자주 스팸 메일함을 확인하지 않아도 되도록 하며, recall을 높여 대부분의 스팸 이메일이 차단되어 정상 메일함에서 보이지 않도록 쾌적한 환경을 제공할 수 있음.</p></li>
 </ul>
-<p><strong><em>Sensitivity &amp; specificity</em></strong>: 의학 분야에서 진단 테스트의 정확성을 평가하는데에서 유래</p>
+<p><strong><em>Sensitivity &amp; specificity</em></strong>: 의학 분야에서 진단 테스트의 정확성을 평가하는데에서 유래<br>
+Precision &amp; recall이 주로 양성(positive) 클래스에 초점을 두는 반면, sensitivity &amp; specificity는 양성(positive)와 음성(negative) 클래스 모두에 초점을 둠.</p>
+<p>특히, 이상치 탐지라든가 희귀 질병 진단 등 불균형 데이터셋에서는 precision &amp; recall이 더 유용할 수 있음.</p>
 <ul>
 <li>Sensitivity (민감도): <span class="math inline">\(y=1\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률
 <ul>
@@ -1441,10 +1445,13 @@ Important
 </ul></li>
 <li>Specificity (특이도): <span class="math inline">\(y=0\)</span>일 때, <span class="math inline">\(\hat{y}=0\)</span>일 확률
 <ul>
-<li>실제로 질병이 없는 사람을 얼마나 잘 (질병이 없다고) 식별하는지(참 음성)를 나타냄</li>
-<li>높은 특이도는 질병이 없는 사람에게 질병이 있다고 잘못 진단하지 않는 것을 의미함.</li>
 <li>True negative rate (TNR)</li>
-<li>1 - FPR</li>
+<li>실제로 질병이 없는 사람을 얼마나 잘 (질병이 없다고) 식별하는지(참 음성)를 나타냄</li>
+<li>높은 특이도는 질병이 없는 사람에게 질병이 있다고 잘못 진단하지 않는 것을 의미함.
+<ul>
+<li>희귀 질병을 진단하는 경우, 정상인(negative)을 올바로 식별하는 것은 매우 쉽기 때문에 특이도가 중요하지 않을 수 있음.</li>
+</ul></li>
+<li>1 - FPR (False Positive Rate; false alarm)</li>
 </ul></li>
 </ul>
 <div class="callout callout-style-simple callout-note">
@@ -1455,7 +1462,7 @@ Important
 <div class="callout-body-container">
 <p>거짓 음성: False negative rate (FNR); <span class="math inline">\(y=1\)</span>일 때, <span class="math inline">\(\hat{y}=0\)</span>일 확률: 1 - TPR<br>
 - 정상이라고 진단된 환자가 실제로 암인 확률</p>
-<p>거짓 양성: False positive rate (FPR) 또는 False alarm; <span class="math inline">\(y=0\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률: 1 - TNR<br>
+<p>거짓 양성: False positive rate (FPR) 또는 False alarm; <span class="math inline">\(y=0\)</span>일 때, <span class="math inline">\(\hat{y}=1\)</span>일 확률: 1 - specificity<br>
 - 정상인 사람이 검사를 통해 암으로 진단받을 확률</p>
 </div>
 </div>
@@ -1500,9 +1507,107 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 높은 FPR: 많은 여성이 실제로는 암이 없지만 검진 결과 암이 있다고 나와 추가 검사(예: 생검)를 받아야 하는 상황이 발생할 수 있습니다. 이는 불필요한 스트레스와 의료 비용을 증가시킵니다.  
 높은 FNR: 실제로 암이 있는 여성이 검진 결과 암이 없다고 나와, 조기 치료의 기회를 놓치게 될 수 있습니다. 이는 암이 진행되어 치료가 더 어려워질 수 있습니다.  
 의료 진단 테스트는 이러한 False Positive Rate과 False Negative Rate를 최소화하는 방향으로 설계되고 평가되어야 합니다. 최적의 진단 테스트는 높은 정확도뿐만 아니라, 환자 안전과 효율적인 의료 자원 사용을 보장하는 데 기여해야 합니다. -->
+<p>위의 confusion matrix로부터 지표들을 계산하면,</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, -5, 50]]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 47.6%;justify-content: center;">
+<p>Threshold: 0.1인 경우,</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Predicted</th>
+<th style="text-align: left;">Truth</th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">survied(0)</td>
+<td style="text-align: left;">died(1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">survied(0)</td>
+<td style="text-align: left;">42</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">died(1)</td>
+<td style="text-align: left;">180</td>
+<td style="text-align: left;">104</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 4.8%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 47.6%;justify-content: center;">
+<p>Threshold: 0.9인 경우</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Predicted</th>
+<th style="text-align: left;">Truth</th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">survied(0)</td>
+<td style="text-align: left;">died(1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">survied(0)</td>
+<td style="text-align: left;">222</td>
+<td style="text-align: left;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">died(1)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[50, -5, 50]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 47.6%;justify-content: flex-start;">
+<ul>
+<li>precision = 104 / (180 + 104) = 0.37</li>
+<li>recall = 104 / (4 + 104) = 0.96</li>
+<li>specificity = 42 / (42 + 180) = 0.19</li>
+<li>accuracy = (42 + 104) / (42 + 4 + 180 + 104) = 0.44</li>
+</ul>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 4.8%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 47.6%;justify-content: flex-start;">
+<ul>
+<li>precision = 4 / (0 + 4) = 1.00</li>
+<li>recall = 4 / (4 + 104) = 0.04</li>
+<li>specificity = 222 / (222 + 0) = 1.00</li>
+<li>accuracy = (222 + 4) / (222 + 104 + 0 + 4) = 0.68</li>
+</ul>
+</div>
+</div>
+</div>
 <p><strong>Receiver operating characteristic (ROC) curve</strong></p>
 <p>예측된 확률에 대한 임계치를 조정함에 따라 옳은 예측과 틀린 예측의 비율이 어떻게 달라지는지 살펴봄으로써 임계치를 설정하는데 도움을 줌</p>
-<div id="27f1a469" class="cell" data-execution_count="147">
+<blockquote class="blockquote">
+<p><em>잘못된 예측에 대한 비용이 다르다면, 특정 임계치를 선택하는 것을 고려해야 함</em></p>
+</blockquote>
+<div id="27f1a469" class="cell" data-execution_count="44">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve</span>
@@ -1523,7 +1628,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="afb388d5" class="cell quarto-layout-panel" data-execution_count="159" data-layout="[1, 1]">
+<div id="afb388d5" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="81">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-37-output-1.png" class="img-fluid" width="490"></p>
@@ -1533,7 +1638,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 </div>
 </div>
 </div>
-<div id="b5835016" class="cell" data-execution_count="161">
+<div id="b5835016" class="cell" data-execution_count="48">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_recall_curve</span>
@@ -1554,19 +1659,28 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="836f22b1" class="cell quarto-layout-panel" data-execution_count="162" data-layout="[1, 1]">
+<div id="836f22b1" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="162">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-40-output-1.png" class="img-fluid" width="490"></p>
+<p><img src="logistic_files/figure-html/cell-39-output-1.png" class="img-fluid" width="490"></p>
 </div>
 </div>
 </div>
-<p><strong>ROC curve 전체를 특징지어주는 지표들</strong><br>
-<em>잘못된 예측에 대한 비용이 다르다면, 특정 임계치를 선택하는 것을 고려해야 함</em></p>
+<p>위에서 언급한 클래스 불균형의 예들: 이상치 탐지, 희귀 질병 진단 등에서는 precision &amp; recall이 더 유용할 수 있음.</p>
+<div id="acd6c54c" class="cell" data-execution_count="111">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-41-output-1.png" width="742" height="345" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>ROC curve 전체를 특징지어주는 지표들</strong></p>
 <ul>
 <li>AUC: Area Under the Curve = concordance index
 <ul>
-<li>각 specificity값에 대한 sensitivity의 합; 모형 예측력에 대한 전반적 평가</li>
+<li>각 specificity값에 대한 sensitivity의 합; 모형(classifier) 대한 전반적 평가</li>
 <li>0.5: random guess, 1: perfect prediction</li>
 </ul></li>
 <li>Concordance index(c): 모든 Y의 쌍, 예를 들어 <span class="math inline">\((0_i, 1_j)\)</span>에 대해서 해당하는 예측된 확률의 크기가 <span class="math inline">\(p_i &lt; p_j\)</span> 인 비율, 즉 순서가 맞는(concordance) 비율</li>
@@ -1617,10 +1731,10 @@ weighted avg       0.80      0.79      0.79       330
 <div>
 
 </div>
-<div id="607d0bd3" class="cell quarto-layout-panel" data-execution_count="168" data-layout="[5, 4]">
+<div id="607d0bd3" class="cell quarto-layout-panel" data-layout="[5, 4]" data-execution_count="168">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
-<p><img src="logistic_files/figure-html/cell-44-output-1.png" class="img-fluid" width="552"></p>
+<p><img src="logistic_files/figure-html/cell-45-output-1.png" class="img-fluid" width="552"></p>
 </div>
 </div>
 </div>
@@ -1671,7 +1785,7 @@ weighted avg       0.80      0.79      0.79       330
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic_files/figure-html/cell-48-output-1.png" width="536" height="448" class="figure-img"></p>
+<p><img src="logistic_files/figure-html/cell-49-output-1.png" width="536" height="448" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1682,7 +1796,7 @@ weighted avg       0.80      0.79      0.79       330
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic_files/figure-html/cell-52-output-1.png" width="536" height="448" class="figure-img"></p>
+<p><img src="logistic_files/figure-html/cell-53-output-1.png" width="536" height="448" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1726,7 +1840,7 @@ Note
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> blowdown[<span class="st">"spp"</span>]  <span class="co"># classify the species</span></span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>blowdown</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="4fd95481" class="cell quarto-layout-panel" data-layout-ncol="2">
+<div id="4fd95481" class="cell quarto-layout-panel" data-execution_count="32" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div>
 
@@ -1806,128 +1920,164 @@ Note
 </div>
 </div>
 </div>
-<div id="d38c1edb" class="cell">
+<div id="d38c1edb" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># split the data into training and test sets</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">0</span>, stratify<span class="op">=</span>y)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="03758dc7" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Predicted probability</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predicted probability</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>test_pred_prob <span class="op">=</span> pd.DataFrame(lr.predict_proba(X_test), columns<span class="op">=</span>lr.classes_)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>test_pred_prob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_columns <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># predicted probability</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>test_pred_prob <span class="op">=</span> pd.DataFrame(lr.predict_proba(X_test), columns<span class="op">=</span>lr.classes_)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>pd.concat(</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    [X_test.assign(target<span class="op">=</span>y_test).reset_index(drop<span class="op">=</span><span class="va">True</span>), test_pred_prob], axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>) <span class="co"># 데이터셋 병합</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="03758dc7" class="cell quarto-layout-panel" data-execution_count="116" data-layout="[5, 1]">
-<div class="quarto-layout-row">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">aspen</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">balsam fir</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">black ash</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">black spruce</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">cedar</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">jackpine</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">paper birch</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">red maple</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">red pine</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">s</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">log2d</th>
+<th data-quarto-table-cell-role="th">target</th>
+<th data-quarto-table-cell-role="th">aspen</th>
+<th data-quarto-table-cell-role="th">balsam fir</th>
+<th data-quarto-table-cell-role="th">black ash</th>
+<th data-quarto-table-cell-role="th">black spruce</th>
+<th data-quarto-table-cell-role="th">cedar</th>
+<th data-quarto-table-cell-role="th">jackpine</th>
+<th data-quarto-table-cell-role="th">paper birch</th>
+<th data-quarto-table-cell-role="th">red maple</th>
+<th data-quarto-table-cell-role="th">red pine</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;" data-quarto-table-cell-role="th">0</td>
-<td style="text-align: left;">0.29</td>
-<td style="text-align: left;">0.00</td>
-<td style="text-align: left;">0.02</td>
-<td style="text-align: left;">0.04</td>
-<td style="text-align: left;">0.24</td>
-<td style="text-align: left;">0.02</td>
-<td style="text-align: left;">0.33</td>
-<td style="text-align: left;">0.01</td>
-<td style="text-align: left;">0.04</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.61</td>
+<td>1</td>
+<td>4.58</td>
+<td>paper birch</td>
+<td>0.29</td>
+<td>0.00</td>
+<td>0.02</td>
+<td>0.04</td>
+<td>0.24</td>
+<td>0.02</td>
+<td>0.33</td>
+<td>0.01</td>
+<td>0.04</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" data-quarto-table-cell-role="th">1</td>
-<td style="text-align: left;">0.14</td>
-<td style="text-align: left;">0.02</td>
-<td style="text-align: left;">0.01</td>
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.20</td>
-<td style="text-align: left;">0.26</td>
-<td style="text-align: left;">0.11</td>
-<td style="text-align: left;">0.04</td>
-<td style="text-align: left;">0.18</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.26</td>
+<td>0</td>
+<td>4.32</td>
+<td>cedar</td>
+<td>0.14</td>
+<td>0.02</td>
+<td>0.01</td>
+<td>0.05</td>
+<td>0.20</td>
+<td>0.26</td>
+<td>0.11</td>
+<td>0.04</td>
+<td>0.18</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" data-quarto-table-cell-role="th">2</td>
-<td style="text-align: left;">0.42</td>
-<td style="text-align: left;">0.00</td>
-<td style="text-align: left;">0.09</td>
-<td style="text-align: left;">0.01</td>
-<td style="text-align: left;">0.10</td>
-<td style="text-align: left;">0.01</td>
-<td style="text-align: left;">0.34</td>
-<td style="text-align: left;">0.00</td>
-<td style="text-align: left;">0.02</td>
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.86</td>
+<td>1</td>
+<td>5.17</td>
+<td>aspen</td>
+<td>0.42</td>
+<td>0.00</td>
+<td>0.09</td>
+<td>0.01</td>
+<td>0.10</td>
+<td>0.01</td>
+<td>0.34</td>
+<td>0.00</td>
+<td>0.02</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" data-quarto-table-cell-role="th">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
-<td style="text-align: left;">...</td>
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" data-quarto-table-cell-role="th">1830</td>
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.00</td>
-<td style="text-align: left;">0.13</td>
-<td style="text-align: left;">0.25</td>
-<td style="text-align: left;">0.22</td>
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.20</td>
+<td data-quarto-table-cell-role="th">1830</td>
+<td>0.09</td>
+<td>0</td>
+<td>3.70</td>
+<td>cedar</td>
+<td>0.05</td>
+<td>0.05</td>
+<td>0.00</td>
+<td>0.13</td>
+<td>0.25</td>
+<td>0.22</td>
+<td>0.05</td>
+<td>0.05</td>
+<td>0.20</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" data-quarto-table-cell-role="th">1831</td>
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.01</td>
-<td style="text-align: left;">0.00</td>
-<td style="text-align: left;">0.33</td>
-<td style="text-align: left;">0.44</td>
-<td style="text-align: left;">0.02</td>
-<td style="text-align: left;">0.06</td>
-<td style="text-align: left;">0.02</td>
-<td style="text-align: left;">0.06</td>
+<td data-quarto-table-cell-role="th">1831</td>
+<td>0.41</td>
+<td>1</td>
+<td>3.32</td>
+<td>black spruce</td>
+<td>0.05</td>
+<td>0.01</td>
+<td>0.00</td>
+<td>0.33</td>
+<td>0.44</td>
+<td>0.02</td>
+<td>0.06</td>
+<td>0.02</td>
+<td>0.06</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" data-quarto-table-cell-role="th">1832</td>
-<td style="text-align: left;">0.01</td>
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.00</td>
-<td style="text-align: left;">0.31</td>
-<td style="text-align: left;">0.24</td>
-<td style="text-align: left;">0.12</td>
-<td style="text-align: left;">0.01</td>
-<td style="text-align: left;">0.06</td>
-<td style="text-align: left;">0.21</td>
+<td data-quarto-table-cell-role="th">1832</td>
+<td>0.20</td>
+<td>0</td>
+<td>3.00</td>
+<td>cedar</td>
+<td>0.01</td>
+<td>0.05</td>
+<td>0.00</td>
+<td>0.31</td>
+<td>0.24</td>
+<td>0.12</td>
+<td>0.01</td>
+<td>0.06</td>
+<td>0.21</td>
 </tr>
 </tbody>
 </table>
 
-<p>1833 rows × 9 columns</p>
+<p>1833 rows × 13 columns</p>
 </div>
 </div>
 </div>
@@ -1935,13 +2085,13 @@ Note
 <summary>Predicted class</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>test_pred <span class="op">=</span> X_test.assign(</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>y_test,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    target<span class="op">=</span>y_test,</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    pred_class<span class="op">=</span>lr.predict(X_test),</span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    pred_prob<span class="op">=</span>lr.predict_proba(X_test).<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>),</span>
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>test_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="c05c74ec" class="cell quarto-layout-panel" data-layout-ncol="2">
+<div id="c05c74ec" class="cell quarto-layout-panel" data-execution_count="38" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div>
 
@@ -1953,6 +2103,7 @@ Note
 <th style="text-align: left;" data-quarto-table-cell-role="th">s</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">y</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">log2d</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">target</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">pred_class</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">pred_prob</th>
 </tr>
@@ -1961,24 +2112,27 @@ Note
 <tr class="odd">
 <td style="text-align: left;" data-quarto-table-cell-role="th">2811</td>
 <td style="text-align: left;">0.61</td>
-<td style="text-align: left;">paper birch</td>
+<td style="text-align: left;">1</td>
 <td style="text-align: left;">4.58</td>
+<td style="text-align: left;">paper birch</td>
 <td style="text-align: left;">paper birch</td>
 <td style="text-align: left;">0.33</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;" data-quarto-table-cell-role="th">1105</td>
 <td style="text-align: left;">0.26</td>
-<td style="text-align: left;">cedar</td>
+<td style="text-align: left;">0</td>
 <td style="text-align: left;">4.32</td>
+<td style="text-align: left;">cedar</td>
 <td style="text-align: left;">jackpine</td>
 <td style="text-align: left;">0.26</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;" data-quarto-table-cell-role="th">3566</td>
 <td style="text-align: left;">0.86</td>
-<td style="text-align: left;">aspen</td>
+<td style="text-align: left;">1</td>
 <td style="text-align: left;">5.17</td>
+<td style="text-align: left;">aspen</td>
 <td style="text-align: left;">aspen</td>
 <td style="text-align: left;">0.42</td>
 </tr>
@@ -1989,35 +2143,39 @@ Note
 <td style="text-align: left;">...</td>
 <td style="text-align: left;">...</td>
 <td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;" data-quarto-table-cell-role="th">255</td>
 <td style="text-align: left;">0.09</td>
-<td style="text-align: left;">cedar</td>
+<td style="text-align: left;">0</td>
 <td style="text-align: left;">3.70</td>
+<td style="text-align: left;">cedar</td>
 <td style="text-align: left;">cedar</td>
 <td style="text-align: left;">0.25</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;" data-quarto-table-cell-role="th">1934</td>
 <td style="text-align: left;">0.41</td>
-<td style="text-align: left;">black spruce</td>
+<td style="text-align: left;">1</td>
 <td style="text-align: left;">3.32</td>
+<td style="text-align: left;">black spruce</td>
 <td style="text-align: left;">cedar</td>
 <td style="text-align: left;">0.44</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;" data-quarto-table-cell-role="th">816</td>
 <td style="text-align: left;">0.20</td>
-<td style="text-align: left;">cedar</td>
+<td style="text-align: left;">0</td>
 <td style="text-align: left;">3.00</td>
+<td style="text-align: left;">cedar</td>
 <td style="text-align: left;">black spruce</td>
 <td style="text-align: left;">0.31</td>
 </tr>
 </tbody>
 </table>
 
-<p>1833 rows × 5 columns</p>
+<p>1833 rows × 6 columns</p>
 </div>
 </div>
 </div>
@@ -2170,7 +2328,7 @@ Note
 </div>
 </div>
 </div>
-<p>Precision, Recall: <strong>one-versus-all</strong><br>
+<p>Precision, Recall: <strong>one-versus-all(rest)</strong><br>
 해당 클래스를 positive로 두고 나머지 클래스를 negative로 두어, 각 클래스에 대한 precision과 recall을 계산</p>
 <div id="c722b74e" class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># classification report: one-versus-all</span></span>
@@ -2213,14 +2371,16 @@ weighted avg       0.36      0.39      0.36      1833
 <li>Generalised additive models (GAM): GLM을 더 확장하여 각 예측변수에 대해 <em>smooth functions</em>를 사용하여 nonlinear 관계를 모델링
 <ul>
 <li><span class="math inline">\(g(E(Y | X)) = \beta_0 + f_1(X_1) + f_2(X_2) + f_3(X_1, X_2)\)</span></li>
-</ul></li>
 <li>Basis functions을 사용하여 nonlinear 관계를 모델링
 <ul>
-<li><span class="math inline">\(\hat y = w_0 + w_1 \phi_1(\mathbf{x}) + w_2 \phi_2(\mathbf{x}) + \cdots + w_{k} \phi_{k}(\mathbf{x})\)</span></li>
+<li><span class="math inline">\(\hat y = w_0 + w_1 \phi_1(\mathbf{x}) + w_2 \phi_2(\mathbf{x}) + \cdots + w_{k} \phi_{k}(\mathbf{x})\)</span>
+<ul>
 <li>Polynomial basis: <span class="math inline">\(\phi_i(x) = x^i\)</span></li>
 <li>Spline basis</li>
 <li>Gaussian basis: <span class="math inline">\(\displaystyle \phi_i(x) = exp\left(-\frac{(x-\mu_i)^2}{2 s^2}\right)\)</span></li>
 <li>Sigmoidal basis: <span class="math inline">\(\displaystyle \phi_i(x) = \sigma \left(\frac{x-\mu_i}{s}\right)\)</span></li>
+</ul></li>
+</ul></li>
 </ul></li>
 <li>Neural network/Deep learning
 <ul>
@@ -2862,7 +3022,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
