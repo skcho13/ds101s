@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-29">
+<meta name="dcterms.date" content="2024-12-07">
 
 <title>Generative Models –  Intro to Data Science</title>
 <style>
@@ -362,7 +362,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 29, 2024</p>
+      <p class="date">December 7, 2024</p>
     </div>
   </div>
   
@@ -407,8 +407,8 @@ window.Quarto = {
 <span class="math inline">\(P(Y = C_1|X=x) = \sigma (\beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p)\)</span> &nbsp; where &nbsp; <span class="math inline">\(\displaystyle\sigma(z) = \frac{1}{1+e^{-z}}\)</span>: &nbsp; <em>sigmoid/logistic function</em></p>
 <p>몇 가지 개선될 부분들</p>
 <ul>
-<li>두 클래스가 분명히 분리되는 경우, logistic 모형의 파라미터 추정치가 상당히 불안정함.</li>
-<li>X의 분포가 각 클래스에서 정규 분포가 가까운 경우 (특히 표본 크기가 작은 경우), 새로운 generative 접근 방식이 logistic보다 더 정확할 수 있음.</li>
+<li>두 클래스가 예측변수 공간에서 분명히 분리되는 경우, logistic 모형의 파라미터 추정치가 상당히 불안정함. (<span class="math inline">\(\hat{p}\)</span>이 0 또는 1에 가까워져 logit이 무한대로 증가할 수 있음)</li>
+<li>X의 분포가 각 클래스에서 정규 분포에 가까운 경우 (특히 표본 크기가 작은 경우), 새로운 generative 접근 방식이 logistic보다 더 정확할 수 있음.</li>
 <li>새로운 generative 접근 방식은 Y 클래스가 두 개 이상인 경우로 자연스럽게 확장될 수 있음. (logisitic의 경우 multinomial logistic 방식이 있음)</li>
 </ul>
 <section id="generative-classifier" class="level2">
@@ -456,7 +456,7 @@ Note
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="3" data-layout="[5, 1]">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-4-output-1.png" class="img-fluid" width="1014"></p>
@@ -468,7 +468,7 @@ Note
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="171" data-layout="[[1, 1]]">
+<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="171">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-5-output-1.png" class="img-fluid" width="464"></p>
@@ -506,7 +506,7 @@ Note
 <div>
 
 </div>
-<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="172" data-layout="[[6, 1]]">
+<div id="cell-10" class="cell quarto-layout-panel" data-layout="[[6, 1]]" data-execution_count="172">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 85.7%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-6-output-1.png" class="img-fluid" width="864"></p>
@@ -543,7 +543,7 @@ Note
 <div>
 
 </div>
-<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="175" data-layout="[[1, 1.5]]">
+<div id="cell-15" class="cell quarto-layout-panel" data-layout="[[1, 1.5]]" data-execution_count="175">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <pre><code>             mu  sigma  prior
@@ -571,7 +571,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="176" data-layout="[[7, 1]]">
+<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[7, 1]]" data-execution_count="176">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 87.5%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-10-output-1.png" class="img-fluid" width="864"></p>
@@ -581,7 +581,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="186" data-layout="[[10, 1]]">
+<div id="cell-27" class="cell quarto-layout-panel" data-layout="[[10, 1]]" data-execution_count="186">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 90.9%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-20-output-1.png" class="img-fluid" width="794"></p>
@@ -631,7 +631,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-36" class="cell quarto-layout-panel" data-execution_count="191" data-layout="[[4, 4, 1.5]]">
+<div id="cell-36" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="191">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-25-output-1.png" class="img-fluid" width="464"></p>
@@ -647,7 +647,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div>
 
 </div>
-<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[1, -0.2, 1]]">
+<div id="cell-40" class="cell quarto-layout-panel" data-layout="[[1, -0.2, 1]]" data-execution_count="19">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>             Adelie  Chinstrap  Gentoo
@@ -737,7 +737,7 @@ LDA as a dimension reduction method
 <div>
 
 </div>
-<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="201" data-layout="[[4, 4, 1.5]]">
+<div id="cell-54" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="201">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-35-output-1.png" class="img-fluid" width="470"></p>
@@ -751,7 +751,7 @@ LDA as a dimension reduction method
 <div>
 
 </div>
-<div id="cell-56" class="cell quarto-layout-panel" data-execution_count="202" data-layout="[[1, -0.2, 1]]">
+<div id="cell-56" class="cell quarto-layout-panel" data-layout="[[1, -0.2, 1]]" data-execution_count="202">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>                   Adelie  Chinstrap  Gentoo
@@ -767,7 +767,7 @@ flipper_length_mm  189.95     195.82  217.19</code></pre>
 <div>
 
 </div>
-<div id="cell-58" class="cell quarto-layout-panel" data-execution_count="203" data-layout="[[1, -0.1, 1, -0.1, 1]]">
+<div id="cell-58" class="cell quarto-layout-panel" data-layout="[[1, -0.1, 1, -0.1, 1]]" data-execution_count="203">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
 <pre><code>Adelie   sigma_1  sigma_2
@@ -838,7 +838,7 @@ prior    0.44       0.20    0.36</code></pre>
 <div>
 
 </div>
-<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="209" data-layout="[[4, 4, 1.5]]">
+<div id="cell-68" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="209">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-44-output-1.png" class="img-fluid" width="529"></p>
@@ -1122,7 +1122,7 @@ C2   0.29</code></pre>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"LDA Decision Boundary"</span>)</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-92" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1, 1]]">
+<div id="cell-92" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="10">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-58-output-1.png" class="img-fluid" width="545"></p>
@@ -1788,7 +1788,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
