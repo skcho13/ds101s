@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-12-09">
+<meta name="dcterms.date" content="2024-12-28">
 
 <title>Logistic Regression –  Intro to Data Science</title>
 <style>
@@ -346,7 +346,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 9, 2024</p>
+      <p class="date">December 28, 2024</p>
     </div>
   </div>
   
@@ -358,7 +358,7 @@ window.Quarto = {
 </header>
 
 
-<div id="5ef883ab" class="cell" data-execution_count="2">
+<div id="5ef883ab" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -428,13 +428,13 @@ window.Quarto = {
 </blockquote>
 <p><code>d</code>: 나무의 지름(cm),  <code>y</code>: 나무가 죽은 경우 1, 그렇지 않으면 0<br>
 <code>spp</code>: 나무의 종,  <code>s</code>: 특정 지역의 폭풍의 심각도</p>
-<div id="6d92b5e8" class="cell" data-execution_count="222">
+<div id="6d92b5e8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>blowdown <span class="op">=</span> pd.read_csv(<span class="st">'data/blowdown2.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># black spruce에 제한</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>blowbs <span class="op">=</span> blowdown.query(<span class="st">'spp == "black spruce"'</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blowbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="222">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>         d    s  y           spp  log2d
 17    9.00 0.02  0  black spruce   3.17
 24   11.00 0.03  0  black spruce   3.46
@@ -474,7 +474,7 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="72" data-layout="[1, 1]">
+<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid" width="589"></p>
@@ -497,7 +497,7 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'log d = </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="73" data-layout="[3, 1]">
+<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid" width="758"></p>
@@ -514,10 +514,10 @@ window.Quarto = {
 <li>사실, 이 <code>p</code>는 binary response (0, 1)의 conditional mean(평균)인데,</li>
 <li>통계적으로 표현하면 <span class="math inline">\(E(Y|d=d_i)\)</span>이며 선형모형의 mean function를 제공.</li>
 </ul>
-<div id="3b5055de" class="cell" data-execution_count="5">
+<div id="3b5055de" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs.groupby(<span class="st">"d"</span>)[<span class="st">"y"</span>].agg([(<span class="st">"died"</span>, <span class="st">"sum"</span>), (<span class="st">"m"</span>, <span class="st">"count"</span>), (<span class="st">"p"</span>, <span class="st">"mean"</span>)]).reset_index()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>       d  died   m    p
 0   5.00     7  90 0.08
 1   6.00     7  92 0.08
@@ -543,7 +543,7 @@ window.Quarto = {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Diameter (cm)'</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="74" data-layout="[3, 1]">
+<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid" width="834"></p>
@@ -568,7 +568,7 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="75" data-layout="[3, 1]">
+<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="13" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="834"></p>
@@ -607,22 +607,22 @@ Important
 <p><img src="images/odds.png" class="img-fluid" width="350"></p>
 </div>
 </div>
-<div id="612f4d4b" class="cell" data-execution_count="6">
+<div id="612f4d4b" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(odds <span class="op">=</span> <span class="kw">lambda</span> x: x.p <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.p))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p = 1인 경우 odds가 무한대가 되므로 편의상 inf 값을 50으로 대체</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>blowbs_bn[<span class="st">"odds"</span>] <span class="op">=</span> blowbs_bn[<span class="st">"odds"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">50</span> <span class="cf">if</span> x <span class="op">==</span> np.inf <span class="cf">else</span> x)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>       d  died   m    p  odds
-0   5.00     7  90 0.08  0.08
-1   6.00     7  92 0.08  0.08
-2   7.00    18  91 0.20  0.25
-..   ...   ...  ..  ...   ...
-22 28.00     2   2 1.00 50.00
-23 29.00     1   2 0.50  1.00
-24 32.00     1   1 1.00 50.00
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>       d  died   m    p  log2d  odds
+0   5.00     7  90 0.08   2.32  0.08
+1   6.00     7  92 0.08   2.58  0.08
+2   7.00    18  91 0.20   2.81  0.25
+..   ...   ...  ..  ...    ...   ...
+22 28.00     2   2 1.00   4.81 50.00
+23 29.00     1   2 0.50   4.86  1.00
+24 32.00     1   1 1.00   5.00 50.00
 
-[25 rows x 5 columns]</code></pre>
+[25 rows x 6 columns]</code></pre>
 </div>
 </div>
 <p>이 odds를 선형모형으로 나무두께로 예측하려고 하는 것인데, 예를 들어,</p>
@@ -641,7 +641,7 @@ Important
 <div>
 
 </div>
-<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="77" data-layout="[3, 1]">
+<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="15" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-12-output-1.png" class="img-fluid" width="478"></p>
@@ -701,7 +701,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Log of Diameter (cm)"</span>, y<span class="op">=</span><span class="st">"Density"</span>, color<span class="op">=</span><span class="st">"Label"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="96" data-layout="[1, 1]">
+<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="790"></p>
@@ -712,10 +712,10 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 </div>
 </div>
 <p>이제, log odds을 구해, <span class="math inline">\(X\)</span>에 대해 선형적인 패턴이 있는지 확인해보면,</p>
-<div id="5afe94e6" class="cell" data-execution_count="97">
+<div id="5afe94e6" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(log_odds <span class="op">=</span> <span class="kw">lambda</span> x: np.log(x.odds))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="97">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>       d  died   m    p  log2d  odds  log_odds
 0   5.00     7  90 0.08   2.32  0.08     -2.47
 1   6.00     7  92 0.08   2.58  0.08     -2.50
@@ -749,7 +749,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Emperical Probability"</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="99" data-layout="[4, 1]">
+<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid" width="846"></p>
@@ -788,7 +788,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># y = np.polyval(np.polyfit(blowbs_bn.log2d, blowbs_bn.log_odds, 1), x)</span></span>
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lineplot(x=x, y=y, ax=ax, color=".6")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a4f966e4" class="cell quarto-layout-panel" data-layout="[4, 1]">
+<div id="a4f966e4" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-17-output-1.png" class="img-fluid" width="856"></p>
@@ -811,7 +811,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <div>
 
 </div>
-<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="128" data-layout="[10, -1, 10, -1]">
+<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="21" data-layout="[10, -1, 10, -1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-18-output-1.png" class="img-fluid" width="545"></p>
@@ -827,9 +827,9 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 </div>
 </div>
 </div>
-<div id="417761cc" class="cell" data-execution_count="129">
+<div id="417761cc" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>blowbs.sort_values(<span class="st">"log2d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="129">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>         d    s  y           spp  log2d  label
 2102  5.00 0.45  0  black spruce   2.32  alive
 724   5.00 0.18  0  black spruce   2.32  alive
@@ -880,7 +880,7 @@ Regularization
 <p><span class="math inline">\(\displaystyle L = \frac{1}{n} \left[ - \sum_{i=1}^{n} \left(y_i \cdot log(p_i) + (1-y_i) \cdot log(1-p_i)\right) + \frac{\lambda}{2} \sum_{j=1}^{p} \beta_j^2 \right]\)</span></p>
 </div>
 </div>
-<div id="65a795b7" class="cell" data-execution_count="7">
+<div id="65a795b7" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.logit(<span class="st">'y ~ log2d'</span>, data<span class="op">=</span>blowbs).fit()</span>
@@ -894,8 +894,8 @@ Regularization
 Dep. Variable:                      y   No. Observations:                  659
 Model:                          Logit   Df Residuals:                      657
 Method:                           MLE   Df Model:                            1
-Date:                Tue, 03 Dec 2024   Pseudo R-squ.:                  0.2316
-Time:                        14:16:11   Log-Likelihood:                -328.95
+Date:                Sat, 28 Dec 2024   Pseudo R-squ.:                  0.2316
+Time:                        06:05:55   Log-Likelihood:                -328.95
 converged:                       True   LL-Null:                       -428.10
 Covariance Type:            nonrobust   LLR p-value:                 4.888e-45
 ==============================================================================
@@ -964,7 +964,7 @@ Scikit-learn implementation
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="133" data-layout="[4, 1]">
+<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="25" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-22-output-1.png" class="img-fluid" width="768"></p>
@@ -981,7 +981,7 @@ Scikit-learn implementation
 <li>Log odds: &nbsp; <span class="math inline">\(\displaystyle logit = b_0 + b_1 \cdot x\)</span></li>
 </ul>
 <p>이 확률값을 이용해 binary outcome인 클래스를 예측할 수 있음.</p>
-<div id="e1010a35" class="cell" data-execution_count="224">
+<div id="e1010a35" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using statsmodels package, not scikit-learn</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>blowbs_pred <span class="op">=</span> blowbs.assign(</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    pred_prob <span class="op">=</span> mod.predict(blowbs[<span class="st">"log2d"</span>]),</span>
@@ -989,17 +989,17 @@ Scikit-learn implementation
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    pred_logit <span class="op">=</span> <span class="kw">lambda</span> x: mod.predict(blowbs[<span class="st">"log2d"</span>], which<span class="op">=</span><span class="st">"linear"</span>)</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>blowbs_pred.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="224">
-<pre><code>        s  y           spp  log2d  pred_prob  pred_odds  pred_logit
-17   0.02  0  black spruce   3.17       0.33       0.49       -0.71
-24   0.03  0  black spruce   3.46       0.48       0.94       -0.06
-25   0.03  0  black spruce   3.17       0.33       0.49       -0.71
-...   ... ..           ...    ...        ...        ...         ...
-3646 0.94  1  black spruce   3.17       0.33       0.49       -0.71
-3647 0.94  1  black spruce   4.09       0.79       3.83        1.34
-3661 0.98  1  black spruce   3.00       0.25       0.33       -1.09
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>        s  y           spp  log2d  label  pred_prob  pred_odds  pred_logit
+17   0.02  0  black spruce   3.17  alive       0.33       0.49       -0.71
+24   0.03  0  black spruce   3.46  alive       0.48       0.94       -0.06
+25   0.03  0  black spruce   3.17  alive       0.33       0.49       -0.71
+...   ... ..           ...    ...    ...        ...        ...         ...
+3646 0.94  1  black spruce   3.17   died       0.33       0.49       -0.71
+3647 0.94  1  black spruce   4.09   died       0.79       3.83        1.34
+3661 0.98  1  black spruce   3.00   died       0.25       0.33       -1.09
 
-[659 rows x 7 columns]</code></pre>
+[659 rows x 8 columns]</code></pre>
 </div>
 </div>
 <p>예를 들어, 두께(<code>log2d</code>)가 3인 나무의 경우,</p>
@@ -1833,21 +1833,16 @@ Code
 <p><br></p>
 <p><strong>The classification report in scikit-learn</strong><br>
 <em>Thershold: 0.4인 경우,</em></p>
+<div id="b9b47351" class="cell">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, recall_score</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">.4</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>pred_class <span class="op">=</span> test_pred[<span class="st">"pred_prob"</span>] <span class="op">&gt;=</span> threshold</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(test_pred[<span class="st">"y"</span>], pred_class))</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># specificity: 양성을 0으로 보고 recall 계산</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>specificity <span class="op">=</span> recall_score(test_pred[<span class="st">"y"</span>], pred_class, pos_label<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"specificity (recall for negative): </span><span class="sc">{</span>specificity<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(test_pred[<span class="st">"y"</span>], pred_class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="b9b47351" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="297">
-<div class="quarto-layout-row">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
            0       0.86      0.82      0.84       222
@@ -1856,9 +1851,23 @@ Code
     accuracy                           0.79       330
    macro avg       0.76      0.77      0.77       330
 weighted avg       0.80      0.79      0.79       330
-
-specificity (recall for negative): 0.82</code></pre>
+</code></pre>
 </div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="specificity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+specificity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>specificity for positive = recall for negative: 0.82</li>
+<li>macro avg of recall: sensitivity와 specificity의 평균: 0.77</li>
+</ul>
 </div>
 </div>
 <ul>
@@ -1980,7 +1989,7 @@ Note
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> blowdown[<span class="st">"spp"</span>]  <span class="co"># classify the species</span></span>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>blowdown</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="4fd95481" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="32">
+<div id="4fd95481" class="cell quarto-layout-panel" data-execution_count="32" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div>
 
@@ -2231,7 +2240,7 @@ Note
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>test_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="c05c74ec" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="38">
+<div id="c05c74ec" class="cell quarto-layout-panel" data-execution_count="38" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div>
 
@@ -3162,7 +3171,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
