@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-10-29">
+<meta name="dcterms.date" content="2025-01-02">
 
 <title>Two Cultures –  Intro to Data Science</title>
 <style>
@@ -562,7 +562,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 29, 2024</p>
+      <p class="date">January 2, 2025</p>
     </div>
   </div>
   
@@ -1088,7 +1088,7 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <section id="dag" class="level2">
 <h2 class="anchored" data-anchor-id="dag">DAG</h2>
 <p><strong>Directed acyclic graph (DAG): 인과 관계 다이어그램</strong></p>
-<p><img src="images/DAG.png" class="img-fluid" width="830"></p>
+<p><img src="images/DAG.png" class="img-fluid" width="820"></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: Causality: Models, Reasoning, and Inference (2000) by Judea Pearl</p>
 </div>
@@ -1099,12 +1099,14 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <div class="column" style="width:50%;">
 <p>신발을 신고 잠든 다음날 두통이 생긴다면?<br>
 <strong>Fork:Common Cause</strong></p>
-<p><img src="images/causal_diagram_headache.png" class="img-fluid" width="340"><br>
-Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
+<p><img src="images/causal_diagram_headache.png" class="img-fluid" width="340"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
+</div>
 </div><div class="column" style="width:45%;">
 <p>운동능력이 뛰어나면 지능이 낮은가?<br>
-<strong>Colider: Common Effect</strong> <br></p>
-<p><img src="images/colider.png" class="img-fluid" width="300"></p>
+<strong>Collider: Common Effect</strong> <br></p>
+<p><img src="images/collider.png" class="img-fluid" width="300"></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -1150,6 +1152,11 @@ Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
 </div>
 </div>
 </div>
+<p><strong>코딩 기술이 뛰어나면 협업능력이 떨어지는가?</strong><br>
+어느 회사에서 지원자의 코딩 능력과 협업 능력을 1점부터 5점까지 정량화하여,<br>
+총점 8점 이상을 받은 지원자를 모두 채용한다고 했을 때,</p>
+<p><img src="images/collider2.png" class="img-fluid" width="300"></p>
+<p><br></p>
 <p><strong>학생들의 과제는 성적에 영향을 주는가?</strong><br>
 Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
 <p><img src="images/causal_diagram_grades.png" class="img-fluid" width="500"></p>
@@ -1784,7 +1791,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
