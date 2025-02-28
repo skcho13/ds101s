@@ -1245,7 +1245,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 1:00 ~ 2:30PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 3:00 ~ 4:20PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "Trees",
       "Welcome"
@@ -1256,7 +1256,7 @@
     "href": "index.html#강의-정보",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 1:00 ~ 2:30PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 3:00 ~ 4:20PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "Trees",
       "Welcome"
@@ -1267,7 +1267,7 @@
     "href": "index.html#강의-개요",
     "title": "Welcome",
     "section": "강의 개요",
-    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n교재 및 참고도서\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석",
+    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n참고도서\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석",
     "crumbs": [
       "Trees",
       "Welcome"
@@ -1293,6 +1293,18 @@
     "crumbs": [
       "Trees",
       "Welcome"
+    ]
+  },
+  {
+    "objectID": "contents/two-cultures.html#humility",
+    "href": "contents/two-cultures.html#humility",
+    "title": "Two Cultures",
+    "section": "Humility",
+    "text": "Humility\n\n아인슈타인은 한번 우주를 순전히 물리적 용어로 이해할 수 있을 것이라고 생각하는지 질문을 받았습니다. 그는 “음, 그럴 수도 있지만, 이것은 베토벤 교향곡을 음표(notes)의 주파수 분포(frequency distribution)로 이해하려는 것과 같을 것입니다.”\n\n\n… 나 자신에게는 해변에서 놀고 있는 한 소년에 불과했던 것 같습니다. 그저 평범한 것보다 조금 더 매끄러운 조약돌이나 더 예쁜 조개껍데기를 이따금 발견하며 즐기고 있었을 뿐, 그 동안 진리의 위대한 대양(the great ocean of truth)은 모두 미발견인 채로 내 앞에 놓여 있었습니다. (Isaac Newton)\n\n\nQuotes from Einstein\n\n우리가 경험할 수 있는 가장 아름다운 감정은 신비감(mystical)입니다. 그것은 모든 진정한 예술과 과학의 힘입니다. 낯설게 느껴지는 감정이지만, 더 이상 경이로움(wonder)을 느끼지 못하며 황홀한 경외심(awe)을 갖지 못하는 사람은 죽은 것이나 마찬가지입니다. 우리에게 불가해한(impenetrable) 것이 실제로 존재하며, 그것이 최고의 지혜와 가장 빛나는 아름다움으로 나타난다는 것을 아는 것—우리의 둔한 능력으로는 가장 원시적인 형태로만 이해할 수 있는—이 지식, 이 느낌이 진정한 종교성의 중심에 있습니다. 이런 의미에서, 그리고 오직 이런 의미에서만, 나는 독실하게 종교적인 사람들의 대열에 속합니다.\n\n\n\nEinstein characterized himself as “devoutly religious” in the following sense, “The most beautiful emotion we can experience is the mystical. It is the power of all true art and science. He to whom this emotion is a stranger, who can no longer wonder and stand rapt in awe, is as good as dead. To know that what is impenetrable to us really exists, manifesting itself as the highest wisdom and the most radiant beauty, which our dull faculties can comprehend only in their most primitive forms—this knowledge, this feeling, is at the center of true religiousness. In this sense, and in this sense only, I belong to the rank of devoutly religious men.”\nQuote: WHAT I BELIEVE, FORUM AND CENTURY 84 (OCTOBER 1930), NO. 4, 193-194; EINSTEIN 1954, 8-11\n\n\n\n과학적 연구는 일어나는 모든 일이 자연법칙에 의해 결정된다는 개념에 기초하고 있으며, 따라서 이는 사람들의 행동에도 적용됩니다. 이러한 이유로, 연구 과학자는 기도, 즉 초자연적 존재에게 전달되는 소원에 의해 사건이 영향을 받을 수 있다고 믿기 어렵습니다. 그러나 이러한 법칙에 대한 우리의 실제 지식이 불완전하고 단편적일 뿐이라는 것을 인정해야 합니다. 그래서 사실, 자연에 모든 것을 포괄하는 기본 법칙이 존재한다는 믿음도 일종의 믿음(faith)에 기초하고 있습니다. 그럼에도 불구하고 이러한 믿음은 지금까지 과학적 연구의 성공에 의해 크게 정당화되어 왔습니다. 하지만, 다른 한편으로는, 과학을 진지하게 추구하는 모든 사람은 우주의 법칙 속에 영(spirit)이 나타난다는 확신을 갖게 됩니다—인간의 영보다 훨씬 우월한 영이며, 우리는 우리의 미약한 능력으로 그 앞에서 겸손함을 느껴야 하는 영입니다. 이런 방식으로 과학의 추구는 특별한 종류의 종교적 감정으로 이어지며, 이는 실제로 더 순진한(naive) 사람의 종교성과는 상당히 다릅니다.\n\n\n\nScientific research is based on the idea that everything that takes place is determined by laws of nature, and therefore this holds for the actions of people. For this reason, a research scientist will hardly be inclined to believe that events could be influenced by a prayer, i.e. by a wish addressed to a supernatural being. However, it must be admitted that our actual knowledge of these laws is only imperfect and fragmentary, so that, actually, the belief in the existence of basic all-embracing laws in nature also rests on a sort of faith. All the same this faith has been largely justified so far by the success of scientific research. But, on the other hand, everyone who is seriously involved in the pursuit of science becomes convinced that a spirit is manifest in the laws of the universe—a spirit vastly superior to that of man, and one in the face of which we with our modest powers must feel humble. In this way the pursuit of science leads to a religious feeling of a special sort, which is indeed quite different from the religiosity of someone more naive.\nQuote: Einstein, Albert (2013) Albert Einstein, The Human Side. Princeton: Princeton University Press, pp. 32-33.",
+    "crumbs": [
+      "Trees",
+      "Introduction",
+      "Two Cultures"
     ]
   }
 ]
