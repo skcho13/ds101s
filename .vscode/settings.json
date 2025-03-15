@@ -2,5 +2,5 @@
     "CodeGPT.apiKey": "CodeGPT Plus Beta",
     "CodeGPT.Autocomplete.provider": "CodeGPT Plus - Plus",
     "CodeGPT.Autocomplete.enabled": true,
-    "editor.fontFamily": "Menlo, Monaco,'Courier New', monospace"
+    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco,'Courier New', monospace"
 }
