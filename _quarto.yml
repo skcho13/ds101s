@@ -118,14 +118,7 @@ website:
           - href: contents/setup.qmd
             text: Python Setup
       - text: ---
-      - section: Python Basics
-        contents:
-          - href: contents/pandas.ipynb
-            text: NumPy & pandas
-          - href: contents/inspection.ipynb
-            text: Data Inspection
-          - href: contents/subsetting.ipynb
-            text: Subsetting
+      - href: contents/python-basics.qmd
       - text: ---
       - section: Exploratory Data Analysis
         contents:
