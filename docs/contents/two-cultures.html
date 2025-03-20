@@ -286,7 +286,7 @@ window.Quarto = {
   <li><a href="#블랙박스로부터의-정보-추출" id="toc-블랙박스로부터의-정보-추출" class="nav-link" data-scroll-target="#블랙박스로부터의-정보-추출">블랙박스로부터의 정보 추출</a></li>
   </ul></li>
   <li><a href="#결론" id="toc-결론" class="nav-link" data-scroll-target="#결론">결론</a></li>
-  <li><a href="#올바른-모델의-필요성" id="toc-올바른-모델의-필요성" class="nav-link" data-scroll-target="#올바른-모델의-필요성">올바른 모델의 필요성</a></li>
+  <li><a href="#올바른-인과-모델의-필요성" id="toc-올바른-인과-모델의-필요성" class="nav-link" data-scroll-target="#올바른-인과-모델의-필요성">올바른 (인과) 모델의 필요성</a></li>
   </ul></li>
   <li><a href="#the-third-camp-causal-inference" id="toc-the-third-camp-causal-inference" class="nav-link" data-scroll-target="#the-third-camp-causal-inference">The Third Camp: Causal Inference</a>
   <ul>
@@ -502,6 +502,7 @@ Noise/residual의 분포: <span class="math inline">\(\epsilon_i \sim N(0, \sigm
 <li>모델이 데이터에 얼마나 잘 맞는지에 대한 논의가 거의 없음
 <ul>
 <li>특히, 주로 <strong>예-아니오</strong>로 답하는 적합도 테스트를 통해 모델의 적합성을 판단</li>
+<li>샘플링 오류로 인해 우연히 관찰된 것은 아니라는 정도에 대한 확신; 완전한 거짓은 아니라는 판단</li>
 </ul></li>
 <li>주로 독창적인 확률 모형을 찾는데 주력</li>
 <li>(가정한) 모델을 데이터에 맞출 때 결론은 자연의 메커니즘이 아니라 모델의 메커니즘에 관한 것이 됨</li>
@@ -651,8 +652,8 @@ Digging It Out in Small Pieces</p>
 </div>
 <!-- ![](images/desert.png){height=400} -->
 </section>
-<section id="올바른-모델의-필요성" class="level2">
-<h2 class="anchored" data-anchor-id="올바른-모델의-필요성">올바른 모델의 필요성</h2>
+<section id="올바른-인과-모델의-필요성" class="level2">
+<h2 class="anchored" data-anchor-id="올바른-인과-모델의-필요성">올바른 (인과) 모델의 필요성</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>천체의 움직임에 대한 모델</strong><br>
@@ -730,7 +731,7 @@ Digging It Out in Small Pieces</p>
 <p>Source: <em>The Book of Why: The New Science of Cause and Effect</em> by Judea Pearl, Dana Mackenzie (2018)</p>
 </blockquote>
 </div>
-<p><strong><em>임산부의 흡연은 태아의 생존에 이로운가?</em></strong><br>
+<p><strong><em>임산부의 흡연은 저체중아의 생존에 이로운가?</em></strong><br>
 Birth-weight Paradox</p>
 <ul>
 <li>1960년대 중반, Jacob Yerushalmy의 논문
@@ -746,7 +747,7 @@ Birth-weight Paradox</p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: <em>The Book of Why: The New Science of Cause and Effect</em> by Judea Pearl, Dana Mackenzie (2018)</p>
 </div>
-<p><strong><em>학과별로 공정했어도 대학은 차별할 수 있을까?</em></strong><br>
+<p><strong><em>학과별로 공정해도 대학은 차별할 수 있을까?</em></strong><br>
 UC Berkeley Admission Paradox</p>
 <ul>
 <li>1973년, 대학원에 진학한 남성과 여성의 합격 비율이 각각 44%, 35%였음</li>
