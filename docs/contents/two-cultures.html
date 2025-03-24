@@ -259,6 +259,11 @@ window.Quarto = {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -611,7 +616,7 @@ The Occam’s Dilemma</p>
 <p><strong>차원의 저주 (the curse of dimensionality)</strong><br>
 Digging It Out in Small Pieces</p>
 <ul>
-<li>전통적으로 변수가 많을수록 좋지 않다고 여겼으나,</li>
+<li>전통적으로 (데이터 크기에 상대적으로) 변수가 많을수록 좋지 않다고 여겼으나,</li>
 <li>Tree나 neural network에서는 변수가 많은 것이 문제가 되지 않고, 오히려 작은 정보들이 추가됨
 <ul>
 <li>예를 들어, 30개의 예측 변수로부터 4차항들을 추가하면 약 40,000개의 새로운 변수가 생성됨</li>
@@ -625,7 +630,8 @@ Digging It Out in Small Pieces</p>
 <h3 class="anchored" data-anchor-id="블랙박스로부터의-정보-추출">블랙박스로부터의 정보 추출</h3>
 <p><em>The goal is not interpretability, but <strong>accurate information</strong>.</em></p>
 <blockquote class="blockquote">
-<p><em>“정확성(accuracy)과 해석 가능성(interpretability) 중 하나를 선택해야 한다면, 그들은 해석 가능성을 택할 것입니다. <br> 정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. <br> 모델의 핵심은 응답(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. <br> 해석 가능성은 정보를 얻는 한 가지 방법입니다. <br> 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
+<p><em>“정확성(accuracy)과 해석 가능성(interpretability) 중 하나를 선택해야 한다면, 그들은 해석 가능성을 택할 것입니다.</em></p>
+<p><em>정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. 모델의 핵심은 응답 변수(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. 해석 가능성은 정보를 얻는 한 가지 방법입니다. 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
 </blockquote>
 <ul>
 <li>예측 정확도가 높을수록 기저에 있는 데이터 메커니즘에 대한 더 신뢰할 수 있는 정보가 내재함</li>
@@ -753,9 +759,10 @@ UC Berkeley Admission Paradox</p>
 <li>1973년, 대학원에 진학한 남성과 여성의 합격 비율이 각각 44%, 35%였음</li>
 <li>입학 결정은 학과별로 독립적으로 내렸음</li>
 <li>학과별로는 여성의 합격 비율이 더 높았음!</li>
-<li>Peter Bickel(버클리대의 통계학자)와 William Kruskal(시카고대의 통계학자) 사이의 논쟁
+<li>Peter Bickel(버클리대의 통계학자)와 William Kruskal(시카고대의 통계학자) 사이의 논쟁(해결하지 못한채 2005년 사망)
 <ul>
 <li>학과별로 나누어 살펴보는 것으로 충분한가?</li>
+<li>무분별한 편견(bias)의 양산; 편견(bias): associational vs.&nbsp;차별(discrination): causal</li>
 </ul></li>
 </ul>
 <div class="columns">

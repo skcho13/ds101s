@@ -31,6 +31,7 @@ website:
     left: This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
     # background: 
 
+  reader-mode: true  
   navbar: 
     pinned: false
     background: "#3d3d3d"
