@@ -544,7 +544,7 @@ Bayesian Models
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>불확실성에 대한 가정에 대한 다른 접근</p>
+<p>불확실성에 대한 가정에 대한 다른 접근: 관측값이 늘어남에 따라 사전 확률(prior probability)을 업데이트(사후 확률, posterior probability)하여 사건 발생에 대한 믿음(확률)을 추정하는 방식</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/toss-globe.jpg" class="img-fluid" width="250"></p>
 <p><img src="images/bayesian-update.png" class="img-fluid" width="600"></p>
 <p>Source: <em>McElreath, R. (2018). Statistical rethinking: A Bayesian course with examples in R and Stan. Chapman and Hall/CRC.</em></p>
@@ -634,9 +634,8 @@ Digging It Out in Small Pieces</p>
 <p><em>정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. 모델의 핵심은 응답 변수(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. 해석 가능성은 정보를 얻는 한 가지 방법입니다. 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
 </blockquote>
 <ul>
-<li>예측 정확도가 높을수록 기저에 있는 데이터 메커니즘에 대한 더 신뢰할 수 있는 정보가 내재함</li>
-<li>예측 정확도가 낮으면 의심스러운 결론을 내릴 수 있음</li>
-<li>알고리즘 모델은 데이터 모델보다 예측 정확도가 더 높으며, 기본 메커니즘에 대한 더 나은 정보를 제공할 수 있음.</li>
+<li>예측 정확도가 높을수록 기저에 있는 데이터 발생 메커니즘(data generating process)에 대한 더 신뢰할 수 있는 정보가 내재함; 예측 정확도가 낮으면 의심스러운 결론을 내릴 수 있음</li>
+<li>알고리즘 모델은 데이터 모델보다 예측 정확도가 더 높으며, 기저 메커니즘(underlying mechanism)에 대한 더 나은 정보를 제공할 수 있음.</li>
 </ul>
 <p>예를 들어,</p>
 <ul>
@@ -720,7 +719,7 @@ Digging It Out in Small Pieces</p>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><a href="https://www.cbsnews.com/news/alcohol-causes-20000-cancer-deaths-in-the-us-annually/"><img src="images/alcohol-news-1.png" class="img-fluid"></a> <a href="https://www.sciencedaily.com/releases/2008/02/080212174615.htm"><img src="images/alcohol-news-2.png" class="img-fluid"></a></p>
