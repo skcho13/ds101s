@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -85,6 +85,25 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -617,6 +636,52 @@ The Occam’s Dilemma</p>
 Digging It Out in Small Pieces</p>
 <ul>
 <li>전통적으로 (데이터 크기에 상대적으로) 변수가 많을수록 좋지 않다고 여겼으나,</li>
+</ul>
+<div>
+
+</div>
+<div id="0ca3f20a" class="cell quarto-layout-panel" data-execution_count="1" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div>                            <div id="3a414564-9b49-4165-acb4-9b729062c140" class="plotly-graph-div" style="height:300px; width:500px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("3a414564-9b49-4165-acb4-9b729062c140")) {                    Plotly.newPlot(                        "3a414564-9b49-4165-acb4-9b729062c140",                        [{"marker":{"size":3},"mode":"markers","x":[17.857203028720033,6.639596106023545,16.424582461156636,0.8339325145049981,2.153133598719359,11.901041284124805,10.596347243856432,8.376148571133086,6.708156985466585,12.450388643921803],"y":[67.50022771619388,3.6813201519201293,84.47477606758966,12.704310028127239,-3.411365101406182,47.556839432762544,22.41525782306279,18.335322100336484,13.938866215239916,20.798214116671367],"z":[1480.9903045082003,277.95989623147943,1594.8048666303139,567.9098738924472,-415.5460976036361,486.3442003812886,517.9276139138808,-172.6385914416648,583.4980238467847,506.005979973238],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(51,51,51)"},"error_y":{"color":"rgb(51,51,51)"},"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"baxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"colorscale":{"sequential":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"sequentialminus":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]]},"colorway":["#F8766D","#A3A500","#00BF7D","#00B0F6","#E76BF3"],"font":{"color":"rgb(51,51,51)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"rgb(237,237,237)","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"rgb(237,237,237)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","radialaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"baxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","caxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"}}},"width":500,"height":300,"scene":{"xaxis":{"title":{"text":"Precipitation"}},"yaxis":{"title":{"text":"Wind"}},"zaxis":{"title":{"text":"Delay"}}}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('3a414564-9b49-4165-acb4-9b729062c140');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="two-cultures_files/figure-html/cell-2-output-2.png" class="img-fluid" width="470"></p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/cod-1.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="images/cod-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
 <li>Tree나 neural network에서는 변수가 많은 것이 문제가 되지 않고, 오히려 작은 정보들이 추가됨
 <ul>
 <li>예를 들어, 30개의 예측 변수로부터 4차항들을 추가하면 약 40,000개의 새로운 변수가 생성됨</li>
@@ -634,7 +699,7 @@ Digging It Out in Small Pieces</p>
 <p><em>정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. 모델의 핵심은 응답 변수(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. 해석 가능성은 정보를 얻는 한 가지 방법입니다. 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
 </blockquote>
 <ul>
-<li>예측 정확도가 높을수록 기저에 있는 데이터 발생 메커니즘(data generating process)에 대한 더 신뢰할 수 있는 정보가 내재함; 예측 정확도가 낮으면 의심스러운 결론을 내릴 수 있음</li>
+<li>예측 정확도가 높을수록 기저에 있는 데이터 발생 메커니즘(data generating process)에 대한 더 신뢰할 수 있는 정보가 내재할 가능성이 높음; 예측 정확도가 낮으면 의심스러운 결론을 내릴 수 있음</li>
 <li>알고리즘 모델은 데이터 모델보다 예측 정확도가 더 높으며, 기저 메커니즘(underlying mechanism)에 대한 더 나은 정보를 제공할 수 있음.</li>
 </ul>
 <p>예를 들어,</p>
@@ -662,13 +727,13 @@ Digging It Out in Small Pieces</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>천체의 움직임에 대한 모델</strong><br>
-프톨레마이오스(CE 100년 출생, 이집트)의 천동설 모델</p>
+프톨레마이오스(Claudius Ptolemaeus, CE 100년 이집트 출생)의 천동설 모델</p>
 <ul>
 <li>행성의 움직임에 대한 수학적 모델은 매우 정확했으며, 천 년 넘게 활용되었음</li>
 <li>적절한 위치에 충분한 에피사이클을 배치하면 행성의 움직임을 매우 정확하게 예측할 수 있음</li>
 </ul>
 <!-- 프톨레마이오스와 그와 같은 사람들은 컴퓨터의 도움 없이 이 모든 것을 해결했습니다. 누구든 프톨레마이오스와 비교되는 것을 영광스럽게 생각해야 합니다. 물론 문제는 지동 중심 모델이 여러 면에서 잘못되었다는 점입니다. 이 모델을 사용하여 화성 탐사선의 경로를 그리면 붉은 행성을 꽤 멀리 놓칠 수 있습니다. 하지만 밤하늘에서 화성을 발견하는 데는 여전히 훌륭한 모델입니다. 어떤 천체를 찾고자 하는지에 따라 1세기 정도마다 다시 보정해야 합니다. 그러나 지구 중심 모델은 좁은 의문 영역 내에서 예측을 유지한다면 계속해서 유용한 예측을 할 수 있습니다. -->
-<!-- 태양계의 정확한 구조를 알고 나면 지동설을 사용하는 전략이 미친 것처럼 보일 수 있습니다. 하지만 고대인들은 일반화된 근사치 시스템을 발견한 것으로 밝혀졌습니다.  -->
+<!-- 태양계의 정확한 구조를 알고 나면 epicycles을 사용하는 전략이 미친 것처럼 보일 수 있습니다. 하지만 고대인들은 일반화된 근사치 시스템을 발견한 것으로 밝혀졌습니다.  -->
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: <em>McElreath, R. (2018). Statistical rethinking: A Bayesian course with examples in R and Stan. Chapman and Hall/CRC.</em></p>
 </div>
@@ -741,11 +806,11 @@ Digging It Out in Small Pieces</p>
 <li>US Surgeon General이 임명한 특별 자문위원회의 고민 (1964)</li>
 </ul>
 <blockquote class="blockquote">
-<p>위원회는 보고서를 위해 1년 이상 노력했고, 주요 문제 중 하나는 “원인”이라는 단어의 사용이었습니다. 위원회 위원들은 19세기의 결정론적 인과성 개념을 제쳐두어야 했고, 통계도 제쳐두어야 했습니다. (아마도 코크런이) 보고서에 적었듯이, “통계적 방법은 연관성에서 인과 관계를 증명할 수 없습니다. <strong>연관성(association)의 인과적 유의성(causal significance)은 통계적 확률에 대한 진술을 넘어서는 판단의 문제입니다.</strong> 속성이나 요인과 질병 또는 건강에 미치는 영향 사이의 연관성의 인과적 중요성을 판단하거나 평가하려면 여러 가지 기준을 사용해야 하며, 그 중 어느 것도 판단의 충분한 근거가 될 수 없습니다.”</p>
+<p><em>위원회는 보고서를 위해 1년 이상 노력했고, 주요 문제 중 하나는 “원인”이라는 단어의 사용이었습니다. 위원회 위원들은 19세기의 결정론적 인과성 개념을 제쳐두어야 했고, 통계도 제쳐두어야 했습니다. (아마도 코크런이) 보고서에 적었듯이, “통계적 방법은 연관성에서 인과 관계를 증명할 수 없습니다. <strong>연관성(association)의 인과적 유의성(causal significance)은 통계적 확률에 대한 진술을 넘어서는 판단의 문제입니다.</strong> 속성이나 요인과 질병 또는 건강에 미치는 영향 사이의 연관성의 인과적 중요성을 판단하거나 평가하려면 여러 가지 기준을 사용해야 하며, 그 중 어느 것도 판단의 충분한 근거가 될 수 없습니다.”</em></p>
 </blockquote>
 <div style="line-height: 1.5em; font-size: .9em">
 <blockquote class="blockquote">
-<p>“Statistical methods cannot establish proof of a causal relationship in an association. The causal significance of an association is a matter of judgment which goes beyond any statement of statistical probability. To judge or evaluate the causal significance of the association between the attribute or agent and the disease, or effect upon health, a number of criteria must be utilized, no one of which is an all-sufficient basis for judgment.”</p>
+<p><em>“Statistical methods cannot establish proof of a causal relationship in an association. The causal significance of an association is a matter of judgment which goes beyond any statement of statistical probability. To judge or evaluate the causal significance of the association between the attribute or agent and the disease, or effect upon health, a number of criteria must be utilized, no one of which is an all-sufficient basis for judgment.”</em></p>
 <p>Source: <em>The Book of Why: The New Science of Cause and Effect</em> by Judea Pearl, Dana Mackenzie (2018)</p>
 </blockquote>
 </div>
