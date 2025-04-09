@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-10-23">
+<meta name="dcterms.date" content="2025-04-09">
 
 <title>Model Basics –  Intro to Data Science</title>
 <style>
@@ -72,12 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3e062e8fe420344c07f1e837915f9541.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-55b2b16ef464b1d24caa77f57887db60.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-aeea4e2781fea0fa87091c4b8120fd0c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-dce1da946abc22c65d6213f1e4fdb336.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/iconify-2.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -167,7 +167,10 @@ window.Quarto = {
 
 <meta property="og:title" content="Model Basics –  Intro to Data Science">
 <meta property="og:description" content="R for Data Science by Wickham &amp; Grolemund">
+<meta property="og:image" content="https://dgds101.modellings.art/contents/images/model.png">
 <meta property="og:site_name" content="Introduction to Data Science">
+<meta property="og:image:height" content="190">
+<meta property="og:image:width" content="517">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -305,6 +308,11 @@ window.Quarto = {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -604,7 +612,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 23, 2024</p>
+      <p class="date">April 9, 2025</p>
     </div>
   </div>
   
@@ -685,17 +693,17 @@ window.Quarto = {
 </div>
 </div>
 <p>예를 들어, 캐럿과 가격의 진정한 관계를 모델로 표현</p>
-<p>Linear model: <span class="math inline">\(y = ax + b + \epsilon\)</span>,   <span class="math inline">\(\epsilon\)</span>: <strong>errors</strong></p>
+<p>Linear model: <span class="math inline">\(Y = aX + b + \epsilon\)</span>,   <span class="math inline">\(\epsilon\)</span>: <strong>errors</strong></p>
 <ul>
 <li><span class="math inline">\(price = a * carat + b + \epsilon\)</span><br>
 </li>
-<li>로그 변환: <span class="math inline">\(log(price) = a * log(carat) + b + \epsilon\)</span>
+<li>로그 변환 후 선형관계로 가정: <span class="math inline">\(log(price) = a * log(carat) + b + \epsilon\)</span>
 <ul>
 <li><span class="math inline">\(\epsilon\)</span>: Gaussian 분포로 가정, 즉 <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span></li>
 </ul></li>
-<li><span class="math inline">\(E(y|x_i) = a * x_i + b\)</span> &nbsp; (<span class="math inline">\(E\)</span>: expectation, 기대값)
+<li><span class="math inline">\(E(Y|X = X_i) = a * X_i + b\)</span> &nbsp; (<span class="math inline">\(E\)</span>: expectation, 기대값)
 <ul>
-<li><span class="math inline">\(x_i\)</span>에 대해서 conditional mean이 선형함수로 결정됨을 가정</li>
+<li>즉, <span class="math inline">\(X = X_i\)</span>에 대한 conditional mean이 선형함수로 결정됨을 가정</li>
 </ul></li>
 </ul>
 <p>Errors은 노이즈?</p>
@@ -703,24 +711,26 @@ window.Quarto = {
 <li><strong>Reducible error</strong>: 모형이 잡아내지 못한 신호; 영향을 미치지만 측정하지 않은 변수가 존재</li>
 <li><strong>Irreducible error</strong>:
 <ul>
-<li>측정 오차 (measurement error): ex. 성별, 젠더, 키, 온도, 강수량, 지능, 불쾌지수, …</li>
-<li>random processes
+<li>대표적으로 측정 오차 (measurement error): ex. 성별, 젠더, 키, 온도, 강수량, 지능, 불쾌지수, …</li>
+<li>Random processes
 <ul>
 <li>물리적 세계의 불확실성: stochastic vs.&nbsp;deterministic world<br>
-<img src="images/desert.png" height="150"> <img src="images/candles.jpeg" height="150"></li>
-</ul></li>
-<li>예를 들어, 동전을 4번 던질 때,
+<img src="images/clockwork.jpg" height="150"> vs.&nbsp;<img src="images/desert.png" height="150"> <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Tetraodon_mbu_2.jpg" height="150"></li>
+<li>예를 들어, 동전을 4번 던질 때 앞면의 갯수
 <ul>
 <li>H, H, T, H</li>
 <li>H, T, T, H</li>
-<li>T, T, H, H</li>
-<li>T, H, T, H</li>
-<li>T, T, T, H<br>
-…</li>
+<li>T, T, H, H …</li>
+</ul></li>
 </ul></li>
 <li><strong>보통 Gaussian 분포를 이루거나 가정</strong>: ex. 측정 오차들, 동전 앞면의 개수들, 키, 몸무게, IQ, …<br>
 </li>
-<li>그 외에 자연스럽게 나타나는 분포들이 있음; Binomial, Poisson, Exponential, Gamma, Beta, …</li>
+<li>그 외에 자연스럽게 나타난다고 가정할 수 있는 여러 분포들이 있음; Binomial, Poisson, Exponential, Weibull, Gamma, Beta, …
+<ul>
+<li>가령, 환자/병의 특성(X)에 따른 퇴원까지 남은 시간의 경우<br>
+<span class="math inline">\(E(Y|X = X_i) = a * X_i + \epsilon\)</span>, &nbsp; <span class="math inline">\(\epsilon \sim \text{Exponential}(\lambda)\)</span><br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Exponential_distribution_pdf_-_public_domain.svg" height="200"></li>
+</ul></li>
 </ul></li>
 </ul>
 <p><strong>불확실성(uncertainty)</strong></p>
@@ -743,7 +753,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
+<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -863,7 +873,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="5">
+<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[[2, 4, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -891,7 +901,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="8">
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="630"></p>
@@ -928,7 +938,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="12">
+<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[[1, 2]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -976,7 +986,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="20">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" class="img-fluid" width="591"></p>
@@ -990,7 +1000,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="19">
+<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" class="img-fluid" width="599"></p>
@@ -1627,7 +1637,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(formula, data<span class="op">=</span>houses, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-67" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
+<div id="cell-67" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>         price
@@ -1659,7 +1669,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> houses[<span class="st">"price"</span>], houses[[<span class="st">"livingArea"</span>, <span class="st">"bedrooms"</span>]]</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-68" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="31">
+<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[[1, 2]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>0       132500
@@ -2628,8 +2638,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2745,7 +2753,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
