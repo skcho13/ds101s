@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-04-08">
+<meta name="dcterms.date" content="2025-04-12">
 
 <title>Statistics –  Intro to Data Science</title>
 <style>
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/model-basic.html" rel="prev">
+<link href="../contents/model-basic-implementation.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -258,6 +258,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../contents/model-basic.html">
  <span class="dropdown-text">Model Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/model-basic-implementation.html">
+ <span class="dropdown-text">Implementations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../contents/statistics.html">
@@ -456,12 +460,23 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contents/model-basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/model-basic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Model Basics</span></a>
+  <a href="../contents/model-basic-implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementations</span></a>
   </div>
 </li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/statistics.html" class="sidebar-item-text sidebar-link active">
@@ -473,13 +488,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Machine Learning Basics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/mlsl-intro.html" class="sidebar-item-text sidebar-link">
@@ -490,11 +505,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../contents/regularization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regularization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/shrinkage.html" class="sidebar-item-text sidebar-link">
@@ -513,13 +528,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">Classification</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/logistic.html" class="sidebar-item-text sidebar-link">
@@ -543,13 +558,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -605,7 +620,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 8, 2025</p>
+      <p class="date">April 12, 2025</p>
     </div>
   </div>
   
@@ -681,30 +696,20 @@ window.Quarto = {
 <div class="quarto-layout-panel" data-layout="[45, 5, 45]">
 <div class="quarto-layout-row">
 <div class="columns quarto-layout-cell" style="flex-basis: 47.4%;justify-content: center;">
-<section id="pearsons-correlation-coefficient-r" class="level3">
-<h3 class="anchored" data-anchor-id="pearsons-correlation-coefficient-r">Pearson’s correlation coefficient: <span class="math inline">\(r\)</span></h3>
-<p>Linear relationships을 측정</p>
-<ul>
+<p><strong>Pearson’s correlation coefficient: <span class="math inline">\(r\)</span></strong></p><p>Linear relationships을 측정</p><ul>
 <li>x와 y의 선형적 연관성: [-1, 1]<br>
 </li>
 <li>x로부터 y를 얼마나 정확히 예측가능한가?</li>
 <li>x와 y의 정보는 얼마나 중복(redundant)되는가?</li>
-</ul>
-<p><a href="images/pearson-r.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/pearson-r.png" class="img-fluid" width="450"></a></p>
-</section>
+</ul><p><a href="images/pearson-r.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/pearson-r.png" class="img-fluid" width="450"></a></p>
 </div>
 <div class="columns quarto-layout-cell" style="flex-basis: 5.3%;justify-content: flex-start;">
-<p><br></p>
+
 </div>
 <div class="columns quarto-layout-cell" style="flex-basis: 47.4%;justify-content: center;">
-<section id="multiple-correlation-coefficient-r" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-correlation-coefficient-r">Multiple correlation coefficient: <span class="math inline">\(R\)</span></h3>
-<p>Extented correlation: 예측치와 관측치의 pearson’s correlation</p>
-<ul>
+<p><strong>Multiple correlation coefficient: <span class="math inline">\(R\)</span></strong></p><p>Extented correlation: 예측치와 관측치의 pearson’s correlation</p><ul>
 <li><span class="math inline">\(R\)</span>을 제곱한 <span class="math inline">\(R^2\)</span>가 설명력의 정도를 나타냄</li>
-</ul>
-<p><a href="images/multiple-R.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/multiple-R.png" class="img-fluid" width="450"></a></p>
-</section>
+</ul><p><a href="images/multiple-R.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/multiple-R.png" class="img-fluid" width="450"></a></p>
 </div>
 </div>
 </div>
@@ -722,15 +727,15 @@ window.Quarto = {
 <ul>
 <li>선형모형에 의해 설명된 Y 변량의 비율:<br>
 </li>
-<li>또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y 변량의 비율.</li>
+<li>또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y 변량의 비율.<br>
+즉, <span class="math inline">\(\displaystyle\frac{V(\widehat{Y})}{V(Y)}\)</span> 또는 <span class="math inline">\(\displaystyle 1 - \frac{V(e)}{V(Y)}\)</span></li>
 </ul>
-<p>  즉, <span class="math inline">\(\displaystyle\frac{V(\widehat{Y})}{V(Y)}\)</span> 또는 <span class="math inline">\(\displaystyle 1 - \frac{V(e)}{V(Y)}\)</span></p>
 <section id="associatiions과-그-strengths-비교" class="level3">
 <h3 class="anchored" data-anchor-id="associatiions과-그-strengths-비교">Associatiions과 그 strengths 비교</h3>
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="66">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="66" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-5-output-1.png" class="img-fluid" width="670"></p>
@@ -740,7 +745,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-9" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="116">
+<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="116" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-7-output-1.png" class="img-fluid" width="667"></p>
@@ -791,7 +796,7 @@ Important
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1.5, 1.5, 0.5]]" data-execution_count="10">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1.5, 1.5, 0.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-12-output-1.png" class="img-fluid" width="490"></p>
@@ -858,7 +863,7 @@ Important
 <div>
 
 </div>
-<div id="cell-25" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
+<div id="cell-25" class="cell quarto-layout-panel" data-execution_count="30" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>Intercept   43658.59
@@ -941,7 +946,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[50, -2, 48]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[50, -2, 48]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table">
@@ -1031,7 +1036,7 @@ Important
 <div>
 
 </div>
-<div id="cell-30" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="17">
+<div id="cell-30" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-18-output-1.png" class="img-fluid" width="630"></p>
@@ -1045,7 +1050,7 @@ Important
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="87">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="87" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-19-output-1.png" class="img-fluid" width="668"></p>
@@ -1918,8 +1923,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../contents/model-basic.html" class="pagination-link" aria-label="Model Basics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Model Basics</span>
+      <a href="../contents/model-basic-implementation.html" class="pagination-link" aria-label="Implementations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Implementations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

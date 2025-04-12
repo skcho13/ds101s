@@ -68,6 +68,8 @@ website:
         menu:
           - href: contents/model-basic.ipynb
             text: Model Basics
+          - href: contents/model-basic-implementation.ipynb
+            text: Implementations
           - href: contents/statistics.ipynb
             text: Regression Analysis
       - text: ML Basics
@@ -100,7 +102,7 @@ website:
     #     text: "GitHub organization"
     style: "floating"
     search: true
-    collapse-level: 2
+    collapse-level: 3
     
     contents:
       - href: index.qmd
@@ -141,8 +143,11 @@ website:
       - text: ---
       - section: Linear Models
         contents:
-          - href: contents/model-basic.ipynb
-            text: Model Basics
+          - section: Model Basics
+            href: contents/model-basic.ipynb
+            contents:
+              - href: contents/model-basic-implementation.ipynb
+                text: Implementations
           - href: contents/statistics.ipynb
             text: Regression Analysis
           # - text: Example
