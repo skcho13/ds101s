@@ -330,7 +330,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#directed-acyclic-graph-dag-인과-관계-다이어그램" id="toc-directed-acyclic-graph-dag-인과-관계-다이어그램" class="nav-link" data-scroll-target="#directed-acyclic-graph-dag-인과-관계-다이어그램">Directed acyclic graph (DAG): 인과 관계 다이어그램</a></li>
   </ul></li>
-  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a></li>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a>
+  <ul class="collapse">
+  <li><a href="#confounding의-예시들" id="toc-confounding의-예시들" class="nav-link" data-scroll-target="#confounding의-예시들">Confounding의 예시들</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#humility" id="toc-humility" class="nav-link" data-scroll-target="#humility">Humility</a>
   <ul>
@@ -395,9 +398,9 @@ Engineering</li>
 </section>
 <section id="the-two-cultures" class="level1">
 <h1>The Two Cultures</h1>
-<p>Breiman, L. (2001). <a href="https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full"><strong>Statistical modeling: The two cultures</strong></a> (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231.</p>
 <div class="columns">
 <div class="column" style="width:75%;">
+<p>Breiman, L. (2001). <a href="https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full"><strong>Statistical modeling: The two cultures</strong></a> (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231.</p>
 <ul>
 <li>산업 현장에서의 경험을 토대로 전통적 통계의 한계를 지적</li>
 <li>자신이 개발한 대안적 통계 기법(trees, random forests)을 소개하며, 기존 통계 기법과 비교</li>
@@ -408,19 +411,17 @@ Engineering</li>
 </div><div class="column" style="width:20%;">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/en/4/4d/Leo_Breiman.jpg" class="quarto-figure quarto-figure-left figure-img" height="180"></p>
+<figcaption>Leo Breiman in 2003 from Wikipedia</figcaption>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/4/4d/Leo_Breiman.jpg" height="180" class="figure-img"></p>
 </figure>
-</div>
-<div style="line-height: 1.5em; font-size: .8em">
-<p>Leo Breiman in 2003 from Wikipedia</p>
 </div>
 </div>
 </div>
 <p><strong>데이터 분석의 목적</strong></p>
 <p><img src="images/black-box.png" height="100"></p>
 <ul>
-<li><em>Prediction</em> 예측: 미래의 입력 변수(input, X)에 대해 어떤 반응(reponse, Y)이 나올지 예측할 수 있는 기능</li>
-<li><em>Information</em> 정보: 자연이 응답 변수(reponse, Y)와 입력 변수(input, X)를 어떻게 연관시키는지에 대한 정보를 추출</li>
+<li><em>Prediction 예측</em>: 미래의 입력 변수(input, X)에 대해 어떤 반응(reponse, Y)이 나올지 예측할 수 있는 기능</li>
+<li><em>Information 정보</em>: 자연이 응답 변수(reponse, Y)와 입력 변수(input, X)를 어떻게 연관시키는지에 대한 정보를 추출</li>
 </ul>
 <p><strong>전통적 통계의 접근 방식: data modeling<br>
 머신러닝의 접근 방식: algorithmic modeling </strong></p>
@@ -436,7 +437,7 @@ Engineering</li>
 <h3 class="anchored" data-anchor-id="parameter-estimation-uncertainty">Parameter Estimation &amp; Uncertainty</h3>
 <ul>
 <li>현재 관찰된 데이터는 어떤 <strong>모집단(population)</strong>으로부터 (독립적으로) 발생된 <strong>표본(sample)</strong>이라고 가정<br>
-<img src="images/population-sex.png" class="img-fluid" width="350"></li>
+<img src="images/population-sex.png" class="img-fluid" width="350"> 가령, 생물학적 성별에 따른 키의 차이(<span class="math inline">\(\delta\)</span>)는 본질적으로 얼마인가?</li>
 <li>변수들 간의 <strong>관계성(relationships)</strong>을 파악하기 위해, 데이터 모델링은 현상에 대한 <strong>모델을 사전 설정(assumptions)</strong>하고,
 <ul>
 <li>예를 들어, 선형관계를 가정: <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + e\)</span></li>
@@ -641,15 +642,23 @@ Digging It Out in Small Pieces</p>
 <ul>
 <li>전통적으로 (데이터 크기에 상대적으로) 변수가 많을수록 좋지 않다고 여겼으나,</li>
 </ul>
-<div>
-
-</div>
-<div id="ffe186b5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="1">
+<div id="fig-delay" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-delay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: 항공기 지연에 미치는 영향
+</figcaption>
+<div aria-describedby="fig-delay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div>                            <div id="f050c7d7-caee-4152-92e5-14be4cf490ec" class="plotly-graph-div" style="height:300px; width:500px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("f050c7d7-caee-4152-92e5-14be4cf490ec")) {                    Plotly.newPlot(                        "f050c7d7-caee-4152-92e5-14be4cf490ec",                        [{"marker":{"size":3},"mode":"markers","x":[17.857203028720033,6.639596106023545,16.424582461156636,0.8339325145049981,2.153133598719359,11.901041284124805,10.596347243856432,8.376148571133086,6.708156985466585,12.450388643921803],"y":[67.50022771619388,3.6813201519201293,84.47477606758966,12.704310028127239,-3.411365101406182,47.556839432762544,22.41525782306279,18.335322100336484,13.938866215239916,20.798214116671367],"z":[1480.9903045082003,277.95989623147943,1594.8048666303139,567.9098738924472,-415.5460976036361,486.3442003812886,517.9276139138808,-172.6385914416648,583.4980238467847,506.005979973238],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(51,51,51)"},"error_y":{"color":"rgb(51,51,51)"},"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"baxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"colorscale":{"sequential":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"sequentialminus":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]]},"colorway":["#F8766D","#A3A500","#00BF7D","#00B0F6","#E76BF3"],"font":{"color":"rgb(51,51,51)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"rgb(237,237,237)","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"rgb(237,237,237)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","radialaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"baxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","caxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"}}},"width":500,"height":300,"scene":{"xaxis":{"title":{"text":"Precipitation"}},"yaxis":{"title":{"text":"Wind"}},"zaxis":{"title":{"text":"Delay"}}}},                        {"responsive": true}                    ).then(function(){
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-delay" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-delay-1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-delay-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) 바람과 강수량으로 예측(2-dimensional)
+</figcaption>
+<div aria-describedby="fig-delay-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>                            <div id="d2f9b179-82f6-4e4e-bb14-34844f96a409" class="plotly-graph-div" style="height:300px; width:500px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("d2f9b179-82f6-4e4e-bb14-34844f96a409")) {                    Plotly.newPlot(                        "d2f9b179-82f6-4e4e-bb14-34844f96a409",                        [{"marker":{"size":3},"mode":"markers","x":[17.857203028720033,6.639596106023545,16.424582461156636,0.8339325145049981,2.153133598719359,11.901041284124805,10.596347243856432,8.376148571133086,6.708156985466585,12.450388643921803],"y":[67.50022771619388,3.6813201519201293,84.47477606758966,12.704310028127239,-3.411365101406182,47.556839432762544,22.41525782306279,18.335322100336484,13.938866215239916,20.798214116671367],"z":[1480.9903045082003,277.95989623147943,1594.8048666303139,567.9098738924472,-415.5460976036361,486.3442003812886,517.9276139138808,-172.6385914416648,583.4980238467847,506.005979973238],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(51,51,51)"},"error_y":{"color":"rgb(51,51,51)"},"marker":{"line":{"color":"rgb(237,237,237)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"baxis":{"endlinecolor":"rgb(51,51,51)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(51,51,51)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"},"colorscale":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"tickcolor":"rgb(237,237,237)","ticklen":6,"ticks":"inside"}},"colorscale":{"sequential":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]],"sequentialminus":[[0,"rgb(20,44,66)"],[1,"rgb(90,179,244)"]]},"colorway":["#F8766D","#A3A500","#00BF7D","#00B0F6","#E76BF3"],"font":{"color":"rgb(51,51,51)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"rgb(237,237,237)","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"rgb(237,237,237)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","radialaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"rgb(237,237,237)","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","zerolinecolor":"white"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"baxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"},"bgcolor":"rgb(237,237,237)","caxis":{"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside"}},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","showgrid":true,"tickcolor":"rgb(51,51,51)","ticks":"outside","title":{"standoff":15},"zerolinecolor":"white"}}},"width":500,"height":300,"scene":{"xaxis":{"title":{"text":"Precipitation"}},"yaxis":{"title":{"text":"Wind"}},"zaxis":{"title":{"text":"Delay"}}}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('f050c7d7-caee-4152-92e5-14be4cf490ec');
+var gd = document.getElementById('d2f9b179-82f6-4e4e-bb14-34844f96a409');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -673,17 +682,59 @@ if (outputEl) {{
 
                         })                };                });            </script>        </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="two-cultures_files/figure-html/cell-2-output-2.png" class="img-fluid" width="470"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-execution_count="6" data-ref-parent="fig-delay" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-delay-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-delay-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) 강수량으로만 예측(1-dimensional)
+</figcaption>
+<div aria-describedby="fig-delay-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="two-cultures_files/figure-html/fig-delay-output-2.png" data-ref-parent="fig-delay" width="374" height="326" class="figure-img">
+</div>
+</figure>
 </div>
 </div>
 </div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img src="images/cod-1.png" class="img-fluid"></p>
-</div><div class="column" style="width:50%;">
-<p><img src="images/cod-2.png" class="img-fluid"></p>
 </div>
+</figure>
+</div>
+<div id="fig-price" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-price-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: 차원이 높아짐에 따른 추정에 대한 불확실성 증가
+</figcaption>
+<div aria-describedby="fig-price-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-price" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dim1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-dim1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) 방의 갯수에 따른 집값의 변화(1-dim)
+</figcaption>
+<div aria-describedby="fig-dim1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cod-1.png" class="img-fluid figure-img" data-ref-parent="fig-price">
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-price" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dim2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-dim2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) 지역 정보가 추가되어 지역별로 나누어보는 경우(2-dim)
+</figcaption>
+<div aria-describedby="fig-dim2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cod-2.png" class="img-fluid figure-img" data-ref-parent="fig-price">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
 </div>
 <ul>
 <li>Tree나 neural network에서는 변수가 많은 것이 문제가 되지 않고, 오히려 작은 정보들이 추가됨
@@ -699,8 +750,8 @@ if (outputEl) {{
 <h3 class="anchored" data-anchor-id="블랙박스로부터의-정보-추출">블랙박스로부터의 정보 추출</h3>
 <p><em>The goal is not interpretability, but <strong>accurate information</strong>.</em></p>
 <blockquote class="blockquote">
-<p><em>“정확성(accuracy)과 해석 가능성(interpretability) 중 하나를 선택해야 한다면, 그들은 해석 가능성을 택할 것입니다.</em></p>
-<p><em>정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. 모델의 핵심은 응답 변수(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. 해석 가능성은 정보를 얻는 한 가지 방법입니다. 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
+<p><em>“정확성(accuracy)과 해석 가능성(interpretability) 중 하나를 선택해야 한다면, 그들은(통계학자) 해석 가능성을 택할 것입니다.</em></p>
+<p><em>정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. 모델의 핵심은 응답 변수(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. <strong>해석 가능성은 정보를 얻는 한 가지 방법</strong>입니다. 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
 </blockquote>
 <ul>
 <li>예측 정확도가 높을수록 기저에 있는 데이터 발생 메커니즘(data generating process)에 대한 더 신뢰할 수 있는 정보가 내재할 가능성이 높음; 예측 정확도가 낮으면 의심스러운 결론을 내릴 수 있음</li>
@@ -804,7 +855,7 @@ if (outputEl) {{
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><a href="https://www.cbsnews.com/news/alcohol-causes-20000-cancer-deaths-in-the-us-annually/"><img src="images/alcohol-news-1.png" class="img-fluid"></a> <a href="https://www.sciencedaily.com/releases/2008/02/080212174615.htm"><img src="images/alcohol-news-2.png" class="img-fluid"></a></p>
@@ -855,11 +906,19 @@ UC Berkeley Admission Paradox</p>
 <ul>
 <li>1973년, 대학원에 진학한 남성과 여성의 합격 비율이 각각 44%, 35%였음</li>
 <li>입학 결정은 학과별로 독립적으로 내렸음</li>
-<li>학과별로는 여성의 합격 비율이 더 높았음!</li>
+<li>학과별로는 여성의 합격 비율이 더 높았음!; 남성에 대한 역차별이 나타났음</li>
 <li>Peter Bickel(버클리대의 통계학자)와 William Kruskal(시카고대의 통계학자) 사이의 논쟁(해결하지 못한채 2005년 사망)
 <ul>
 <li>학과별로 나누어 살펴보는 것으로 충분한가?</li>
-<li>무분별한 편견(bias)의 양산; 편견(bias): associational vs.&nbsp;차별(discrimination): causal</li>
+<li>어느 주 출신인지에 따른 차별까지 존재한다면 학과별로 나눠보는 것은 더 큰 오류를 발생시킬 수 있음
+<ul>
+<li>즉, 두 요인을 모두 고려하면 다시 여성에 대한 차별이 있는 것으로 결론 날 수 있음.</li>
+</ul></li>
+</ul></li>
+<li>무분별한 편견(bias)이 양산되는 방식에 대한 전형적인 예시로 볼 수 있음
+<ul>
+<li>편견(bias): <strong>associational</strong> 개념 - 관찰된 연관성에 대한 인식</li>
+<li>차별(discrimination): <strong>causal</strong> 개념 - 변화가 발생되도록 개입</li>
 </ul></li>
 </ul>
 <div class="columns">
@@ -941,9 +1000,17 @@ custom...renders our experience useful to us, and makes us expect, for the futur
 <ul>
 <li>인과관계에서 “힘”, “필연성” 등과 같은 관찰 불가능한 형이상학적 요소를 제거하고, 오직 관찰 가능한 현상 간의 관계만을 인정</li>
 <li>오직 관찰된 패턴만을 반영할 수 있으며, 반복적인 규칙성(regularity of succession)을 통해 상관관계(correlation/association)로 설명될 수 있음</li>
-<li>흄(David Hume): 인과관계를 “항상적 연접(constant conjunction)”으로 이해. 즉, 인과는 두 사건 사이의 필연적 연결이 아니라 단지 한 사건이 다른 사건 뒤에 규칙적으로 발생하는 패턴의 (심리적, 인지적) 구성물</li>
+<li>경험주의 철학의 대표격인 흄(David Hume)의 철학적 영향을 받음: 인과관계를 “항상적 연접(constant conjunction)”으로 이해. 즉, 인과는 두 사건 사이의 필연적 연결이 아니라 단지 한 사건이 다른 사건 뒤에 규칙적으로 발생하는 패턴의 (심리적, 인지적) 구성물</li>
 </ul></li>
-<li>과학에서 인과문제는?: why의 문제를 how의 문제로 대수적 방정식/함수관계를 통해 대체했음</li>
+<li>그렇다면, 과학에서 인과문제는?
+<ul>
+<li><strong>why</strong>의 문제를 <strong>how</strong>의 문제로 대수적 방정식/함수관계를 통해 대체했음
+<ul>
+<li>가령, F=ma에서 1kg의 정지된 물체를 30m/s의 속도까지 가속시키려면 어떻게 해야 하는가(얼마의 힘이 필요한가)?</li>
+</ul></li>
+<li>콩트(Comte)는 갈릴레이와 마찬가지로 형이상학적 질문에서 탈피하고 현상들의 (일반적) 관계에 대해서만 초점을 맞추는 것이 과학 혁명이 성공할 수 있는 본질이라고 봄.</li>
+<li>극단적으로 why의 문제는 how의 문제로 귀속된다고까지 주장함; 정확한 말을 아니지만 why의 본질을 담고 있음.</li>
+</ul></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Positive Philosophy">
 <div class="callout-header d-flex align-content-center">
@@ -955,8 +1022,9 @@ Positive Philosophy
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>인간 진보의 과정이 신학적 상태 (theological state) &gt; 형이상학적 상태 (metaphysical state) &gt; 실증적 상태 (positive state)로 나아간다는 논의에서 최종 상태인 실증적 상태에 대하여…</p>
 <blockquote class="blockquote">
-<p><em>최종적인 실증적 상태에서, 마음은 <strong>절대적 개념, 우주의 기원과 목적지, 그리고 현상의 원인에 대한 헛된 탐구를 포기하고</strong>, 그것들의 법칙, 즉 그들의 불변적 연속 및 유사성 관계(invariable relations of succession and resemblance)의 연구에 전념한합니다. 적절히 결합된 추론과 관찰이 이러한 지식의 수단입니다. 현재 우리가 사실의 설명(explanation)에 대해 언급할 때 이해되는 것은 단순히 <strong>개별 현상과 일반적 사실들 사이의 연결을 확립</strong>하는 것이며…</em></p>
+<p><em>최종적인 실증적 상태에서, 마음은 <strong>절대적 개념, 우주의 기원과 목적지, 그리고 현상의 원인에 대한 헛된 탐구를 포기하고</strong>, 그것들의 법칙, 즉 그들의 불변적 연속 및 유사성 관계(invariable relations of succession and resemblance)의 연구에 전념합니다. 적절히 결합된 추론과 관찰이 이러한 지식의 수단입니다. 현재 우리가 사실의 설명(explanation)에 대해 언급할 때 이해되는 것은 단순히 <strong>개별 현상과 일반적 사실들 사이의 연결을 확립</strong>하는 것이며…</em></p>
 </blockquote>
 <blockquote class="blockquote">
 <p><em>무게(weight)와 인력(attraction)이 무엇인지에 대해서는, 우리는 그것과는 아무 상관이 없습니다. 왜냐하면 그것은 전혀 지식의 문제가 아니기 때문입니다. 신학자들과 형이상학자들은 그러한 질문들에 대해 상상하고 정제할 수 있습니다; 그러나 실증적 철학은 그것들을 거부합니다.</em></p>
@@ -979,7 +1047,7 @@ all our reasonings concerning causes and effects’, Hume insists, ‘are derive
 <li>Path analysis(경로 분석)이라는 통계 기법으로 어어졌으나 뿌리 깊은 오해의 씨앗이 되었음.</li>
 </ul>
 <p>  <img src="images/wright-path-diagram.gif" class="img-fluid" width="400"></p>
-<div style="line-height: 1.5em; font-size: .7em">
+<div style="line-height: 1.5em; font-size: .8em">
 <p>기니피그의 털색에 영향을 미치는 요인을 설명하는 경로 다이어그램. D = 발달 요인(수태 후, 출생 전), E = 환경 요인(출생 후), G = 각 개별 부모의 유전적 요인, H = 부모 모두의 유전적 요인을 합친 것, O, O′ = 자손. 분석의 목적은 D, E, H(다이어그램에서는 D, E, H로 표기)의 영향력을 추정하는 것</p>
 </div>
 </div><div class="column" style="width:3%;">
@@ -987,9 +1055,9 @@ all our reasonings concerning causes and effects’, Hume insists, ‘are derive
 </div><div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/en/8/8d/Sewall_Wright-en.jpg" height="200" class="figure-img"></p>
 <figcaption>Sewall Wright in 1954<br>
 from Wikipedia</figcaption>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/8/8d/Sewall_Wright-en.jpg" height="200" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -997,9 +1065,9 @@ from Wikipedia</figcaption>
 <p><strong>Path Analysis</strong></p>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p><a href="images/path4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/path4.png" class="img-fluid" width="400"></a></p>
+<p><a href="images/path4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/path4.png" class="img-fluid"></a></p>
 </div><div class="column" style="width:60%;">
-<p><a href="images/reward_system.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/reward_system.png" class="img-fluid" width="400"></a></p>
+<p><a href="images/reward_system.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/reward_system.png" class="img-fluid"></a></p>
 </div>
 </div>
 <!-- 
@@ -1055,7 +1123,7 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <ul>
 <li>약을 먹지 않았어도 두통이 사라졌을까?: 가상의 세계 (counterfactual world)</li>
 </ul></li>
-<li>내가 남자라서 탈락한 걸까?</li>
+<li>나는 왜 탈락했을까? 내가 여자라면 합격했을까?</li>
 <li>“현재 치약을 구매한 고객이 가격을 두 배로 올려도 여전히 치약을 구매할 확률은 얼마인가?”
 <ul>
 <li>우리는 현실 세계(고객이 현재 가격으로 치약을 구매했다는 것을 알고 있는)와 가상의 세계(가격이 두 배 높은 경우)와 비교</li>
@@ -1063,10 +1131,20 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <li>보이는 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 있는 새로운 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 없는 세계(보이는 것과 모순)</li>
 <li>이를 위해서는 “이론” 또는 “자연의 법칙”이라고 볼 수 있는 근본적인 인과 과정의 모델이 필요</li>
 </ul>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>인과 모델은 실제 개입(intervention) 없이도 가상의 상황에서 어떻게 되리라고 예측할 수 있는 추론(reasoning)의 능력을 가능하게 함: <em>deep understanding</em></p>
 <p>달이 사라진다면?</p>
-</blockquote>
+</div>
+</div>
 <p><strong>전형적인 인과적 질문들</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1153,7 +1231,7 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 </ul>
 <section id="directed-acyclic-graph-dag-인과-관계-다이어그램" class="level3">
 <h3 class="anchored" data-anchor-id="directed-acyclic-graph-dag-인과-관계-다이어그램">Directed acyclic graph (DAG): 인과 관계 다이어그램</h3>
-<p><img src="images/DAG2.png" class="img-fluid" width="820"></p>
+<p><img src="images/DAG3.png" class="img-fluid" width="820"></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: Causality: Models, Reasoning, and Inference (2000) by Judea Pearl</p>
 </div>
@@ -1185,12 +1263,12 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>일반적으로, 표면적으로 드러난 변수간의 관계가 숨겨진 다른 변수들(lurking third variables)에 의해 매개되어 있어 진실한 관계가 아닌 경우, confounding 혹은 confounder가 존재한다고 함.</p>
+<p>일반적으로, 표면적으로 드러난 변수간의 관계가 숨겨진 다른 변수들(lurking third variables)의 영향으로 진실한/인과적 관계가 아닌 경우, confounding 혹은 confounder가 존재한다고 함.</p>
 <p>극단적이지만 이해하지 쉬운 예로는</p>
 <ul>
-<li>초등학생 발 사이즈 → 독해력<br>
+<li>초등학생 발 사이즈 → 독해력?<br>
 </li>
-<li>머리 길이 → 우울증</li>
+<li>머리 길이 → 우울증?</li>
 </ul>
 <p><img src="images/confounding.png" class="img-fluid" width="450"></p>
 <p><strong>Simpson’s paradox</strong></p>
@@ -1202,23 +1280,38 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 Source: <em>The book of why</em> by Judea Pearl</p>
 </div>
 </div>
+<section id="confounding의-예시들" class="level3">
+<h3 class="anchored" data-anchor-id="confounding의-예시들">Confounding의 예시들</h3>
+<p>위에서 다룬 역사적 사건들을 참고</p>
+<p>그 외 흥미로운 예시들</p>
 <p><strong>COVID-27</strong><br>
 Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
-<p><img src="images/covid.png" class="img-fluid" width="420"></p>
+<p>일종의 Simpon’s paradox<br>
+<img src="images/covid.png" class="img-fluid" width="420"></p>
 <div>
 
 </div>
 <div class="quarto-layout-panel" data-layout="[1, 1]">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/causal_diagram_covid1.png" class="img-fluid" width="340"></p>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>중증/경증 상태(C)가 common cause로 작용; C를 고정함으로써 common cause에 의한 confounding을 제거.</figcaption>
+<p><img src="images/causal_diagram_covid1.png" class="img-fluid figure-img" width="340"></p>
+</figure>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/causal_diagram_covid2.png" class="img-fluid" width="340"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>처치(T)가 상태(C)의 원인으로 작용; B의 치료효과가 더 뛰어나나 오랜 대기 시간으로 인한 부정적 효과(경로: T → C → Y)가 매우 커서 처치의 (순수한) 치료 효과(경로: T → Y)보다 컸던 것.</figcaption>
+<p><img src="images/causal_diagram_covid2.png" class="img-fluid figure-img" width="340"></p>
+</figure>
 </div>
 </div>
 </div>
-<p><strong>코딩 기술이 뛰어나면 협업능력이 떨어지는가?</strong><br>
+</div>
+<p><strong>코딩 기술이 뛰어나면 협업능력이 떨어지는가?</strong> (Collider Bias)<br>
 어느 회사에서 지원자의 코딩 능력과 협업 능력을 1점부터 5점까지 정량화하여,<br>
 총점 8점 이상을 받은 지원자를 모두 채용한다고 했을 때,</p>
 <p><img src="images/collider2.png" class="img-fluid" width="300"></p>
@@ -1229,6 +1322,7 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 
 ![](images/causal_diagram_grades.png){width=500} -->
 <hr>
+</section>
 </section>
 </section>
 <section id="humility" class="level1">
@@ -1243,8 +1337,8 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/genes-interactions.png" class="img-fluid figure-img" data-hegith="300"></p>
 <figcaption>Fig. 5.1 The network of interactions between some genes associated with breast cancer. Image courtesy of Emmert-Streib et al.&nbsp;(2014).</figcaption>
+<p><img src="images/genes-interactions.png" class="img-fluid figure-img" data-hegith="300"></p>
 </figure>
 </div>
 <div style="line-height: 1.5em; font-size: .8em">
@@ -1269,7 +1363,7 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 <div style="line-height: 1.5em; font-size: .9em">
 <blockquote class="blockquote">
 <p><em>Scientific research is based on the idea that everything that takes place is determined by laws of nature, and therefore this holds for the actions of people. For this reason, a research scientist will hardly be inclined to believe that events could be influenced by a prayer, i.e.&nbsp;by a wish addressed to a supernatural being. However, it must be admitted that our actual knowledge of these laws is only imperfect and fragmentary, so that, actually, the belief in the existence of basic all-embracing laws in nature also rests on a sort of faith. All the same this faith has been largely justified so far by the success of scientific research. But, on the other hand, everyone who is seriously involved in the pursuit of science becomes convinced that a spirit is manifest in the laws of the universe—a spirit vastly superior to that of man, and one in the face of which we with our modest powers must feel humble. In this way the pursuit of science leads to a religious feeling of a special sort, which is indeed quite different from the religiosity of someone more naive.</em></p>
-<p>Quote: Einstein, Albert (2013) Albert Einstein, The Human Side. Princeton: Princeton University Press, pp.&nbsp;32-33.</p>
+<p>Quote: Einstein, A., Hoffmann, B., &amp; Dukas, H. (2013). Albert Einstein, the human side: glimpses from his archives. Princeton University Press, pp.&nbsp;32-33.</p>
 </blockquote>
 </div>
 <p>Life is just a machine? <a href="https://youtu.be/CC2W3KhaBsM?list=PLMfFHZfSUm_QWgbm1VqUqnlPav2ayi_1K&amp;t=249">Geoffrey Hinton</a>, <a href="https://youtu.be/P_fHJIYENdI?t=72">DeepMind</a></p>
