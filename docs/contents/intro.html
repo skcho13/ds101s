@@ -268,11 +268,11 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
   <li><a href="#응용비즈니스에서-정형적인-절차" id="toc-응용비즈니스에서-정형적인-절차" class="nav-link" data-scroll-target="#응용비즈니스에서-정형적인-절차">응용/비즈니스에서 정형적인 절차</a></li>
   <li><a href="#표준-비즈니스-영역에서의-데이터-사이언스-작업" id="toc-표준-비즈니스-영역에서의-데이터-사이언스-작업" class="nav-link" data-scroll-target="#표준-비즈니스-영역에서의-데이터-사이언스-작업">표준 비즈니스 영역에서의 데이터 사이언스 작업</a>
   <ul>
-  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">Clustering</a></li>
-  <li><a href="#anomaly-detection" id="toc-anomaly-detection" class="nav-link" data-scroll-target="#anomaly-detection">Anomaly detection</a></li>
-  <li><a href="#association-rule-mining" id="toc-association-rule-mining" class="nav-link" data-scroll-target="#association-rule-mining">Association-Rule Mining</a></li>
-  <li><a href="#classification-prediction" id="toc-classification-prediction" class="nav-link" data-scroll-target="#classification-prediction">Classification (Prediction)</a></li>
-  <li><a href="#regression-prediction" id="toc-regression-prediction" class="nav-link" data-scroll-target="#regression-prediction">Regression (Prediction)</a></li>
+  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">1. Clustering</a></li>
+  <li><a href="#anomaly-detection" id="toc-anomaly-detection" class="nav-link" data-scroll-target="#anomaly-detection">2. Anomaly detection</a></li>
+  <li><a href="#association-rule-mining" id="toc-association-rule-mining" class="nav-link" data-scroll-target="#association-rule-mining">3. Association-Rule Mining</a></li>
+  <li><a href="#classification-prediction" id="toc-classification-prediction" class="nav-link" data-scroll-target="#classification-prediction">4-1. Classification (Prediction)</a></li>
+  <li><a href="#regression-prediction" id="toc-regression-prediction" class="nav-link" data-scroll-target="#regression-prediction">4-2. Regression (Prediction)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -319,7 +319,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </ul></li>
 <li>자율주행차량: 내부, 외부</li>
 <li>금융정보 및 흐름</li>
-<li>사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울</li>
+<li>사회 지표 활용: 고용, 직업, 연봉, 소비/활동 패턴, 만족도 조사, 취약 계층에 대한 정보, 우울증, 자살율, …</li>
 <li>생성형 인공지능: 기계의 정보 생산</li>
 <li>AI companion: 개인 내면에 대한 정보
 <ul>
@@ -330,7 +330,32 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </section>
 <section id="데이터-사이언스의-응용-사례" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-사이언스의-응용-사례">데이터 사이언스의 응용 사례</h2>
-<p><a href="https://www.ted.com/talks/andrew_ng_how_ai_could_empower_any_business?subtitle=en">How AI could empower any business by Andrew Ng</a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="TED Talk by Andrew Ng">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TED Talk by Andrew Ng
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="https://www.ted.com/talks/andrew_ng_how_ai_could_empower_any_business?subtitle=en">TED: How AI could empower any business by Andrew Ng</a></p>
+<p>요약 by Claude 3.7 Sonnet</p>
+<ol type="1">
+<li>AI가 현재는 대형 기술 기업들과 전문가들에게 주로 집중되어 있으며, 이는 과거 읽고 쓰는 능력이 소수 특권층에게만 있었던 상황과 유사합니다.</li>
+<li>대규모 기술 기업들은 수백만 명의 사용자에게 적용할 수 있는 AI 시스템을 개발할 자원이 있지만, 작은 비즈니스들은 그렇지 못합니다.</li>
+<li>지역 피자가게나 티셔츠 제조업체 같은 소규모 비즈니스들도 자신들의 데이터를 활용해 AI의 혜택을 받을 수 있어야 합니다.</li>
+<li>AI는 대규모 데이터셋만 필요하다는 통념과 달리, 소규모 비즈니스의 적은 데이터로도 유용하게 활용될 수 있습니다.</li>
+<li>현재의 문제는 각 비즈니스가 너무 독특해서 모든 상황에 적용되는 일반적인 AI 솔루션이 없다는 점입니다.</li>
+<li>새로운 AI 개발 플랫폼들은 코드 작성보다는 데이터 제공에 초점을 맞춰, 기술 지식이 적은 사람들도 자신만의 AI를 만들 수 있게 합니다.</li>
+<li>이러한 AI 민주화는 부를 더 넓게 분배하고, 모든 사람이 자신에게 중요한 AI 시스템을 구축할 수 있게 하는 미래를 가능하게 할 것입니다.</li>
+</ol>
+</div>
+</div>
+</div>
 <p>Source: <em>Data Science (The MIT Press Essential Knowledge Series), 2018, by John D. Kelleher &amp; Brendan Tierney</em></p>
 <section id="영업-및-마케팅" class="level3">
 <h3 class="anchored" data-anchor-id="영업-및-마케팅">영업 및 마케팅</h3>
@@ -418,24 +443,24 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/en/6/62/BraveNewWorld_FirstEdition.jpg" height="250" class="figure-img"></p>
 <figcaption>Brave New World, 1932</figcaption>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/6/62/BraveNewWorld_FirstEdition.jpg" height="250" class="figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/en/c/cb/TheTechnologicalSocietyCover.jpg" height="250" class="figure-img"></p>
 <figcaption>The Technological Society, 1954</figcaption>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/c/cb/TheTechnologicalSocietyCover.jpg" height="250" class="figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="images/sapiens.jpg" height="250" class="figure-img"></p>
 <figcaption>Sapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari</figcaption>
+<p><img src="images/sapiens.jpg" height="250" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -496,7 +521,7 @@ Netflix documentary<br>
 <ul>
 <li>DNA의 분석을 통해 특정 질병의 발병 인자를 탐색</li>
 <li>유동인구와 매출을 분석해 상권을 분석</li>
-<li>어떤 정책의 유효성을 분석에 정책결정에 공헌</li>
+<li>어떤 정책의 유효성을 분석하여 정책결정에 공헌</li>
 <li>교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시</li>
 </ul>
 </section>
@@ -575,6 +600,12 @@ Netflix documentary<br>
 <li>해결할 문제와 데이터에 가장 적합한 알고리즘을 파악</li>
 </ul></li>
 </ul></li>
+<li><strong>Causal Inference</strong>
+<ul>
+<li>Machine learning이 주로 변수들 간의 연관성으로부터 예측모형에 집중하는 반면,</li>
+<li>인과추론은 진실된 인과적 관계를 파악하여 현상을 올바로 이해하고자 함</li>
+<li>인과적 모델을 통해 (새로운) 환경/현실에 대해 적응적으로 대응할 수 있는 모델을 구축할 수 있음</li>
+</ul></li>
 <li><strong>Communication</strong>
 <ul>
 <li>데이터에 담긴 스토리를 효과적으로 전달하는 능력</li>
@@ -644,14 +675,14 @@ source: Chapman et al., 2000<br>
 <section id="표준-비즈니스-영역에서의-데이터-사이언스-작업" class="level2">
 <h2 class="anchored" data-anchor-id="표준-비즈니스-영역에서의-데이터-사이언스-작업">표준 비즈니스 영역에서의 데이터 사이언스 작업</h2>
 <p>Source: <em>Data Science (The MIT Press Essential Knowledge Series), 2018, by John D. Kelleher &amp; Brendan Tierney</em></p>
-<ul>
+<ol type="1">
 <li>Clustering</li>
 <li>Anomaly detection</li>
 <li>Association-rule mining</li>
 <li>Prediction: classification &amp; regression</li>
-</ul>
+</ol>
 <section id="clustering" class="level3">
-<h3 class="anchored" data-anchor-id="clustering">Clustering</h3>
+<h3 class="anchored" data-anchor-id="clustering">1. Clustering</h3>
 <p><strong>Who Are Our Customers?</strong></p>
 <!-- 가장 빈번하게 활용되는 분야: 마케팅 및 영업 캠페인 -->
 <ul>
@@ -659,7 +690,8 @@ source: Chapman et al., 2000<br>
 <ul>
 <li>Meta S. Brown (2014)의 보고서에 따르면,
 <ul>
-<li>Soccer Moms? <!-- 고객기반 -->
+<li>Soccer Moms? <!-- 고객기반 --></li>
+<li>탐색적 clustering을 통해 고객 세그먼트를 정의
 <ul>
 <li>어린이집에 다니는 어린 자녀를 둔 전업주부</li>
 <li>고등학생 자녀와 함께 파트타임으로 일하는 엄마</li>
@@ -703,7 +735,7 @@ source: Chapman et al., 2000<br>
 </ul>
 </section>
 <section id="anomaly-detection" class="level3">
-<h3 class="anchored" data-anchor-id="anomaly-detection">Anomaly detection</h3>
+<h3 class="anchored" data-anchor-id="anomaly-detection">2. Anomaly detection</h3>
 <p><strong>Is This Fraud?</strong></p>
 <ul>
 <li>잠재적인 사기, 특히 금융 거래 행위를 식별하고 조사
@@ -734,7 +766,7 @@ source: Chapman et al., 2000<br>
 Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></p>
 </section>
 <section id="association-rule-mining" class="level3">
-<h3 class="anchored" data-anchor-id="association-rule-mining">Association-Rule Mining</h3>
+<h3 class="anchored" data-anchor-id="association-rule-mining">3. Association-Rule Mining</h3>
 <p><strong>Do You Want Fries with That?</strong></p>
 <ul>
 <li>고객에게 다른 관련 제품이나 보완 제품, 혹은 잊어 있었던 제품을 제안
@@ -807,7 +839,7 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <p>Source: <em><a href="https://youtu.be/EdHqrd1OMvw?si=j9T7PxDNtyYXzR3I">Machine Learning Class (2016.7.8) from Microsoft Research by Chris Bishop, YouTube</a></em></p>
 </section>
 <section id="classification-prediction" class="level3">
-<h3 class="anchored" data-anchor-id="classification-prediction">Classification (Prediction)</h3>
+<h3 class="anchored" data-anchor-id="classification-prediction">4-1. Classification (Prediction)</h3>
 <p><strong>Churn or No Churn(고객 이탈), That Is the Question</strong></p>
 <ul>
 <li>개인의 행동 성향에 대한 모델링이 목표: 예, 광고 마케팅에 대한 반응, 서비스 탈퇴 등 다양한 행동 예측
@@ -862,7 +894,7 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 </div>
 </section>
 <section id="regression-prediction" class="level3">
-<h3 class="anchored" data-anchor-id="regression-prediction">Regression (Prediction)</h3>
+<h3 class="anchored" data-anchor-id="regression-prediction">4-2. Regression (Prediction)</h3>
 <p><strong>How Much Will It Cost?</strong></p>
 <ul>
 <li>앞서, 분류는 범주형 속성의 값을 추정하는 반면, 회귀는 연속적인 값을 추정</li>
@@ -876,7 +908,12 @@ Source: <em>The Hundred-Page Machine Learning Book, 2019 by Andriy Burkov</em></
 <li>자동차의 연식, 주행 거리, 엔진 크기, 자동차 제조사, 문 개수 등의 속성을 포함</li>
 </ul></li>
 </ul>
-<p><img src="images/regression-3d.png" class="img-fluid" width="450"></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<figcaption>Linear (Regression) Model의 예</figcaption>
+<p><img src="images/regression-3d.png" class="img-fluid figure-img" width="450"></p>
+</figure>
+</div>
 <!-- ## 개인정보 보호 및 윤리 -->
 
 
