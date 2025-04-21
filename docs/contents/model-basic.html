@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-04-14">
+<meta name="dcterms.date" content="2025-04-21">
 
 <title>Model Basics –  Intro to Data Science</title>
 <style>
@@ -599,7 +599,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 14, 2025</p>
+      <p class="date">April 21, 2025</p>
     </div>
   </div>
   
@@ -926,7 +926,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
+<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -1019,7 +1019,7 @@ Model evaluation
 </div>
 </div>
 <p>이렇게 squared error가 최소가 되도록 추정하는 것을 <strong>ordinary least squares(OLS)</strong> estimattion라고 함.<br>
-실제로는 위에서 처럼 grid search를 하지 않고, closed-form solution을 통해 바로 구할 수 있음.</p>
+선형 회귀 모형의 경우, 실제로는 위에서 처럼 grid search를 하지 않고, closed-form solution을 통해 바로 구할 수 있음.</p>
 </section>
 <section id="maximum-likelihood-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="maximum-likelihood-estimation">Maximum likelihood estimation</h2>
@@ -1263,19 +1263,19 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <h2 class="anchored" data-anchor-id="uncertainty">Uncertainty</h2>
 <p>관찰된 데이터(표본, sample)로부터 모집단(population)에 대한 정보를 추론할 때, 불확실성이 존재함.<br>
 이는 새로운 데이터에 대한 예측의 불확실성 혹은 일반화(generalization)에 대한 문제와 동일함.</p>
-<p>예를 들어, 과거 병원 기록으로 새로운 환자에 대한 진단을 내리는 경우</p>
+<p>예를 들어, <strong><em>과거</em></strong> 병원 기록으로 <strong><em>새로운</em></strong> 환자에 대한 진단을 내리는 경우</p>
 <ol type="1">
 <li>이 환자의 고유한 상태로부터 오는 불확실성: 측정된 부분(measured) + 측정되지 않은 부분(unmeasured)</li>
-<li>과거 기록을 통한 진단의 정확성/true relationship에 대한 불확실성</li>
+<li>과거 기록을 통한 진단의 정확성(true relationship)에 대한 불확실성</li>
 </ol>
 <p>불확실성에 대한 종류</p>
 <ul>
-<li>파라미터 값에 대한 불확실성: confidence interval
+<li>파라미터 추정치에 대한 불확실성: confidence interval
 <ul>
 <li>데이터가 많을 수록</li>
 <li>X가 넓게 분포할 수록</li>
 </ul></li>
-<li>특정 값에 대한 불확실성
+<li>특정 추정값에 대한 불확실성
 <ul>
 <li>평균값(<span class="math inline">\(E(Y|X_i)\)</span>)에 대한 불확실성: confidence interval</li>
 <li>예측값(<span class="math inline">\(f(X_i)\)</span>)에 대한 불확실성: prediciton interval</li>
@@ -1388,7 +1388,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 </div>
 </div>
 <p><br></p>
-<p>아래는 bootstrapping을 통한 실제 표본을 재추출(resampling)하는 방식을 보여줌.<br>
+<p>아래는 bootstrapping을 통한 실제 표본을 재추출(resampling)하는 방식을 보여줌; 관찰된 표본을 모집단인듯 가정하고 표본을 재추출<br>
 전통적으로는 표본 분포(sampling distribution)에 대한 이론을 통해 closed form으로 얻을 수 있음.</p>
 <div>
 
@@ -1487,19 +1487,19 @@ Important
 <li>Gaussian을 넘어 다양한 분포의 데이터에 적절히 대응 가능</li>
 </ul></li>
 </ul></li>
-<li><p><em>파라미터의 <strong>불확실성(uncertainty)</strong>을 추정</em></p>
+<li><p><em>파라미터 추정값의 <strong>불확실성(uncertainty)</strong>을 추정</em></p>
 <ul>
-<li>파라이터의 불확실성</li>
+<li>파라이터 추정값의 불확실성</li>
 <li>예측값의 불확실성</li>
 </ul></li>
 <li><p><em>예측의 <strong>정확성(accuracy)</strong>을 평가</em></p>
 <ul>
-<li>예측값과 실제값의 차이를 나타내는 지표들: RMSE, MAE, R-squared</li>
+<li>예측값과 실제값의 차이를 나타내는 지표들: RMSE, MAE, R-squared, AIC, BIC</li>
 <li>전통적 접근: 모집단에 대해 보정</li>
 <li>현대적 접근: training/test set으로 나누어서 test set으로 모형을 평가</li>
 </ul></li>
 </ol>
-<p>새로운 a family of models을 구성해서 위를 반복하면, 여러 다른 모델들을 비교할 수 있음</p>
+<p>새로운 클래스(형태)의 a family of models을 구성해서 위를 반복하면, 여러 다른 모델들을 비교할 수 있음</p>
 </div>
 </div>
 

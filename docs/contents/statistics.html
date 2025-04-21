@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-04-12">
+<meta name="dcterms.date" content="2025-04-21">
 
 <title>Statistics –  Intro to Data Science</title>
 <style>
@@ -620,7 +620,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 12, 2025</p>
+      <p class="date">April 21, 2025</p>
     </div>
   </div>
   
@@ -662,16 +662,16 @@ window.Quarto = {
 </div>
 <p>통계 분석은 크게 세 가지 주제로 나눌 수 있음.</p>
 <ul>
-<li><strong>Associations</strong>: 변수들 간의 관계를 파악</li>
-<li><strong>Strength of associations</strong>: 그 관계의 크기; 예측력</li>
+<li><strong>Associations</strong>: 변수들 간의 관계/연관성을 파악</li>
+<li><strong>Strength of associations</strong>: 그 관계의 크기/강도; 예측 정확동</li>
 <li><strong>Inference</strong>: 그 관계와 크기가 모집단에서는 어떠할지 추론
 <ul>
-<li>confidence interval, p-value</li>
+<li>confidence/prediction interval, p-value(가설검정)</li>
 </ul></li>
 </ul>
 <p>현대적 접근에서는 모호한 모집단에 대해 추론하기보다는 <strong>표본 내의 정보만</strong>으로 <strong>일반화(generalization)</strong>을 성취하고자 함.</p>
 <ul>
-<li>이는 변수들 간의 관계가 특정 표본에 너무 <strong>overfit</strong>되지 않도록 하여,</li>
+<li>이는 변수들 간의 관계가 특정 표본에 너무 <strong>overfit</strong>되지 않도록 하여(노이즈는 무시하고, 신호는 잡아내는 것)</li>
 <li><strong>새로운 데이터</strong>에서도 그 관계가 유지되도록 하기 위한 것이며,</li>
 <li>이를 위해 데이터를 training set, validation set으로 나누거나, resampling과 같은 방법을 이용하여; cross validation, bootstrapping</li>
 <li>여러 샘플에 대해 모형을 테스트하는 것과 같은 효과를 얻을 수 있음</li>
@@ -680,8 +680,8 @@ window.Quarto = {
 <section id="simple-regressioncorrelation" class="level2">
 <h2 class="anchored" data-anchor-id="simple-regressioncorrelation">Simple Regression/Correlation</h2>
 <p>두 변수 간의 correlation(상관관계)는 두 변수 간의 영향관계에 대한 방향성을 전제하지 않는 반면,<br>
-회귀분석은 한 변수가 다른 변수에 영향 미친다는 것을 전체로 하고, 그 영향의 형태와 크기를 분석.</p>
-<p>예측변수가 한 개인 회귀분석: Simple Regression</p>
+회귀분석은 (보통) 한 변수가 다른 변수에 영향 미친다는 것을 전제로 하고, 그 영향의 형태와 크기를 분석.</p>
+<p>예측변수가 한개인 회귀분석: simple Regression</p>
 <ol type="1">
 <li>두 변수 간의 관계(association)을 파악: <span class="math inline">\(Y=f(X)=b_0 + b_1X\)</span></li>
 <li>그 관계의 크기(strength)를 측정
@@ -721,13 +721,13 @@ window.Quarto = {
 <ul>
 <li><span class="math inline">\(Y\)</span> 와 <span class="math inline">\(\widehat Y\)</span> 의 Pearson correlation 즉, Y와 회귀모형이 예측한 값의 (선형적) 상관 관계의 정도; 회귀모형의 예측의 정확성<br>
 </li>
-<li>다시말하면, 예측변수들의 최적의 선형 조합과 Y의 상관 관계의 정도.</li>
+<li>다시말하면, 예측변수들의 최적의(optimal) 선형 조합과 Y의 상관 관계의 정도.</li>
 </ul>
 <p><span class="math inline">\(R^2\)</span>: Coefficient of determination, 결정계수, 설명력</p>
 <ul>
 <li>선형모형에 의해 설명된 Y 변량의 비율:<br>
 </li>
-<li>또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y 변량의 비율.<br>
+<li>또는 예측변수들의 최적의(optimal) 선형 조합에 의해 설명된 Y 변량의 비율.<br>
 즉, <span class="math inline">\(\displaystyle\frac{V(\widehat{Y})}{V(Y)}\)</span> 또는 <span class="math inline">\(\displaystyle 1 - \frac{V(e)}{V(Y)}\)</span></li>
 </ul>
 <section id="associatiions과-그-strengths-비교" class="level3">
@@ -735,7 +735,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="66" data-layout="[[2, 1]]">
+<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="66">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-5-output-1.png" class="img-fluid" width="670"></p>
@@ -745,7 +745,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="116" data-layout="[[2, 1]]">
+<div id="cell-9" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="116">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-7-output-1.png" class="img-fluid" width="667"></p>
@@ -796,7 +796,7 @@ Important
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1.5, 1.5, 0.5]]">
+<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1.5, 1.5, 0.5]]" data-execution_count="10">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-12-output-1.png" class="img-fluid" width="490"></p>
@@ -863,7 +863,7 @@ Important
 <div>
 
 </div>
-<div id="cell-25" class="cell quarto-layout-panel" data-execution_count="30" data-layout-ncol="3">
+<div id="cell-25" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>Intercept   43658.59
@@ -946,7 +946,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[50, -2, 48]">
+<div class="quarto-layout-panel" data-layout="[50, -2, 48]" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table">
@@ -1036,7 +1036,7 @@ Important
 <div>
 
 </div>
-<div id="cell-30" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[1, 1]">
+<div id="cell-30" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="17">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-18-output-1.png" class="img-fluid" width="630"></p>
@@ -1050,7 +1050,7 @@ Important
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="87" data-layout="[3, 1]">
+<div id="cell-32" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="87">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-19-output-1.png" class="img-fluid" width="668"></p>
