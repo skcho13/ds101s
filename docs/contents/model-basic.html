@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-04-21">
+<meta name="dcterms.date" content="2025-04-23">
 
 <title>Model Basics –  Intro to Data Science</title>
 <style>
@@ -599,7 +599,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 21, 2025</p>
+      <p class="date">April 23, 2025</p>
     </div>
   </div>
   
@@ -926,7 +926,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
+<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -1283,8 +1283,8 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 </ul>
 <p>전통적으로는 분포에 대한 가정으로부터 이론적으로 불확실성을 추론했으나,<br>
 현대적인 접근으로 resampling 방식의 bootstrapping이나 sample을 traing/test set으로 나누는 cross-validation 등을 통해 시뮬레이션을 통해 불확실성을 추정할 수 있음</p>
-<p>Bayesian 방식에서는 분포에 대한 가정없이, 불확실성에 대한 분포 자체(posterior predictive distribution)에 대해 엄밀히 추정하는 방식도 있음</p>
-<p>반대로, machine learning에서는 특정 action 혹은 decision-making을 하는 것이 중요한 경우가 많아, 불확실성에 대한 고려가 적은 경향이 있음</p>
+<p>Bayesian 방식에서는 모집단의 분포에 대한 가정없이, 관찰된 데이터만으로 파라미터에 대한 분포(posterior predictive distribution)를 불확실성에 대해 추정하는 방식도 있음; 앞서 지구의 바다/육지의 비율에 대한 분포의 예측 참고</p>
+<p>반대로, machine learning에서는 특정 action 혹은 decision-making을 하는 것이 중요한 경우가 많아, 불확실성에 대한 고려가 적은 경향이 있음; 가령, 불확실성이 크던 작던 간에, 실용적인 관점에서 구체적으로 가격을 예측하거나, 질병 여부를 예측하길 기대함. 어떤 질병에 걸렸을 확률이 0.8로 예측되는 경우라도 사실은 불확실성을 고려하면 그 확률은 가령 0.7 ~ 0.9 사이일 수 있음.</p>
 <div id="cell-54" class="cell" data-execution_count="59">
 <details class="code-fold">
 <summary>calculate confidence intervals</summary>
@@ -1433,7 +1433,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <li>정규분포에서 벗어난 경우, 분포를 고려한 log-likelihood를 기반으로 한 지표들: AIC, BIC, …
 <ul>
 <li><span class="math inline">\(AIC = -2loglikelihood + 2k\)</span>, &nbsp; <span class="math inline">\(k\)</span>: 모델의 자유도</li>
-<li><span class="math inline">\(BIC = -2loglikelihood + klog(n)\)</span>, &nbsp; <span class="math inline">\(n\)</span>: 데이터의 수</li>
+<li><span class="math inline">\(BIC = -2loglikelihood + k \cdot log(n)\)</span>, &nbsp; <span class="math inline">\(n\)</span>: 데이터의 수</li>
 </ul></li>
 </ul>
 <div id="cell-59" class="cell" data-execution_count="18">
@@ -1495,8 +1495,8 @@ Important
 <li><p><em>예측의 <strong>정확성(accuracy)</strong>을 평가</em></p>
 <ul>
 <li>예측값과 실제값의 차이를 나타내는 지표들: RMSE, MAE, R-squared, AIC, BIC</li>
-<li>전통적 접근: 모집단에 대해 보정</li>
-<li>현대적 접근: training/test set으로 나누어서 test set으로 모형을 평가</li>
+<li>전통적 접근: 표본에서 얻은 결과를 모집단에 대해 이론적으로 보정; 모집단에서는 정확도가 낮아질 것임.</li>
+<li>현대적 접근: 데이터를 training/test set으로 나누어서 test set으로 모형을 평가</li>
 </ul></li>
 </ol>
 <p>새로운 클래스(형태)의 a family of models을 구성해서 위를 반복하면, 여러 다른 모델들을 비교할 수 있음</p>
