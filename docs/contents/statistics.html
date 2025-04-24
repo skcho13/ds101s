@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-04-23">
+<meta name="dcterms.date" content="2025-04-24">
 
 <title>Statistics –  Intro to Data Science</title>
 <style>
@@ -370,7 +370,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 23, 2025</p>
+      <p class="date">April 24, 2025</p>
     </div>
   </div>
   
@@ -431,7 +431,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="simple-regressioncorrelation">Simple Regression/Correlation</h2>
 <p>두 변수 간의 correlation(상관관계)는 두 변수 간의 영향관계에 대한 방향성을 전제하지 않는 반면,<br>
 회귀분석은 (보통) 한 변수가 다른 변수에 영향 미친다는 것을 전제로 하고, 그 영향의 형태와 크기를 분석.</p>
-<p>예측변수가 한개인 회귀분석: simple Regression</p>
+<p>예측변수가 한개인 회귀분석: simple regression</p>
 <ol type="1">
 <li>두 변수 간의 관계(association)을 파악: <span class="math inline">\(Y=f(X)=b_0 + b_1X\)</span></li>
 <li>그 관계의 크기(strength)를 측정
@@ -457,7 +457,7 @@ window.Quarto = {
 
 </div>
 <div class="columns quarto-layout-cell" style="flex-basis: 47.4%;justify-content: center;">
-<p><strong>Multiple correlation coefficient: <span class="math inline">\(R\)</span></strong></p><p>Extented correlation: 예측치와 관측치의 pearson’s correlation</p><ul>
+<p><strong>Multiple correlation coefficient: <span class="math inline">\(R\)</span></strong></p><p>Extented correlation: 예측치와 관측치의 Pearson’s correlation, <span class="math inline">\(r(Y, \widehat Y)\)</span></p><ul>
 <li><span class="math inline">\(R\)</span>을 제곱한 <span class="math inline">\(R^2\)</span>가 설명력의 정도를 나타냄</li>
 </ul><p><a href="images/multiple-R.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/multiple-R.png" class="img-fluid" width="450"></a></p>
 </div>
@@ -485,7 +485,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="66">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="66" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-5-output-1.png" class="img-fluid" width="670"></p>
@@ -495,7 +495,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-9" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="116">
+<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="116" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-7-output-1.png" class="img-fluid" width="667"></p>
@@ -546,7 +546,7 @@ Important
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1.5, 1.5, 0.5]]" data-execution_count="10">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1.5, 1.5, 0.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-12-output-1.png" class="img-fluid" width="490"></p>
@@ -563,9 +563,19 @@ Important
 <li>나이를 감안한 마라톤 실력?</li>
 <li>다시 말하면, 나이와는 <strong>무관한/독립적인</strong> 마라톤 능력에 대해 말하고자 함</li>
 <li>이는 동일한 나이의 사람들로만 제한해서 마라톤 기록을 비교하는 것이 공평한 능력의 비교라고 말하는 것과 같은 이치임</li>
+<li>아래 그림에서 20세라면 보통 2시간 정도, 70세라면 보통 3시간 정도가 전형적인 기록이기 때문에, 이를 고려하여 기록을 조정할 수 있음;
+<ul>
+<li>가령, 70세 노인의 기록 2.5시간은 -0.5시간(=3-2.5); 나이로는 설명/예측되지 못하는 정도</li>
+<li>20세 청년의 기록 2.5시간은 +0.5시간(=2.5-2); 나이로는 설명/예측되지 못하는 정도</li>
+</ul></li>
 </ul>
-<p><img src="images/marathon.png" class="img-fluid" width="450"></p>
 <div style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<figcaption>남녀별 연령에 따른 평균 마라톤 기록</figcaption>
+<p><img src="images/marathon.png" class="img-fluid figure-img" width="500"></p>
+</figure>
+</div>
 <p>Source: https://doi.org/10.1186/2052-1847-6-31</p>
 </div>
 </section>
@@ -613,7 +623,7 @@ Important
 <div>
 
 </div>
-<div id="cell-25" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
+<div id="cell-25" class="cell quarto-layout-panel" data-execution_count="30" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>Intercept   43658.59
@@ -696,7 +706,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[50, -2, 48]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[50, -2, 48]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table">
@@ -786,7 +796,7 @@ Important
 <div>
 
 </div>
-<div id="cell-30" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="17">
+<div id="cell-30" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-18-output-1.png" class="img-fluid" width="630"></p>
@@ -800,7 +810,7 @@ Important
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="87">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="87" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-19-output-1.png" class="img-fluid" width="668"></p>
