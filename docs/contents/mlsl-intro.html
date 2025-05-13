@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-05-12">
+<meta name="dcterms.date" content="2025-05-14">
 
 <title>Machine/Statistical Learning –  Intro to Data Science</title>
 <style>
@@ -356,7 +356,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 12, 2025</p>
+      <p class="date">May 14, 2025</p>
     </div>
   </div>
   
@@ -368,34 +368,6 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Load packages</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># statistics</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'mode.copy_on_write'</span>, <span class="va">True</span>)  <span class="co"># pandas 2.0</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span>  <span class="co"># max number of rows to display</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy options</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)  <span class="co"># suppress scientific notation</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For high resolution display</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <p><img src="images/black-box-3.png" height="120"></p>
 <p><span class="math inline">\(f\)</span>: <span class="math inline">\(X_1, X_2, ..., X_p\)</span>가 <span class="math inline">\(Y\)</span>에 관해 제공하는 <strong><em>systematic</em> information</strong>; <strong>unknown function</strong><br>
 <span class="math inline">\(Y = f(X_1, X_2, ..., X_p) + \epsilon\)</span>, &nbsp; <span class="math inline">\(Y \perp\!\!\!\perp \epsilon\)</span><br>
@@ -543,7 +515,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" class="img-fluid"></a></p>
@@ -591,10 +563,10 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <div>
 
 </div>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout="[1.3, 1]" data-execution_count="23">
+<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="23" data-layout="[1.3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 56.5%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-5-output-1.png" class="img-fluid" width="580"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-3-output-1.png" class="img-fluid" width="580"></p>
 </div>
 </div>
 </div>
@@ -621,13 +593,13 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <div>
 
 </div>
-<div id="cell-15" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="28">
+<div id="cell-13" class="cell quarto-layout-panel" data-execution_count="28" data-layout="[[1, 1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-10-output-1.png" class="img-fluid" width="460"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-8-output-1.png" class="img-fluid" width="460"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-10-output-2.png" class="img-fluid" width="460"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-8-output-2.png" class="img-fluid" width="460"></p>
 </div>
 </div>
 </div>
@@ -641,16 +613,16 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <div>
 
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="29">
+<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="29" data-layout="[[1, 1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-11-output-1.png" class="img-fluid" width="460"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-9-output-1.png" class="img-fluid" width="460"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-11-output-2.png" class="img-fluid" width="490"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-9-output-2.png" class="img-fluid" width="490"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-11-output-3.png" class="img-fluid" width="490"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-9-output-3.png" class="img-fluid" width="490"></p>
 </div>
 </div>
 </div>
@@ -754,10 +726,10 @@ Expected Loss 분해
 <ul>
 <li>두 범주의 경우, 간단히 <span class="math inline">\(Y \in \{0, 1\}\)</span></li>
 </ul></li>
-<li><span class="math inline">\(f(x_i): P(Y = C_k|X=x_i)\)</span>가 최대인 클래스에 할당; <span class="math inline">\(\underset{k}{\mathrm{argmax}}~ P(Y = C_k|X=x)\)</span>
+<li><span class="math inline">\(f(x_i): P(Y = C_k|X=x_i)\)</span>가 최대인 클래스에 할당; 즉, <span class="math inline">\(f(x_i) = \underset{k}{\mathrm{argmax}}~ P(Y = C_k|X=x_i)\)</span>
 <ul>
-<li>Conditional class probabilities</li>
-<li>Bayes classifier: 최대치</li>
+<li>Conditional class probabilities; 앞서 conditional mean <span class="math inline">\(E(Y|X)\)</span>에 대응</li>
+<li>Bayes classifier: 최대치 (0-1 loss function 가정하에)</li>
 </ul></li>
 <li>이 <span class="math inline">\(P(Y = C_k|X=x)\)</span>를 추정하기 위한 다양한 방식들이 존재
 <ul>
@@ -770,13 +742,13 @@ Expected Loss 분해
 <div>
 
 </div>
-<div id="cell-22" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="30">
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid" width="565"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-10-output-1.png" class="img-fluid" width="565"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-12-output-2.png" class="img-fluid" width="578"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-10-output-2.png" class="img-fluid" width="578"></p>
 </div>
 </div>
 </div>
@@ -785,20 +757,20 @@ Expected Loss 분해
 <div>
 
 </div>
-<div id="cell-24" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="31">
+<div id="cell-22" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[5, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-13-output-1.png" class="img-fluid" width="891"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-11-output-1.png" class="img-fluid" width="891"></p>
 </div>
 </div>
 </div>
 <div>
 
 </div>
-<div id="cell-25" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="32">
+<div id="cell-23" class="cell quarto-layout-panel" data-execution_count="32" data-layout="[5, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-14-output-1.png" class="img-fluid" width="998"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid" width="998"></p>
 </div>
 </div>
 </div>
@@ -806,15 +778,15 @@ Expected Loss 분해
 <div>
 
 </div>
-<div id="cell-29" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="35">
+<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="35" data-layout="[5, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-17-output-1.png" class="img-fluid" width="891"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-15-output-1.png" class="img-fluid" width="891"></p>
 </div>
 </div>
 </div>
 <p>Confusion matrix with the threshold=0.5</p>
-<div id="cell-31" class="cell" data-execution_count="36">
+<div id="cell-29" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>Truth      Adelie  Gentoo
 Predicted                
@@ -823,7 +795,7 @@ Gentoo          7     116</code></pre>
 </div>
 </div>
 <p>만약, 다음과 같은 loss function (loss matrix)가 주어진다면,</p>
-<div id="cell-33" class="cell" data-execution_count="37">
+<div id="cell-31" class="cell" data-execution_count="37">
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Truth      Adelie  Gentoo
 Predicted                
@@ -908,7 +880,35 @@ Gentoo         30       0</code></pre>
 <li>다수의 훈련셋과 검증셋을 생성하여, 평균값으로 모형의 성능을 평가</li>
 <li>다양한 변형이 존재</li>
 </ul>
-<div id="cell-37" class="cell" data-execution_count="38">
+<div id="cell-35" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>load packages</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># statistics</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'mode.copy_on_write'</span>, <span class="va">True</span>)  <span class="co"># pandas 2.0</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span>  <span class="co"># max number of rows to display</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy options</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)  <span class="co"># suppress scientific notation</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For high resolution display</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-37" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install ISLP package</span></span>
@@ -918,7 +918,7 @@ Gentoo         30       0</code></pre>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>auto <span class="op">=</span> load_data(<span class="st">"Auto"</span>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>auto.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>    mpg  cylinders  displacement  horsepower  weight  acceleration  year  \
 0 18.00          8        307.00         130    3504         12.00    70   
 1 15.00          8        350.00         165    3693         11.50    70   
@@ -930,7 +930,7 @@ Gentoo         30       0</code></pre>
 2       1         plymouth satellite  </code></pre>
 </div>
 </div>
-<div id="cell-38" class="cell" data-execution_count="39">
+<div id="cell-38" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>auto_train, auto_valid <span class="op">=</span> train_test_split(auto, test_size<span class="op">=</span><span class="fl">.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -945,7 +945,7 @@ Gentoo         30       0</code></pre>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    p.add(so.Line(), so.PolyFit(i)).label(title<span class="op">=</span><span class="ss">f"M = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-39" class="cell quarto-layout-panel" data-layout="[1, 1, 1]" data-execution_count="40">
+<div id="cell-39" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[1, 1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-22-output-1.png" class="img-fluid" width="630"></p>
@@ -969,7 +969,7 @@ Gentoo         30       0</code></pre>
 </div>
 </div>
 </div>
-<p><a href="images/validation-set-approach.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="images/validation-set-approach.png" class="img-fluid" width="700"></a></p>
+<p><a href="images/validation-set-approach.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="images/validation-set-approach.png" class="img-fluid" width="750"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p><em>Left: Validation error estimates for a single split into training and validation data sets. Right: The validation method was repeated ten times, each time using a different random split of the observations into a training set and a validation set. This illustrates the variability in the estimated test MSE that results from this approach.</em></p>
 <p>Source: p.&nbsp;204, An Introduction to Statistical Learning with Applications in Python</p>
@@ -1001,6 +1001,9 @@ Gentoo         30       0</code></pre>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/shuffle-split.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="images/shuffle-split.png" class="img-fluid" width="450"></a></p>
 </div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/stratified-shuffle-split.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="images/stratified-shuffle-split.png" class="img-fluid" width="450"></a></p>
+</div>
 </div>
 </div>
 <ul>
@@ -1013,7 +1016,9 @@ Gentoo         30       0</code></pre>
 <p>k개의 훈련셋에서 각각에서 얻은 모델에 대해서 검증셋으로부터 모형의 평가치를 얻음: 주로 MSE(mean squared error)</p>
 <p>k-fold CV estimate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k MSE_i\)</span></p>
 <p>분류의 경우, misclassification error rate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k \frac{1}{n_i} \sum_{j=1}^{n_i} I(y_j \neq \hat y_j)\)</span></p>
-<div id="cell-42" class="cell" data-execution_count="4">
+<div id="cell-42" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_validate, cross_val_score, KFold, ShuffleSplit</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
@@ -1030,14 +1035,15 @@ Gentoo         30       0</code></pre>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>mod_auto_cv <span class="op">=</span> <span class="op">-</span>cross_val_score(mod_auto, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)  <span class="co"># default scoring is R2</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"For the quadratic polynomial:</span><span class="ch">\n</span><span class="ss">10-fold Cross-validation </span><span class="ch">\n</span><span class="ss">MSEs: </span><span class="sc">{</span>mod_auto_cv<span class="sc">}</span><span class="ss">, </span><span class="ch">\n</span><span class="ss">Average: </span><span class="sc">{</span>mod_auto_cv<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>For the quadratic polynomial:
 10-fold Cross-validation 
 MSEs: [15.98 15.84 18.39 25.88 18.71 23.58 23.58 23.83 11.19 14.88], 
-Average: 19.185331419375</code></pre>
+Average: 19.185331419374968</code></pre>
 </div>
 </div>
-<div id="cell-43" class="cell" data-execution_count="42">
+<div id="cell-43" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1051,7 +1057,7 @@ Average: 19.185331419375</code></pre>
 <pre><code>For the quadratic polynomial:
 Shuffle &amp; Spllit Cross-validation with 20% test sets 
 MSEs: [16.01 18.34 17.81 12.66 14.97 20.87 13.4  13.62 20.05 15.53], 
-Average: 16.32656735042892</code></pre>
+Average: 16.32656735042881</code></pre>
 </div>
 </div>
 <details class="code-fold">
@@ -1069,7 +1075,7 @@ Average: 16.32656735042892</code></pre>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    ev_error1[i, :] <span class="op">=</span> <span class="op">-</span>mod_auto_cv</span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">80</span>)</span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error1[:, i])</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error1[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
@@ -1090,7 +1096,7 @@ Average: 16.32656735042892</code></pre>
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    ev_error2[i, :] <span class="op">=</span> <span class="op">-</span>mod_auto_cv</span>
 <span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">80</span>)</span>
 <span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error2[:, i])</span>
 <span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error2[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
@@ -1101,13 +1107,13 @@ Average: 16.32656735042892</code></pre>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-split Shuffle &amp; Split Cross-validation </span><span class="ch">\n</span><span class="st">with 20% test sets over 10 degrees of Polynomial"</span>)</span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-44" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="43">
+<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-25-output-1.png" class="img-fluid" width="326"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-25-output-1.png" class="img-fluid" width="436"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-25-output-2.png" class="img-fluid" width="318"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-25-output-2.png" class="img-fluid" width="425"></p>
 </div>
 </div>
 </div>
@@ -1133,7 +1139,7 @@ Average: 16.32656735042892</code></pre>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    ev_error3[i, <span class="dv">1</span>] <span class="op">=</span> <span class="op">-</span>mod_auto_cv.mean()</span>
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">80</span>)</span>
 <span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"10-fold CV"</span>, <span class="st">"10-split Shuffle &amp; Split CV with 20% test set"</span>]</span>
 <span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
 <span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    plt.scatter(np.arange(<span class="dv">1</span>, <span class="dv">11</span>), ev_error3[:, i], s<span class="op">=</span><span class="dv">5</span>)</span>
@@ -1147,32 +1153,46 @@ Average: 16.32656735042892</code></pre>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-45" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="44">
+<div id="cell-45" class="cell quarto-layout-panel" data-execution_count="13" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="mlsl-intro_files/figure-html/cell-26-output-1.png" class="img-fluid" width="318"></p>
+<p><img src="mlsl-intro_files/figure-html/cell-26-output-1.png" class="img-fluid" width="425"></p>
 </div>
 </div>
 </div>
 <p><a href="https://scikit-learn.org/stable/modules/model_evaluation.html#">Scikit-learn: Metrics and scoring</a></p>
+<p><strong>Bias-Variance Trade-off</strong>를 고려하여 모델을 선택</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<figcaption>Test and training error as a function of model complexity</figcaption>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="images/bias-variance-tradeoff2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Test and training error as a function of model complexity"><img src="images/bias-variance-tradeoff2.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="500" alt="Test and training error as a function of model complexity"></a></p>
+</figure>
+</div>
+</figure>
+</div>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;38, <em>The Elements of Statistical Learning (2e)</em> by Hastie, T., Tibshirani, R., &amp; Friedman, J.</p>
+</div>
 <p>관찰된 데이터에 가장 적합한 모형을 찾는 것이 아니고, 일반화된 모형을 찾는 것이 목표임.<br>
 아래 그림에서 관찰된 데이터셋에 대한 예측 오류인 “test error”와 “true error”의 관계를 보여줌.<br>
 예를 들어, 아래의 3가지 형태의 true relationship에 대해,</p>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="images/bias-variance-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="images/bias-variance-1.png" class="img-fluid" width="450"></a></p>
+<p><a href="images/bias-variance-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="images/bias-variance-1.png" class="img-fluid" width="450"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="images/bias-variance-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="images/bias-variance-2.png" class="img-fluid" width="450"></a></p>
+<p><a href="images/bias-variance-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="images/bias-variance-2.png" class="img-fluid" width="450"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="images/bias-variance-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="images/bias-variance-3.png" class="img-fluid" width="450"></a></p>
+<p><a href="images/bias-variance-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="images/bias-variance-3.png" class="img-fluid" width="450"></a></p>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><em>Left: Data simulated from f, shown in black. Three estimates of f are shown: the linear regression line (orange curve), and two smoothing spline fits (blue and green curves). Right: Training MSE (grey curve), test MSE (red curve), and minimum possible test MSE over all methods (dashed line). Squares represent the training and test MSEs for the three fits shown in the left-hand panel.</em></p>
@@ -1187,7 +1207,7 @@ Average: 16.32656735042892</code></pre>
 <li>보통 실제 test error rate보다 낮게 나오나(즉, 더 적합하게) 최적의 flexibility의 위치는 유사함</li>
 <li>참고로, 여기서 true error는 앞서 training/test set으로 나눈 그 test set을 의미하는 것이 아님!</li>
 </ul>
-<p><a href="images/cross-validation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="images/cross-validation.png" class="img-fluid" width="700"></a></p>
+<p><a href="images/cross-validation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="images/cross-validation.png" class="img-fluid" width="700"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: <em>p.&nbsp;208, An Introduction to Statistical Learning with Applications in Python</em></p>
 </div>
@@ -2542,7 +2562,7 @@ Median Absolute Error: 2.486</code></pre>
 </ul>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="images/resampling.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="images/resampling.png" class="img-fluid" width="350"></a></p>
+<p><a href="images/resampling.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="images/resampling.png" class="img-fluid" width="350"></a></p>
 </div>
 </div>
 </div>
@@ -3042,7 +3062,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>params_boot.T.hist(bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">.7</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>), layout<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-70" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="63">
+<div id="cell-70" class="cell quarto-layout-panel" data-execution_count="63" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-43-output-1.png" class="img-fluid" width="689"></p>
