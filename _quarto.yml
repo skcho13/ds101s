@@ -5,6 +5,7 @@ project:
     - "*.qmd"
     - "*.ipynb"
     - "!contents/ignore/"
+    - "!contents/kernel-trick/"
     - "!contents/*.py"
     - "!*-temp.ipynb"
     - "!*-temp.qmd"
