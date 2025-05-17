@@ -22,63 +22,75 @@
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/mlsl-intro.html</loc>
-    <lastmod>2025-05-14T02:53:49.740Z</lastmod>
+    <lastmod>2025-05-13T19:01:04.000Z</lastmod>
   </url>
   <url>
-    <loc>https://dgds101.modellings.art/contents/lda.html</loc>
-    <lastmod>2024-12-08T20:00:00.632Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/inspection.html</loc>
-    <lastmod>2024-03-27T19:51:04.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/index.html</loc>
-    <lastmod>2025-03-04T16:24:22.366Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/setup.html</loc>
-    <lastmod>2025-05-12T17:23:32.973Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/pollr.html</loc>
-    <lastmod>2024-03-14T17:06:20.597Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/misc.html</loc>
-    <lastmod>2024-09-01T14:01:02.439Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/about.html</loc>
-    <lastmod>2024-02-27T16:19:56.333Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/intro.html</loc>
-    <lastmod>2025-04-23T12:34:28.425Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/notice.html</loc>
-    <lastmod>2024-08-28T17:24:00.229Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/python-basics.html</loc>
-    <lastmod>2025-03-18T18:55:27.105Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/two-cultures.html</loc>
-    <lastmod>2025-05-01T06:31:08.126Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgds101.modellings.art/contents/eda.html</loc>
-    <lastmod>2024-10-11T19:02:24.140Z</lastmod>
+    <loc>https://dgds101.modellings.art/contents/logistic.html</loc>
+    <lastmod>2025-05-17T19:59:36.991Z</lastmod>
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/knn.html</loc>
     <lastmod>2024-11-24T21:16:01.992Z</lastmod>
   </url>
   <url>
-    <loc>https://dgds101.modellings.art/contents/logistic.html</loc>
-    <lastmod>2024-12-27T21:18:42.614Z</lastmod>
+    <loc>https://dgds101.modellings.art/contents/kernel-trick/classification.html</loc>
+    <lastmod>2025-05-17T18:35:53.210Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/eda.html</loc>
+    <lastmod>2024-10-11T19:02:24.140Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/two-cultures.html</loc>
+    <lastmod>2025-05-01T06:31:08.126Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/python-basics.html</loc>
+    <lastmod>2025-03-18T18:55:27.105Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/notice.html</loc>
+    <lastmod>2024-08-28T17:24:00.229Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/intro.html</loc>
+    <lastmod>2025-04-23T12:34:28.425Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/about.html</loc>
+    <lastmod>2024-02-27T16:19:56.333Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/misc.html</loc>
+    <lastmod>2024-09-01T14:01:02.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/pollr.html</loc>
+    <lastmod>2024-03-14T17:06:20.597Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/setup.html</loc>
+    <lastmod>2025-05-12T17:23:32.973Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/index.html</loc>
+    <lastmod>2025-03-04T16:24:22.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/inspection.html</loc>
+    <lastmod>2024-03-27T19:51:04.511Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/kernel-trick/classification2.html</loc>
+    <lastmod>2025-05-17T18:35:53.221Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/lda.html</loc>
+    <lastmod>2024-12-08T20:00:00.632Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgds101.modellings.art/contents/mlsl-intro-conflicted.html</loc>
+    <lastmod>2025-05-14T02:53:49.740Z</lastmod>
   </url>
   <url>
     <loc>https://dgds101.modellings.art/contents/model-basic-implementation.html</loc>
