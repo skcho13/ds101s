@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-05-20">
+<meta name="dcterms.date" content="2025-05-26">
 
 <title>Logistic Regression –  Intro to Data Science</title>
 <style>
@@ -330,6 +330,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#decision-boundary" id="toc-decision-boundary" class="nav-link" data-scroll-target="#decision-boundary">Decision Boundary</a></li>
   <li><a href="#basis-functions" id="toc-basis-functions" class="nav-link" data-scroll-target="#basis-functions">Basis Functions</a></li>
+  <li><a href="#neural-networkdeep-learning" id="toc-neural-networkdeep-learning" class="nav-link" data-scroll-target="#neural-networkdeep-learning">Neural Network/Deep Learning</a></li>
   <li><a href="#multiclass-k-2" id="toc-multiclass-k-2" class="nav-link" data-scroll-target="#multiclass-k-2">Multiclass (K &gt; 2)</a>
   <ul class="collapse">
   <li><a href="#blowdown-data" id="toc-blowdown-data" class="nav-link" data-scroll-target="#blowdown-data">Blowdown data</a></li>
@@ -363,7 +364,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 20, 2025</p>
+      <p class="date">May 26, 2025</p>
     </div>
   </div>
   
@@ -491,7 +492,7 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="9708bb61" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="9">
+<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid" width="589"></p>
@@ -514,7 +515,7 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'log d = </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="448e7ed0" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="10">
+<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid" width="758"></p>
@@ -560,7 +561,7 @@ window.Quarto = {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Diameter (cm)'</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="d6fbd6f2" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="12">
+<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid" width="834"></p>
@@ -585,7 +586,7 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="13">
+<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="13" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="834"></p>
@@ -658,7 +659,7 @@ Important
 <div>
 
 </div>
-<div id="fa280612" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="15">
+<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="15" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-12-output-1.png" class="img-fluid" width="478"></p>
@@ -718,7 +719,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Log of Diameter (cm)"</span>, y<span class="op">=</span><span class="st">"Density"</span>, color<span class="op">=</span><span class="st">"Label"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="7fef49b7" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="17">
+<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="790"></p>
@@ -766,7 +767,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Emperical Probability"</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="8d91902a" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="19">
+<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid" width="846"></p>
@@ -805,7 +806,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># y = np.polyval(np.polyfit(blowbs_bn.log2d, blowbs_bn.log_odds, 1), x)</span></span>
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lineplot(x=x, y=y, ax=ax, color=".6")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a4f966e4" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="20">
+<div id="a4f966e4" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-17-output-1.png" class="img-fluid" width="856"></p>
@@ -828,7 +829,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <div>
 
 </div>
-<div id="2d803e77" class="cell quarto-layout-panel" data-layout="[10, -1, 10, -1]" data-execution_count="21">
+<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="21" data-layout="[10, -1, 10, -1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-18-output-1.png" class="img-fluid" width="545"></p>
@@ -981,7 +982,7 @@ Scikit-learn implementation
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a8234351" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="25">
+<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="25" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-22-output-1.png" class="img-fluid" width="768"></p>
@@ -1208,7 +1209,7 @@ Important
 <div>
 
 </div>
-<div id="70c5a856" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="140">
+<div id="70c5a856" class="cell quarto-layout-panel" data-execution_count="140" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-28-output-1.png" class="img-fluid" width="768"></p>
@@ -1218,7 +1219,7 @@ Important
 <div>
 
 </div>
-<div id="67b8c19c" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="141">
+<div id="67b8c19c" class="cell quarto-layout-panel" data-execution_count="141" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-29-output-1.png" class="img-fluid" width="768"></p>
@@ -1228,7 +1229,7 @@ Important
 <div>
 
 </div>
-<div id="46c722a0" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="142">
+<div id="46c722a0" class="cell quarto-layout-panel" data-execution_count="142" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-30-output-1.png" class="img-fluid" width="768"></p>
@@ -1239,7 +1240,7 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[30, -5, 50, 20]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -5, 50, 20]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: center;">
 <table class="caption-top table">
@@ -1306,7 +1307,7 @@ Important
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[30, -8, 40, -22]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -8, 40, -22]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <p>Threshold: 0.1인 경우,</p>
@@ -1402,7 +1403,7 @@ Important
 <span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="b1b466d7" class="cell quarto-layout-panel" data-layout="[20, -5, 30, 45]" data-execution_count="69">
+<div id="b1b466d7" class="cell quarto-layout-panel" data-execution_count="69" data-layout="[20, -5, 30, 45]">
 
 </div>
 </section>
@@ -1561,7 +1562,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[[50, -5, 50]]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[[50, -5, 50]]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 47.6%;justify-content: center;">
 <p>Threshold: 0.1인 경우,</p>
@@ -1686,7 +1687,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="afb388d5" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="144">
+<div id="afb388d5" class="cell quarto-layout-panel" data-execution_count="144" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-37-output-1.png" class="img-fluid" width="470"></p>
@@ -1726,7 +1727,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <div>
 
 </div>
-<div id="836f22b1" class="cell quarto-layout-panel" data-layout="[60, 40]" data-execution_count="146">
+<div id="836f22b1" class="cell quarto-layout-panel" data-execution_count="146" data-layout="[60, 40]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-39-output-1.png" class="img-fluid" width="556"></p>
@@ -1899,7 +1900,7 @@ specificity
 <div>
 
 </div>
-<div id="607d0bd3" class="cell quarto-layout-panel" data-layout="[5, 4]" data-execution_count="253">
+<div id="607d0bd3" class="cell quarto-layout-panel" data-execution_count="253" data-layout="[5, 4]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-48-output-1.png" class="img-fluid" width="552"></p>
@@ -1959,6 +1960,30 @@ specificity
 </div>
 </div>
 </div>
+<p><strong>BodyM Dataset</strong></p>
+<p><a href="https://aws.amazon.com/marketplace/pp/prodview-w3762gcflmhzk#overview">AWS: BodyM Dataset</a></p>
+<ul>
+<li>2,779명 대상으로 8,324장의 정면 및 측면 실루엣 사진과 키, 몸무게, 그리고 14가지 신체 측정치 제공</li>
+<li>인종 분포: 백인 40%, 아시아인 30%, 흑인/아프리카계 미국인 14%, 아메리카 원주민 또는 알래스카 원주민 1%, 기타 15%(히스패닉 15%)</li>
+</ul>
+<p><span class="math inline">\(Y\)</span> = 성별,<br>
+<span class="math inline">\(X_1\)</span> = 키(height), <span class="math inline">\(X_2\)</span> = 어깨 너비(shoulder-breath)에 대한 2차항을 포함한 선형함수로 모형을 세웠을 때의 decision boundary</p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><a href="images/bodyM-decision-boundary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/bodyM-decision-boundary.png" class="img-fluid" width="650"></a></p>
+</div><div class="column" style="width:30%;">
+<p><a href="images/bodyM-surface.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/bodyM-surface.png" class="img-fluid" width="350"></a></p>
+<p><img src="images/male-2.png" height="190"> <img src="images/female-2.png" height="190"></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/bodyM-KDE-1.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="images/bodyM-KDE-2.png" class="img-fluid"></p>
+</div>
+</div>
+<!-- [3d surface](https://claude.ai/public/artifacts/bb394bef-ce25-4dde-8f18-357f142affb3) -->
 </section>
 <section id="basis-functions" class="level2">
 <h2 class="anchored" data-anchor-id="basis-functions">Basis Functions</h2>
@@ -2067,7 +2092,9 @@ Figure&nbsp;1: Logistic Regression Decision Boundary with Kernel Tricks
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>knn_gaussin <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">10</span>, weights<span class="op">=</span><span class="kw">lambda</span> x: gaussian_kernel(x, sigma<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><strong>Neural Network/Deep Learning</strong></p>
+</section>
+<section id="neural-networkdeep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="neural-networkdeep-learning">Neural Network/Deep Learning</h2>
 <ul>
 <li>앞서 Gaussian basis (radial basis) function (RBF)과 같은 방식으로 비선형 모형 변환이 유용하나, 계산량이 많고, 과적합을 방지하기 위한 조심스러운 정규화가 필요함.</li>
 <li>또는, Support Vector Machine (SVM)도 비슷하게 basis function을 이용해 비선형 모형을 만드나, 확률적 출력을 제공하지 않고 다중 클래스의 일반화가 어려움.</li>
@@ -2082,9 +2109,9 @@ Figure&nbsp;1: Logistic Regression Decision Boundary with Kernel Tricks
 </div>
 <div class="columns">
 <div class="column" style="line-height: 1.5em; font-size: .9em">
-<p><a href="images/neural-network1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/neural-network1.png" class="img-fluid"></a></p>
+<p><a href="images/neural-network1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/neural-network1.png" class="img-fluid"></a></p>
 </div><div class="column" style="line-height: 1.5em; font-size: .9em">
-<p><a href="images/neural-network2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/neural-network2.png" class="img-fluid"></a><br>
+<p><a href="images/neural-network2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/neural-network2.png" class="img-fluid"></a><br>
 FIGURE 10.2. <em>Activation functions. The piecewise-linear ReLU function is popular for its efficiency and computability. We have scaled it down by a factor of five for ease of comparison.</em></p>
 </div>
 </div>
@@ -2117,15 +2144,15 @@ FIGURE 10.2. <em>Activation functions. The piecewise-linear ReLU function is pop
 </ul>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="images/handwritten-digit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/handwritten-digit.png" class="img-fluid" width="600"></a></p>
+<p><a href="images/handwritten-digit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/handwritten-digit.png" class="img-fluid" width="600"></a></p>
 </div>
 </div>
 </div>
 <div class="columns">
 <div class="column" style="width:62%;">
-<p><a href="images/neural-network-multilayer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/neural-network-multilayer.png" class="img-fluid"></a></p>
+<p><a href="images/neural-network-multilayer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/neural-network-multilayer.png" class="img-fluid"></a></p>
 </div><div class="column" style="width:38%;">
-<p><a href="images/NN-layers-digits.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/NN-layers-digits.png" class="img-fluid"></a></p>
+<p><a href="images/NN-layers-digits.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/NN-layers-digits.png" class="img-fluid"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: <a href="https://www.3blue1brown.com/lessons/neural-networks">3blue1brown</a></p>
 </div>
@@ -2138,17 +2165,23 @@ FIGURE 10.2. <em>Activation functions. The piecewise-linear ReLU function is pop
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <figcaption>Figure 2. <em>The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases.</em></figcaption>
-<p><a href="images/cnn-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."><img src="images/cnn-1.png" class="img-fluid figure-img" width="400" alt="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."></a></p>
+<p><a href="images/cnn-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."><img src="images/cnn-1.png" class="img-fluid figure-img" width="400" alt="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."></a></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <figcaption>Figure 3. <em>Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes).</em></figcaption>
-<p><a href="images/cnn-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."><img src="images/cnn-2.png" class="img-fluid figure-img" alt="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."></a></p>
+<p><a href="images/cnn-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."><img src="images/cnn-2.png" class="img-fluid figure-img" alt="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."></a></p>
 </figure>
 </div>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: <a href="https://web.eecs.umich.edu/~honglak/icml09-ConvolutionalDeepBeliefNetworks.pdf">Convolutional Deep Belief Networks</a></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Google Neural Network Playground</figcaption>
+<p><a href="https://playground.tensorflow.org/"><img src="images/nn-playground.png" class="img-fluid figure-img" alt="Google Neural Network Playground"></a></p>
+</figure>
 </div>
 </section>
 <section id="multiclass-k-2" class="level2">
