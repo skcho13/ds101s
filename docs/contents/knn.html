@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-05-24">
+<meta name="dcterms.date" content="2025-05-26">
 
 <title>K-Nearest Neighbors –  Intro to Data Science</title>
 <style>
@@ -356,7 +356,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 24, 2025</p>
+      <p class="date">May 26, 2025</p>
     </div>
   </div>
   
@@ -368,7 +368,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="15">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -2190,7 +2190,7 @@ weighted avg       0.90      0.87      0.86        45
 </section>
 <section id="mnist-handwritten-digits-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="mnist-handwritten-digits-dataset">MNIST handwritten digits dataset</h3>
-<div id="cell-45" class="cell" data-execution_count="22">
+<div id="cell-45" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the MNIST dataset</span></span>
@@ -2208,7 +2208,7 @@ Testing data shape: (10000, 28, 28)
 Testing labels shape: (10000,)</code></pre>
 </div>
 </div>
-<div id="cell-46" class="cell" data-execution_count="12">
+<div id="cell-46" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">5</span>, <span class="dv">5</span>, figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, ax <span class="kw">in</span> <span class="bu">enumerate</span>(axes.flat):</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    ax.imshow(X_train[i], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -2219,12 +2219,12 @@ Testing labels shape: (10000,)</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="knn_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="knn_files/figure-html/cell-34-output-1.png" width="474" height="491" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-47" class="cell" data-execution_count="23">
+<div id="cell-47" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly select subsets</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2242,7 +2242,7 @@ Testing labels shape: (10000,)</code></pre>
 <span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>X_train_sub <span class="op">=</span> X_train_sub.reshape(n1, <span class="dv">28</span> <span class="op">*</span> <span class="dv">28</span>)</span>
 <span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>X_test_sub <span class="op">=</span> X_test_sub.reshape(n1, <span class="dv">28</span> <span class="op">*</span> <span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="37">
+<div id="cell-48" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2255,29 +2255,10 @@ Testing labels shape: (10000,)</code></pre>
 <span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predictive Accuracy:"</span>, accuracy_score(y_test_sub, y_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Predictive Accuracy: 0.9115
-
-Classification Report:
-               precision    recall  f1-score   support
-
-           0       0.92      0.98      0.95       193
-           1       0.82      1.00      0.90       230
-           2       0.99      0.84      0.91       195
-           3       0.91      0.91      0.91       206
-           4       0.93      0.89      0.91       192
-           5       0.89      0.86      0.88       173
-           6       0.92      0.95      0.94       200
-           7       0.91      0.90      0.90       196
-           8       0.97      0.86      0.91       199
-           9       0.90      0.90      0.90       216
-
-    accuracy                           0.91      2000
-   macro avg       0.92      0.91      0.91      2000
-weighted avg       0.92      0.91      0.91      2000
-</code></pre>
+<pre><code>Predictive Accuracy: 0.9115</code></pre>
 </div>
 </div>
-<div id="cell-49" class="cell">
+<div id="cell-49" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 오분류된 샘플만 시각화</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>mis_idx <span class="op">=</span> np.where(y_pred <span class="op">!=</span> y_test_sub)[<span class="dv">0</span>]</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2291,6 +2272,13 @@ weighted avg       0.92      0.91      0.91      2000
 <span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'off'</span>)</span>
 <span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="knn_files/figure-html/cell-37-output-1.png" width="491" height="491" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 
