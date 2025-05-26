@@ -482,14 +482,24 @@ Bayes classifier가 되는 즉, <span class="math inline">\(P(Y=orange|X) = P(Y=
 <li>하지만, 변수의 수가 증가하면 테스트 관측치 <span class="math inline">\(x_0\)</span>에서 가까운 관측치 수가 기하급수적으로 줄어</li>
 <li><span class="math inline">\(x_0\)</span>에 가장 가까운 K 관측치는 매우 멀리 떨어져 있어, 그 평균값들인 예측값의 정확도가 떨어질 수 있음; the curse of dimensionality</li>
 </ul>
-<p><a href="images/ESLII-fig2-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/ESLII-fig2-7.png" class="img-fluid" width="650"></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/ESLII-fig2-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="FIGURE 2.7. A simulation example, demonstrating the curse of dimensionality and its effect on MSE, bias and variance. The input features are uniformly distributed in [−1, 1]^p for p = 1,…, 10 The top left panel shows the target function (no noise) in \mathbb{R}: f(X) = e^{−8||X||^2}, and demonstrates the error that 1-nearest neighbor makes in estimating f(0). The training point is indicated by the blue tick mark. The top right panel illustrates why the radius of the 1-nearest neighborhood increases with dimension p. The lower left panel shows the average radius of the 1-nearest neighborhoods. The lower-right panel shows the MSE, squared bias and variance curves as a function of dimension p."><img src="images/ESLII-fig2-7.png" class="img-fluid figure-img" width="650" alt="FIGURE 2.7. A simulation example, demonstrating the curse of dimensionality and its effect on MSE, bias and variance. The input features are uniformly distributed in [−1, 1]^p for p = 1,…, 10 The top left panel shows the target function (no noise) in \mathbb{R}: f(X) = e^{−8||X||^2}, and demonstrates the error that 1-nearest neighbor makes in estimating f(0). The training point is indicated by the blue tick mark. The top right panel illustrates why the radius of the 1-nearest neighborhood increases with dimension p. The lower left panel shows the average radius of the 1-nearest neighborhoods. The lower-right panel shows the MSE, squared bias and variance curves as a function of dimension p."></a></p>
+<figcaption>FIGURE 2.7. <em>A simulation example, demonstrating the curse of dimensionality and its effect on MSE, bias and variance. The input features are uniformly distributed in <span class="math inline">\([−1, 1]^p\)</span> for <span class="math inline">\(p\)</span> = 1,…, 10 The top left panel shows the target function (no noise) in <span class="math inline">\(\mathbb{R}\)</span>: <span class="math inline">\(f(X) = e^{−8||X||^2}\)</span>, and demonstrates the error that 1-nearest neighbor makes in estimating <span class="math inline">\(f(0)\)</span>. The training point is indicated by the blue tick mark. The top right panel illustrates why the radius of the 1-nearest neighborhood increases with dimension <span class="math inline">\(p\)</span>. The lower left panel shows the average radius of the 1-nearest neighborhoods. The lower-right panel shows the MSE, squared bias and variance curves as a function of dimension <span class="math inline">\(p\)</span>.</em></figcaption>
+</figure>
+</div>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;25, <em>The Elements of Statistical Learning (2e)</em> by Hastie, T., Tibshirani, R., &amp; Friedman, J.</p>
 </div>
 <p>특히, Y와 관련이 적은 예측변수들이 많을 경우에는 더욱 그러함<br>
 아래 그림은 Y와 관련이 별로 없는 변수들이 늘어날 때, KNN과 선형회귀의 성능의 변화를 보여줌 (N = 50);<br>
-KNN의 성능이 빠르게 떨어짐<br>
-<a href="images/knn-dimensionality.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="images/knn-dimensionality.png" class="img-fluid" width="700"></a></p>
+KNN의 성능이 빠르게 떨어짐</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/knn-dimensionality.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="FIGURE 3.20. Test MSE for linear regression (black dashed lines) and KNN(green curves) as the number of variables p increases. The true function is non-linear in the first variable, as in the lower panel in Figure 3.19, and does not depend on the additional variables. The performance of linear regression deteriorates slowly in the presence of these additional noise variables, whereas KNN’s performance degrades much more quickly as p increases."><img src="images/knn-dimensionality.png" class="img-fluid figure-img" width="700" alt="FIGURE 3.20. Test MSE for linear regression (black dashed lines) and KNN(green curves) as the number of variables p increases. The true function is non-linear in the first variable, as in the lower panel in Figure 3.19, and does not depend on the additional variables. The performance of linear regression deteriorates slowly in the presence of these additional noise variables, whereas KNN’s performance degrades much more quickly as p increases."></a></p>
+<figcaption>FIGURE 3.20. <em>Test MSE for linear regression (black dashed lines) and KNN(green curves) as the number of variables p increases. The true function is non-linear in the first variable, as in the lower panel in Figure 3.19, and does not depend on the additional variables. The performance of linear regression deteriorates slowly in the presence of these additional noise variables, whereas KNN’s performance degrades much more quickly as p increases.</em></figcaption>
+</figure>
+</div>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;115, <em>An Introduction to Statistical Learning</em> by James, G., Witten, D., Hastie, T., &amp; Tibshirani, R.</p>
 </div>
