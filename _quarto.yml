@@ -34,22 +34,24 @@ website:
   reader-mode: true  
   navbar: 
     pinned: false
-    background: "#3d3d3d"
+    # background: "#3d3d3d"
     search: true
 
-    left:
-      # - href: index.qmd
-      #   text: Welcome
+    right:
+      - href: index.qmd
+        text: Home
       - text: Introduction
         menu:
           - href: contents/intro.qmd
             text: Overview
           - href: contents/two-cultures.qmd
             text: Two Cultures
-          - href: contents/setup.qmd
-            text: Python Setup
+          - href: contents/causal-inference.qmd
+            text: Causal Inference
       - text: Python Basics
         menu:
+          - href: contents/setup.qmd
+            text: Python Setup
           - href: contents/pandas.ipynb
             text: NumPy & pandas
           - href: contents/inspection.ipynb
@@ -107,8 +109,8 @@ website:
     contents:
       - href: index.qmd
         text: "Welcome"
-      - href: contents/notice.qmd
-        text: "Notice"
+      # - href: contents/notice.qmd
+      #   text: "Notice"
       # - href: contents/pollr.qmd
       #   text: "설문"
       - text: ---
@@ -118,11 +120,13 @@ website:
             text: Overview
           - href: contents/two-cultures.qmd
             text: Two Cultures
-          - href: contents/setup.qmd
-            text: Python Setup
+          - href: contents/causal-inference.qmd
+            text: Causal Inference
       - text: ---
       - section: Python Basics
         contents:
+          - href: contents/setup.qmd
+            text: Python Setup
           - href: contents/pandas.ipynb
             text: NumPy & pandas
           - href: contents/inspection.ipynb
@@ -195,9 +199,9 @@ format:
     code-overflow: wrap
     code-summary: "Show the code"
     theme: 
-      light: [sandstone, theme-light.scss]
+      light: [cosmo, theme-light.scss]
       dark: [darkly, theme-dark.scss]
-    fontsize: 1.1em
+    fontsize: 1.0rem
     linestretch: 1.8
     code-copy: true
     highlight-style: gruvbox
