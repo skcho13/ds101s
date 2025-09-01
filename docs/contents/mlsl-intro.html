@@ -681,7 +681,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <li>예를 들어, 다이아몬드의 무게로 가격을 예측한다면: 1 carat 다이아몬드의 true price?</li>
 <li>또는, 목소리(특정 frequency)로 성별을 예측한다면; 분류 문제의 경우 뒤에서 다룸</li>
 </ul>
-<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" class="img-fluid"></a></p>
@@ -726,7 +726,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <li><span class="math inline">\(\hat f(1.5, Fair, I1) = E(Y|carat=1.5,~ cut=Fair,~ clarity=I1)\)</span></li>
 </ul></li>
 </ul>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="23" data-layout="[1.3, 1]">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout="[1.3, 1]" data-execution_count="23">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 56.5%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-3-output-1.png" class="img-fluid" width="580"></p>
@@ -750,7 +750,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 </div>
 </div>
 <p>만약, 부리의 길이로 부리의 깊이를 예측한는 모형에 대해 <span class="math inline">\(\hat f\)</span>를 구한다면,</p>
-<div id="cell-13" class="cell quarto-layout-panel" data-execution_count="28" data-layout="[[1, 1, 1]]">
+<div id="cell-13" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="28">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-8-output-1.png" class="img-fluid" width="460"></p>
@@ -767,7 +767,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <li>Likelihood가 최대가 되도록 파라미터(기울기와 절편)를 구한 것임; maximum likelihood estimation</li>
 <li>Squared error를 최소화하는 것과 동일함.</li>
 </ul>
-<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="29" data-layout="[[1, 1, 1]]">
+<div id="cell-15" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="29">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-9-output-1.png" class="img-fluid" width="460"></p>
@@ -893,7 +893,7 @@ Expected Loss 분해
 <li>Linear/Quadratic discriminant analysis</li>
 </ul></li>
 </ul>
-<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 1]]">
+<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="30">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-10-output-1.png" class="img-fluid" width="565"></p>
@@ -905,14 +905,14 @@ Expected Loss 분해
 </div>
 <p>한 개의 예측변수로 예측한다면,<br>
 가령 <span class="math inline">\(X\)</span>: bill_length_mm인 경우, 즉 펭귄의 부리 길이로만 두 종을 분류한다면,</p>
-<div id="cell-22" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[5, 1]">
+<div id="cell-22" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-11-output-1.png" class="img-fluid" width="891"></p>
 </div>
 </div>
 </div>
-<div id="cell-23" class="cell quarto-layout-panel" data-execution_count="32" data-layout="[5, 1]">
+<div id="cell-23" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="32">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid" width="998"></p>
@@ -920,7 +920,7 @@ Expected Loss 분해
 </div>
 </div>
 <p>Quadratic discriminant analysis(QDA): 각각을 Gaussian으로 가정하고, 평균과 표준편차를 추정</p>
-<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="35" data-layout="[5, 1]">
+<div id="cell-27" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="35">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-15-output-1.png" class="img-fluid" width="891"></p>
@@ -1087,7 +1087,7 @@ Gentoo         30       0</code></pre>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    p.add(so.Line(), so.PolyFit(i)).label(title<span class="op">=</span><span class="ss">f"M = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-39" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[1, 1, 1]">
+<div id="cell-39" class="cell quarto-layout-panel" data-layout="[1, 1, 1]" data-execution_count="6">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-22-output-1.png" class="img-fluid" width="630"></p>
@@ -1246,7 +1246,7 @@ Average: 16.32656735042881</code></pre>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-split Shuffle &amp; Split Cross-validation </span><span class="ch">\n</span><span class="st">with 20% test sets over 10 degrees of Polynomial"</span>)</span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[1, 1]">
+<div id="cell-44" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="12">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-25-output-1.png" class="img-fluid" width="436"></p>
@@ -1292,7 +1292,7 @@ Average: 16.32656735042881</code></pre>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-45" class="cell quarto-layout-panel" data-execution_count="13" data-layout="[1, 1]">
+<div id="cell-45" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="13">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-26-output-1.png" class="img-fluid" width="425"></p>
@@ -1317,7 +1317,7 @@ Average: 16.32656735042881</code></pre>
 <p>관찰된 데이터에 가장 적합한 모형을 찾는 것이 아니고, 일반화된 모형을 찾는 것이 목표임.<br>
 아래 그림에서 관찰된 데이터셋에 대한 예측 오류인 “test error”와 “true error”의 관계를 보여줌.<br>
 예를 들어, 아래의 3가지 형태의 true relationship에 대해,</p>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
+<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/bias-variance-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="images/bias-variance-1.png" class="img-fluid" width="450"></a></p>
@@ -3195,7 +3195,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>params_boot.T.hist(bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">.7</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>), layout<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-70" class="cell quarto-layout-panel" data-execution_count="63" data-layout="[3, 1]">
+<div id="cell-70" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="63">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-43-output-1.png" class="img-fluid" width="689"></p>
