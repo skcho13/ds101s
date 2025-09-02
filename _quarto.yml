@@ -193,6 +193,7 @@ website:
 format:
   html:
     respect-user-color-scheme: true
+    page-layout: full
     toc: true
     toc-depth: 4
     toc-location: right
