@@ -304,7 +304,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -317,6 +318,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -656,7 +665,7 @@ window.Quarto = {
 <li><span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>; density function <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\)</span></li>
 <li><span class="math inline">\(X \sim N(0, 1)\)</span>; <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}\)</span>, (standard normal distribution)</li>
 </ul>
-<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
+<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -774,7 +783,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div id="cell-15" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="7" data-layout="[[2, 4, 1]]">
+<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="7">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -799,7 +808,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <li>무수히 많은 <span class="math inline">\(\beta_0, \beta_1\)</span>의 값들 중 위 데이터에 가장 가까운 값을 찾음</li>
 <li>그 예로, 임의로 250개의 선형 모델을 그려보면,</li>
 </ul>
-<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="26" data-layout="[[4, 2, 1]]">
+<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[4, 2, 1]]" data-execution_count="26">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 57.1%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="605"></p>
@@ -833,7 +842,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 [30 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
+<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -878,7 +887,7 @@ Model evaluation
 </div>
 </div>
 <p>이 중 제일 좋은 모델(dist가 최소) 10개의 모델을 그리면,</p>
-<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="32" data-layout="[[3, 1]]">
+<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="32">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" class="img-fluid" width="591"></p>
@@ -889,7 +898,7 @@ Model evaluation
 <ul>
 <li>오렌지 색은 위에서 구한 10 best models</li>
 </ul>
-<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="33" data-layout="[[3, 1]]">
+<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="33">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" class="img-fluid" width="599"></p>
@@ -909,7 +918,7 @@ Model evaluation
 <pre><code>array([4.22, 2.05])</code></pre>
 </div>
 </div>
-<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="37" data-layout="[[4, 3]]">
+<div id="cell-38" class="cell quarto-layout-panel" data-layout="[[4, 3]]" data-execution_count="37">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 57.1%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-23-output-1.png" class="img-fluid" width="605"></p>

@@ -323,7 +323,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -336,6 +337,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -654,14 +663,14 @@ window.Quarto = {
 </ul>
 <section id="associations과-그-strengths-비교" class="level3">
 <h3 class="anchored" data-anchor-id="associations과-그-strengths-비교">Associations과 그 strengths 비교</h3>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="66">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="66" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-5-output-1.png" class="img-fluid" width="670"></p>
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="116">
+<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="116" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-7-output-1.png" class="img-fluid" width="667"></p>
@@ -706,7 +715,7 @@ Important
 </div>
 </div>
 </div>
-<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1.5, 1.5, 0.5]]" data-execution_count="10">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1.5, 1.5, 0.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-12-output-1.png" class="img-fluid" width="490"></p>
@@ -781,7 +790,7 @@ Important
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"salary ~ pubs"</span>, data<span class="op">=</span>acad0).fit()</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>mod3 <span class="op">=</span> ols(<span class="st">"salary ~ time + pubs"</span>, data<span class="op">=</span>acad0).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-25" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
+<div id="cell-25" class="cell quarto-layout-panel" data-execution_count="30" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>Intercept   43658.59
@@ -873,7 +882,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 </ul></li>
 <li>semi-partial correlation 조금 다른 의미</li>
 </ul>
-<div class="quarto-layout-panel" data-layout="[50, -2, 48]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[50, -2, 48]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table">
@@ -963,7 +972,7 @@ Important
 <hr>
 <p><strong>Saratoga Houses dataset</strong></p>
 <p><span class="math inline">\(\widehat{price} = 36668.9 + 125.4 \cdot livingArea - 14196.8 \cdot bedrooms\)</span></p>
-<div id="cell-30" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="17">
+<div id="cell-30" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-18-output-1.png" class="img-fluid" width="630"></p>
@@ -974,7 +983,7 @@ Important
 </div>
 </div>
 <p>비슷한 넓이의 집들로 나누어 보면,</p>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="87">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="87" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-19-output-1.png" class="img-fluid" width="668"></p>

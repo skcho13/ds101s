@@ -268,7 +268,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -281,6 +282,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -506,7 +515,7 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p><em>Data is a window, not a mirror to reality!</em></p>
 </blockquote>
-<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><a href="https://www.cbsnews.com/news/alcohol-causes-20000-cancer-deaths-in-the-us-annually/"><img src="images/alcohol-news-1.png" class="img-fluid"></a> <a href="https://www.sciencedaily.com/releases/2008/02/080212174615.htm"><img src="images/alcohol-news-2.png" class="img-fluid"></a></p>
