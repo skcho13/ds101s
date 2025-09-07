@@ -42,9 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-6ad4350ef06bf768e30b548e2f4e3b10.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0378094765b87870cce178e3060a46bd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-eb2450afad53f56cd840ca2478bf5434.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-0378094765b87870cce178e3060a46bd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-2784291acb19446010c4162ba6083e35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
@@ -479,6 +479,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#confounding의-예시들" id="toc-confounding의-예시들" class="nav-link" data-scroll-target="#confounding의-예시들">Confounding의 예시들</a></li>
   </ul></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">Selection Bias</a></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a></li>
   </ul></li>
   <li><a href="#humility" id="toc-humility" class="nav-link" data-scroll-target="#humility">Humility</a>
   <ul>
@@ -515,7 +517,7 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p><em>Data is a window, not a mirror to reality!</em></p>
 </blockquote>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><a href="https://www.cbsnews.com/news/alcohol-causes-20000-cancer-deaths-in-the-us-annually/"><img src="images/alcohol-news-1.png" class="img-fluid"></a> <a href="https://www.sciencedaily.com/releases/2008/02/080212174615.htm"><img src="images/alcohol-news-2.png" class="img-fluid"></a></p>
@@ -791,6 +793,82 @@ color in guinea pigs. D = developmental factors (after conception, before birth)
 <li>보이는 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 있는 새로운 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 없는 세계(보이는 것과 모순)</li>
 <li>이를 위해서는 “이론” 또는 “자연의 법칙”이라고 볼 수 있는 근본적인 인과 과정의 모델이 필요</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Treatment Effect">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Treatment Effect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Individual Treatment Effect: <span class="math inline">\(\tau_i \equiv Y_i(1) - Y_i(0)\)</span>: <em>the fundamental problem of causal inference</em></li>
+<li>Average Treatment Effect: <span class="math inline">\(\tau \equiv E[Y_i(1) - Y_i(0)] = E[Y_i(1)] - E[Y_i(0)]\)</span>: 여러 관측치(데이터)를 이용해 (노이즈를 제거하면서) 최적의 인과효과를 추정</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:10%;">
+<p><br></p>
+</div><div class="column" style="line-height: 1.0em; font-size: .9em">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(T\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(1)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(0)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(1) - Y(0)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -984,8 +1062,65 @@ Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
 Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 
 ![](images/causal_diagram_grades.png){width=500} -->
-<hr>
 </section>
+</section>
+<section id="selection-bias" class="level2">
+<h2 class="anchored" data-anchor-id="selection-bias">Selection Bias</h2>
+<p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding); internal validity(내적 타당도)<br>
+일반화할 수 있는 대상의 범위가 제한됨; external validity(외적 타당도)</p>
+<ul>
+<li>노인에 관한 데이터: 누가 사망했는가?
+<ul>
+<li>Survival bias: 일종의 collider bias</li>
+<li>예를 들어, 비만이 사망율에 미치는 효과에 대한 과소추정<br>
+<img src="images/collider-life-expectancy.png" class="img-fluid" width="320"></li>
+</ul></li>
+<li>의료 분야에서 발견되는 패러독스
+<ul>
+<li>비만은 당뇨 환자에게 이익이 되는가?</li>
+</ul></li>
+<li>과거 기록을 이용?; 수녀들의 자서전 연구
+<ul>
+<li>추적조사/종단연구(longitudinal study)</li>
+</ul></li>
+<li>회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화</li>
+<li>누가 참여(안)했는가? 어떤 방식으로 참여했는가?
+<ul>
+<li>관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?</li>
+<li>어떤 사람들이 설문/실험에 참여했는가? 혹은 어떤 문항에 응답했는가?/하지 않았는가?</li>
+</ul></li>
+<li>어떤 유저들의 데이터인가? 가령, SNS의 기록은 누가 남기는가?</li>
+<li>코호트/특정세대의 특성: 그들만의 특성인가?</li>
+</ul>
+<div style="line-height: 1.5em; font-size: .9em">
+<blockquote class="blockquote">
+<p><em>Abraham Wald: “Where are the missing holes?”</em></p>
+<p><img src="images/missing-holes.png" class="img-fluid" width="400"></p>
+<p><a href="https://www.warhistoryonline.com/war-articles/abraham-wald.html">Source: War History Online</a></p>
+</blockquote>
+</div>
+</section>
+<section id="experiments" class="level2">
+<h2 class="anchored" data-anchor-id="experiments">Experiments</h2>
+<ul>
+<li>개입없이 수동적으로 얻은 관찰 데이터의 분석에서는 항상 confounding이 존재할 기능성이 있음</li>
+<li>결정적인 인과관계를 파악하기 위해, 전통적으로 “통계학”의 시각에서 인과문제를 해결하기 위해 <strong>RCT (randomized controlled trial)</strong>라고 부르는 소위 gold standard한 실험 연구를 통해서 해결하고자 했음</li>
+<li>개념적으로는 “물리적 통제”라고 볼 수 있음; vs.&nbsp;“통계적 통제”</li>
+<li>두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당): 모든 면에서 동질한 성향을 가짐. 예를 들어, 두 집단의 연령이 평균적으로 동일해짐.</li>
+<li>분야마다 효과를 제대로 검증하기 위한 많은 실험 설계들이 발전되었음; 연구방법론</li>
+</ul>
+<p><img src="images/RCT2.png" class="img-fluid" width="400"> <img src="images/experiment-validity.png" class="img-fluid" width="400"></p>
+<p>앞서 든 예에서, 걷기가 사망율에 미치는 효과를 검증하려면, 가령 600명을 300명씩 두 그룹으로 무작위로 나눈 후 한쪽은 1마일 이하를 걷도록 하고 나머지는 2마일 이상을 걷게 한 후 12년 후 사망율을 확인해야 함.</p>
+<p>하지만, 실험 연구는 자체로 많은 한계를 지님</p>
+<ul>
+<li>많은 경우 실험이 불가능하거나 완전한 통제가 어려움</li>
+<li>실험에서 처치한 구체적인 상황에서만 유효하고; 어느 지형을 어느 속도로 누구와 어떻게 걸었는지에 대한 실험 통제하에서</li>
+<li>따라서 그 효과 또한 일반화되어 표현하기 어려움</li>
+<li>반대로, 덜 통제된 실험의 경우 어떤 요인의 효과인지 불분명</li>
+<li>완전한 통제를 할수록 더 인위적인 상황이 연출됨; 자연스러운/현실적인 상황에서 적용된다는 보장이 없음</li>
+<li>실험 참여자는 어떻게 왜 참여한 것인가?</li>
+</ul>
+<hr>
 </section>
 </section>
 <section id="humility" class="level1">

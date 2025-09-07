@@ -26,14 +26,16 @@ $sidebar-font-size-section: 1.0rem !default;
 // Headings
 $headings-font-family: 'Figtree', sans-serif;
 $headings-font-style: italic;
+$headings-font-weight: 800;
+
+$toc-font-size: 1rem;
 
 // Fonts
 $font-family-sans-serif: 'Mulish', sans-serif; // 'Oxygen', sans-serif;
 $font-family-monospace: 'Source Code Pro', monospace; //'Red Hat Mono', monospace; 
 
-
 // Code blocks
-$code-block-font-size: .9rem;
+$code-block-font-size: 1rem;
 
 // $code-block-bg: #272727; 
 $code-block-bg-alpha: -.7;  // This is not used if an explicit background color is set. 
