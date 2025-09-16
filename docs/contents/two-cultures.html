@@ -581,7 +581,7 @@ Engineering</li>
 </li>
 <li>변수들 간의 <strong>관계성(relationships)</strong>을 파악하기 위해, 데이터 모델링은 현상에 대한 <strong>모델을 사전 설정(assumptions)</strong>하고,
 <ul>
-<li>예를 들어, 선형관계를 가정: <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + e\)</span></li>
+<li>예를 들어, 선형관계를 가정: <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\)</span></li>
 </ul></li>
 <li>변수들의 값이 어떻게 <strong>발생하는지(generated)</strong>에 대한 <strong>가정</strong>을 세우고,
 <ul>
@@ -590,13 +590,79 @@ Engineering</li>
 <li>데이터와 <strong>가장 적합한(best fitted)</strong> 특정 모델을 선택 (즉, <strong>파라미터 <span class="math inline">\(\beta s\)</span></strong>를 추정)
 <ul>
 <li>즉, 위의 선형 함수가 <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>의 1) 관계를 나타내고, 2) 예측을 위해 사용됨</li>
-<li>노이즈(noise)로부터 시그널(signal)을 분리: “true relationships”</li>
+<li><span class="math inline">\(\epsilon\)</span>은 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 본질적 관계와는 상관없는 일종의 노이즈(noise); 정확히는 <span class="math inline">\(X\)</span>로는 설명되지 않는 <span class="math inline">\(Y\)</span>의 부분</li>
+<li>노이즈(noise)로부터 시그널(signal)을 분리: “true relationships”을 찾고자 함.</li>
 </ul></li>
-<li>그 파라미터의 <strong>불확실성(uncertainty)</strong>을 추정
+<li>이 파라미터 <span class="math inline">\(\beta s\)</span>의 <strong>불확실성(uncertainty)</strong>을 추정
 <ul>
-<li>모집단에 대한 추정이므로 불확실성이 존재</li>
+<li>모집단에 대한 추정, 즉 진정한 값을 추정하는 것이므로 불확실성이 존재</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="우울증 예측을 위한 선형모델의 예">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+우울증 예측을 위한 선형모델의 예
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\text{y(Depression)} = f(x) =\ &amp; \beta_0
++ \beta_1 \cdot \text{Age}
++ \beta_2 \cdot \text{Sex}
++ \beta_3 \cdot \text{FamilyHistory}
++ \beta_4 \cdot \text{ChronicDisease} \\
+&amp; + \beta_5 \cdot \text{StressLevel}
++ \beta_6 \cdot \text{SleepQuality}
++ \beta_7 \cdot \text{PhysicalActivity} \\
+&amp; + \beta_8 \cdot \text{SocialSupport}
++ \beta_9 \cdot \text{DigitalBehavior}
++ \epsilon
+\end{align*}
+\]</span></p>
+<p><strong><em>예측요인들</em></strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 51%">
+<col style="width: 32%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>인구학적 요인</strong></td>
+<td>Age, Sex</td>
+<td>나이, 성별</td>
+</tr>
+<tr class="even">
+<td><strong>건강·임상 요인</strong></td>
+<td>FamilyHistory, ChronicDisease</td>
+<td>가족력, 만성질환, 과거 정신질환 이력</td>
+</tr>
+<tr class="odd">
+<td><strong>심리·행동 요인</strong></td>
+<td>StressLevel, SleepQuality, PhysicalActivity</td>
+<td>스트레스 수준, 수면의 질, 운동·활동량</td>
+</tr>
+<tr class="even">
+<td><strong>사회적 요인</strong></td>
+<td>SocialSupport</td>
+<td>사회적 지지(가족·친구·공동체)</td>
+</tr>
+<tr class="odd">
+<td><strong>디지털/행동 데이터</strong></td>
+<td>DigitalBehavior</td>
+<td>스마트폰 사용 패턴, SNS 언어, 이동성 데이터</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong><em>실제로는 변수들 간의 복잡한 관계를 규명하고자 함. 가령,</em></strong></p>
+<p><img src="images/sem-depression.png" class="img-fluid" width="700"></p>
+</div>
+</div>
 <p>예를 들어,</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -695,7 +761,7 @@ Noise/residual의 분포: <span class="math inline">\(\epsilon_i \sim N(0, \sigm
 <p><em>“If all a man has is a hammer, then every problem looks like a nail.”</em></p>
 </blockquote>
 <div class="callout callout-style-default callout-note callout-titled" title="Bayesian Models">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -704,7 +770,7 @@ Bayesian Models
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>불확실성에 대한 가정에 대한 다른 접근: 관측값이 늘어남에 따라 사전 확률(prior probability)을 업데이트(사후 확률, posterior probability)하여 사건 발생에 대한 믿음(확률)을 추정하는 방식</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/toss-globe.jpg" class="img-fluid" width="250"></p>
