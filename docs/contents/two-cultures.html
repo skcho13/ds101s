@@ -574,10 +574,45 @@ Engineering</li>
 </ul>
 <section id="parameter-estimation-uncertainty" class="level3">
 <h3 class="anchored" data-anchor-id="parameter-estimation-uncertainty">Parameter Estimation &amp; Uncertainty</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="현상을 이해하고자하는 과학적 접근">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+현상을 이해하고자하는 과학적 접근
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>가령, “생물학적 성별에 따른 키(혹은 임금)의 차이는 본질적으로 얼마인가?”라는 질문은 어떤 의미를 가지는가?<br>
+이 질문에 답하기 위한 과학적 접근은 무엇인가?</p>
+<ol type="1">
+<li>남성, 여성은 무엇을 뜻하는가? 이를 정의해야 함. → 모집단의 프레임워크로 접근</li>
+<li>본질적 차이라는 것이 무엇을 의미하며 어떻게 알아낼 수 있는가?</li>
+</ol>
+<ul>
+<li>남녀의 키를 결정하는 무수한 요인들로부터 현실에서 남녀의 키는 다양한 값으로 분포됨.<br>
+</li>
+<li>그럼에도 불구하고, 생물학적 성만의 “고유한 효과”가 존재할 것이라는 가정하에 (본질적 차이); <span class="math inline">\(y = \beta_0 + \beta_1\cdot sex + \epsilon\)</span><br>
+</li>
+<li>생물학적 성만이 “고유하게” 발생시키는 키의 차이를 밝히고자 함.<br>
+<img src="images/population-sex.png" class="img-fluid" width="350"><br>
+Central Limit Theorem과 같은 이론을 근거로 생물학적 성 이외의 수많은 요인들의 효과는 노이즈(noise)로 이해하고 “정규분포”처럼 나타낼 것이라는 가정하에,<br>
+안전하게, 생물학적 성만의 고유한 효과를 추출할 수 있음; “노이즈로부터 시그널을 분리”<br>
+위 모델에서 <span class="math inline">\(\epsilon\)</span>에 대한 모델링: <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span>로 가정</li>
+</ul>
+<ol start="3" type="1">
+<li>이 차이를 알아내기 위해 실제로 어떻게 측정할 것인가?</li>
+</ol>
+<ul>
+<li>가정된 전체(모집단)를 관찰할 수 없기 때문에 특정 표본을 관찰하여 전체에 대한 추정치를 얻고자 함.</li>
+<li>표본에 따라 다른 값이 얻어질 것이기 때문에, 그 값들의 (이론적) 분포를 “표본 분포”라고 하고, 이 분포를 통해 현재 표본으로부터 모집단 추정치에 대한 불확실성을 추정 <img src="images/sampling-distribution.png" class="img-fluid" width="700"><br>
+</li>
+</ul>
+</div>
+</div>
 <ul>
 <li>현재 관찰된 데이터는 어떤 <strong>모집단(population)</strong>으로부터 (독립적으로) 발생된 <strong>표본(sample)</strong>이라고 가정<br>
-가령, 생물학적 성별에 따른 키의 차이는 본질적으로 얼마인가?<br>
-<img src="images/population-sex.png" class="img-fluid" width="350"><br>
 </li>
 <li>변수들 간의 <strong>관계성(relationships)</strong>을 파악하기 위해, 데이터 모델링은 현상에 대한 <strong>모델을 사전 설정(assumptions)</strong>하고,
 <ul>
@@ -761,7 +796,7 @@ Noise/residual의 분포: <span class="math inline">\(\epsilon_i \sim N(0, \sigm
 <p><em>“If all a man has is a hammer, then every problem looks like a nail.”</em></p>
 </blockquote>
 <div class="callout callout-style-default callout-note callout-titled" title="Bayesian Models">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -770,7 +805,7 @@ Bayesian Models
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>불확실성에 대한 가정에 대한 다른 접근: 관측값이 늘어남에 따라 사전 확률(prior probability)을 업데이트(사후 확률, posterior probability)하여 사건 발생에 대한 믿음(확률)을 추정하는 방식</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/toss-globe.jpg" class="img-fluid" width="250"></p>
