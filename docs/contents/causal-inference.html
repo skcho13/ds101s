@@ -465,26 +465,6 @@ window.Quarto = {
   <ul>
   <li><a href="#인과-추론을-향한-고군분투" id="toc-인과-추론을-향한-고군분투" class="nav-link" data-scroll-target="#인과-추론을-향한-고군분투">인과 추론을 향한 고군분투</a></li>
   <li><a href="#간략한-역사적-배경" id="toc-간략한-역사적-배경" class="nav-link" data-scroll-target="#간략한-역사적-배경">간략한 역사적 배경</a></li>
-  <li><a href="#causal-revolution" id="toc-causal-revolution" class="nav-link" data-scroll-target="#causal-revolution">Causal Revolution</a>
-  <ul class="collapse">
-  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">Association</a></li>
-  <li><a href="#intervention" id="toc-intervention" class="nav-link" data-scroll-target="#intervention">Intervention</a></li>
-  <li><a href="#counterfactuals" id="toc-counterfactuals" class="nav-link" data-scroll-target="#counterfactuals">Counterfactuals</a></li>
-  </ul></li>
-  <li><a href="#structural-causal-modelscm" id="toc-structural-causal-modelscm" class="nav-link" data-scroll-target="#structural-causal-modelscm">Structural Causal Model(SCM)</a>
-  <ul class="collapse">
-  <li><a href="#directed-acyclic-graph-dag-인과-관계-다이어그램" id="toc-directed-acyclic-graph-dag-인과-관계-다이어그램" class="nav-link" data-scroll-target="#directed-acyclic-graph-dag-인과-관계-다이어그램">Directed acyclic graph (DAG): 인과 관계 다이어그램</a></li>
-  </ul></li>
-  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a>
-  <ul class="collapse">
-  <li><a href="#confounding의-예시들" id="toc-confounding의-예시들" class="nav-link" data-scroll-target="#confounding의-예시들">Confounding의 예시들</a></li>
-  </ul></li>
-  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">Selection Bias</a></li>
-  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a></li>
-  </ul></li>
-  <li><a href="#humility" id="toc-humility" class="nav-link" data-scroll-target="#humility">Humility</a>
-  <ul>
-  <li><a href="#quotes-from-einstein" id="toc-quotes-from-einstein" class="nav-link" data-scroll-target="#quotes-from-einstein">Quotes from Einstein</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -517,7 +497,7 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p><em>Data is a window, not a mirror to reality!</em></p>
 </blockquote>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><a href="https://www.cbsnews.com/news/alcohol-causes-20000-cancer-deaths-in-the-us-annually/"><img src="images/alcohol-news-1.png" class="img-fluid"></a> <a href="https://www.sciencedaily.com/releases/2008/02/080212174615.htm"><img src="images/alcohol-news-2.png" class="img-fluid"></a></p>
@@ -727,16 +707,61 @@ from Wikipedia</figcaption>
 <p><strong>Path Analysis</strong></p>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p><a href="images/path4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/path4.png" class="img-fluid"></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Path Model</figcaption>
+<p><a href="images/path4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Path Model"><img src="images/path4.png" class="img-fluid figure-img" alt="Path Model"></a></p>
+</figure>
+</div>
 </div><div class="column" style="width:60%;">
-<p><a href="images/reward_system.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/reward_system.png" class="img-fluid"></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Latent Variable Path Model</figcaption>
+<p><a href="images/reward_system.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Latent Variable Path Model"><img src="images/reward_system.png" class="img-fluid figure-img" alt="Latent Variable Path Model"></a></p>
+</figure>
+</div>
+</div><div class="callout callout-style-default callout-note callout-titled" title="Latent variables">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Latent variables
 </div>
 </div>
-<!-- 
+<div class="callout-body-container callout-body">
+<p>보통, 추상적인 개념적 단위인 구성개념(construct)를 수량화하기 위해 사용되는 변수를 잠재변수(latent variable)라고 함.<br>
+관측된 변수가 아닌 이 잠재변수들로 모델링; <span class="math inline">\(Y = f(X)\)</span></p>
+<p>여러 개의 선형 모형이 나타남으로 동시에 여러 개의 <span class="math inline">\(Y = f(X)\)</span> 형태의 방정식을 얻게 되고,<br>
+이를 (잠재변수) 구조방정식모형((latent variable) structural equation model, SEM)이라고 함. (또는 latent variable path model)</p>
+<p>잠재변수의 예로 <strong>독해력</strong>이라는 구성개념을 수량화하고자 하는 경우,<br>
+다음과 같이 독해력을 3가지 문항으로 측정하는 예를 생각해볼 수 있음.</p>
+<ul>
+<li>테스트 1: 참가자가 글을 읽고, 해당 글을 가장 잘 설명하는 그림을 4개의 선택지 중에서 선택.</li>
+<li>테스트 2: 참가자가 지시문을 읽고, 그 지시에 따라 행동을 실행 (예: “일어서서 테이블 주위를 걷고, 다시 앉으세요”).</li>
+<li>테스트 3: 참가자가 단어나 문장이 빠진 글을 읽고, 글의 의미를 바탕으로 빠진 단어나 문장을 채움.</li>
+</ul>
+<p>독해력과는 별개로 추가로 측정되는 능력이 다음과 같이 존재할 수 있음; <strong>unique variance</strong></p>
+<ul>
+<li>테스트 1: 읽은 내용을 시각적 이미지로 변환하는 능력.</li>
+<li>테스트 2: 읽은 내용을 행동으로 옮기는 능력.</li>
+<li>테스트 3: 자신의 지식에서 가장 적합한 단어나 문장을 선택해 글에 삽입하는 능력.</li>
+</ul>
+<p>아래 그림에서 세 가지 독해력 검사에서 개인의 점수(test 1, test 2, test 3)는 <strong>“진정한 독해력”(구성개념)</strong>, 오차(error), <strong>각 검사의 고유한 특성</strong>에 의해 영향을 받는다는 가정을 나타냄.</p>
+<p><img src="images/fig15-8.png" class="img-fluid" width="400"></p>
+<ul>
+<li>통계적으로 잠재 변수를 요인(factor)이라고도 부르며, 통계의 요인 분석(factor analysis)을 통해 얻어질 수 있음.</li>
+<li>이는 실제 측정된 변수들이 공통적으로 공유할 것으로 가정되는 요인을 추출하는 프로세스라고 볼 수 있으나,<br>
+</li>
+<li>구성개념을 수치화하는 이런 방식에 대한 반론이 있으며, “구성 개념을 수량화”하기 위한 다른 대안들이 제안되고 있음
+<ul>
+<li>가령, 사회경제적 지위(socioeconomic status, SES)와 같은 구성개념의 통계적 수량화에 의문이 제기되어 왔음.</li>
+</ul></li>
+</ul>
+</div>
+</div><!-- 
 Sewall Wright’s first path diagram, illustrating the factors leading to coat
-color in guinea pigs. D = developmental factors (after conception, before birth), E = environmental factors (after birth), G = genetic factors from each individual parent, H = combined hereditary factors from both parents, O, O′ = offspring. The objective of analysis was to estimate the strength of the effects of D, E, H (written as d, e, h in the diagram). (Source: Sewall Wright, Proceedings of the National Academy of Sciences [1920], 320–332.) -->
-</section>
-<section id="causal-revolution" class="level2">
+color in guinea pigs. D = developmental factors (after conception, before birth), E = environmental factors (after birth), G = genetic factors from each individual parent, H = combined hereditary factors from both parents, O, O′ = offspring. The objective of analysis was to estimate the strength of the effects of D, E, H (written as d, e, h in the diagram). (Source: Sewall Wright, Proceedings of the National Academy of Sciences [1920], 320–332.) --><section id="causal-revolution" class="level2">
 <h2 class="anchored" data-anchor-id="causal-revolution">Causal Revolution</h2>
 <p>Source: <strong><em>The Book of Why: The New Science of Cause and Effect</em></strong> by Judea Pearl, Dana Mackenzie (2018)</p>
 <blockquote class="blockquote">
@@ -910,8 +935,7 @@ Important
 </div>
 </div>
 </section>
-</section>
-<section id="structural-causal-modelscm" class="level2">
+</section><section id="structural-causal-modelscm" class="level2">
 <h2 class="anchored" data-anchor-id="structural-causal-modelscm">Structural Causal Model(SCM)</h2>
 <p>개입(intervention)의 과학을 위한 인과를 표현하기 위한 <strong>새로운 수학적 언어</strong>가 요구됨!</p>
 <div class="columns" style="line-height: 1.5em; font-size: .9em">
@@ -932,7 +956,7 @@ Important
 </thead>
 <tbody>
 <tr class="odd">
-<td>잔디가 젖었다는 것을 <strong>보았을 때(see)</strong> 비가 내릴 가능성은 얼마인가?</td>
+<td>잔디가 젖었다는 것을 <strong>보았을 때(see)</strong> 비가 내렸을 가능성은 얼마인가?</td>
 <td></td>
 <td>잔디를 젖게 <strong>하면(doing)</strong> 비가 내릴 가능성은 얼마인가?</td>
 </tr>
@@ -980,8 +1004,7 @@ Important
 <p>Source: Causality: Models, Reasoning, and Inference (2000) by Judea Pearl</p>
 </div>
 </section>
-</section>
-<section id="confounding" class="level2">
+</section><section id="confounding" class="level2">
 <h2 class="anchored" data-anchor-id="confounding">Confounding</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1063,8 +1086,7 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 
 ![](images/causal_diagram_grades.png){width=500} -->
 </section>
-</section>
-<section id="selection-bias" class="level2">
+</section><section id="selection-bias" class="level2">
 <h2 class="anchored" data-anchor-id="selection-bias">Selection Bias</h2>
 <p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding)<br>
 일반화할 수 있는 대상의 범위가 제한됨</p>
@@ -1077,7 +1099,7 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 </ul></li>
 <li>의료 분야에서 발견되는 패러독스
 <ul>
-<li>비만은 당뇨 환자에게 이익이 되는가?</li>
+<li>비만은 당뇨 환자의 생존에 이익이 되는가?</li>
 </ul></li>
 <li>과거 기록을 이용?; 수녀들의 자서전 연구
 <ul>
@@ -1099,8 +1121,7 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 <p><a href="https://www.warhistoryonline.com/war-articles/abraham-wald.html">Source: War History Online</a></p>
 </blockquote>
 </div>
-</section>
-<section id="experiments" class="level2">
+</section><section id="experiments" class="level2">
 <h2 class="anchored" data-anchor-id="experiments">Experiments</h2>
 <ul>
 <li>개입없이 수동적으로 얻은 관찰 데이터의 분석에서는 항상 confounding이 존재할 기능성이 있음</li>
@@ -1110,7 +1131,7 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 <li>분야마다 효과를 제대로 검증하기 위한 많은 실험 설계들이 발전되었음; 연구방법론</li>
 </ul>
 <p><img src="images/RCT2.png" class="img-fluid" width="400"> <img src="images/experiment-validity.png" class="img-fluid" width="400"></p>
-<p>앞서 든 예에서, 걷기가 사망율에 미치는 효과를 검증하려면, 가령 600명을 300명씩 두 그룹으로 무작위로 나눈 후 한쪽은 1마일 이하를 걷도록 하고 나머지는 2마일 이상을 걷게 한 후 12년 후 사망율을 확인해야 함.</p>
+<p>예를 들어, 걷기가 사망율에 미치는 효과를 검증하려면, 가령 600명을 300명씩 두 그룹으로 무작위로 나눈 후 한쪽은 1마일 이하를 걷도록 하고 나머지는 2마일 이상을 걷게 한 후 12년 후 사망율을 확인해야 함.</p>
 <p>하지만, 실험 연구는 자체로 많은 한계를 지님</p>
 <ul>
 <li>많은 경우 실험이 불가능하거나 완전한 통제가 어려움</li>
@@ -1121,9 +1142,7 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 <li>실험 참여자는 어떻게 왜 참여한 것인가?</li>
 </ul>
 <hr>
-</section>
-</section>
-<section id="humility" class="level1">
+</section><section id="humility" class="level1">
 <h1>Humility</h1>
 <blockquote class="blockquote">
 <p><em>아인슈타인은 한번 우주를 순전히 물리적 용어로 이해할 수 있을 것이라고 생각하는지 질문을 받았습니다. 그는 “음, 그럴 수도 있지만, 이것은 베토벤 교향곡을 음표(notes)의 주파수 분포(frequency distribution)로 이해하려는 것과 같을 것입니다.”</em></p>
@@ -1198,6 +1217,9 @@ The case against science is straightforward: much of the scientific literature, 
 - Cuprit : math?, 저널의 선택적 편향 -->
 
 
+</section>
+</section>
+</div>
 </section>
 </section>
 
