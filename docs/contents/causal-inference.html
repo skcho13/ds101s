@@ -465,6 +465,26 @@ window.Quarto = {
   <ul>
   <li><a href="#인과-추론을-향한-고군분투" id="toc-인과-추론을-향한-고군분투" class="nav-link" data-scroll-target="#인과-추론을-향한-고군분투">인과 추론을 향한 고군분투</a></li>
   <li><a href="#간략한-역사적-배경" id="toc-간략한-역사적-배경" class="nav-link" data-scroll-target="#간략한-역사적-배경">간략한 역사적 배경</a></li>
+  <li><a href="#causal-revolution" id="toc-causal-revolution" class="nav-link" data-scroll-target="#causal-revolution">Causal Revolution</a>
+  <ul class="collapse">
+  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">Association</a></li>
+  <li><a href="#intervention" id="toc-intervention" class="nav-link" data-scroll-target="#intervention">Intervention</a></li>
+  <li><a href="#counterfactuals" id="toc-counterfactuals" class="nav-link" data-scroll-target="#counterfactuals">Counterfactuals</a></li>
+  </ul></li>
+  <li><a href="#structural-causal-modelscm" id="toc-structural-causal-modelscm" class="nav-link" data-scroll-target="#structural-causal-modelscm">Structural Causal Model(SCM)</a>
+  <ul class="collapse">
+  <li><a href="#directed-acyclic-graph-dag-인과-관계-다이어그램" id="toc-directed-acyclic-graph-dag-인과-관계-다이어그램" class="nav-link" data-scroll-target="#directed-acyclic-graph-dag-인과-관계-다이어그램">Directed acyclic graph (DAG): 인과 관계 다이어그램</a></li>
+  </ul></li>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a>
+  <ul class="collapse">
+  <li><a href="#confounding의-예시들" id="toc-confounding의-예시들" class="nav-link" data-scroll-target="#confounding의-예시들">Confounding의 예시들</a></li>
+  </ul></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">Selection Bias</a></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a></li>
+  </ul></li>
+  <li><a href="#humility" id="toc-humility" class="nav-link" data-scroll-target="#humility">Humility</a>
+  <ul>
+  <li><a href="#quotes-from-einstein" id="toc-quotes-from-einstein" class="nav-link" data-scroll-target="#quotes-from-einstein">Quotes from Einstein</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -559,7 +579,18 @@ UC Berkeley Admission Paradox</p>
 </ul></li>
 <li>무분별한 편견(bias)이 양산되는 방식에 대한 전형적인 예시로 볼 수 있음
 <ul>
-<li>편견(bias): <strong>associational</strong> 개념 - 관찰된 연관성에 대한 인식</li>
+<li>편견(bias): <strong>associational</strong> 개념 - 관찰된 연관성에 대한 인식
+<ul>
+<li>편견/편향은 인지적 부하없이(깊이 생각할 필요없음) 빠르게 대응할 수 있는 인지체계로 생존에 적응적으로 여겨짐.
+<ul>
+<li>동물들의 무의식적/진화적 혐오까지도 포함</li>
+</ul></li>
+<li>단, 편견에 대한 비판의 원인은
+<ul>
+<li>분포를 고려하지 않는 이분적인 태도</li>
+<li>편의적으로 인과관계를 추론하는 경향</li>
+</ul></li>
+</ul></li>
 <li>차별(discrimination): <strong>causal</strong> 개념 - 변화가 발생되도록 개입</li>
 </ul></li>
 </ul>
@@ -720,7 +751,9 @@ from Wikipedia</figcaption>
 <p><a href="images/reward_system.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Latent Variable Path Model"><img src="images/reward_system.png" class="img-fluid figure-img" alt="Latent Variable Path Model"></a></p>
 </figure>
 </div>
-</div><div class="callout callout-style-default callout-note callout-titled" title="Latent variables">
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Latent variables">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -730,6 +763,7 @@ Latent variables
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>(다음은 수업 후 추가된 내용으로 참고만 하세요.)</p>
 <p>보통, 추상적인 개념적 단위인 구성개념(construct)를 수량화하기 위해 사용되는 변수를 잠재변수(latent variable)라고 함.<br>
 관측된 변수가 아닌 이 잠재변수들로 모델링; <span class="math inline">\(Y = f(X)\)</span></p>
 <p>여러 개의 선형 모형이 나타남으로 동시에 여러 개의 <span class="math inline">\(Y = f(X)\)</span> 형태의 방정식을 얻게 되고,<br>
@@ -759,9 +793,12 @@ Latent variables
 </ul></li>
 </ul>
 </div>
-</div><!-- 
+</div>
+<!-- 
 Sewall Wright’s first path diagram, illustrating the factors leading to coat
-color in guinea pigs. D = developmental factors (after conception, before birth), E = environmental factors (after birth), G = genetic factors from each individual parent, H = combined hereditary factors from both parents, O, O′ = offspring. The objective of analysis was to estimate the strength of the effects of D, E, H (written as d, e, h in the diagram). (Source: Sewall Wright, Proceedings of the National Academy of Sciences [1920], 320–332.) --><section id="causal-revolution" class="level2">
+color in guinea pigs. D = developmental factors (after conception, before birth), E = environmental factors (after birth), G = genetic factors from each individual parent, H = combined hereditary factors from both parents, O, O′ = offspring. The objective of analysis was to estimate the strength of the effects of D, E, H (written as d, e, h in the diagram). (Source: Sewall Wright, Proceedings of the National Academy of Sciences [1920], 320–332.) -->
+</section>
+<section id="causal-revolution" class="level2">
 <h2 class="anchored" data-anchor-id="causal-revolution">Causal Revolution</h2>
 <p>Source: <strong><em>The Book of Why: The New Science of Cause and Effect</em></strong> by Judea Pearl, Dana Mackenzie (2018)</p>
 <blockquote class="blockquote">
@@ -935,7 +972,8 @@ Important
 </div>
 </div>
 </section>
-</section><section id="structural-causal-modelscm" class="level2">
+</section>
+<section id="structural-causal-modelscm" class="level2">
 <h2 class="anchored" data-anchor-id="structural-causal-modelscm">Structural Causal Model(SCM)</h2>
 <p>개입(intervention)의 과학을 위한 인과를 표현하기 위한 <strong>새로운 수학적 언어</strong>가 요구됨!</p>
 <div class="columns" style="line-height: 1.5em; font-size: .9em">
@@ -1004,7 +1042,8 @@ Important
 <p>Source: Causality: Models, Reasoning, and Inference (2000) by Judea Pearl</p>
 </div>
 </section>
-</section><section id="confounding" class="level2">
+</section>
+<section id="confounding" class="level2">
 <h2 class="anchored" data-anchor-id="confounding">Confounding</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1086,7 +1125,8 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 
 ![](images/causal_diagram_grades.png){width=500} -->
 </section>
-</section><section id="selection-bias" class="level2">
+</section>
+<section id="selection-bias" class="level2">
 <h2 class="anchored" data-anchor-id="selection-bias">Selection Bias</h2>
 <p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding)<br>
 일반화할 수 있는 대상의 범위가 제한됨</p>
@@ -1121,7 +1161,8 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 <p><a href="https://www.warhistoryonline.com/war-articles/abraham-wald.html">Source: War History Online</a></p>
 </blockquote>
 </div>
-</section><section id="experiments" class="level2">
+</section>
+<section id="experiments" class="level2">
 <h2 class="anchored" data-anchor-id="experiments">Experiments</h2>
 <ul>
 <li>개입없이 수동적으로 얻은 관찰 데이터의 분석에서는 항상 confounding이 존재할 기능성이 있음</li>
@@ -1142,7 +1183,9 @@ Source: *National Education Longitudinal Study of 1988 (NELS:88)*
 <li>실험 참여자는 어떻게 왜 참여한 것인가?</li>
 </ul>
 <hr>
-</section><section id="humility" class="level1">
+</section>
+</section>
+<section id="humility" class="level1">
 <h1>Humility</h1>
 <blockquote class="blockquote">
 <p><em>아인슈타인은 한번 우주를 순전히 물리적 용어로 이해할 수 있을 것이라고 생각하는지 질문을 받았습니다. 그는 “음, 그럴 수도 있지만, 이것은 베토벤 교향곡을 음표(notes)의 주파수 분포(frequency distribution)로 이해하려는 것과 같을 것입니다.”</em></p>
@@ -1217,9 +1260,6 @@ The case against science is straightforward: much of the scientific literature, 
 - Cuprit : math?, 저널의 선택적 편향 -->
 
 
-</section>
-</section>
-</div>
 </section>
 </section>
 
