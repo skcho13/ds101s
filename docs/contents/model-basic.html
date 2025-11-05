@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-11-03">
+<meta name="dcterms.date" content="2025-11-05">
 
 <title>Model Basics –  Intro to Data Science</title>
 <style>
@@ -532,7 +532,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 3, 2025</p>
+      <p class="date">November 5, 2025</p>
     </div>
   </div>
   
@@ -586,7 +586,7 @@ window.Quarto = {
 </blockquote>
 <p>이상적으로, 모형(model)이 현상으로부터 <strong>노이즈</strong>가 제거된 진정한 <strong>신호</strong>를 잡아내 주기를 기대.<br>
 <em>물리 법칙: 물리적 세계에 대한 모델</em></p>
-<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="5">
+<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="5" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -1336,9 +1336,9 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <li><span class="math inline">\(MAE = \displaystyle\frac{{1}}{{n}} \sum_{{i=1}}^{{n}}|~e~|\)</span></li>
 <li><span class="math inline">\(R^2 = 1 - \displaystyle\frac{\frac{1}{n} \sum_{i=1}^{n}{(e-0)^2}}{\frac{1}{n} \sum_{i=1}^{n}{(Y-\overline{Y})^2}} = 1 - \frac{V(e)}{V(Y)} = \frac{V(\widehat Y)}{V(Y)}\)</span>,   <span class="math inline">\(V(Y) = V(\widehat Y) + V(e)\)</span>
 <ul>
-<li>전통적으로 <span class="math inline">\(X\)</span>가 <span class="math inline">\(Y\)</span>를 얼마나 잘 “설명”해주는지에 대한 지표로서 <span class="math inline">\(R^2\)</span>를 사용함</li>
+<li>전통적으로 <span class="math inline">\(X\)</span>가 <span class="math inline">\(Y\)</span>를 얼마나 잘 “설명”해주는지에 대한 지표로서 <span class="math inline">\(R^2\)</span>를 사용함; strength of association(연관성의 강도/크기)</li>
 </ul></li>
-<li>정규분포에서 벗어난 경우, 분포를 고려한 log-likelihood를 기반으로 한 지표들: AIC, BIC, …
+<li>(정규분포 아닌 경우 특히) 분포를 고려한 log-likelihood를 기반으로 한 지표들: AIC, BIC, …
 <ul>
 <li><span class="math inline">\(AIC = -2loglikelihood + 2k\)</span>, &nbsp; <span class="math inline">\(k\)</span>: 모델의 자유도</li>
 <li><span class="math inline">\(BIC = -2loglikelihood + k \cdot log(n)\)</span>, &nbsp; <span class="math inline">\(n\)</span>: 데이터의 수</li>
