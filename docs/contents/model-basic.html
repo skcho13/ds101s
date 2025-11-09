@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-11-05">
+<meta name="dcterms.date" content="2025-11-10">
 
 <title>Model Basics –  Intro to Data Science</title>
 <style>
@@ -532,7 +532,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 5, 2025</p>
+      <p class="date">November 10, 2025</p>
     </div>
   </div>
   
@@ -1183,8 +1183,9 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <ul>
 <li>파라미터 추정치에 대한 불확실성: confidence interval
 <ul>
-<li>데이터가 많을 수록</li>
-<li>X가 넓게 분포할 수록</li>
+<li>데이터가 많을수록</li>
+<li>X와 Y의 관계가 강할수록</li>
+<li>X가 넓게 분포할수록</li>
 </ul></li>
 <li>특정 추정값에 대한 불확실성
 <ul>
@@ -1192,6 +1193,29 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <li>예측값(<span class="math inline">\(f(X_i)\)</span>)에 대한 불확실성: prediciton interval</li>
 </ul></li>
 </ul>
+<p>가령, 성별에 따른 키의 차이를 모델링한다면 <span class="math inline">\(height = \beta_0 + \beta_1\cdot sex\)</span><br>
+모집단에 대한 가정:<br>
+<img src="images/sampling_MF.png" class="img-fluid" width="380"></p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sampling-error2.png" height="450" class="figure-img"></p>
+<figcaption>   Sample size: 20</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sampling-error1.png" height="450" class="figure-img"></p>
+<figcaption>   Sample size: 200</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p>전통적으로는 분포에 대한 가정으로부터 이론적으로 불확실성을 추론했으나,<br>
 현대적인 접근으로 resampling 방식의 bootstrapping이나 sample을 traing/test set으로 나누는 cross-validation 등을 통해 시뮬레이션을 통해 불확실성을 추정할 수 있음</p>
 <p>Bayesian 방식에서는 모집단의 분포에 대한 가정없이, 관찰된 데이터만으로 파라미터에 대한 분포(posterior predictive distribution)로 불확실성에 대해 추정하는 방식도 있음; 앞서 지구의 바다/육지의 비율에 대한 분포의 예측 참고</p>
