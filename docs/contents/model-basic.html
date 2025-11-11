@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-11-10">
+<meta name="dcterms.date" content="2025-11-12">
 
 <title>Model Basics –  Intro to Data Science</title>
 <style>
@@ -532,7 +532,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 10, 2025</p>
+      <p class="date">November 12, 2025</p>
     </div>
   </div>
   
@@ -586,7 +586,7 @@ window.Quarto = {
 </blockquote>
 <p>이상적으로, 모형(model)이 현상으로부터 <strong>노이즈</strong>가 제거된 진정한 <strong>신호</strong>를 잡아내 주기를 기대.<br>
 <em>물리 법칙: 물리적 세계에 대한 모델</em></p>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="5" data-layout-ncol="2">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -1346,13 +1346,13 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <h2 class="anchored" data-anchor-id="predictive-accuracy">Predictive Accuracy</h2>
 <p>전통적인 모형에서는</p>
 <ul>
-<li>샘플에 대해서 계산된 값은 실제보다 overestimate 되는 경향이 있으므로,</li>
-<li>이를 보정하는 방식으로 계산: adjusted, shrunken</li>
+<li>샘플에 대해서 계산된 예측정확도 값은 모집단에서보다 overestimate 되는 경향이 있으므로,</li>
+<li>모집단에서의 예측정확도를 이론적으로 보정하는 방식으로 계산: adjusted, shrunken</li>
 </ul>
 <p>현대적인 방식에서는</p>
 <ul>
-<li>샘플을 training/test set으로 나누어서, test set에 대한 예측값을 계산하고, 이를 통해 예측의 정확성을 평가함</li>
-<li>비슷하게, resampling 방식의 bootstrapping을 통해 해결</li>
+<li>샘플을 training/test set으로 나누어서, test set에 대한 예측값을 계산하고, 이를 통해 (미래 데이터에 대한) 예측 정확성을 평가함</li>
+<li>비슷하게, resampling(샘플에서 직접 다시 추출) 방식의 bootstrapping을 통해 해결</li>
 </ul>
 <p>주로 사용되는 지표들</p>
 <ul>
