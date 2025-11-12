@@ -586,7 +586,7 @@ window.Quarto = {
 </blockquote>
 <p>이상적으로, 모형(model)이 현상으로부터 <strong>노이즈</strong>가 제거된 진정한 <strong>신호</strong>를 잡아내 주기를 기대.<br>
 <em>물리 법칙: 물리적 세계에 대한 모델</em></p>
-<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="5">
+<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="5" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -665,7 +665,7 @@ window.Quarto = {
 <li><span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>; density function <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\)</span></li>
 <li><span class="math inline">\(X \sim N(0, 1)\)</span>; <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}\)</span>, (standard normal distribution)</li>
 </ul>
-<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
+<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -787,7 +787,7 @@ Important
 <div id="cell-15" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="7">
+<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="7" data-layout="[[2, 4, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -812,7 +812,7 @@ Important
 <li>무수히 많은 <span class="math inline">\(\beta_0, \beta_1\)</span>의 값들 중 위 데이터에 가장 가까운 값을 찾음</li>
 <li>그 예로, 임의로 250개의 선형 모델을 그려보면,</li>
 </ul>
-<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[4, 2, 1]]" data-execution_count="26">
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="26" data-layout="[[4, 2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 57.1%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="605"></p>
@@ -846,7 +846,7 @@ Important
 [30 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
+<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -891,7 +891,7 @@ Model evaluation
 </div>
 </div>
 <p>이 중 제일 좋은 모델(dist가 최소) 10개의 모델을 그리면,</p>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="32">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="32" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" class="img-fluid" width="591"></p>
@@ -902,7 +902,7 @@ Model evaluation
 <ul>
 <li>오렌지 색은 위에서 구한 10 best models</li>
 </ul>
-<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="33">
+<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="33" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" class="img-fluid" width="599"></p>
@@ -922,7 +922,7 @@ Model evaluation
 <pre><code>array([4.22, 2.05])</code></pre>
 </div>
 </div>
-<div id="cell-38" class="cell quarto-layout-panel" data-layout="[[4, 3]]" data-execution_count="37">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="37" data-layout="[[4, 3]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 57.1%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-23-output-1.png" class="img-fluid" width="605"></p>
@@ -935,7 +935,7 @@ Model evaluation
 <section id="maximum-likelihood-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="maximum-likelihood-estimation">Maximum likelihood estimation</h2>
 <p>데이터가 발생된 것으로 가정하는 분포를 고려했을 때,<br>
-어떨때 <strong>주어진 데이터가 관측될 확률/가능도(likelihood)</strong>가 최대가 되겠는가로 접근하는 방식으로,<br>
+파라미터가 어떤 값일 때(즉, 어떤 모델일 때) <strong>주어진 데이터가 관측될 확률/가능도(likelihood)</strong>가 최대가 되겠는가로 접근하는 방식으로,<br>
 X, Y의 관계와 확률분포를 함께 고려함.</p>
 <ul>
 <li>선형관계라면, 즉 <span class="math inline">\(E(Y|X=x_i) = \beta_0 + \beta_1x_i\)</span>   (<span class="math inline">\(E\)</span>: expected value, 기대값)</li>
@@ -1362,10 +1362,10 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <ul>
 <li>전통적으로 <span class="math inline">\(X\)</span>가 <span class="math inline">\(Y\)</span>를 얼마나 잘 “설명”해주는지에 대한 지표로서 <span class="math inline">\(R^2\)</span>를 사용함; strength of association(연관성의 강도/크기)</li>
 </ul></li>
-<li>(정규분포 아닌 경우 특히) 분포를 고려한 log-likelihood를 기반으로 한 지표들: AIC, BIC, …
+<li>(정규분포 아닌 경우 특히) 분포를 고려한 log-likelihood를 기반으로 한 모델 적합도 지수: 여러 모델들의 상대적 (적합도) 비교를 위해 이용
 <ul>
-<li><span class="math inline">\(AIC = -2loglikelihood + 2k\)</span>, &nbsp; <span class="math inline">\(k\)</span>: 모델의 자유도</li>
-<li><span class="math inline">\(BIC = -2loglikelihood + k \cdot log(n)\)</span>, &nbsp; <span class="math inline">\(n\)</span>: 데이터의 수</li>
+<li><span class="math inline">\(AIC = -2\text{log-likelihood} + 2k\)</span>, &nbsp; <span class="math inline">\(k\)</span>: 파라미터의 갯수</li>
+<li><span class="math inline">\(BIC = -2\text{log-likelihood} + k \cdot \log(n)\)</span>, &nbsp; <span class="math inline">\(n\)</span>: 데이터의 수</li>
 </ul></li>
 </ul>
 <div id="cell-59" class="cell" data-execution_count="18">
