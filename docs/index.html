@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-09-03">
+<meta name="dcterms.date" content="2025-11-18">
 
 <title>Welcome –  Intro to Data Science</title>
 <style>
@@ -710,7 +710,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 3, 2025</p>
+      <p class="date">November 18, 2025</p>
     </div>
   </div>
   
@@ -722,6 +722,196 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </header>
 
 
+<style>
+/* 모달 배경 */
+.notice-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s;
+}
+
+/* 모달 내용 */
+.notice-modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s;
+}
+
+/* 모달 헤더 */
+.notice-modal-header {
+  padding: 10px;
+  background-color: #8250E6;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.notice-modal-header h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+/* 모달 본문 */
+.notice-modal-body {
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  color: #000000;
+}
+
+.notice-modal-body h3 {
+  color: #000000;
+}
+
+.notice-modal-body p {
+  color: #000000;
+}
+
+.notice-modal-body ul li {
+  color: #000000;
+}
+
+/* 모달 푸터 */
+.notice-modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #ddd;
+  border-radius: 0 0 8px 8px;
+}
+
+/* 닫기 버튼 */
+.notice-close-btn {
+  background-color: #8250E6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.notice-close-btn:hover {
+  background-color: #8250E6;
+}
+
+.notice-close-today-btn {
+  background-color: #757575;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.notice-close-today-btn:hover {
+  background-color: #616161;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+
+<!-- 공지사항 모달 -->
+<div id="noticeModal" class="notice-modal">
+  <div class="notice-modal-content">
+    <div class="notice-modal-header">
+      <h3 class="anchored">공지사항</h3>
+    </div>
+    <div class="notice-modal-body">
+      <h3 class="anchored">소프트웨어연계전공 설명회 안내</h3>
+      <p><a href="https://sw.dongguk.edu/board/view.do?id=S181&amp;seq=822" target="_blank" style="color:rgb(66, 87, 202); text-decoration: underline;">융합소프트웨어 → 소프트웨어AI연계전공 변경 관련 안내 링크</a></p>
+
+      <p><strong>2026학년도부터 융합소프트웨어연계전공은 "소프트웨어AI연계전공"으로 전공명, 학위명, 교과과정이 변경됩니다.</strong></p>
+      
+      <p>이번 소프트웨어연계전공 설명회에서는 신규 진입자 외에, 기존 연계전공생들에게도 이 변경사항 및 아래 상세 내용에 대해 설명할 예정이니, 설명회에 참석하는 것을 적극 권장합니다.</p>
+      
+      <ul>
+        <li><strong>일시:</strong> 2025.11.25.(화) 12:00~13:00</li>
+        <li><strong>장소:</strong> 정보문화관 P401호</li>
+      </ul>
+      
+      <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
+      
+      <p><a href="https://forms.gle/EzoqiLvjzscKduXHA" target="_blank" style="color: #000000; font-weight: bold; text-decoration: underline;">📝 SW연계전공 설명회 참가 신청서</a></p>
+      
+      <p style="font-size: 0.9em; color: #000000;">
+        <strong>참고사항:</strong><br>
+        • 참가 신청서 제출 없이 참가 해도 됨. 단, 신청서 제출자에게만 점심 식사 제공됨.<br>
+        • 참가 신청서 제출 후, 통보 없이 no show 한 경우, 향후 SW교육원 제공 혜택에서 제외됨.
+      </p>
+    </div>
+    <div class="notice-modal-footer">
+      <button class="notice-close-today-btn" onclick="closeNoticeModalToday()">오늘 하루 보지 않기</button>
+      <button class="notice-close-btn" onclick="closeNoticeModal()">확인</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// 페이지 로드 시 모달 표시
+window.addEventListener('load', function() {
+  // 이미 오늘 확인한 경우 표시하지 않음
+  const today = new Date().toDateString();
+  const lastShown = localStorage.getItem('noticeLastShown');
+  
+  if (lastShown !== today) {
+    showNoticeModal();
+  }
+});
+
+function showNoticeModal() {
+  document.getElementById('noticeModal').style.display = 'block';
+}
+
+// 그냥 닫기 (다음 방문 시 다시 표시)
+function closeNoticeModal() {
+  document.getElementById('noticeModal').style.display = 'none';
+  // localStorage에서 제거하여 다음 방문 시 다시 표시되도록 함
+  localStorage.removeItem('noticeLastShown');
+}
+
+// 오늘 하루 보지 않기
+function closeNoticeModalToday() {
+  document.getElementById('noticeModal').style.display = 'none';
+  const today = new Date().toDateString();
+  localStorage.setItem('noticeLastShown', today);
+}
+
+// 모달 외부 클릭 시 그냥 닫기
+window.onclick = function(event) {
+  const modal = document.getElementById('noticeModal');
+  if (event.target == modal) {
+    closeNoticeModal();
+  }
+}
+</script>
 <section id="강의-정보" class="level2">
 <h2 class="anchored" data-anchor-id="강의-정보">강의 정보</h2>
 <p>강사: 조성균<br>
