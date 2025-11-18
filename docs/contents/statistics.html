@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-11-17">
+<meta name="dcterms.date" content="2025-11-19">
 
 <title>Statistics –  Intro to Data Science</title>
 <style>
@@ -550,7 +550,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 17, 2025</p>
+      <p class="date">November 19, 2025</p>
     </div>
   </div>
   
@@ -671,6 +671,9 @@ window.Quarto = {
 <a href="images/plot_ls3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/plot_ls3.png" class="img-fluid" width="450"></a></li>
 </ul>
 <p><strong><em>남녀 임금의 차이</em></strong></p>
+<ul>
+<li>가령, 두 회사(위, 아래)에서 구성원들은 임금 차이를 어떻게 다르게 느끼겠는가?</li>
+</ul>
 <p> <a href="images/wage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/wage.png" class="img-fluid" width="300"></a></p>
 <p><strong><em>미혼자에 대한 임금 차별 vs.&nbsp;편견</em></strong></p>
 <ul>
@@ -750,21 +753,37 @@ window.Quarto = {
 </ul>
 <p><span class="math inline">\(R^2\)</span>: Coefficient of determination, 결정계수, 설명력</p>
 <ul>
-<li>선형모형에 의해 설명된 Y 변량의 비율:<br>
-</li>
-<li>또는 예측변수들의 최적의(optimal) 선형 조합에 의해 설명된 Y 변량의 비율.<br>
-즉, <span class="math inline">\(\displaystyle\frac{V(\widehat{Y})}{V(Y)}\)</span> 또는 <span class="math inline">\(\displaystyle 1 - \frac{V(e)}{V(Y)}\)</span></li>
+<li>선형모형에 의해 설명된 Y 변량의 비율</li>
+<li>정확히 표현하면, 예측변수들의 최적의(optimal) 선형 조합에 의해 설명된 Y 변량의 비율</li>
 </ul>
+<p>  <span class="math inline">\(\displaystyle R^2 = \frac{V(\widehat{Y})}{V(Y)} = 1 - \frac{V(e)}{V(Y)}\)</span></p>
+<div class="quarto-layout-panel" data-layout="[65, 35]">
+<div class="quarto-layout-row">
+<div class="columns quarto-layout-cell" style="flex-basis: 65.0%;justify-content: center;">
+<p><img src="images/y-decomposition.png" class="img-fluid" width="600"></p><div style="line-height: 1.5em; font-size: .9em">
+<p>Source: <em>Applied Regression Analysis and Generalized Linear Models</em> by John Fox</p>
+</div>
+</div>
+<div class="columns quarto-layout-cell" style="flex-basis: 35.0%;justify-content: flex-start;">
+<ul>
+<li><span class="math inline">\(Y_i = e_i + \hat{Y_i}\)</span></li>
+<li><span class="math inline">\(Y_i - \overline{Y} = [\overset{\text{\large error}}{(Y_i - \hat{Y_i})} - 0] + \overset{\text{\large explained}}{(\hat{Y_i} - \overline{Y})}\)</span></li>
+<li><span class="math inline">\(V(Y_i) = V(e_i) + V(\widehat Y_i)\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+<p><br></p>
 <section id="associations과-그-strengths-비교" class="level3">
 <h3 class="anchored" data-anchor-id="associations과-그-strengths-비교">Associations과 그 strengths 비교</h3>
-<div id="cell-10" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="66">
+<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="66" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-5-output-1.png" class="img-fluid" width="670"></p>
 </div>
 </div>
 </div>
-<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="116">
+<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="116" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-7-output-1.png" class="img-fluid" width="667"></p>
@@ -818,7 +837,7 @@ Important
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell quarto-layout-panel" data-layout="[[1.5, 1.5, 0.5]]" data-execution_count="10">
+<div id="cell-22" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1.5, 1.5, 0.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.9%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-13-output-1.png" class="img-fluid" width="490"></p>
@@ -986,7 +1005,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 </ul></li>
 <li>semi-partial correlation 조금 다른 의미</li>
 </ul>
-<div class="quarto-layout-panel" data-layout="[50, -2, 48]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[50, -2, 48]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table">
@@ -1127,7 +1146,7 @@ Important
 </div>
 </div>
 <p>비슷한 넓이의 집들로 나누어 보면,</p>
-<div id="cell-38" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="87">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="87" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="statistics_files/figure-html/cell-21-output-1.png" class="img-fluid" width="668"></p>
