@@ -512,7 +512,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "융합소프트웨어 → 소프트웨어AI연계전공 변경 관련 안내 링크\n\n      2026학년도부터 융합소프트웨어연계전공은 \"소프트웨어AI연계전공\"으로 전공명, 학위명, 교과과정이 변경됩니다.\n      \n      이번 소프트웨어연계전공 설명회에서는 신규 진입자 외에, 기존 연계전공생들에게도 이 변경사항 및 아래 상세 내용에 대해 설명할 예정이니, 설명회에 참석하는 것을 적극 권장합니다.\n      \n      \n        일시: 2025.11.25.(화) 12:00~13:00\n        장소: 정보문화관 P401호\n      \n      \n      \n      \n      📝 SW연계전공 설명회 참가 신청서\n      \n      \n        참고사항:\n        • 참가 신청서 제출 없이 참가 가능 (신청자에게만 점심 제공)\n        • 신청 후 no show 시 향후 SW교육원 혜택 제외\n      \n    \n    \n      오늘 하루 보지 않기\n      확인",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 1:00 ~ 2:20PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n과제: eclass\n질문: Communicate/Ask",
     "crumbs": [
       "Home",
       "Welcome"
@@ -522,8 +522,8 @@
     "objectID": "index.html#강의-정보",
     "href": "index.html#강의-정보",
     "title": "Welcome",
-    "section": "강의 정보",
-    "text": "강의 정보\n강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 1:00 ~ 2:20PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n과제: eclass\n질문: Communicate/Ask",
+    "section": "",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업 시간: 월, 수 1:00 ~ 2:20PM\n면담 시간: 수업 후\nWebsite: dgds101.modellings.art\n과제: eclass\n질문: Communicate/Ask",
     "crumbs": [
       "Home",
       "Welcome"
@@ -840,7 +840,11 @@
     "href": "contents/pollr.html",
     "title": "설문",
     "section": "",
-    "text": "설문 링크"
+    "text": "설문 링크",
+    "crumbs": [
+      "Home",
+      "설문"
+    ]
   },
   {
     "objectID": "contents/setup.html",

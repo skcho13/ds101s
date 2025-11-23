@@ -649,7 +649,7 @@ Note
 <p>Palmer Penguins 데이셋의 예에서,</p>
 <p><strong>1-dimensional (1 predictor)</strong><br>
 <code>bill_length</code>로 펭균 종을 구분하는 경우</p>
-<div id="cell-5" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="3">
+<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="3" data-layout="[5, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-4-output-1.png" class="img-fluid" width="1014"></p>
@@ -658,7 +658,7 @@ Note
 </div>
 <p><strong>2-dimensional (2 predictors)</strong><br>
 <code>bill_length</code>과 <code>bill_depth</code>로 펭균 종을 구분하는 경우</p>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="171">
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="171" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-5-output-1.png" class="img-fluid" width="464"></p>
@@ -690,7 +690,7 @@ Note
 <li><span class="math inline">\(\sigma\)</span>는 모든 클래스에 대해 동일하다고 가정하고 추정: MLE로 추정하면 클래스별 분산값의 weighted 평균</li>
 <li>MLE(Maximum Likelihood Estimation)이 이상치(outliers)에 민감함을 주의</li>
 </ul>
-<div id="cell-10" class="cell quarto-layout-panel" data-layout="[[6, 1]]" data-execution_count="172">
+<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="172" data-layout="[[6, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 85.7%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-6-output-1.png" class="img-fluid" width="864"></p>
@@ -724,7 +724,7 @@ Note
 </div>
 </div>
 <p><span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, prior의 추정치와 몇 개의 <span class="math inline">\(X\)</span>값에 대한 예측 확률을 구해보면,</p>
-<div id="cell-15" class="cell quarto-layout-panel" data-layout="[[1, 1.5]]" data-execution_count="175">
+<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="175" data-layout="[[1, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <pre><code>             mu  sigma  prior
@@ -749,14 +749,14 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 </ul></li>
 <li>혹은 부리의 길이가 50mm임을 관찰하면, 그 펭균이 Adelie 펭귄일 확률은 0.001(posterior)로 update됨.</li>
 </ul>
-<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[7, 1]]" data-execution_count="176">
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="176" data-layout="[[7, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 87.5%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-10-output-1.png" class="img-fluid" width="864"></p>
 </div>
 </div>
 </div>
-<div id="cell-27" class="cell quarto-layout-panel" data-layout="[[10, 1]]" data-execution_count="186">
+<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="186" data-layout="[[10, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 90.9%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-20-output-1.png" class="img-fluid" width="794"></p>
@@ -803,7 +803,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: p.&nbsp;150, <em>Introduction to Statistical Learning with Applications in Python</em> by G. James, D. Witten, T. Hastie, R. Tibshirani</p>
 </div>
-<div id="cell-36" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="191">
+<div id="cell-36" class="cell quarto-layout-panel" data-execution_count="191" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-25-output-1.png" class="img-fluid" width="464"></p>
@@ -816,7 +816,7 @@ Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
 <p>Discrimint function: 다음이 가장 큰 값을 가지는 클래스에 할당</p>
 <p><span class="math inline">\(\displaystyle\delta_k(\mathbf{x}) = \mathbf{x}^T\Sigma^{-1}\mu_k - \frac{1}{2}\mu_k^T\Sigma^{-1}\mu_k + \log(P(Y=C_k))\)</span>: &nbsp; <span class="math inline">\(ax_1 + bx_2 + c\)</span> 형태</p>
 <p>    <span class="math inline">\(\mu_k\)</span>                        <em>covariance matrix</em></p>
-<div id="cell-40" class="cell quarto-layout-panel" data-layout="[[1, -0.2, 1]]" data-execution_count="19">
+<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[1, -0.2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>             Adelie  Chinstrap  Gentoo
@@ -900,7 +900,7 @@ LDA as a dimension reduction method
 <span class="math inline">\(\displaystyle \qquad= - \frac{1}{2}\mathbf{x}^T\Sigma_k^{-1}\mathbf{x} + \mathbf{x}^T\Sigma_k^{-1}\mu_k - \frac{1}{2}\mu_k^T\Sigma_k^{-1}\mu_k -\frac{1}{2}\log|\Sigma_k| + \log(P(Y=C_k))\)</span><br>
 <span class="math inline">\(\displaystyle \qquad= (ax_1^2 + bx_1x_2 + cx_2^2) + (dx_1 + ex_2) + d\)</span> &nbsp; : 모든 2차항들을 포함 (<em>quadratic</em>)</p>
 <p>이번에는 <code>bill_length_mm</code>와 <code>flipper_length_mm</code>를 예측변수로 사용하여 펭균 종을 구분하면,</p>
-<div id="cell-54" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="201">
+<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="201" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-35-output-1.png" class="img-fluid" width="470"></p>
@@ -911,7 +911,7 @@ LDA as a dimension reduction method
 </div>
 </div>
 <p>    <span class="math inline">\(\mu_k\)</span></p>
-<div id="cell-56" class="cell quarto-layout-panel" data-layout="[[1, -0.2, 1]]" data-execution_count="202">
+<div id="cell-56" class="cell quarto-layout-panel" data-execution_count="202" data-layout="[[1, -0.2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
 <pre><code>                   Adelie  Chinstrap  Gentoo
@@ -924,7 +924,7 @@ flipper_length_mm  189.95     195.82  217.19</code></pre>
 </div>
 </div>
 <p>   <em>Covariance matrices for each class</em></p>
-<div id="cell-58" class="cell quarto-layout-panel" data-layout="[[1, -0.1, 1, -0.1, 1]]" data-execution_count="203">
+<div id="cell-58" class="cell quarto-layout-panel" data-execution_count="203" data-layout="[[1, -0.1, 1, -0.1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
 <pre><code>Adelie   sigma_1  sigma_2
@@ -989,7 +989,7 @@ prior    0.44       0.20    0.36</code></pre>
 <p><em>p = 2</em>인 경우의 예에서,</p>
 <p><span class="math inline">\(P(X=(x_1, x_2)|Y=C_k) = P(X_1=x_1| Y=C_k) *  P(X_2=x_2 | Y=C_k)\)</span>: &nbsp; 즉, 각 예측변수 내에서의 분포만 고려 (marginal distribution)<br>
 따라서, <span class="math inline">\(\displaystyle P(Y = C_k|X=x) = \frac{f_{k1}(x_1) * f_{k2}(x_2) * P(Y=C_k)}{P(X=x)}\)</span></p>
-<div id="cell-68" class="cell quarto-layout-panel" data-layout="[[4, 4, 1.5]]" data-execution_count="209">
+<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="209" data-layout="[[4, 4, 1.5]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-44-output-1.png" class="img-fluid" width="529"></p>
@@ -1264,7 +1264,7 @@ C2   0.29</code></pre>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"LDA Decision Boundary"</span>)</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-92" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="10">
+<div id="cell-92" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="lda_files/figure-html/cell-58-output-1.png" class="img-fluid" width="545"></p>
