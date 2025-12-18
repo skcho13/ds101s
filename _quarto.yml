@@ -1,0 +1,219 @@
+project:
+  type: website
+  output-dir: docs
+  render: 
+    - "*.qmd"
+    - "*.ipynb"
+    - "!contents/ignore/"
+    - "!contents/kernel-trick/"
+    - "!contents/*.py"
+    - "!*-temp.ipynb"
+    - "!*-temp.qmd"
+  resources: CNAME
+  # preview:
+  #   port: 5452
+
+website:
+  google-analytics: "G-F9XY7W8RLK"
+  page-navigation: true
+  bread-crumbs: false
+  # navbar: true
+  title: "{{< iconify fa-solid fingerprint >}} Intro to Data Science"
+  description: "Introduction to Data Science, Dongguk University, 2024-1"
+  site-url: "https://dgds101.modellings.art"
+  open-graph: 
+    site-name: Introduction to Data Science
+  # repo-url:
+  # repo-actions: [edit, issue]
+
+  page-footer:
+    # right: "This page is built with [Quarto](https://quarto.org/)."
+    left: This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
+    # background: 
+
+  reader-mode: true  
+  navbar: 
+    pinned: false
+    # background: "#3d3d3d"
+    search: true
+
+    right:
+      - href: index.qmd
+        text: Home
+      - text: Introduction
+        menu:
+          - href: contents/intro.qmd
+            text: Overview
+          - href: contents/two-cultures.qmd
+            text: Two Cultures
+          - href: contents/causal-inference.qmd
+            text: Causal Inference
+      - text: Python Basics
+        menu:
+          - href: contents/setup.qmd
+            text: Python Setup
+          - href: contents/pandas.ipynb
+            text: NumPy & pandas
+          - href: contents/inspection.ipynb
+            text: Data Inspection
+          - href: contents/subsetting.ipynb
+            text: Subsetting
+      - text: EDA
+        menu:
+          - href: contents/vis-intro.ipynb
+            text: Visualize
+          - href: contents/eda.ipynb
+            text: Explore
+          - href: contents/wrangling.ipynb
+            text: Wrangling
+      - text: Linear Models
+        menu:
+          - href: contents/model-basic.ipynb
+            text: Model Basics
+          - href: contents/model-basic-implementation.ipynb
+            text: Implementations
+          - href: contents/statistics.ipynb
+            text: Regression Analysis
+      - text: ML Basics
+        menu:
+          - href: contents/mlsl-intro.ipynb
+            text: Introduction
+          - href: contents/regularization.ipynb
+            text: Regularization
+          - href: contents/shrinkage.ipynb
+            text: Implementations
+          - href: contents/knn.ipynb
+            text: K-Nearest Neighbors
+      - text: Classification
+        menu:
+          - href: contents/logistic.ipynb
+            text: Logistic Regression
+          - href: contents/lda.ipynb
+            text: Generative Models
+      - href: contents/tree.ipynb
+        text: Trees
+  
+  sidebar:
+    # background: "#F6F6FF"
+    # logo: 
+    # pinned: true
+    alignment: left
+    # tools:
+    #   - icon: github
+    #     href: 
+    #     text: "GitHub organization"
+    style: "floating"
+    search: true
+    collapse-level: 3
+    
+    contents:
+      - href: index.qmd
+        text: "Welcome"
+      # - href: contents/notice.qmd
+      #   text: "Notice"
+      - href: contents/pollr.qmd
+        text: "설문"
+      - text: ---
+      - section: Introduction
+        contents:
+          - href: contents/intro.qmd
+            text: Overview
+          - href: contents/two-cultures.qmd
+            text: Two Cultures
+          - href: contents/causal-inference.qmd
+            text: Causal Inference
+      - text: ---
+      - section: Python Basics
+        contents:
+          - href: contents/setup.qmd
+            text: Python Setup
+          - href: contents/pandas.ipynb
+            text: NumPy & pandas
+          - href: contents/inspection.ipynb
+            text: Data Inspection
+          - href: contents/subsetting.ipynb
+            text: Subsetting
+      - text: ---
+      - section: Exploratory Data Analysis
+        contents:
+          - href: contents/vis-intro.ipynb
+            text: Visualize
+          - href: contents/eda.ipynb
+            text: Explore
+          - href: contents/wrangling.ipynb
+            text: Wrangling
+          # - href: contents/descriptive.ipynb
+            # text: Descriptive Statistics
+      - text: ---
+      - section: Linear Models
+        contents:
+          - section: Model Basics
+            href: contents/model-basic.ipynb
+            contents:
+              - href: contents/model-basic-implementation.ipynb
+                text: Implementations
+          - href: contents/statistics.ipynb
+            text: Regression Analysis
+          # - text: Example
+      - text: ---
+      - section: Machine Learning Basics
+        contents: 
+          - href: contents/mlsl-intro.ipynb
+            text: Introduction
+          - href: contents/regularization.ipynb
+            contents: 
+              - href: contents/shrinkage.ipynb
+                text: Implementations
+          - href: contents/knn.ipynb
+            text: K-Nearest Neighbors
+      - section: Classification
+        contents:
+          - href: contents/logistic.ipynb
+            text: Logistic Regression
+          - href: contents/lda.ipynb
+            text: Generative Models
+      - href: contents/tree.ipynb
+      # - text: Support Vector Machine
+      # - text: Unsupervised Learning
+
+      - text: ---
+      - section: Communicate
+        contents:
+          - href: https://docs.google.com/document/d/1e9R6oV1w-o0K1GNpi8ralyPGEkVzxeUNw-a4UWv61CY/edit?usp=sharing
+            text: Ask
+      # #     - href: https://docs.google.com/document/d/13RYgzt7L4Bbw46kHHpQMNLXWJZMi62hJPk44TBoLteQ/edit?usp=sharing
+      # #       text: Personal Project
+
+  # navbar:
+  #   left:
+  #     - href: index.qmd
+  #       text: Home
+  #     - about.qmd
+
+format:
+  html:
+    respect-user-color-scheme: true
+    page-layout: full
+    toc: true
+    toc-depth: 4
+    toc-location: right
+    code-fold: false
+    code-overflow: wrap
+    code-summary: "Show the code"
+    theme: 
+      light: [cosmo, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
+    fontsize: 1.0rem
+    linestretch: 1.8
+    code-copy: true
+    highlight-style: gruvbox
+    link-external-newwindow: true
+    # link-external-icon: true
+    grid:
+      body-width: 900px
+      margin-width: 200px
+        
+        # css: styles.css
+
+
+

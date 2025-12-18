@@ -1,0 +1,9 @@
+/.quarto/
+/*.qmd
+
+# any files except docs directory
+/contents/
+
+.DS_Store
+
+**/*.quarto_ipynb

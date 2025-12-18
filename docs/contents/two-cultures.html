@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Two Cultures –  Intro to Data Science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../contents/causal-inference.html" rel="next">
+<link href="../contents/intro.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7752016105844385aa03c3f261a9a9a9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-edee38d4faeace745f6b9ddbb1104654.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7752016105844385aa03c3f261a9a9a9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-34140112f1ae95bb32f6ab1634a0c3c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f8f5ecc1378822f4f0cdd235f6ceb3cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-34140112f1ae95bb32f6ab1634a0c3c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-F9XY7W8RLK"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Two Cultures –  Intro to Data Science">
+<meta property="og:description" content="Introduction to Data Science, Dongguk University, 2024-1">
+<meta property="og:image" content="https://dgds101.modellings.art/contents/images/black-box.png">
+<meta property="og:site_name" content="Introduction to Data Science">
+<meta property="og:image:height" content="346">
+<meta property="og:image:width" content="1040">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title"><iconify-icon role="img" inline="" icon="fa-solid:fingerprint" aria-label="Icon fingerprint from fa-solid Iconify.design set." title="Icon fingerprint from fa-solid Iconify.design set."></iconify-icon> Intro to Data Science</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-introduction" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Introduction</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-introduction">    
+        <li>
+    <a class="dropdown-item" href="../contents/intro.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/two-cultures.html">
+ <span class="dropdown-text">Two Cultures</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/causal-inference.html">
+ <span class="dropdown-text">Causal Inference</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-python-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Python Basics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-python-basics">    
+        <li>
+    <a class="dropdown-item" href="../contents/setup.html">
+ <span class="dropdown-text">Python Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/pandas.html">
+ <span class="dropdown-text">NumPy &amp; pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/inspection.html">
+ <span class="dropdown-text">Data Inspection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/subsetting.html">
+ <span class="dropdown-text">Subsetting</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-eda" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">EDA</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-eda">    
+        <li>
+    <a class="dropdown-item" href="../contents/vis-intro.html">
+ <span class="dropdown-text">Visualize</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/eda.html">
+ <span class="dropdown-text">Explore</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/wrangling.html">
+ <span class="dropdown-text">Wrangling</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-linear-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Linear Models</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-linear-models">    
+        <li>
+    <a class="dropdown-item" href="../contents/model-basic.html">
+ <span class="dropdown-text">Model Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/model-basic-implementation.html">
+ <span class="dropdown-text">Implementations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/statistics.html">
+ <span class="dropdown-text">Regression Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ml-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">ML Basics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ml-basics">    
+        <li>
+    <a class="dropdown-item" href="../contents/mlsl-intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/regularization.html">
+ <span class="dropdown-text">Regularization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/shrinkage.html">
+ <span class="dropdown-text">Implementations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/knn.html">
+ <span class="dropdown-text">K-Nearest Neighbors</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-classification">    
+        <li>
+    <a class="dropdown-item" href="../contents/logistic.html">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/lda.html">
+ <span class="dropdown-text">Generative Models</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../contents/tree.html"> 
+<span class="menu-text">Trees</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link active" data-scroll-target="#data-analysis">Data Analysis</a></li>
+  <li><a href="#the-two-cultures" id="toc-the-two-cultures" class="nav-link" data-scroll-target="#the-two-cultures">The Two Cultures</a>
+  <ul>
+  <li><a href="#the-data-modeling-culture" id="toc-the-data-modeling-culture" class="nav-link" data-scroll-target="#the-data-modeling-culture">The Data Modeling Culture</a>
+  <ul class="collapse">
+  <li><a href="#parameter-estimation-uncertainty" id="toc-parameter-estimation-uncertainty" class="nav-link" data-scroll-target="#parameter-estimation-uncertainty">Parameter Estimation &amp; Uncertainty</a></li>
+  <li><a href="#데이터-모델의-한계" id="toc-데이터-모델의-한계" class="nav-link" data-scroll-target="#데이터-모델의-한계">데이터 모델의 한계</a></li>
+  </ul></li>
+  <li><a href="#the-algorithmic-modeling-culture" id="toc-the-algorithmic-modeling-culture" class="nav-link" data-scroll-target="#the-algorithmic-modeling-culture">The Algorithmic Modeling Culture</a>
+  <ul class="collapse">
+  <li><a href="#머신-러닝-분야로부터의-레슨" id="toc-머신-러닝-분야로부터의-레슨" class="nav-link" data-scroll-target="#머신-러닝-분야로부터의-레슨">머신 러닝 분야로부터의 레슨</a></li>
+  <li><a href="#블랙박스로부터의-정보-추출" id="toc-블랙박스로부터의-정보-추출" class="nav-link" data-scroll-target="#블랙박스로부터의-정보-추출">블랙박스로부터의 정보 추출</a></li>
+  </ul></li>
+  <li><a href="#결론" id="toc-결론" class="nav-link" data-scroll-target="#결론">결론</a></li>
+  <li><a href="#올바른-인과-모델의-필요성" id="toc-올바른-인과-모델의-필요성" class="nav-link" data-scroll-target="#올바른-인과-모델의-필요성">올바른 (인과) 모델의 필요성</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Two Cultures</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="data-analysis" class="level1">
+<h1>Data Analysis</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>오랜동안 여러 분야에서 각자의 방식을 개발<br>
+Computer Science<br>
+Statistics<br>
+Biostatistics<br>
+Economics<br>
+Epidemiology<br>
+Political Science<br>
+Engineering</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>서로 다른 용어를 쓰기도 하며, 그 분야에서 필요로하는 방식에 초점을 맞춤.<br>
+</li>
+<li>서로 의사소통이 거의 없었음.<br>
+</li>
+<li>Data Science라는 이름하에 <strong>통합</strong>되어가는 과정 중</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>컴퓨터 사이언스의 경우, 데이터에 존재하는 패턴을 학습하여 <strong>분류</strong>를 하거나 <strong>예측</strong>을 위한 이론과 툴들이 개발되는 반면,</li>
+<li>과학자들은 예측보다는, 변수들 간의 <strong>진정한 관계</strong> 혹은 <strong>인과 관계</strong>를 탐구</li>
+<li>현재 이 둘은 소위 cross-fertilization을 지향하며 같이 발전, 통합되어가고 있음.</li>
+</ul>
+<!-- <hr style="height:10pt; visibility:hidden;" /> -->
+<!-- <p class="" style="height: 5pt;"></p> -->
+</section>
+<section id="the-two-cultures" class="level1">
+<h1>The Two Cultures</h1>
+<div class="columns">
+<div class="column" style="width:75%;">
+<p>Breiman, L. (2001). <a href="https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full"><strong>Statistical modeling: The two cultures</strong></a> (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231. <a href="../contents/two_cultures/two_cultures.html">Extracted text</a></p>
+<ul>
+<li>산업 현장에서의 경험을 토대로 전통적 통계의 한계를 지적</li>
+<li>자신이 개발한 대안적 통계 기법(trees, random forests)을 소개하며, 기존 통계 기법과 비교</li>
+<li>Machine Learning 분야의 성취에 대한 열린 태도와 통계학의 방향성에 대해 제안</li>
+</ul>
+</div><div class="column" style="width:3%;">
+<p><br></p>
+</div><div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<figcaption>Leo Breiman in 2003 from Wikipedia</figcaption>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/4/4d/Leo_Breiman.jpg" height="180" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>데이터 분석의 목적</strong></p>
+<p><img src="images/black-box.png" height="100"></p>
+<ul>
+<li><em>Prediction 예측</em>: 미래의 입력 변수(input, X)에 대해 어떤 반응(reponse, Y)이 나올지 예측할 수 있는 기능</li>
+<li><em>Information 정보</em>: 자연이 응답 변수(reponse, Y)와 입력 변수(input, X)를 어떻게 연관시키는지에 대한 정보를 추출</li>
+</ul>
+<p><strong>전통적 통계의 접근 방식: data modeling<br>
+머신러닝의 접근 방식: algorithmic modeling </strong></p>
+<section id="the-data-modeling-culture" class="level2">
+<h2 class="anchored" data-anchor-id="the-data-modeling-culture">The Data Modeling Culture</h2>
+<p><img src="images/black-box-2.png" height="120"></p>
+<p><span class="math inline">\(Y\)</span> = <span class="math inline">\(f(X, \text{random noise, parameters})\)</span></p>
+<ul>
+<li>모델의 타당도(validation): goodness-of-fit 테스트와 잔차의 검토</li>
+<li>통계학자의 98%</li>
+</ul>
+<section id="parameter-estimation-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-estimation-uncertainty">Parameter Estimation &amp; Uncertainty</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="현상을 이해하고자하는 과학적 접근">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>현상을 이해하고자하는 과학적 접근
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>가령, “생물학적 성별에 따른 키(혹은 임금)의 차이는 본질적으로 얼마인가?”라는 질문은 어떤 의미를 가지는가?<br>
+이 질문에 답하기 위한 과학적 접근은 무엇인가?</p>
+<ol type="1">
+<li>남성, 여성은 무엇을 뜻하는가? 이를 정의해야 함. → 모집단의 프레임워크로 접근</li>
+<li>본질적 차이라는 것이 무엇을 의미하며 어떻게 알아낼 수 있는가?</li>
+</ol>
+<ul>
+<li>남녀의 키를 결정하는 무수한 요인들로부터 현실에서 남녀의 키는 다양한 값으로 분포됨.<br>
+</li>
+<li>그럼에도 불구하고, 생물학적 성만의 “고유한 효과”가 존재할 것이라는 가정하에 (본질적 차이); <span class="math inline">\(y = \beta_0 + \beta_1\cdot sex + \epsilon\)</span><br>
+</li>
+<li>생물학적 성만이 “고유하게” 발생시키는 키의 차이를 밝히고자 함.<br>
+<img src="images/population-sex.png" class="img-fluid" width="350"><br>
+Central Limit Theorem과 같은 이론을 근거로 생물학적 성 이외의 수많은 요인들의 효과는 노이즈(noise)로 이해하고 “정규분포”처럼 나타날 것이라는 가정하에,<br>
+안전하게, 생물학적 성만의 고유한 효과를 추출할 수 있음; “노이즈(noise)로부터 시그널(signal)을 분리”<br>
+위 모델에서 <span class="math inline">\(\epsilon\)</span>에 대한 모델링: <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span>로 가정</li>
+</ul>
+<ol start="3" type="1">
+<li>이 차이를 알아내기 위해 실제로 어떻게 측정할 것인가?</li>
+</ol>
+<ul>
+<li>가정된 전체(모집단)를 관찰할 수 없기 때문에 특정 표본을 관찰하여 전체에 대한 추정치를 얻고자 함.</li>
+<li>표본에 따라 다른 값이 얻어질 것이기 때문에, 그 값들의 (이론적) 분포를 “표본 분포”라고 하고, 이 분포를 통해 현재 표본으로부터 모집단 추정치에 대한 불확실성을 추정 <img src="images/sampling-distribution.png" class="img-fluid" width="700"><br>
+</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>현재 관찰된 데이터는 어떤 <strong>모집단(population)</strong>으로부터 (독립적으로) 발생된 <strong>표본(sample)</strong>이라고 가정<br>
+</li>
+<li>변수들 간의 <strong>관계성(relationships)</strong>을 파악하기 위해, 데이터 모델링은 현상에 대한 <strong>모델을 사전 설정(assumptions)</strong>하고,
+<ul>
+<li>예를 들어, <strong>모집단에 대해서</strong> 선형관계를 가정: <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\)</span></li>
+</ul></li>
+<li>변수들의 값이 어떻게 <strong>발생하는지(generated)</strong>에 대한 <strong>가정</strong>을 세우고,
+<ul>
+<li>예를 들어, Gaussian, Binormial distribution, …</li>
+</ul></li>
+<li>데이터에 <strong>가장 적합한(best fitted)</strong> 특정 모델을 선택 (즉, <strong>파라미터 <span class="math inline">\(\beta s\)</span></strong>를 추정)
+<ul>
+<li>즉, 위의 선형 함수가 <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>의 1) 관계를 나타내고, 2) 예측을 위해 사용됨</li>
+<li><span class="math inline">\(\epsilon\)</span>은 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 본질적 관계와는 상관없는 일종의 노이즈(noise); 정확히는 <span class="math inline">\(X\)</span>로는 설명되지 않는 <span class="math inline">\(Y\)</span>의 부분</li>
+<li>노이즈(noise)로부터 시그널(signal)을 분리: “true relationships”을 찾고자 함.</li>
+</ul></li>
+<li>이 파라미터 <span class="math inline">\(\beta s\)</span>의 <strong>불확실성(uncertainty)</strong>을 추정
+<ul>
+<li>모집단에 대한 추정, 즉 진정한 값을 추정하는 것이므로 불확실성이 존재</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="우울증 예측을 위한 선형모델의 예">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>우울증 예측을 위한 선형모델의 예
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+\text{y(Depression)} = f(x) =\ &amp; \beta_0
++ \beta_1 \cdot \text{Age}
++ \beta_2 \cdot \text{Sex}
++ \beta_3 \cdot \text{FamilyHistory}
++ \beta_4 \cdot \text{ChronicDisease} \\
+&amp; + \beta_5 \cdot \text{StressLevel}
++ \beta_6 \cdot \text{SleepQuality}
++ \beta_7 \cdot \text{PhysicalActivity} \\
+&amp; + \beta_8 \cdot \text{SocialSupport}
++ \beta_9 \cdot \text{DigitalBehavior}
++ \epsilon
+\end{align*}
+\]</span></p>
+<p><strong><em>예측요인들</em></strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 51%">
+<col style="width: 32%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>인구학적 요인</strong></td>
+<td>Age, Sex</td>
+<td>나이, 성별</td>
+</tr>
+<tr class="even">
+<td><strong>건강·임상 요인</strong></td>
+<td>FamilyHistory, ChronicDisease</td>
+<td>가족력, 만성질환, 과거 정신질환 이력</td>
+</tr>
+<tr class="odd">
+<td><strong>심리·행동 요인</strong></td>
+<td>StressLevel, SleepQuality, PhysicalActivity</td>
+<td>스트레스 수준, 수면의 질, 운동·활동량</td>
+</tr>
+<tr class="even">
+<td><strong>사회적 요인</strong></td>
+<td>SocialSupport</td>
+<td>사회적 지지(가족·친구·공동체)</td>
+</tr>
+<tr class="odd">
+<td><strong>디지털/행동 데이터</strong></td>
+<td>DigitalBehavior</td>
+<td>스마트폰 사용 패턴, SNS 언어, 이동성 데이터</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong><em>실제로는 변수들 간의 복잡한 관계를 규명하고자 함. 가령,</em></strong></p>
+<p><img src="images/sem-depression.png" class="img-fluid" width="700"></p>
+</div>
+</div>
+<p>예를 들어,</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="images/smartphone-health.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/smartphone-health.png" height="350"></a></p>
+<div style="line-height: 1.5em; font-size: .8em">
+<p>Source: <a href="https://www.afterbabel.com/p/sapien-smartphone-report">Kids Who Get Smartphones Earlier Become Adults With Worse Mental Health</a></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><a href="images/all_hom_by_pov_rate_grp_by_black_quintiles.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/all_hom_by_pov_rate_grp_by_black_quintiles.png" height="350"></a></p>
+<div style="line-height: 1.5em; font-size: .8em">
+<p>Source: <a href="https://randomcriticalanalysis.com/2015/11/16/racial-differences-in-homicide-rates-are-poorly-explained-by-economics/">Racial differences in homicide rates are poorly explained by economics</a></p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="images/growth-rate-fish-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/growth-rate-fish-1.png" height="200"></a></p>
+</div><div class="column" style="width:50;">
+<p><a href="images/growth-rate-fish-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/growth-rate-fish-2.png" height="200"></a></p>
+</div>
+</div>
+<div style="line-height: 1.5em; font-size: .8em">
+<p>Source: <em>Jiang, W., Lavergne, E., Kurita, Y., Todate, K., Kasai, A., Fuji, T., &amp; Yamashita, Y. (2019). Age determination and growth pattern of temperate seabass Lateolabrax japonicus in Tango Bay and Sendai Bay, Japan. Fisheries science, 85, 81-98.</em></p>
+</div>
+<p><strong>단순한 선형 모델의 예</strong><br>
+다이아몬드 가격에 대한 예측 모델</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="images/linear-model-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/linear-model-1.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="images/linear-model-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/linear-model-2.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="images/linear-model-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/linear-model-3.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<p>가정들:<br>
+<span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 간의 true relationship: <span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + \epsilon_i\)</span><br>
+Noise/residual의 분포: <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span></p>
+<ul>
+<li>Mean function: <span class="math inline">\(E(Y | X = X_i) = \beta_0 + \beta_1 X_i\)</span></li>
+<li>Variance function: <span class="math inline">\(Var(Y | X = X_i) = \sigma^2\)</span></li>
+<li>Distribution: <span class="math inline">\((Y | X = X_i) \sim N(\beta_0 + \beta_1 X_i, \sigma^2)\)</span></li>
+</ul>
+<p>파라미터의 추정 및 불확실성:</p>
+<ul>
+<li><span class="math inline">\(\hat{\beta}_0 = 0.4, \hat{\beta}_1 = 5123, \hat{\sigma} = 300\)</span></li>
+<li>95%의 확률로 <span class="math inline">\(\beta_0 \in (0.3, 0.5), \beta_1 \in (4823, 5423)\)</span></li>
+<li><span class="math inline">\(\widehat{price}_i = 0.4 + 5123 \cdot carat\)</span> : “평균적으로 다이아몬드가 1 carat 커질 때마다 $5123 비싸짐”</li>
+<li>노이즈로부터 관계에 관한 시그널을 추출한 것으로 볼 수 있음</li>
+</ul>
+</section>
+<section id="데이터-모델의-한계" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-모델의-한계">데이터 모델의 한계</h3>
+<ul>
+<li>과연 가정한 모델이 자연/현상을 잘 모방하고 있는가?</li>
+</ul>
+<blockquote class="blockquote">
+<p><em>This enterprise has at its heart the belief that a statistician, <strong>by imagination and by looking at the data</strong>, can invent a reasonably <strong>good parametric class of models</strong> for a complex mechanism devised by nature.</em><br>
+<em>핵심은 통계학자가 <strong>상상력을 발휘하고 데이터를 살펴보면</strong> 자연이 고안한 복잡한 메커니즘에 대해 합리적으로 <strong>좋은 파라메트릭 클래스의 모델</strong>을 발명할 수 있다는 믿음입니다.</em> (번역 by DeepL)</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>The belief in the <strong>infallibility</strong> of data models was almost <strong>religious</strong>. It is a strange phenomenon—once a model is made, then it becomes truth and the conclusions from it are infallible.</em><br>
+<em>데이터 모델의 <strong>무오류성</strong>에 대한 믿음은 거의 <strong>종교</strong>에 가까웠습니다. 일단 모델이 만들어지면 그것이 진리가 되고 그 모델에서 도출된 결론은 오류가 없다고 믿는 이상한 현상입니다.</em> (번역 by DeepL)</p>
+</blockquote>
+<ul>
+<li>모델이 데이터에 얼마나 잘 맞는지에 대한 논의가 거의 없음
+<ul>
+<li>특히, 주로 <strong>예-아니오</strong>로 답하는 적합도 테스트를 통해 모델의 적합성을 판단</li>
+<li>샘플링 오류로 인해 우연히 관찰된 것은 아니라는 정도에 대한 확신; 완전한 거짓은 아니라는 판단</li>
+</ul></li>
+<li>주로 독창적인 확률 모형을 찾는데 주력</li>
+<li>(가정한) 모델을 데이터에 맞출 때 결론은 자연의 메커니즘이 아니라 모델의 메커니즘에 관한 것이 됨</li>
+<li>모델이 자연을 제대로 모방하지 못하면 결론이 잘못될 수 있음</li>
+</ul>
+<p><strong>데이터 모델의 다양성</strong></p>
+<ul>
+<li>데이터 모델링의 가장 큰 장점: 입력 변수와 응답 간의 관계를 간단하고 이해하기 쉬운 다이어그램으로 표현 가능; <a href="https://dgds101.modellings.art/contents/statistics.html#regression-analysis">회귀 분석의 예</a></li>
+<li>하지만, 데이터에 동일하게 적합한 여러 모델이 존재
+<ul>
+<li>적합성(goodness-of-fit)에 대한 기준이 통계적 검정을 통한 예-아니오로 판별</li>
+</ul></li>
+<li>관찰한 데이터로만 모델의 파라미터를 추정하기 때문에, 과적합이 발생하며, 새로운 데이터에 대한 예측 정확도가 떨어질 수 있음</li>
+<li>편향되지 않은 예측 정확도 추정치를 얻으려면 교차 검증(cross-validation)을 사용하거나 일부 데이터를 테스트 집합(test set)으로 따로 떼어 놓을 필요가 있음</li>
+</ul>
+<p><strong>모형의 가정에 위배</strong></p>
+<ul>
+<li>일반적으로 의료 데이터, 재무 데이터와 같이 복합 시스템에서 생성된 데이터에 단순한 파라메트릭 모델을 적용하면 알고리즘 모델에 비해 정확성과 정보가 손실될 수 있음</li>
+<li>현실에서 데이터의 발생 메커니즘(확률 분포 및 인과적 연결성)에 대한 가정이 성립되기 어려움</li>
+<li>모델을 가정하기보다는 데이터와 실제로 처한 문제로부터 해결책을 찾아 갈 필요가 있음.</li>
+</ul>
+<blockquote class="blockquote">
+<p><em>“If all a man has is a hammer, then every problem looks like a nail.”</em></p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled" title="Bayesian Models">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Bayesian Models
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>불확실성에 대한 가정에 대한 다른 접근: 관측값이 늘어남에 따라 사전 확률(prior probability)을 업데이트(사후 확률, posterior probability)하여 사건 발생에 대한 믿음(확률)을 추정하는 방식</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/toss-globe.jpg" class="img-fluid" width="250"></p>
+<p><img src="images/bayesian-update.png" class="img-fluid" width="600"></p>
+<p>Source: <em>McElreath, R. (2018). Statistical rethinking: A Bayesian course with examples in R and Stan. Chapman and Hall/CRC.</em></p>
+</div>
+</div>
+</div>
+<!-- 동전던지기의 예를 기존 가설 검증의 논리와 베이지안 방법론을 비교하여 설명
+동전 던지기의 샘플: HHTH의 경우
+![](images/bayseian.JPG){width=500}
+-->
+</section>
+</section>
+<section id="the-algorithmic-modeling-culture" class="level2">
+<h2 class="anchored" data-anchor-id="the-algorithmic-modeling-culture">The Algorithmic Modeling Culture</h2>
+<p><img src="images/black-box-3.png" height="120"></p>
+<p>자연의 복잡하고 신비하며 적어도 부분적으로는 알 수 없는 블랙박스에서부터 데이터가 생성된다고 가정<br>
+데이터로부터 반응 <span class="math inline">\(Y\)</span>를 <strong>예측</strong>을 하기 위해 <span class="math inline">\(X\)</span>에 작용하는 <strong>알고리즘 함수 <span class="math inline">\(f(X)\)</span></strong>를 찾고자 함</p>
+<ul>
+<li>가정: 데이터가 어떤 분포로부터 독립적으로 발생(i.i.d. Independent &amp; identically distributed)</li>
+<li>모델의 타당도 지표: 예측 정확도 (predictive accuracy)</li>
+<li>통계학자의 2%</li>
+</ul>
+<p>예를 들어, 야구 선수의 연봉을 예측하기 위한 결정 트리 모델 (regression tree)</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/tree-hitter-1.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/tree-hitter-2.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<ul>
+<li>다양한 방식의 여러 결정 트리 모델을 생성 후</li>
+<li>이들을 결합(aggregating)하여 평균을 내어 예측 정확도를 높일 수 있음</li>
+</ul>
+<p><strong>새로운 연구 커뮤니티</strong></p>
+<ul>
+<li>젊은 컴퓨터 과학자, 물리학자, 엔지니어와 나이든 몇 명의 통계학자 등이 주도</li>
+<li>1980년대 초 리처드 올슨의 연구를 시작으로 의료 데이터 분석에 조금씩 진출하기 시작</li>
+<li>1980년대 중반에 두 가지 강력한 새 알고리즘, 즉 신경망(neural network)과 의사 결정 트리(tree)가 등장</li>
+<li>1990년대 통계학에서도 smoothing spline 알고리즘, cross validation을 사용한 데이터에 대한 적용에 관한 연구가 존재</li>
+<li>1990년대 중반에는 Vapnik의 서포트 벡터 머신(support vector machine)이 등장</li>
+<li>예측 정확도를 목표로, 음성 인식, 이미지 인식, 비선형 시계열 예측, 필기 인식, 금융 시장 예측 등 데이터 모델을 적용할 수 없는 것이 분명한 복잡한 예측 문제를 해결</li>
+</ul>
+<!-- The theoryin this field shifts focus from data mod-els to the properties of algorithms. It characterizes their “strength” as predictors, convergence if they are iterative, and what gives them good predictive accuracy. The one assumption made in the theory is that the data is drawn i.i.d. from an unknown multivariate distribution. (Independent and identically distributed) -->
+<section id="머신-러닝-분야로부터의-레슨" class="level3">
+<h3 class="anchored" data-anchor-id="머신-러닝-분야로부터의-레슨">머신 러닝 분야로부터의 레슨</h3>
+<p><strong>좋은 모델의 다양성 (multiplicity)</strong></p>
+<ul>
+<li>예측도가 비슷한 전혀 다른 모델이 존재할 수 있는데</li>
+<li>이 모델들을 결합(aggregating)하면 예측 정확도를 높일 수 있으며, 단일한 모델로 환원할 수 있음</li>
+</ul>
+<p><strong>단순성 대 정확성 (simplicity vs.&nbsp;accuracy)</strong><br>
+The Occam’s Dilemma</p>
+<ul>
+<li>예측에 있어 정확성과 단순성(해석 가능성)은 상충됨
+<ul>
+<li>정확도를 높이려면 더 복잡한 예측 방법이 요구</li>
+<li>단순하고 해석 가능한 함수는 예측력이 높지 못함</li>
+</ul></li>
+<li>예측 정확도를 먼저 추구한 후 그 이유를 이해하는 것이 더 낫다고 제안</li>
+<li>목표 지향적인 관점에서 보면 오컴의 딜레마는 존재하지 않음</li>
+</ul>
+<p><strong>차원의 저주 (the curse of dimensionality)</strong><br>
+Digging It Out in Small Pieces</p>
+<ul>
+<li>전통적으로 (데이터 크기에 상대적으로) 변수가 많을수록 좋지 않다고 여겼으나, <!-- 
+#| echo: false
+#| layout-ncol: 2
+#| label: fig-delay
+#| fig-cap: "항공기 지연에 미치는 영향"
+#| fig-subcap: 
+#|   - "바람과 강수량으로 예측(2-dimensional)"
+#|   - "강수량으로만 예측(1-dimensional)"
+#| fig-cap-location: top
+
+import numpy as np
+import pandas as pd
+import plotly.io as pio
+import plotly.graph_objects as go
+pio.renderers.default = "plotly_mimetype+notebook_connected"
+
+np.random.seed(6)
+N = 10
+x1 = np.random.uniform(0, 20, N)
+x2 = 2*x1 - 1 + np.random.normal(0, 20, N)
+y = x1 + x2 + x1*x2 + np.random.normal(0, 300, N)
+df = pd.DataFrame(dict(precip=x1, wind=x2, delay=y))
+
+scatter = go.Scatter3d(x=df.precip, y=df.wind, z=df.delay, mode='markers', marker=dict(size=3))
+
+fig = go.Figure(data=[scatter])
+fig.update_layout(width=500, height=300)
+fig.update_layout(scene=dict(
+    xaxis_title="Precipitation",
+    yaxis_title="Wind",
+    zaxis_title="Delay"
+))
+fig.update_layout(template='ggplot2')
+fig.show()
+
+import seaborn.objects as so
+from matplotlib import style
+theme_dict = {**style.library['ggplot'], "grid.linestyle": ":", 'axes.facecolor': 'white', 'grid.color': '.6',}
+so.Plot.config.theme.update(theme_dict)
+(
+    so.Plot(df, x='precip', y='delay')
+    .add(so.Dot(pointsize=4))
+    .layout(size=(4, 3.5))
+)
+``` --></li>
+</ul>
+<div id="fig-price" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-price-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: 차원이 높아짐에 따른 추정에 대한 불확실성 증가
+</figcaption>
+<div aria-describedby="fig-price-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-price" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dim1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-dim1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) 방의 갯수에 따른 집값의 변화(1-dim)
+</figcaption>
+<div aria-describedby="fig-dim1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cod-1.png" class="img-fluid figure-img" data-ref-parent="fig-price">
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-price" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dim2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-dim2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) 지역 정보가 추가되어 지역별로 나누어보는 경우(2-dim)
+</figcaption>
+<div aria-describedby="fig-dim2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cod-2.png" class="img-fluid figure-img" data-ref-parent="fig-price">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<ul>
+<li>Tree나 neural network에서는 변수가 많은 것이 문제가 되지 않고, 오히려 작은 정보들이 추가됨
+<ul>
+<li>예를 들어, 30개의 예측 변수로부터 4차항들을 추가하면 약 40,000개의 새로운 변수가 생성됨</li>
+<li>이들의 정보는 분류에 도움이 되어 예측 정확도를 높일 수 있음</li>
+</ul></li>
+</ul>
+<p><img src="images/dim-1.png" class="img-fluid" width="450"><br>
+&nbsp;&nbsp;&nbsp;<img src="images/dim-2.png" class="img-fluid" width="438"></p>
+</section>
+<section id="블랙박스로부터의-정보-추출" class="level3">
+<h3 class="anchored" data-anchor-id="블랙박스로부터의-정보-추출">블랙박스로부터의 정보 추출</h3>
+<p><em>The goal is not interpretability, but <strong>accurate information</strong>.</em></p>
+<blockquote class="blockquote">
+<p><em>“정확성(accuracy)과 해석 가능성(interpretability) 중 하나를 선택해야 한다면, 그들은(통계학자) 해석 가능성을 택할 것입니다.</em></p>
+<p><em>정확성과 해석 가능성 사이의 선택으로 질문을 구성하는 것은 통계 분석의 목표가 무엇인지에 대한 잘못된 해석입니다. 모델의 핵심은 응답 변수(Y)과 예측 변수(X) 간의 관계에 대한 <strong>유용한 정보</strong>를 얻는 것입니다. <strong>해석 가능성은 정보를 얻는 한 가지 방법</strong>입니다. 그러나 예측 변수와 응답 변수 간의 관계에 대한 신뢰할 수 있는 정보를 제공하기 위해 모델이 반드시 단순할 필요는 없으며, 데이터 모델일 필요도 없습니다.”</em> (번역 by DeepL)</p>
+</blockquote>
+<ul>
+<li>예측 정확도가 높을수록 기저에 있는 데이터 발생 메커니즘(data generating process)에 대한 더 신뢰할 수 있는 정보가 내재할 가능성이 높음; 예측 정확도가 낮으면 의심스러운 결론을 내릴 수 있음</li>
+<li>알고리즘 모델은 데이터 모델보다 예측 정확도가 더 높으며, 기저 메커니즘(underlying mechanism)에 대한 더 나은 정보를 제공할 수 있음.</li>
+</ul>
+<p>예를 들어,</p>
+<ul>
+<li>의료 데이터와 같이 변수가 데이터에 비해 상대적으로 매우 많은 경우, 더 신뢰만한 변수들의 중요도를 추출할 수 있었음</li>
+<li>클러스터링과 같은 유사한 패턴을 보이는 군집들을 발견할 수 있었음</li>
+<li>유전자 분석처럼 데이터 모델을 생각하기 어려운 곳에 적용 가능; 머신러닝은 변수가 많을수록 좋으며, 과적합하지 않음</li>
+</ul>
+</section>
+</section>
+<section id="결론" class="level2">
+<h2 class="anchored" data-anchor-id="결론">결론</h2>
+<blockquote class="blockquote">
+<p><em>통계의 목표는 데이터를 사용하여 예측하고 기저에 있는 데이터 메커니즘에 대한 정보를 얻는 것입니다. 데이터와 관련된 문제를 해결하기 위해 어떤 종류의 모델을 사용해야 하는지는 석판에 적혀 있지 않습니다. 제 입장을 분명히 말씀드리자면, 저는 데이터 모델 자체를 반대하는 것이 아닙니다. 어떤 상황에서는 데이터 모델이 문제를 해결하는 가장 적절한 방법일 수 있습니다. 하지만 문제와 데이터에 중점을 두어야 합니다.</em> (번역 by DeepL)</p>
+</blockquote>
+<div style="line-height: 1.5em; font-size: .9em">
+<blockquote class="blockquote">
+<p><em>The goals in statistics are to use data to predict and to get information about the underlying data mechanism. Nowhere is it written on a stone tablet what kind of model should be used to solve problems involving data. To make myposition clear, I am not against data models per se. In some situations they are the most appropriate wayto solve the problem. But the emphasis needs to be on the problem and on the data.</em></p>
+</blockquote>
+</div>
+<!-- ![](images/desert.png){height=400} -->
+</section>
+<section id="올바른-인과-모델의-필요성" class="level2">
+<h2 class="anchored" data-anchor-id="올바른-인과-모델의-필요성">올바른 (인과) 모델의 필요성</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><strong>천체의 움직임에 대한 모델</strong><br>
+프톨레마이오스(Claudius Ptolemaeus, CE 100년 이집트 출생)의 천동설 모델</p>
+<ul>
+<li>행성의 움직임에 대한 수학적 모델은 매우 정확했으며, 천 년 넘게 활용되었음</li>
+<li>적절한 위치에 충분한 에피사이클(epicycle)을 배치하면 행성의 움직임을 (지구인의 시점에서) 매우 정확하게 예측할 수 있음</li>
+</ul>
+<!-- 프톨레마이오스와 그와 같은 사람들은 컴퓨터의 도움 없이 이 모든 것을 해결했습니다. 누구든 프톨레마이오스와 비교되는 것을 영광스럽게 생각해야 합니다. 물론 문제는 지동 중심 모델이 여러 면에서 잘못되었다는 점입니다. 이 모델을 사용하여 화성 탐사선의 경로를 그리면 붉은 행성을 꽤 멀리 놓칠 수 있습니다. 하지만 밤하늘에서 화성을 발견하는 데는 여전히 훌륭한 모델입니다. 어떤 천체를 찾고자 하는지에 따라 1세기 정도마다 다시 보정해야 합니다. 그러나 지구 중심 모델은 좁은 의문 영역 내에서 예측을 유지한다면 계속해서 유용한 예측을 할 수 있습니다. -->
+<!-- 태양계의 정확한 구조를 알고 나면 epicycles을 사용하는 전략이 미친 것처럼 보일 수 있습니다. 하지만 고대인들은 일반화된 근사치 시스템을 발견한 것으로 밝혀졌습니다.  -->
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: <em>McElreath, R. (2018). Statistical rethinking: A Bayesian course with examples in R and Stan. Chapman and Hall/CRC.</em></p>
+</div>
+</div><div class="column" style="width:5%;">
+<p><br></p>
+</div><div class="column" style="width:35%;">
+<p><img src="images/geocentric-model.png" class="img-fluid" width="330"></p>
+</div>
+</div>
+<p><strong>Maya Astronomy</strong></p>
+<ul>
+<li>천체의 운행에 대한 정교한 계산법 개발</li>
+<li>예를 들어, 일식과 월식, 계절의 변화를 예측</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/maya-calendar.png" class="img-fluid" width="250"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="images/solstice.png" class="img-fluid" width="400"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: <a href="https://www.youtube.com/watch?v=OmnWUyl_LjY">YouTube, Maya Astronomy and Mathematics</a></p>
+</div>
+</div>
+</div>
+<p><strong>과학적 발견의 프로세스</strong></p>
+<ul>
+<li>추측 &gt; 모델링 &gt; 관측/실험</li>
+<li>계산된 결과(예측)와 실제 결과(관측)의 비교를 통해 모델의 타당성을 판단</li>
+<li>결코 모델이 참인지 확신할 수 없음: 즉 true model은 존재하지 않을 수 있음; 예. 뉴튼 역학은 상대성 이론에 의해 수정</li>
+<li>모델이 틀린지에 대해서는 확신할 수 있음</li>
+<li>그럼에도 불구하고, 모델이 없는 과학은 위험할 수 있음</li>
+</ul>
+<p><strong>과학적 발견에서 AI의 역할</strong></p>
+<p>인식론적 불투명성이 AI 신뢰성의 한계로 작용하는가?</p>
+<ul>
+<li>AlphaFold2 성과: 2024년 노벨 화학상 수상, 단백질 구조 예측 성공</li>
+<li>AI 신뢰성 문제: “블랙박스”로 인해 내부 과정이 해석가능하지 않음</li>
+<li>과학적 지식과 AI: AI는 가설 생성에 유용하나, 정당화에는 한계 (Duede, 2023)</li>
+<li>신뢰성 구분 (Ortmann, 2025):
+<ul>
+<li>why-reliability: 왜 신뢰 할 수 있는가?</li>
+<li>whether-reliability: 신뢰할 수 있는지에 대한 여부는 판단 가능; 경험적 성공과 광범위한 채택으로 신뢰 획득</li>
+</ul></li>
+<li>철학적 회의론: 인식론적 투명성이 신뢰의 필수 요소 (Duede, 2022), 이론에 대한 인식적 보증이 요구 (Mitchell, 2020)</li>
+</ul>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: 2025 Seoul Workshop on Philosophy of Machine Learning 중 “AI and the Logic of Scientific Discovery”</p>
+</div>
+<p><strong>두 문화의 결합</strong></p>
+<p>원자의 움직임에 대한 슈뢰딩거 방정식</p>
+<p><span class="math inline">\(\displaystyle \left( -\frac{{\hbar^2}}{{2m}} \frac{{1}}{{r^2}} \frac{{\partial}}{{\partial r}} \left( r^2 \frac{{\partial}}{{\partial r}} \right) - \frac{{\hbar^2}}{{2m r^2}} \left( \frac{{\partial^2}}{{\partial \theta^2}} + \cot \theta \frac{{\partial}}{{\partial \theta}} + \frac{{1}}{{\sin^2 \theta}} \frac{{\partial^2}}{{\partial \phi^2}} \right) - \frac{{k e^2}}{{r}} \right) \psi(r,\theta,\phi) = E \psi(r,\theta,\phi)\)</span></p>
+<ul>
+<li>이 방정식을 이용해 synthetic data를 생성: 현실에 대한 simulation</li>
+<li>이 데이터를 이용해 머신러닝 모델을 학습: 물질의 속성에 대해 학습</li>
+<li>그 모델을 이용해 많은 새로운 후보 물질들 중에 유용한 것을 매우 빠르게 걸러낼 수 있음</li>
+<li>예측 모형의 다양한 활용 가능성을 보여줌</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/dgds101\.modellings\.art");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-page-left">
+  <div class="nav-page nav-page-previous">
+      <a href="../contents/intro.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contents/causal-inference.html" class="pagination-link" aria-label="Causal Inference">
+        <span class="nav-page-text">Causal Inference</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

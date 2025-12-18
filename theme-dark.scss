@@ -1,0 +1,80 @@
+/*-- scss:defaults --*/
+// Base document colors
+
+// $link-color: #ff7c7c;// #20B2AA; // #20B2AA; // 9480e4, 1988b0
+$body-color: #fefffa;  //  #fffef1; // font color
+$body-bg: rgb(61, 61, 61);
+
+$sidebar-bg: rgb(61, 61, 61); // ffffff, F6F6FF
+$sidebar-fg: #b29ffd; // #e16868; // 6B51D8, 51a9d8
+//$sidebar-hl: #d5b501;
+
+$navbar-bg: rgb(61, 61, 61);
+$navbar-fg: #ded8f9;
+$navbar-hl: #ded8f9;
+
+// Font sizes
+$h1-font-size: 1.8rem;
+$h2-font-size: 1.6rem;
+$h3-font-size: 1.4rem;
+$h4-font-size: 1.2rem;
+$font-size-base: 1.1rem;
+
+$sidebar-font-size: 1.1rem !default;
+$sidebar-font-size-section: 1.0rem !default;
+
+// Headings
+$headings-font-family: 'Figtree', sans-serif;
+$headings-font-style: italic;
+$headings-font-weight: 800;
+
+$toc-font-size: 1rem;
+
+// Fonts
+$font-family-sans-serif: 'Mulish', sans-serif; // 'Oxygen', sans-serif;
+$font-family-monospace: 'Source Code Pro', monospace; //'Red Hat Mono', monospace; 
+
+// Code blocks
+$code-block-font-size: 1rem;
+
+// $code-block-bg: #272727; 
+$code-block-bg-alpha: -.7;  // This is not used if an explicit background color is set. 
+// $code-block-bg: #f9f9fd; // #F6F6FF
+$code-block-border-left: #87bc45; // #FFDE7C; //#ff7c7c;
+$code-block-border-left-size: 2px;
+
+// Inline code
+$code-color: #edca05; //FE5370
+$code-bg: rgb(61, 61, 61); // inline code backgound color
+
+/*-- scss:rules --*/
+
+// Variables
+
+$web-font-path: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,600;1,300;1,600&family=Figtree:ital,wght@0,300..900;1,300..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Red+Hat+Mono:ital,wght@0,400;0,600;1,400&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap';
+
+// $web-font-path: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,600;1,300;1,600&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Oxygen:wght@300;400;700&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Red+Hat+Mono:ital,wght@0,400;0,600;1,400&family=Sometype+Mono:ital,wght@0,400;0,500;1,400&display=swap';
+
+@if $web-font-path {
+  @import url($web-font-path);
+}
+
+// https://github.com/quarto-dev/quarto-cli/tree/main/src/resources/formats/html/bootstrap
+
+// h1, h2, h3, h4, h5, h6 {
+//   font-weight: 600;
+// }
+
+body {
+  // color: #3e3f3a;
+  font-weight: 500;
+}
+
+.sourceCode {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+// code {
+//   color: #3e3f3a;
+// }

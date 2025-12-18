@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sungkyun Cho">
+<meta name="dcterms.date" content="2024-12-09">
+
+<title>Generative Models –  Intro to Data Science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../contents/tree.html" rel="next">
+<link href="../contents/logistic.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7752016105844385aa03c3f261a9a9a9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-edee38d4faeace745f6b9ddbb1104654.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7752016105844385aa03c3f261a9a9a9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-34140112f1ae95bb32f6ab1634a0c3c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f8f5ecc1378822f4f0cdd235f6ceb3cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-34140112f1ae95bb32f6ab1634a0c3c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-F9XY7W8RLK"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.31.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Generative Models –  Intro to Data Science">
+<meta property="og:description" content="An Introduction to Statistical Learning with Applications in Python by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani">
+<meta property="og:image" content="https://dgds101.modellings.art/contents/lda_files/figure-html/cell-4-output-1.png">
+<meta property="og:site_name" content="Introduction to Data Science">
+<meta property="og:image:height" content="580">
+<meta property="og:image:width" content="2029">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title"><iconify-icon role="img" inline="" icon="fa-solid:fingerprint" aria-label="Icon fingerprint from fa-solid Iconify.design set." title="Icon fingerprint from fa-solid Iconify.design set."></iconify-icon> Intro to Data Science</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-introduction" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Introduction</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-introduction">    
+        <li>
+    <a class="dropdown-item" href="../contents/intro.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/two-cultures.html">
+ <span class="dropdown-text">Two Cultures</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/causal-inference.html">
+ <span class="dropdown-text">Causal Inference</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-python-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Python Basics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-python-basics">    
+        <li>
+    <a class="dropdown-item" href="../contents/setup.html">
+ <span class="dropdown-text">Python Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/pandas.html">
+ <span class="dropdown-text">NumPy &amp; pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/inspection.html">
+ <span class="dropdown-text">Data Inspection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/subsetting.html">
+ <span class="dropdown-text">Subsetting</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-eda" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">EDA</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-eda">    
+        <li>
+    <a class="dropdown-item" href="../contents/vis-intro.html">
+ <span class="dropdown-text">Visualize</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/eda.html">
+ <span class="dropdown-text">Explore</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/wrangling.html">
+ <span class="dropdown-text">Wrangling</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-linear-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Linear Models</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-linear-models">    
+        <li>
+    <a class="dropdown-item" href="../contents/model-basic.html">
+ <span class="dropdown-text">Model Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/model-basic-implementation.html">
+ <span class="dropdown-text">Implementations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/statistics.html">
+ <span class="dropdown-text">Regression Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ml-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">ML Basics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ml-basics">    
+        <li>
+    <a class="dropdown-item" href="../contents/mlsl-intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/regularization.html">
+ <span class="dropdown-text">Regularization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/shrinkage.html">
+ <span class="dropdown-text">Implementations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/knn.html">
+ <span class="dropdown-text">K-Nearest Neighbors</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-classification">    
+        <li>
+    <a class="dropdown-item" href="../contents/logistic.html">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contents/lda.html">
+ <span class="dropdown-text">Generative Models</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../contents/tree.html"> 
+<span class="menu-text">Trees</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#generative-classifier" id="toc-generative-classifier" class="nav-link active" data-scroll-target="#generative-classifier">Generative Classifier</a></li>
+  <li><a href="#linear-discriminant-analysis-lda" id="toc-linear-discriminant-analysis-lda" class="nav-link" data-scroll-target="#linear-discriminant-analysis-lda">Linear Discriminant Analysis (LDA)</a>
+  <ul>
+  <li><a href="#dimensional-p-1" id="toc-dimensional-p-1" class="nav-link" data-scroll-target="#dimensional-p-1">1-dimensional: <em>p</em> = 1</a></li>
+  <li><a href="#dimensional-mathbfx_1-mathbfx_2" id="toc-dimensional-mathbfx_1-mathbfx_2" class="nav-link" data-scroll-target="#dimensional-mathbfx_1-mathbfx_2">2-dimensional: <span class="math inline">\(\mathbf{x_1}, \mathbf{x_2}\)</span></a></li>
+  </ul></li>
+  <li><a href="#quadratic-discriminant-analysis-qda" id="toc-quadratic-discriminant-analysis-qda" class="nav-link" data-scroll-target="#quadratic-discriminant-analysis-qda">Quadratic Discriminant Analysis (QDA)</a></li>
+  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
+  <li><a href="#logistic-regression과의-관계" id="toc-logistic-regression과의-관계" class="nav-link" data-scroll-target="#logistic-regression과의-관계">Logistic regression과의 관계</a></li>
+  <li><a href="#generative-vs.-discriminative-models" id="toc-generative-vs.-discriminative-models" class="nav-link" data-scroll-target="#generative-vs.-discriminative-models">Generative vs.&nbsp;Discriminative Models</a>
+  <ul>
+  <li><a href="#확률적-모형의-장점들" id="toc-확률적-모형의-장점들" class="nav-link" data-scroll-target="#확률적-모형의-장점들">확률적 모형의 장점들</a></li>
+  </ul></li>
+  <li><a href="#python-implementation" id="toc-python-implementation" class="nav-link" data-scroll-target="#python-implementation">Python Implementation</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Generative Models</h1>
+<p class="subtitle lead">An Introduction to Statistical Learning with Applications in Python by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sungkyun Cho </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 9, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Load packages</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># statistics</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'mode.copy_on_write'</span>, <span class="va">True</span>)  <span class="co"># pandas 2.0</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span>  <span class="co"># max number of rows to display</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy options</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">5</span>, suppress<span class="op">=</span><span class="va">True</span>)  <span class="co"># suppress scientific notation</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For high resolution display</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Logistic Regression에서는 클래스 <span class="math inline">\(C_k\)</span>에 속할 확률을 다음과 같이 선형모델로 직접 얻었음.</p>
+<p><span class="math inline">\(E(Y=1|X=x)=\)</span> &nbsp; 또는<br>
+<span class="math inline">\(P(Y = C_1|X=x) = \sigma (\beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p)\)</span> &nbsp; where &nbsp; <span class="math inline">\(\displaystyle\sigma(z) = \frac{1}{1+e^{-z}}\)</span>: &nbsp; <em>sigmoid/logistic function</em></p>
+<p>몇 가지 개선될 부분들</p>
+<ul>
+<li>두 클래스가 예측변수 공간에서 분명히 분리되는 경우, logistic 모형의 파라미터 추정치가 상당히 불안정함. (<span class="math inline">\(\hat{p}\)</span>이 0 또는 1에 가까워져 logit이 무한대로 증가할 수 있음)</li>
+<li>X의 분포가 각 클래스에서 정규 분포에 가까운 경우 (특히 표본 크기가 작은 경우), 새로운 generative 접근 방식이 logistic보다 더 정확할 수 있음.</li>
+<li>새로운 generative 접근 방식은 Y 클래스가 두 개 이상인 경우로 자연스럽게 확장될 수 있음. (logisitic의 경우 multinomial logistic 방식이 있음)</li>
+</ul>
+<section id="generative-classifier" class="level2">
+<h2 class="anchored" data-anchor-id="generative-classifier">Generative Classifier</h2>
+<p>관찰된 값 <span class="math inline">\(x\)</span>에 대해, <span class="math inline">\(Y\)</span>의 conditional probability인 <span class="math inline">\(P(Y = C_k|X=x)\)</span>을 추정하는데, 각 클래스 별로 <span class="math inline">\(X\)</span>의 분포를 이용해 역으로 <span class="math inline">\(Y\)</span>의 분포를 계산하는 방식; Bayes theorem을 이용</p>
+<p><span class="math inline">\(\displaystyle P(Y = C_k|X=x) = \frac{P(X=x|Y=C_k)P(Y=C_k)}{P(X=x)}\)</span></p>
+<ul>
+<li><span class="math inline">\(P(Y = C_k|X=x)\)</span>: 관측치 <span class="math inline">\(x\)</span>가 클래스 <span class="math inline">\(C_k\)</span>에 속할 확률; <em>posterior probability</em></li>
+<li><span class="math inline">\(P(Y=C_k)\)</span>: 임의로 선택된 관측치가 클래스 <span class="math inline">\(C_k\)</span>에 속할 확률; <em>prior probability</em></li>
+<li><span class="math inline">\(P(X=x|Y=C_k)\)</span>: 클래스 <span class="math inline">\(C_k\)</span>에 속하는 <span class="math inline">\(x\)</span>의 <em>probability density</em> &gt;&gt; <em>“generative”</em></li>
+</ul>
+<p>주어진 <span class="math inline">\(x\)</span>에 대해, 각 클래스 <span class="math inline">\(C_k\)</span>에 속할 확률 <span class="math inline">\(P(Y=C_k|X=x)\)</span>를 계산하여, 이 중 가장 높은 확률을 가지는 클래스를 선택하는 방식으로 분류; <em>Bayes classifier</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>posterior probability</em>는 <em>prior probability</em>의 update된 확률로 볼 수 있음.</p>
+<p>예를 들어, 피부암 진단을 피부 이미지의 명암(<span class="math inline">\(X\)</span>:0-255)으로 예측한다고 하면,<br>
+<span class="math inline">\(P(Y=cancer|X=240) \propto P(X=240|Y=cancer) * P(Y=cancer)\)</span></p>
+<p>“이미지의 명암이 240일 때 피부암일 확률” <span class="math inline">\(\propto\)</span> “피부암일 때, 그 이미지의 명암이 240일 확률” x “이미지들 중 피부암일 확률”<br>
+이미지 검사 후의 “사후 확률”을 이미지 검사 전의 “사전 확률”의 update로 볼 수 있음.</p>
+<p><span class="math inline">\(P(Y=cancer|X=240)\)</span> &gt; <span class="math inline">\(P(Y=not~cancer|X=240)\)</span> 이면, 이미지를 피부암으로 분류.</p>
+</div>
+</div>
+<p>분모: <span class="math inline">\(\displaystyle P(X=x) = P(X=x|Y=C_1)P(Y=C_1) + P(X=x|Y=C_2)P(Y=C_2)\)</span></p>
+<p>따라서, <span class="math inline">\(\displaystyle P(Y = C_k|X=x) = \frac{P(X=x|Y=C_k)P(Y=C_k)}{P(X=x|Y=C_1)P(Y=C_1) + P(X=x|Y=C_2)P(Y=C_2)}\)</span></p>
+<ul>
+<li><em>Prior</em> <span class="math inline">\(P(Y=C_k)\)</span>의 추정치는 각 클래스에 속하는 표본의 비율로 추정</li>
+<li>어려운 문제는 <em>probability density function</em> <span class="math inline">\(f_k(x)=P(X=x|Y=C_k)\)</span>의 추정!
+<ul>
+<li>단순화하기 위해 이 분포에 대한 가정을 부과</li>
+<li><em>Linear Discriminant Analysis (LDA)</em>: (Multivariate) Gaussian 분포, 모든 클래스에 대해 covariance matrix(공분산 행렬) 동일</li>
+<li><em>Quadratic Discriminant Analysis (QDA)</em>: (Multivariate) Gaussian 분포, 각 클래스 별로 고유한 covariance matrix(공분산 행렬)</li>
+</ul></li>
+</ul>
+<p>Palmer Penguins 데이셋의 예에서,</p>
+<p><strong>1-dimensional (1 predictor)</strong><br>
+<code>bill_length</code>로 펭균 종을 구분하는 경우</p>
+<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="3" data-layout="[5, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-4-output-1.png" class="img-fluid" width="1014"></p>
+</div>
+</div>
+</div>
+<p><strong>2-dimensional (2 predictors)</strong><br>
+<code>bill_length</code>과 <code>bill_depth</code>로 펭균 종을 구분하는 경우</p>
+<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="171" data-layout="[[1, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-5-output-1.png" class="img-fluid" width="464"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-5-output-2.png" class="img-fluid" width="475"></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>  <a href="images/pdf-penguins-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/pdf-penguins-3d.png" class="img-fluid" width="370"></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="linear-discriminant-analysis-lda" class="level2">
+<h2 class="anchored" data-anchor-id="linear-discriminant-analysis-lda">Linear Discriminant Analysis (LDA)</h2>
+<ul>
+<li>(Multivariate) Gaussian 분포 가정</li>
+<li>모든 클래스에 대해 covariance matrix(공분산 행렬) 동일</li>
+</ul>
+<section id="dimensional-p-1" class="level3">
+<h3 class="anchored" data-anchor-id="dimensional-p-1">1-dimensional: <em>p</em> = 1</h3>
+<p><span class="math inline">\(\displaystyle f_k(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(x-\mu_k)^2}{2\sigma^2}\right)\)</span></p>
+<ul>
+<li>클래스 각각에 대해서 분포의 평균 <span class="math inline">\(\mu_k\)</span>를 추정: MLE로 추정하면 클래스별 평균값</li>
+<li><span class="math inline">\(\sigma\)</span>는 모든 클래스에 대해 동일하다고 가정하고 추정: MLE로 추정하면 클래스별 분산값의 weighted 평균</li>
+<li>MLE(Maximum Likelihood Estimation)이 이상치(outliers)에 민감함을 주의</li>
+</ul>
+<div id="cell-10" class="cell quarto-layout-panel" data-execution_count="172" data-layout="[[6, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 85.7%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-6-output-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(\displaystyle P(Y = C_k|X=x) = \frac{P(X=x|Y=C_k)P(Y=C_k)}{P(X=x)}\)</span> <span class="math inline">\(\displaystyle \qquad\qquad\qquad\qquad= \frac{P(X=x|Y=C_k)P(Y=C_k)}{P(X=x|Y=C_1)P(Y=C_1) + P(X=x|Y=C_2)P(Y=C_2) + P(X=x|Y=C_3)P(Y=C_3)}\)</span><br>
+<span class="math inline">\(\displaystyle \qquad\qquad\qquad\qquad= \frac{f_k(x)P(Y=C_k)}{f_1(x)P(Y=C_1) + f_2(x)P(Y=C_2) + f_3(x)P(Y=C_3)}\)</span>   (A)</p>
+<p>이제 <span class="math inline">\(P(Y=C_k)\)</span>만 추정하면 되는데,<br>
+즉, 임의로 선택된 관측치가 클래스 <span class="math inline">\(C_k\)</span>에 속할 확률 추정값: <span class="math inline">\(\displaystyle \hat P(Y=C_k) = \frac{n_k}{n}\)</span> &nbsp; where &nbsp; <span class="math inline">\(n_k\)</span>: 클래스 <span class="math inline">\(C_k\)</span>에 속하는 표본의 수, <span class="math inline">\(n\)</span>: 전체 표본의 수</p>
+<p>예측값을 얻기 위한 준비 완료!</p>
+<p><span class="math inline">\(X=x\)</span>에 대한 예측값은 다음 세 확률 중 가장 큰 값에 해당하는 클래스에 할당; <em>the Bayes classifier</em></p>
+<ul>
+<li><span class="math inline">\(P(Y = C_1|X=x)\)</span></li>
+<li><span class="math inline">\(P(Y = C_2|X=x)\)</span></li>
+<li><span class="math inline">\(P(Y = C_3|X=x)\)</span></li>
+</ul>
+<p>식 A에서 분모는 모두 같기 때문에 분자만 비교하면 됨. 즉, <span class="math inline">\(\displaystyle f_k(x)P(Y=C_k)\)</span>를 비교하면 됨.<br>
+로그를 취해 정리하면,<br>
+<span class="math inline">\(\displaystyle \delta_k(x) = \frac{\mu_k}{\sigma^2}x - \frac{\mu_k^2}{2\sigma^2} + \log(P(Y=C_k))\)</span> &nbsp; : <em>discriminant function</em></p>
+<p>추정치로 바꾸면, <span class="math inline">\(\displaystyle \hat\delta_k(x) = \frac{\hat\mu_k}{\hat\sigma^2}x - \frac{\hat\mu_k^2}{2\hat\sigma^2} + \log(\frac{n_k}{n})\)</span> &nbsp; : <span class="math inline">\(x\)</span>에 대한 일차함수 형태</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Logistic regression에서 log-odds의 형태로 선형모형을 세운 이유로 볼 수 있음.</p>
+<p><span class="math inline">\(\displaystyle log~odds = log\left(\frac{p}{1-p}\right) = log\left(\frac{P(Y=1|X=x)}{P(Y=0|X=x)}\right) = \beta_{0} + \beta_{1}x\)</span></p>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, prior의 추정치와 몇 개의 <span class="math inline">\(X\)</span>값에 대한 예측 확률을 구해보면,</p>
+<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="175" data-layout="[[1, 1.5]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
+<pre><code>             mu  sigma  prior
+Adelie    38.79   2.95   0.44
+Chinstrap 48.83   2.95   0.20
+Gentoo    47.50   2.95   0.36</code></pre>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<pre><code>Bill Length(mm)   35   42  43.35   45   50  52.05   55
+Species                                               
+Adelie          1.00 0.76   0.44 0.13 0.00   0.00 0.00
+Chinstrap       0.00 0.04   0.12 0.22 0.42   0.50 0.61
+Gentoo          0.00 0.20   0.44 0.65 0.58   0.50 0.39</code></pre>
+</div>
+</div>
+</div>
+<p>예를 들어, 어떤 펭균의 부리의 길이를 관찰하기 전, 그 펭균이 Adelie 펭귄일 확률은 0.44(prior)인데,</p>
+<ul>
+<li>만약, 부리의 길이가 45mm임을 관찰하면, 그 펭균이 Adelie 펭귄일 확률은 0.13(posterior)로 update됨.
+<ul>
+<li><span class="math inline">\(\displaystyle P(Adelie|X=45) = \frac{f_{Adelie}(X=45)*0.44}{normalize~factor} = 0.13\)</span></li>
+</ul></li>
+<li>혹은 부리의 길이가 50mm임을 관찰하면, 그 펭균이 Adelie 펭귄일 확률은 0.001(posterior)로 update됨.</li>
+</ul>
+<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="176" data-layout="[[7, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 87.5%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-10-output-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+</div>
+<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="186" data-layout="[[10, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 90.9%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-20-output-1.png" class="img-fluid" width="794"></p>
+</div>
+</div>
+</div>
+<p>각 클래스에 속할 확률을 구하면, 이 확률을 이용해 threshold를 정해 분류할 수 있음.</p>
+<ul>
+<li>예를 들어, 적어도 .70의 확률/확신이 있을 때만 분류를 실행하고,</li>
+<li>그렇지 않다면 분류를 보류할 수 있음.</li>
+<li>이는 분류의 오류를 낮추는 방법 중 하나; <em>reject option</em></li>
+</ul>
+<p>반면, 분류만이 목적이라면, threshold를 정하지 않고, 가장 높은 확률을 가지는 클래스로 분류하면 되고,<br>
+간단히 discriminant function을 이용해 decision boundary만 찾는 것이 효율적.</p>
+<p><em>Decision boundaries</em>: <span class="math inline">\(\delta_k(x)\)</span>가 최대가 되는 클래스가 변하는 <span class="math inline">\(x\)</span>들의 위치</p>
+<ul>
+<li><span class="math inline">\(\delta_1(x_0) = \delta_3(x_0)\)</span>: &nbsp; <span class="math inline">\(x_0 = 43.35\)</span><br>
+</li>
+<li><span class="math inline">\(\delta_2(x_1) = \delta_3(x_1)\)</span>: &nbsp; <span class="math inline">\(x_1 = 52.05\)</span></li>
+</ul>
+<div id="cell-32" class="cell" data-execution_count="189">
+<div class="cell-output cell-output-display" data-execution_count="189">
+<div>
+<figure class="figure">
+<p><img src="lda_files/figure-html/cell-23-output-1.png" width="645" height="240" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dimensional-mathbfx_1-mathbfx_2" class="level3">
+<h3 class="anchored" data-anchor-id="dimensional-mathbfx_1-mathbfx_2">2-dimensional: <span class="math inline">\(\mathbf{x_1}, \mathbf{x_2}\)</span></h3>
+<p>Multivariate Gaussian 분포: <span class="math inline">\(\displaystyle f_k(\mathbf{x}) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}} \exp\left(-\frac{1}{2}(\mathbf{x}-\mu_k)^T\Sigma^{-1}(\mathbf{x}-\mu_k)\right)\)</span></p>
+<ul>
+<li><span class="math inline">\(\displaystyle \mathbf{x}= \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\mu_k\)</span>: 클래스 <span class="math inline">\(C_k\)</span>에 대한 <span class="math inline">\(X_1\)</span>과 <span class="math inline">\(X_2\)</span>의 평균 벡터: <span class="math inline">\(\displaystyle \begin{bmatrix} \mu_{k1} \\ \mu_{k2} \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\Sigma\)</span>: 클래스 <span class="math inline">\(C_k\)</span>에 대한 공분산 행렬(covariance matrix): <span class="math inline">\(\displaystyle \begin{bmatrix} \sigma_{k_1}^2 &amp; \sigma_{k_1k_2} \\ \sigma_{k_2k_1} &amp; \sigma_{k_2}^2 \end{bmatrix}\)</span>
+<ul>
+<li>모든 클래스 <span class="math inline">\(C_k\)</span>에 대해 동일하다고 가정</li>
+</ul></li>
+<li>MLE(Maximum Likelihood Estimation)로 추정</li>
+</ul>
+<p><a href="images/multivariate-Gaussian-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/multivariate-Gaussian-2.png" class="img-fluid" width="600"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;150, <em>Introduction to Statistical Learning with Applications in Python</em> by G. James, D. Witten, T. Hastie, R. Tibshirani</p>
+</div>
+<div id="cell-36" class="cell quarto-layout-panel" data-execution_count="191" data-layout="[[4, 4, 1.5]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-25-output-1.png" class="img-fluid" width="464"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-25-output-2.png" class="img-fluid" width="475"></p>
+</div>
+</div>
+</div>
+<p>Discrimint function: 다음이 가장 큰 값을 가지는 클래스에 할당</p>
+<p><span class="math inline">\(\displaystyle\delta_k(\mathbf{x}) = \mathbf{x}^T\Sigma^{-1}\mu_k - \frac{1}{2}\mu_k^T\Sigma^{-1}\mu_k + \log(P(Y=C_k))\)</span>: &nbsp; <span class="math inline">\(ax_1 + bx_2 + c\)</span> 형태</p>
+<p>    <span class="math inline">\(\mu_k\)</span>                        <em>covariance matrix</em></p>
+<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[1, -0.2, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
+<pre><code>             Adelie  Chinstrap  Gentoo
+bill_length   38.79      48.83   47.50
+bill_depth    18.35      18.42   14.98</code></pre>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 9.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
+<pre><code>         sigma_1  sigma_2
+sigma_1     8.68     1.74
+sigma_2     1.74     1.25</code></pre>
+</div>
+</div>
+</div>
+<div id="cell-41" class="cell" data-execution_count="194">
+<div class="cell-output cell-output-display" data-execution_count="194">
+<pre><code>       Adelie  Chinstrap  Gentoo
+prior    0.44       0.20    0.36</code></pre>
+</div>
+</div>
+<p>예를 들어, <span class="math inline">\(\delta_1(x_1, x_2) = 2.1x_1 + 11.8x_2 - 149.9\)</span></p>
+<p><em>Decision boundaries</em>: <span class="math inline">\(\delta_k(\mathbf{x})\)</span>가 최대가 되는 클래스가 변하는 <span class="math inline">\(\mathbf{x}\)</span>들의 위치.<br>
+이는 각 클래스에 속한 데이터의 중심으로부터 멀리 떨어지도록 하는 방향으로 결정됨.</p>
+<ul>
+<li><span class="math inline">\(\delta_1(\mathbf{x}) = \delta_2(\mathbf{x})\)</span>: &nbsp; <em>red line: Adelie vs.&nbsp;Chinstrap</em></li>
+<li><span class="math inline">\(\delta_2(\mathbf{x}) = \delta_3(\mathbf{x})\)</span>: &nbsp; <em>purple line: Chinstrap vs.&nbsp;Gentoo</em></li>
+<li><span class="math inline">\(\delta_3(\mathbf{x}) = \delta_1(\mathbf{x})\)</span>: &nbsp; <em>green line: Gentoo vs.&nbsp;Adelie</em></li>
+</ul>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/lda_decision_boundary_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/lda_decision_boundary_1.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/lda_decision_boundary_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/lda_decision_boundary_2.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Regularization">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Regularization
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Regularization의 원리를 마찬가지로 적용하여, 파라미터 추정치를 shrink하여 overfitting을 방지할 수 있음.</p>
+<p>단, 이 경우 covarance matrix에 대해 shrinkage가 적용됨; <a href="https://scikit-learn.org/stable/modules/lda_qda.html#shrinkage-and-covariance-estimator">scikit-learn 문서 참고</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="LDA as a dimension reduction method">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>LDA as a dimension reduction method
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>LDA는 다음과 같이 차원 축소 방법으로도 사용될 수 있음; 클래스 간 분산을 최대화하고, 클래스 내 분산을 최소화하는 방향으로 차원 축소</p>
+<p><img src="images/lda-dimension-reduction.png" class="img-fluid" width="650"></p>
+<div style="line-height: 1.5em; font-size: .8em">
+<p>Source: p.&nbsp;116, <em>The Elements of Statistical Learning (2e)</em> by T. Hastie, R. Tibshirani, J. Friedman</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="quadratic-discriminant-analysis-qda" class="level2">
+<h2 class="anchored" data-anchor-id="quadratic-discriminant-analysis-qda">Quadratic Discriminant Analysis (QDA)</h2>
+<ul>
+<li>(Multivariate) Gaussian 분포 가정</li>
+<li>각 클래스 별로 고유한 variances, covariances를 가정: covariance matrix(공분산 행렬)</li>
+</ul>
+<p><span class="math inline">\(\displaystyle \delta_k(\mathbf{x}) = - \frac{1}{2}(\mathbf{x}-\mu_k)^T\Sigma_k^{-1}(\mathbf{x}-\mu_k) -\frac{1}{2}\log|\Sigma_k| + \log(P(Y=C_k))\)</span><br>
+<span class="math inline">\(\displaystyle \qquad= - \frac{1}{2}\mathbf{x}^T\Sigma_k^{-1}\mathbf{x} + \mathbf{x}^T\Sigma_k^{-1}\mu_k - \frac{1}{2}\mu_k^T\Sigma_k^{-1}\mu_k -\frac{1}{2}\log|\Sigma_k| + \log(P(Y=C_k))\)</span><br>
+<span class="math inline">\(\displaystyle \qquad= (ax_1^2 + bx_1x_2 + cx_2^2) + (dx_1 + ex_2) + d\)</span> &nbsp; : 모든 2차항들을 포함 (<em>quadratic</em>)</p>
+<p>이번에는 <code>bill_length_mm</code>와 <code>flipper_length_mm</code>를 예측변수로 사용하여 펭균 종을 구분하면,</p>
+<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="201" data-layout="[[4, 4, 1.5]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-35-output-1.png" class="img-fluid" width="470"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-35-output-2.png" class="img-fluid" width="475"></p>
+</div>
+</div>
+</div>
+<p>    <span class="math inline">\(\mu_k\)</span></p>
+<div id="cell-56" class="cell quarto-layout-panel" data-execution_count="202" data-layout="[[1, -0.2, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: flex-start;">
+<pre><code>                   Adelie  Chinstrap  Gentoo
+bill_length         38.79      48.83   47.50
+flipper_length_mm  189.95     195.82  217.19</code></pre>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 9.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<p>   <em>Covariance matrices for each class</em></p>
+<div id="cell-58" class="cell quarto-layout-panel" data-execution_count="203" data-layout="[[1, -0.1, 1, -0.1, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
+<pre><code>Adelie   sigma_1  sigma_2
+sigma_1     7.09     5.67
+sigma_2     5.67    42.76</code></pre>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 3.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
+<pre><code>Chinstrap  sigma_1  sigma_2
+sigma_1      11.15    11.23
+sigma_2      11.23    50.86</code></pre>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 3.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
+<pre><code>Gentoo   sigma_1  sigma_2
+sigma_1     9.50    13.21
+sigma_2    13.21    42.05</code></pre>
+</div>
+</div>
+</div>
+<div id="cell-59" class="cell" data-execution_count="204">
+<div class="cell-output cell-output-display" data-execution_count="204">
+<pre><code>       Adelie  Chinstrap  Gentoo
+prior    0.44       0.20    0.36</code></pre>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/qda_decision_boundary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/qda_decision_boundary.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/qda_decision_boundary_lda.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/qda_decision_boundary_lda.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<p><strong>QDA vs.&nbsp;LDA</strong></p>
+<ul>
+<li>파라미터의 수: <span class="math inline">\(K*p\)</span> vs.&nbsp;<span class="math inline">\(K*p(p+1)/2\)</span> 추가</li>
+<li>LDA가 훨씬 덜 flexible classifier, 따라서 lower variance
+<ul>
+<li>데이터가 적어 variance가 문제가 된다면 LDA를 선택하는 것이 좋을 수 있음.</li>
+</ul></li>
+<li>만약, common covariance의 가정에서 많이 벗어난다면 LDA는 심각한 bias를 가질 수 있음.</li>
+</ul>
+<p> <a href="images/lda-qda.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/lda-qda.png" class="img-fluid" width="660"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;157, <em>Introduction to Statistical Learning with Applications in Python</em> by G. James, D. Witten, T. Hastie, R. Tibshirani</p>
+</div>
+</section>
+<section id="naive-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
+<ul>
+<li>각 클래스 내에서 예측변수들이 독립적이라고 가정: 서로 연관관계가 없다고 가정</li>
+<li>각 클래스 별로 고유한 분포를 가정: QDA와 유사</li>
+</ul>
+<p><span class="math inline">\(\displaystyle P(Y = C_k|X=x) = \frac{P(X=x|Y=C_k)P(Y=C_k)}{P(X=x)}\)</span></p>
+<p><em>p = 2</em>인 경우의 예에서,</p>
+<p><span class="math inline">\(P(X=(x_1, x_2)|Y=C_k) = P(X_1=x_1| Y=C_k) *  P(X_2=x_2 | Y=C_k)\)</span>: &nbsp; 즉, 각 예측변수 내에서의 분포만 고려 (marginal distribution)<br>
+따라서, <span class="math inline">\(\displaystyle P(Y = C_k|X=x) = \frac{f_{k1}(x_1) * f_{k2}(x_2) * P(Y=C_k)}{P(X=x)}\)</span></p>
+<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="209" data-layout="[[4, 4, 1.5]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-44-output-1.png" class="img-fluid" width="529"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 42.1%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-44-output-2.png" class="img-fluid" width="537"></p>
+</div>
+</div>
+</div>
+<ul>
+<li>앞서 covariance matrix로 joint distribution을 추정했으나, 실질적인 joint distribution을 추정하는 것은 매우 어려움</li>
+<li>비현실적이지만, 예측변수들이 서로 독립이라고 가정하면, 분포를 추정하는 것이 매우 간단해지며</li>
+<li>속도가 매우 빠르고 조정 가능한 매개변수가 거의 없기 때문에 분류 문제에 대한 빠르고 간단한 기준 제공</li>
+<li>특히, 예측 변수(<em>p</em>) 대비 표본 수(<em>n</em>)가 적어 joint distribution을 추정하기 어려운 경우에 유용</li>
+<li>이는 bias가 높아질 수 있지만, variance가 낮아지기 때문에 그 이점이 있음.</li>
+</ul>
+<p>각 클래별로 (1-d density function) <span class="math inline">\(f_{k}\)</span>를 추정하는데 여러 옵션을 사용할 수 있음.</p>
+<div class="quarto-layout-panel" data-layout="[3, 2]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<ul>
+<li>앞서 LDA에서 사용한 Gaussian 분포; <em>Gaussian Naive Bayes</em></li>
+<li>적절한 binning을 통한 histogram, 또는 (smoothed) kernel density estimation</li>
+<li>카테고리 변수인 경우, 각 카테고리 값의 비율을 이용; <em>Categorical Naive Bayes</em></li>
+<li>혼합되어 있는 경우; 각각 따로 확률을 구해 곱 <em>Mixed Naive Bayes</em></li>
+</ul>
+<p>예를 들어,</p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.&nbsp;160, <em>Introduction to Statistical Learning with Applications in Python</em> by G. James, D. Witten, T. Hastie, R. Tibshirani</p>
+</div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<p><a href="images/density-estimates.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/density-estimates.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>비슷하게, 독립성의 가정을 기반으로 예측변수들이 binominal/multinomial(이항/다항) distribution을 따르는 경우,<br>
+<em>Multinomial Naive Bayes</em>로 불림<br>
+텍스트 분류에서 사용; 스팸메일 분류 포함</p>
+</div>
+</div>
+<p>펭귄의 예로, Gaussian 분포를 사용하면</p>
+<div class="quarto-layout-panel" data-layout="[5, 4]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
+<p><a href="images/jointplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/jointplot.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 44.4%;justify-content: flex-start;">
+<p><br><br><br> <a href="images/nb-tables.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/nb-tables.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/nb_decision_boundary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="images/nb_decision_boundary.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/qda_decision_boundary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="images/qda_decision_boundary.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="logistic-regression과의-관계" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression과의-관계">Logistic regression과의 관계</h2>
+<p>사후 확률(posterior)의 log odds의 관점에서 보면, logistic regression은</p>
+<p><span class="math inline">\(\displaystyle log\left(\frac{P(Y=1|X=x)}{P(Y=0|X=x)}\right) = \beta_{0} + \beta_{1}X_1 + \cdots + \beta_{p}X_p\)</span></p>
+<p>LDA에서 동일하게 posterior의 log odds를 살펴보면,</p>
+<p><span class="math inline">\(\displaystyle log\left(\frac{P(Y=C_k|X=x)}{P(Y=C_K|X=x)}\right) = \log\left(\frac{f_k(x)P(Y=C_k)}{f_K(x)P(Y=C_K)}\right) = \log {f_k(x)P(Y=C_k)} + \log {f_K(x)P(Y=C_K)}\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>일반적으로 K개의 클래스가 있을 때, 기준이 되는 클래스(K) 대비 특정 클래스(k)의 posterior의 log odds를 생각하면 확장될 수 있음.</p>
+<p><span class="math inline">\(\displaystyle log\left(\frac{P(Y=C_k|X=x)}{P(Y=C_K|X=x)}\right) = \beta_{0}^k + \beta_{1}^k X_1 + \cdots + \beta_{p}^k X_p\)</span></p>
+</div>
+</div>
+</section>
+<section id="generative-vs.-discriminative-models" class="level2">
+<h2 class="anchored" data-anchor-id="generative-vs.-discriminative-models">Generative vs.&nbsp;Discriminative Models</h2>
+<p>Discriminative models: <span class="math inline">\(P(C_k|X)\)</span>를 직접 추정</p>
+<ul>
+<li>즉, <span class="math inline">\(P(C_k|\mathbf{x}) = f(\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p)=f(\mathbf{w}^T \mathbf{x} + w_0)\)</span></li>
+<li><span class="math inline">\(f\)</span>를 <em>activation function</em>이라고 부르며, 역함수를 <em>link function</em>이라고 부름</li>
+<li><span class="math inline">\(f\)</span>가 sigmoid function (<span class="math inline">\(f^{-1}\)</span>: logit function) 일 때 logistic regression</li>
+<li>이는 <span class="math inline">\(P(\mathbf{x}|C_k)\)</span>를 추정하지 않고, 직접 <span class="math inline">\(p\)</span>개의 파라미터만 추정하면 됨</li>
+<li>또한, generative model에서 <span class="math inline">\(P(X|C_k)\)</span>를 추정하는데 매우 많이 데이터와 계산이 필요한데, 종종 decision boundary를 결정하기 위한 posterior <span class="math inline">\(P(C_k|\mathbf{x})\)</span> 얻는데 <span class="math inline">\(P(\mathbf{x}|C_k)\)</span>의 정보가 다 필요하지 않을 수 있음. (아래 그림)</li>
+<li>이는 discriminative models이 decision boundary를 결정하는데 더 효과적일 수 있음</li>
+<li>또한, generative model에서 추정하는 class-conditional density, <span class="math inline">\(f_k(\mathbf{x})\)</span>가 실제 분포와 일치하지 않는다면 discriminative model이 더 정확할 수 있음</li>
+</ul>
+<p>   <a href="images/generative-decision.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="images/generative-decision.png" class="img-fluid" width="600"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>    Source: p.&nbsp;145, <em>Deep Learning: Foundations and Concepts</em> by Bishop, C. M. &amp; Bishop, H</p>
+</div>
+<ul>
+<li>generative model의 경우 <span class="math inline">\(P(X)\)</span>를 이용해 새로운 데이터에 대해 예측할 때, 그 데이터의 발생 확률을 얻을 수 있어서 이를 예측의 정확성에 대한 보완 정보로 활용할 수 있음.
+<ul>
+<li>Anomaly detection에도 활용</li>
+</ul></li>
+</ul>
+<section id="확률적-모형의-장점들" class="level3">
+<h3 class="anchored" data-anchor-id="확률적-모형의-장점들">확률적 모형의 장점들</h3>
+<ul>
+<li>특정 클래스에 속할 확률에 대한 정보를 얻을 수 있으며,</li>
+<li>이 확률과 loss function을 결합하여, 기대값(expected loss)를 계산하여 최적의 분류를 결정할 수 있음.
+<ul>
+<li>주어진 <span class="math inline">\(\mathbf{x}\)</span>를 <span class="math inline">\(\displaystyle\sum_{k} L_{kj}P(C_k|\mathbf{x})\)</span>이 최소가 되는 클래스에 분류</li>
+</ul></li>
+<li>어느 클래스에도 확실히 속하지 않는 경우, 분류의 결정을 보류할 수 있음; reject option</li>
+</ul>
+<p>  <a href="images/reject-option.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="images/reject-option.png" class="img-fluid" width="600"></a></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>    Source: p.&nbsp;143, <em>Deep Learning: Foundations and Concepts</em> by Bishop, C. M. &amp; Bishop, H</p>
+</div>
+<ul>
+<li>매우 드물게 발생되는 클래스가 존재하는 경우, balanced dataset에서 학습한 후 prior를 조정
+<ul>
+<li><em>posterior</em> <span class="math inline">\(\sim f_k\)</span>, <em>prior</em></li>
+</ul></li>
+<li>상이한 예측변수들에 대해 독립적으로 모형을 만든 후 결합할 수 있음
+<ul>
+<li>예를 들어, 피부암의 진단에서 사진 판독 &amp; 혈액검사 결과를 독립적으로 모형을 만든 후 결합</li>
+<li>두 모형에서 사용된 예측변수들은 서로 독립이라고 가정하면
+<ul>
+<li><span class="math inline">\(P(\mathbf{x_A, x_B}|C_k) = P(\mathbf{x_A}|C_k)P(\mathbf{x_B}|C_k)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>한편, 확률적 모델을 사용하지 않고 discriminant function을 구해 class label을 직접 예측하는 방식도 있음</p>
+<ul>
+<li>decision tree</li>
+<li>support vector machine</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="python-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="python-implementation">Python Implementation</h2>
+<div id="cell-81" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>wine <span class="op">=</span> datasets.load_wine(as_frame<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>wine_df <span class="op">=</span> wine[<span class="st">'frame'</span>]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>wine_df[<span class="st">'target'</span>] <span class="op">=</span> wine_df[<span class="st">'target'</span>].<span class="bu">map</span>({<span class="dv">0</span>: <span class="st">'C0'</span>, <span class="dv">1</span>: <span class="st">'C1'</span>, <span class="dv">2</span>: <span class="st">'C2'</span>})</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>wine_df.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>   alcohol  malic_acid  ash  alcalinity_of_ash  magnesium  total_phenols  \
+0    14.23        1.71 2.43              15.60     127.00           2.80   
+1    13.20        1.78 2.14              11.20     100.00           2.65   
+2    13.16        2.36 2.67              18.60     101.00           2.80   
+
+   flavanoids  nonflavanoid_phenols  proanthocyanins  color_intensity  hue  \
+0        3.06                  0.28             2.29             5.64 1.04   
+1        2.76                  0.26             1.28             4.38 1.05   
+2        3.24                  0.30             2.81             5.68 1.03   
+
+   od280/od315_of_diluted_wines  proline target  
+0                          3.92  1065.00     C0  
+1                          3.40  1050.00     C0  
+2                          3.17  1185.00     C0  </code></pre>
+</div>
+</div>
+<p>Decision boundary를 시각화하기 위해, 2차원 예측변수를 사용하여 LDA, QDA, Naive Bayes를 적용</p>
+<div id="cell-83" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> wine_df[[<span class="st">'color_intensity'</span>, <span class="st">'alcohol'</span>]]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> wine_df[<span class="st">'target'</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-84" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> LinearDiscriminantAnalysis <span class="im">as</span> LDA</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>lda <span class="op">=</span> LDA(store_covariance<span class="op">=</span><span class="va">True</span>).fit(X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Shrinkage">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Shrinkage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Covariance matrix에 shrinkage를 적용하려면 가령,<br>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis">sklearn 문서 참고</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>LDA(store_covariance<span class="op">=</span><span class="va">True</span>, shrinkage<span class="op">=</span><span class="st">"auto"</span>, solver<span class="op">=</span><span class="st">"lsqr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>각 클래스별 평균, 공분산 행렬 추정</p>
+<ul>
+<li>Maximum Likelihood Estimation (MLE) 사용</li>
+<li>과적합을 방지하기 위해 shrinkage를 사용한 추정치도 사용 가능; <a href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html">sklearn 문서 참조</a></li>
+</ul>
+<div id="cell-87" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 분포 평균 추정치</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_mean <span class="op">=</span> pd.DataFrame(lda.means_.T, index<span class="op">=</span>X.columns, columns<span class="op">=</span>lda.classes_)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df_mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>                   C0    C1    C2
+color_intensity  5.28  3.12  7.14
+alcohol         13.62 12.31 13.16</code></pre>
+</div>
+</div>
+<div id="cell-88" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 공분산 행렬 추정치</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_cov <span class="op">=</span> pd.DataFrame(lda.covariance_, columns<span class="op">=</span>[<span class="st">"sigma_1"</span>, <span class="st">"sigma_2"</span>], index<span class="op">=</span>pd.Index([<span class="st">"sigma_1"</span>, <span class="st">"sigma_2"</span>]))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df_cov</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>         sigma_1  sigma_2
+sigma_1     2.56     0.29
+sigma_2     0.29     0.29</code></pre>
+</div>
+</div>
+<div id="cell-89" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 클래스의 사전 확률 추정치</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df_priors <span class="op">=</span> pd.DataFrame(lda.priors_, index<span class="op">=</span>lda.classes_, columns<span class="op">=</span>[<span class="st">"prior"</span>])</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df_priors</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>    prior
+C0   0.29
+C1   0.42
+C2   0.29</code></pre>
+</div>
+</div>
+<p>다음은 decision boundary를 시각화하기 위한 코드</p>
+<div id="cell-91" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grid data</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.linspace(X_train[<span class="st">'color_intensity'</span>].<span class="bu">min</span>(), X_train[<span class="st">'color_intensity'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.linspace(X_train[<span class="st">'alcohol'</span>].<span class="bu">min</span>(), X_train[<span class="st">'alcohol'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>X_grid <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">list</span>(product(x1, x2)),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"color_intensity"</span>, <span class="st">"alcohol"</span>],</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>y_grid <span class="op">=</span> lda.predict(X_grid)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>X_grid[<span class="st">"target"</span>] <span class="op">=</span> y_grid</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(X_grid, x<span class="op">=</span><span class="st">"color_intensity"</span>, y<span class="op">=</span><span class="st">"alcohol"</span>, hue<span class="op">=</span><span class="st">"target"</span>, s<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">.3</span>, palette<span class="op">=</span>[<span class="st">"0"</span>, <span class="st">".3"</span>, <span class="st">".6"</span>], legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>X_test[<span class="st">"color_intensity"</span>], y<span class="op">=</span>X_test[<span class="st">"alcohol"</span>], hue<span class="op">=</span>y_test)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'color intensity'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'alcohol'</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"LDA Decision Boundary"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-92" class="cell quarto-layout-panel" data-execution_count="10" data-layout="[[1, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lda_files/figure-html/cell-58-output-1.png" class="img-fluid" width="545"></p>
+</div>
+</div>
+</div>
+<p>각 클래스별 예측된 확률과 예측된 클래스 (데이터프레임으로 표시)</p>
+<div id="cell-94" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pred_class <span class="op">=</span> pd.DataFrame(lda.predict(X_test), columns<span class="op">=</span>[<span class="st">"pred"</span>])</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pred_prob <span class="op">=</span> pd.DataFrame(lda.predict_proba(X_test), columns<span class="op">=</span>lda.classes_)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.concat([X_test.reset_index(drop<span class="op">=</span><span class="va">True</span>), pred_class, pred_prob], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>results_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>    color_intensity  alcohol pred   C0   C1   C2
+0              5.88    13.69   C0 0.72 0.03 0.25
+1              2.06    12.42   C1 0.03 0.96 0.01
+2              5.10    13.64   C0 0.80 0.05 0.14
+..              ...      ...  ...  ...  ...  ...
+69             4.60    13.28   C0 0.62 0.22 0.17
+70             9.90    12.77   C2 0.01 0.00 0.99
+71            10.68    13.45   C2 0.01 0.00 0.99
+
+[72 rows x 6 columns]</code></pre>
+</div>
+</div>
+<p>Confusion matrix</p>
+<div id="cell-96" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> confusion_table</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>confusion_table(lda.predict(X_test), y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>Truth      C0  C1  C2
+Predicted            
+C0         26   1   3
+C1          0  26   2
+C2          2   0  12</code></pre>
+</div>
+</div>
+<p>Classification report: precision, recall은 각 클래스에 대한 나머지 클래스들에 대한 관계를 의미</p>
+<div id="cell-98" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lda.predict(X_test)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+          C0       0.87      0.93      0.90        28
+          C1       0.93      0.96      0.95        27
+          C2       0.86      0.71      0.77        17
+
+    accuracy                           0.89        72
+   macro avg       0.88      0.87      0.87        72
+weighted avg       0.89      0.89      0.89        72
+</code></pre>
+</div>
+</div>
+<p>QDA와 Naive Bayes도 동일한 방식으로 사용 가능<br>
+각각, 다음과 같이 <code>QuadraticDiscriminantAnalysis</code>와 <code>GaussianNB</code>를 사용해 estimator를 생성</p>
+<div id="cell-100" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> QuadraticDiscriminantAnalysis <span class="im">as</span> QDA</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>qda <span class="op">=</span> QDA(store_covariance<span class="op">=</span><span class="va">True</span>).fit(X_train, y_train)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>nb <span class="op">=</span> GaussianNB().fit(X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/dgds101\.modellings\.art");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-page-left">
+  <div class="nav-page nav-page-previous">
+      <a href="../contents/logistic.html" class="pagination-link" aria-label="Logistic Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Logistic Regression</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contents/tree.html" class="pagination-link" aria-label="Tree-based Models">
+        <span class="nav-page-text">Tree-based Models</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
