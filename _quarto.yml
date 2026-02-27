@@ -111,8 +111,8 @@ website:
         text: "Welcome"
       # - href: contents/notice.qmd
       #   text: "Notice"
-      - href: contents/pollr.qmd
-        text: "설문"
+      # - href: contents/pollr.qmd
+      #   text: "설문"
       - text: ---
       - section: Introduction
         contents:

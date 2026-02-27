@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -70,19 +70,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../contents/model-basic-implementation.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7752016105844385aa03c3f261a9a9a9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-edee38d4faeace745f6b9ddbb1104654.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7752016105844385aa03c3f261a9a9a9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dad3580ce166bcc2ae75f76527fe5e70.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b95861a03b9de22a9b42e333fa00ea95.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dad3580ce166bcc2ae75f76527fe5e70.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-34140112f1ae95bb32f6ab1634a0c3c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f8f5ecc1378822f4f0cdd235f6ceb3cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-34140112f1ae95bb32f6ab1634a0c3c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-2784291acb19446010c4162ba6083e35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -120,7 +119,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -138,7 +137,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -548,7 +547,7 @@ window.Quarto = {
 <div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -570,7 +569,7 @@ window.Quarto = {
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For high resolution display</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="introduction" class="level1">
@@ -587,7 +586,7 @@ window.Quarto = {
 </blockquote>
 <p>이상적으로, 모형(model)이 현상으로부터 <strong>노이즈</strong>가 제거된 진정한 <strong>신호</strong>를 잡아내 주기를 기대.<br>
 <em>물리 법칙: 물리적 세계에 대한 모델</em></p>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="5" data-layout-ncol="2">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -684,18 +683,18 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Coin tossing widget code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Coin tossing widget code
+Coin tossing widget code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
@@ -731,7 +730,7 @@ window.Quarto = {
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        ax.text(x[i], v <span class="op">+</span> <span class="fl">0.5</span>, <span class="bu">str</span>(v), ha<span class="op">=</span><span class="st">"center"</span>, color<span class="op">=</span><span class="st">"r"</span>)</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interact, fixed</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>interact(plot_Gaussin,  n<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>), ax<span class="op">=</span>fixed(<span class="va">None</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>interact(plot_Gaussin,  n<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>), ax<span class="op">=</span>fixed(<span class="va">None</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -786,7 +785,7 @@ Important
 <h2 class="anchored" data-anchor-id="a-simple-model">A simple model</h2>
 <p>Data: <a href="https://www.dropbox.com/s/z37caxcbr0xbutt/sim1.csv?dl=1">sim1.csv</a></p>
 <div id="cell-15" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim1.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-16" class="cell quarto-layout-panel" data-execution_count="7" data-layout="[[2, 4, 1]]">
 <div class="quarto-layout-row">
@@ -847,7 +846,7 @@ Important
 [30 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 2]]">
+<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="30">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -863,7 +862,7 @@ Important
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Model evaluation
+Model evaluation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -917,8 +916,8 @@ Important
 <p>점차 촘촘한 간격으로 grid search를 하면서 거리를 (근사적으로) 최소로 하는 모델을 찾을 수 있음; 실제로는 Newton-Raphson search를 통해 최소값을 구하는 알고리즘을 이용</p>
 <p>즉, 거리를 최소로 하는 <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>를 찾으면,</p>
 <div id="cell-37" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>minimize(measure_distance, [<span class="dv">0</span>, <span class="dv">0</span>], args<span class="op">=</span>(sim1)).x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>minimize(measure_distance, [<span class="dv">0</span>, <span class="dv">0</span>], args<span class="op">=</span>(sim1)).x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>array([4.22, 2.05])</code></pre>
 </div>
@@ -959,7 +958,7 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Log-likelihood
+Log-likelihood
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -974,7 +973,7 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 <div id="cell-42" class="cell" data-execution_count="138">
 <details class="code-fold">
 <summary>create a grid for b0, b1</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a grid for b0: (-20, 40), b1:(-5, 5)</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a grid for b0: (-20, 40), b1:(-5, 5)</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>b0 <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">100</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
@@ -983,7 +982,7 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>b0, b1 <span class="op">=</span> np.meshgrid(b0, b1)</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(b0<span class="op">=</span>b0.ravel(), b1<span class="op">=</span>b1.ravel()))</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>models</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>models</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="138">
 <pre><code>         b0    b1
@@ -1003,7 +1002,7 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 <div id="cell-44" class="cell" data-execution_count="139">
 <details class="code-fold">
 <summary>calculate the likelihood</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm  <span class="co"># normal distribution</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm  <span class="co"># normal distribution</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> likelihood(b, data):</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    mu <span class="op">=</span> b[<span class="dv">0</span>] <span class="op">+</span> b[<span class="dv">1</span>] <span class="op">*</span> data[<span class="st">"x"</span>]</span>
@@ -1011,7 +1010,7 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>np.<span class="bu">sum</span>(np.log(norm.pdf(data[<span class="st">"y"</span>], mu, sigma)))</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>models[<span class="st">"-log likelihood"</span>] <span class="op">=</span> models.<span class="bu">apply</span>(<span class="kw">lambda</span> x: likelihood(x, sim1), axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>models.sort_values(<span class="st">"-log likelihood"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>models.sort_values(<span class="st">"-log likelihood"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="139">
 <pre><code>         b0    b1  -log likelihood
@@ -1028,92 +1027,92 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 </div>
 <p>scipy의 minimize 함수를 이용해서 최소값을 구해보면,</p>
 <div id="cell-47" class="cell" data-execution_count="202">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>minimize(likelihood, [<span class="dv">0</span>, <span class="dv">0</span>], args<span class="op">=</span>(sim1)).x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>minimize(likelihood, [<span class="dv">0</span>, <span class="dv">0</span>], args<span class="op">=</span>(sim1)).x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="202">
 <pre><code>array([4.22, 2.05])</code></pre>
 </div>
 </div>
 <div id="cell-48" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, data<span class="op">=</span>sim1).fit()</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>mod.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>mod.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Dep. Variable:</th>
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>y</td>
-<th data-quarto-table-cell-role="th">R-squared:</th>
+<td data-quarto-table-cell-role="th">R-squared:</td>
 <td>0.885</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Model:</th>
+<td data-quarto-table-cell-role="th">Model:</td>
 <td>OLS</td>
-<th data-quarto-table-cell-role="th">Adj. R-squared:</th>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
 <td>0.880</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Method:</th>
+<td data-quarto-table-cell-role="th">Method:</td>
 <td>Least Squares</td>
-<th data-quarto-table-cell-role="th">F-statistic:</th>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
 <td>214.7</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Date:</th>
+<td data-quarto-table-cell-role="th">Date:</td>
 <td>Sat, 12 Apr 2025</td>
-<th data-quarto-table-cell-role="th">Prob (F-statistic):</th>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>1.17e-14</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Time:</th>
+<td data-quarto-table-cell-role="th">Time:</td>
 <td>18:33:25</td>
-<th data-quarto-table-cell-role="th">Log-Likelihood:</th>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-65.226</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">No. Observations:</th>
+<td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>30</td>
-<th data-quarto-table-cell-role="th">AIC:</th>
+<td data-quarto-table-cell-role="th">AIC:</td>
 <td>134.5</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Df Residuals:</th>
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
 <td>28</td>
-<th data-quarto-table-cell-role="th">BIC:</th>
+<td data-quarto-table-cell-role="th">BIC:</td>
 <td>137.3</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Df Model:</th>
+<td data-quarto-table-cell-role="th">Df Model:</td>
 <td>1</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Covariance Type:</th>
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
 <td>nonrobust</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 
 
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
-<th data-quarto-table-cell-role="th">coef</th>
-<th data-quarto-table-cell-role="th">std err</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">P&gt;|t|</th>
-<th data-quarto-table-cell-role="th">[0.025</th>
-<th data-quarto-table-cell-role="th">0.975]</th>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Intercept</th>
+<td data-quarto-table-cell-role="th">Intercept</td>
 <td>4.2208</td>
 <td>0.869</td>
 <td>4.858</td>
@@ -1122,7 +1121,7 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 <td>6.001</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">x</th>
+<td data-quarto-table-cell-role="th">x</td>
 <td>2.0515</td>
 <td>0.140</td>
 <td>14.651</td>
@@ -1134,30 +1133,30 @@ X, Y의 관계와 확률분포를 함께 고려함.</p>
 </table>
 
 
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Omnibus:</th>
+<td data-quarto-table-cell-role="th">Omnibus:</td>
 <td>0.125</td>
-<th data-quarto-table-cell-role="th">Durbin-Watson:</th>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
 <td>2.254</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Prob(Omnibus):</th>
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
 <td>0.939</td>
-<th data-quarto-table-cell-role="th">Jarque-Bera (JB):</th>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
 <td>0.333</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Skew:</th>
+<td data-quarto-table-cell-role="th">Skew:</td>
 <td>0.081</td>
-<th data-quarto-table-cell-role="th">Prob(JB):</th>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
 <td>0.847</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Kurtosis:</th>
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
 <td>2.510</td>
-<th data-quarto-table-cell-role="th">Cond. No.</th>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
 <td>13.7</td>
 </tr>
 </tbody>
@@ -1224,7 +1223,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <div id="cell-54" class="cell" data-execution_count="59">
 <details class="code-fold">
 <summary>calculate confidence intervals</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sim1_new <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="fl">4.5</span>, <span class="fl">7.5</span>, <span class="fl">10.5</span>]})</span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sim1_new <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="fl">4.5</span>, <span class="fl">7.5</span>, <span class="fl">10.5</span>]})</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, data<span class="op">=</span>sim1).fit()</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> mod.get_prediction(sim1_new).summary_frame(<span class="fl">.1</span>)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1238,7 +1237,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.5</span>, <span class="dv">30</span>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1253,7 +1252,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1268,7 +1267,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>0.50</td>
 <td>5.25</td>
 <td>0.81</td>
@@ -1278,7 +1277,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <td>9.24</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>1.50</td>
 <td>7.30</td>
 <td>0.69</td>
@@ -1288,7 +1287,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <td>11.22</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>4.50</td>
 <td>13.45</td>
 <td>0.43</td>
@@ -1298,7 +1297,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <td>17.27</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>7.50</td>
 <td>19.61</td>
 <td>0.49</td>
@@ -1308,7 +1307,7 @@ Non-constant variance(왼쪽), Poisson distribution(오른쪽)</p>
 <td>23.45</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>10.50</td>
 <td>25.76</td>
 <td>0.81</td>
@@ -1372,12 +1371,12 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div id="cell-59" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>calculate RMSE, MAE, R2</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tools.eval_measures <span class="im">import</span> rmse, meanabs, aic, bic</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tools.eval_measures <span class="im">import</span> rmse, meanabs, aic, bic</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ypred <span class="op">=</span> mod.predict(sim1)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> sim1[<span class="st">"y"</span>]</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>llf <span class="op">=</span> mod.llf <span class="co"># log likelihood</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"RMSE = </span><span class="sc">{</span>rmse(y, ypred)<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">MAE = </span><span class="sc">{</span>meanabs(y, ypred)<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">R-squared = </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">AIC = </span><span class="sc">{</span>aic(llf, <span class="dv">30</span>, <span class="dv">2</span>)<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">BIC = </span><span class="sc">{</span>bic(llf, <span class="dv">30</span>, <span class="dv">2</span>)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"RMSE = </span><span class="sc">{</span>rmse(y, ypred)<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">MAE = </span><span class="sc">{</span>meanabs(y, ypred)<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">R-squared = </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">AIC = </span><span class="sc">{</span>aic(llf, <span class="dv">30</span>, <span class="dv">2</span>)<span class="sc">:.2f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">BIC = </span><span class="sc">{</span>bic(llf, <span class="dv">30</span>, <span class="dv">2</span>)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>RMSE = 2.13 
@@ -1504,14 +1503,13 @@ Important
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
