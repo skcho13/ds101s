@@ -534,7 +534,7 @@
     "href": "index.html#강의-개요",
     "title": "Welcome",
     "section": "강의 개요",
-    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n참고도서\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nLLMs: ChatGPT, Claude, Gemini, Grok, DeepSeek",
+    "text": "강의 개요\n데이터 분석은 오랜 역사를 거쳐 통계학의 영역에서 발전해왔고, 양적연구를 기반으로하는 여러 분야에서 핵심적인 역할을 한 반면, 인공지능의 하위 분야로 연구되어온 기계학습은 방대한 데이터와 더불어 최근에 그 유용성이 크게 부각되면서 이 두 분야는 데이터 사이언스라는 큰 틀에서 통합되고 있습니다. 이러한 광범위한 주제에 대해 각 기법의 핵심적 아이디어와 응용 예시에 초점을 맞추고, 더 세부적인 주제들을 탐구하기 위한 초석을 제공하고자 합니다. 또한 구체적인 예들을 직접 코딩하여 어느 정도 데이터 분석 기술의 기초를 갖추도록 과제를 통해 학습할 기회도 제공됩니다.\n\n전통적 통계와 기계 학습에서 추구하는 바를 이해하고,\n\n데이터로부터 패턴과 의미를 추론하는 방식을 이해하며,\n\n기계/통계적 학습의 응용 가능성에 대해 파악합니다.\n\n\n참고도서\n\nPython Data Science Handbook by Jake VanderPlas: code on GitHub\nAn Introduction to Statistical Learning by James, Witten, Hastie, Tibshirani, Taylor: code on GitHub\nPython for Data Analysis (3e) by Wes McKinney: code on Github\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nLLMs: ChatGPT, Claude, Gemini, Grok, DeepSeek\n\n\n\n\n\n\n\n읽을 거리\n\n\n\n50 Years of Data Science\nDonoho, D. (2017). 50 Years of Data Science. Journal of Computational and Graphical Statistics, 26(4), 745–766. https://doi.org/10.1080/10618600.2017.1384734",
     "crumbs": [
       "Home",
       "Welcome"
@@ -682,7 +682,7 @@
     "href": "contents/intro.html#data-science",
     "title": "개관",
     "section": "Data Science",
-    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석하여 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시\n\n\n\n\n\n\n\n\n\n\n읽을 거리\n\n\n\n50 Years of Data Science\nDonoho, D. (2017). 50 Years of Data Science. Journal of Computational and Graphical Statistics, 26(4), 745–766. https://doi.org/10.1080/10618600.2017.1384734",
+    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석하여 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
     "crumbs": [
       "Home",
       "Introduction",
