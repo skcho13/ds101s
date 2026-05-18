@@ -308,7 +308,7 @@
     "href": "contents/mlsl-intro.html",
     "title": "Machine/Statistical Learning",
     "section": "",
-    "text": "\\(f\\): \\(X_1, X_2, ..., X_p\\)가 \\(Y\\)에 관해 제공하는 systematic information; unknown function\n\\(Y = f(X_1, X_2, ..., X_p) + \\epsilon\\),   \\(Y \\perp\\!\\!\\!\\perp \\epsilon\\)\n\\(\\epsilon\\): 불확실성의 소스들; reducible error & irreducible error\n(epistemic uncertainty & aleatory uncertainty)\n앞서 선형모형은 \\(f\\)를 \\(X\\)의 선형함수인 parametric model로 가정한 후 parameter를 추정하여 문제가 단순하였으나,\n이번에는 \\(f\\)의 형태를 가정하지 않고, \\(f\\) 자체를 추정하고자 하는 매우 광범위한 문제임.\n예를 들어,",
+    "text": "\\(f\\): \\(X_1, X_2, ..., X_p\\)가 \\(Y\\)에 관해 제공하는 systematic information; unknown function\n\\(Y = f(X_1, X_2, ..., X_p) + \\epsilon\\)\n\\(\\epsilon\\): 불확실성의 소스들; reducible error & irreducible error (epistemic uncertainty & aleatory uncertainty)\n앞서 선형모형은 \\(f\\)를 \\(X\\)의 선형함수인 parametric model로 가정한 후 parameter를 추정하여 문제가 단순하였으나,\n이번에는 \\(f\\)의 형태를 가정하지 않고, \\(f\\) 자체를 추정하고자 하는 매우 광범위한 문제임.\n예를 들어,",
     "crumbs": [
       "Home",
       "Machine Learning Basics",
