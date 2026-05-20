@@ -716,7 +716,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <li>예를 들어, 다이아몬드의 무게로 가격을 예측한다면: 1 carat 다이아몬드의 true price?</li>
 <li>또는, 목소리(특정 frequency)로 성별을 예측한다면; 분류 문제의 경우 뒤에서 다룸</li>
 </ul>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" class="img-fluid"></a></p>
@@ -761,7 +761,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <li><span class="math inline">\(\hat f(1.5, Fair, I1) = E(Y|carat=1.5,~ cut=Fair,~ clarity=I1)\)</span></li>
 </ul></li>
 </ul>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="23" data-layout="[1.3, 1]">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout="[1.3, 1]" data-execution_count="23">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 56.5%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-3-output-1.png" class="img-fluid" width="580"></p>
@@ -785,7 +785,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 </div>
 </div>
 <p>만약, 부리의 길이로 부리의 깊이를 예측한는 모형에 대해 <span class="math inline">\(\hat f\)</span>를 구한다면,</p>
-<div id="cell-13" class="cell quarto-layout-panel" data-execution_count="28" data-layout="[[1, 1, 1]]">
+<div id="cell-13" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="28">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-8-output-1.png" class="img-fluid" width="460"></p>
@@ -802,7 +802,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <li>Likelihood가 최대가 되도록 파라미터(기울기와 절편)를 구한 것임; maximum likelihood estimation</li>
 <li>Squared error를 최소화하는 것과 동일함.</li>
 </ul>
-<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="29" data-layout="[[1, 1, 1]]">
+<div id="cell-15" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="29">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-9-output-1.png" class="img-fluid" width="460"></p>
@@ -851,7 +851,7 @@ The mean of <span class="math inline">\(X=\displaystyle \frac{a + b + a + a + b 
 <span class="math inline">\(~~~~~~~~~~~ = \displaystyle \int \left( f(x) - h(x) \right)^2 p(x) dx + \iint \left( h(x) - y) \right)^2p(x, y) dxdy\)</span></p>
 <ul>
 <li>두 번째 항: optimal prediction <span class="math inline">\(h(x)\)</span>가 true value와 얼마나 떨어져 있는가?(분산) - irreducible error</li>
-<li>첫 번째 항: <span class="math inline">\(h(x)\)</span>와의 차이를 최소화하도록 <span class="math inline">\(f(x)\)</span>를 선택하는데 하는데, 유한한 데이터셋에서는 그 간극이 존재
+<li>첫 번째 항: <span class="math inline">\(h(x)\)</span>와의 차이를 최소화하도록 <span class="math inline">\(f(x)\)</span>를 선택하는데, 유한한 데이터셋에서는 그 간극이 존재
 <ul>
 <li>이제, 분포 <span class="math inline">\(p(x, y)\)</span>로부터 수많은 데이터셋들 <span class="math inline">\(D_i\)</span>를 얻었다고 가정했을 때,</li>
 <li>특정 <span class="math inline">\(x_0\)</span>에 대해서</li>
@@ -888,22 +888,22 @@ Expected Loss 분해
 </div>
 <p>Bias와 variance간에는 trade-off가 존재함</p>
 <ul>
-<li>Flexible한 모델의 경우 데이터에 더 잘 적합하여, variance가 높아짐. 즉 데이터셋마다 너무 다른 예측을 하게 됨
+<li>Flexible한 모델의 경우 데이터셋에 대체로 더 잘 적합하지만(bias가 낮음), 데이터셋에 따라 예측값의 변동이 커짐(variance가 높음). 즉, 데이터셋마다 다른 예측을 하게 됨
 <ul>
-<li>데이터에 overfitting이 된다고 말할 수 있음.</li>
+<li>데이터에 과적합(overfitting) 된다고 말할 수 있음.</li>
 <li>단, N이 증가하면(데이터셋 사이즈가 커지면), flexible한 모델의 variance가 줄어듦.</li>
 <li>여러 데이터셋으로부터 평균을 얻으면, 실제값에 가까워짐.</li>
 </ul></li>
-<li>Rigid한 모델의 경우 데이터셋에 덜 적합하여, bias가 높아짐. 즉, 평균적으로 더 틀린 예측을 하게 됨
+<li>Rigid한 모델의 경우 데이터셋에 대체로 덜 적합하지만(bias가 높아짐), 데이터셋에 따라 예측값의 변동이 적음(variance 낮음). 즉, 데이터셋에 따라 차이는 적지만, 평균적으로 더 틀린 예측을 함.
 <ul>
-<li>한편, 데이터셋에 덜 민감하여 variance가 줄어듦</li>
+<li>데이터셋에 덜 민감하다고 말할 수 있음 (variance가 줄어듦)</li>
 <li>작은 데이터셋에서 더 유리</li>
 </ul></li>
 <li>이 둘의 적절한 균형을 갖는 모델이 최적의 예측 모델임</li>
 </ul>
 <p>예를 들어, 함수 <span class="math inline">\(h(x) = sin(2\pi x)\)</span>로부터 생성된 데이터셋(N=10)에 대해 다항식의 차수에 따른 flexibility의 변화에 따른 OLS 모델들을 비교하면,</p>
 <p><a href="images/model-complexity.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="images/model-complexity.png" class="img-fluid" width="600"></a></p>
-<p>데이터셋의 사이즈가 커지면, (M=9인 경우)</p>
+<p>데이터셋의 사이즈가 커지면 가령, N=15에서 N=100로 늘면 variance는 상대적으로 낮아짐. (단, M=9인 경우)</p>
 <p><a href="images/variance-data-size.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="images/variance-data-size.png" class="img-fluid" width="600"></a></p>
 <p>함수 <span class="math inline">\(h(x) = sin(2\pi x)\)</span>로부터 생성된 100개의 데이터셋(각 N = 25)에 대해 3가지 flexibility에 대한 모델들을 비교하면,</p>
 <p><a href="images/bias-variance-tradeoff.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="images/bias-variance-tradeoff.png" class="img-fluid" width="600"></a></p>
@@ -923,7 +923,7 @@ Expected Loss 분해
 <li><span class="math inline">\(f(x_i): P(Y = C_k|X=x_i)\)</span>가 최대인 클래스에 할당; 즉, <span class="math inline">\(f(x_i) = \underset{k}{\mathrm{argmax}}~ P(Y = C_k|X=x_i)\)</span>
 <ul>
 <li>Conditional class probabilities; 앞서 conditional mean <span class="math inline">\(E(Y|X)\)</span>에 대응</li>
-<li>Bayes classifier: 최대치 (0-1 loss function 가정하에)</li>
+<li>Bayes classifier라고 부름: 0-1 loss function하에 expected loss를 최소로 함 (즉, 오류율을 최소로 함)</li>
 </ul></li>
 <li>이 <span class="math inline">\(P(Y = C_k|X=x)\)</span>를 추정하기 위한 다양한 방식들이 존재
 <ul>
@@ -933,7 +933,7 @@ Expected Loss 분해
 <li>Linear/Quadratic discriminant analysis</li>
 </ul></li>
 </ul>
-<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="30" data-layout="[[1, 1]]">
+<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="30">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-10-output-1.png" class="img-fluid" width="565"></p>
@@ -945,14 +945,14 @@ Expected Loss 분해
 </div>
 <p>한 개의 예측변수로 예측한다면,<br>
 가령 <span class="math inline">\(X\)</span>: bill_length_mm인 경우, 즉 펭귄의 부리 길이로만 두 종을 분류한다면,</p>
-<div id="cell-22" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[5, 1]">
+<div id="cell-22" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-11-output-1.png" class="img-fluid" width="891"></p>
 </div>
 </div>
 </div>
-<div id="cell-23" class="cell quarto-layout-panel" data-execution_count="32" data-layout="[5, 1]">
+<div id="cell-23" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="32">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid" width="998"></p>
@@ -960,7 +960,7 @@ Expected Loss 분해
 </div>
 </div>
 <p>Quadratic discriminant analysis(QDA): 각각을 Gaussian으로 가정하고, 평균과 표준편차를 추정</p>
-<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="35" data-layout="[5, 1]">
+<div id="cell-27" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="35">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-15-output-1.png" class="img-fluid" width="891"></p>
@@ -1171,7 +1171,7 @@ Gentoo         30       0</code></pre>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    p.add(so.Line(), so.PolyFit(i)).label(title<span class="op">=</span><span class="ss">f"M = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-39" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[1, 1, 1]">
+<div id="cell-39" class="cell quarto-layout-panel" data-layout="[1, 1, 1]" data-execution_count="6">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-22-output-1.png" class="img-fluid" width="630"></p>
@@ -1330,7 +1330,7 @@ Average: 16.32656735042881</code></pre>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-split Shuffle &amp; Split Cross-validation </span><span class="ch">\n</span><span class="st">with 20% test sets over 10 degrees of Polynomial"</span>)</span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[1, 1]">
+<div id="cell-44" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="12">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-25-output-1.png" class="img-fluid" width="436"></p>
@@ -1376,7 +1376,7 @@ Average: 16.32656735042881</code></pre>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-45" class="cell quarto-layout-panel" data-execution_count="13" data-layout="[1, 1]">
+<div id="cell-45" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="13">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-26-output-1.png" class="img-fluid" width="425"></p>
@@ -1401,7 +1401,7 @@ Average: 16.32656735042881</code></pre>
 <p>관찰된 데이터에 가장 적합한 모형을 찾는 것이 아니고, 일반화된 모형을 찾는 것이 목표임.<br>
 아래 그림에서 관찰된 데이터셋에 대한 예측 오류인 “test error”와 “true error”의 관계를 보여줌.<br>
 예를 들어, 아래의 3가지 형태의 true relationship에 대해,</p>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
+<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/bias-variance-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="images/bias-variance-1.png" class="img-fluid" width="450"></a></p>
@@ -3265,7 +3265,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>params_boot.T.hist(bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">.7</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>), layout<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-70" class="cell quarto-layout-panel" data-execution_count="63" data-layout="[3, 1]">
+<div id="cell-70" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="63">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-43-output-1.png" class="img-fluid" width="689"></p>
