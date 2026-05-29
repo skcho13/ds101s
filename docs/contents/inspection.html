@@ -6,8 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-28">
 
 <title>Inspecting data –  Intro to Data Science</title>
 <style>
@@ -123,8 +121,11 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 
 
 <meta property="og:title" content="Inspecting data –  Intro to Data Science">
-<meta property="og:description" content="Mixed">
+<meta property="og:description" content="Introduction to Data Science, Dongguk University, 2024-1">
+<meta property="og:image" content="https://dgds101.modellings.art/contents/images/lter_penguins.png">
 <meta property="og:site_name" content="Introduction to Data Science">
+<meta property="og:image:height" content="1074">
+<meta property="og:image:width" content="1800">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -713,7 +714,11 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#useful-method" id="toc-useful-method" class="nav-link active" data-scroll-target="#useful-method">Useful method</a></li>
+  <li><a href="#useful-method" id="toc-useful-method" class="nav-link active" data-scroll-target="#useful-method">Useful method</a>
+  <ul>
+  <li><a href="#tips-데이터셋" id="toc-tips-데이터셋" class="nav-link" data-scroll-target="#tips-데이터셋">tips 데이터셋</a></li>
+  <li><a href="#penguins-데이터셋" id="toc-penguins-데이터셋" class="nav-link" data-scroll-target="#penguins-데이터셋">penguins 데이터셋</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -724,26 +729,13 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Inspecting data</h1>
-<p class="subtitle lead">Mixed</p>
 </div>
 
 
 
 <div class="quarto-title-meta column-body">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Sungkyun Cho </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 28, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -753,7 +745,9 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="36">
+<details class="code-fold">
+<summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -769,7 +763,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'mode.copy_on_write'</span>, <span class="va">True</span>)  <span class="co"># pandas 2.0</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span>  <span class="co"># max number of rows to display</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">8</span>  <span class="co"># max number of rows to display</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy options</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)  <span class="co"># suppress scientific notation</span></span>
@@ -777,21 +771,7 @@ gtag('config', 'G-F9XY7W8RLK', { 'anonymize_ip': true});
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For high resolution display</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Matplotlib/Seaborn 플랏에서 흐릿하게 그려지는 경우: 고해상도 디스플레이에 최적화</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</details>
 </div>
 <section id="useful-method" class="level2">
 <h2 class="anchored" data-anchor-id="useful-method">Useful method</h2>
@@ -799,18 +779,32 @@ Note
 <code>.info()</code>, <code>.describe()</code>,<br>
 <code>.value_counts()</code>,<br>
 <code>.sort_values()</code>, <code>.nlargest()</code>, <code>.nsmallest()</code></p>
-<p>Data: Tips<br>
-일정기간 한 웨이터가 얻은 팁에 대한 데이터</p>
+<section id="tips-데이터셋" class="level3">
+<h3 class="anchored" data-anchor-id="tips-데이터셋">tips 데이터셋</h3>
+<p>일정기간 한 웨이터가 얻은 팁에 대한 데이터</p>
+<div id="cell-5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load a dataset from seaborn package</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div id="cell-6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load a dataset</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tips</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(tips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>pandas.DataFrame</code></pre>
+</div>
+</div>
+<div id="cell-7" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tips</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>     total_bill  tip     sex smoker   day    time  size
 0         16.99 1.01  Female     No   Sun  Dinner     2
 1         10.34 1.66    Male     No   Sun  Dinner     3
 2         21.01 3.50    Male     No   Sun  Dinner     3
+3         23.68 3.31    Male     No   Sun  Dinner     2
 ..          ...  ...     ...    ...   ...     ...   ...
+240       27.18 2.00  Female    Yes   Sat  Dinner     2
 241       22.67 2.00    Male    Yes   Sat  Dinner     2
 242       17.82 1.75    Male     No   Sat  Dinner     2
 243       18.78 3.00  Female     No  Thur  Dinner     2
@@ -818,30 +812,24 @@ Note
 [244 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tips.head(<span class="dv">3</span>)  <span class="co"># 앞 n개 나열, 기본값은 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>   total_bill  tip     sex smoker  day    time  size
-0       16.99 1.01  Female     No  Sun  Dinner     2
-1       10.34 1.66    Male     No  Sun  Dinner     3
-2       21.01 3.50    Male     No  Sun  Dinner     3</code></pre>
-</div>
-</div>
-<div id="cell-8" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tips.sample(<span class="dv">5</span>)  <span class="co"># 무작위로 n개 표본 추출, 기본값은 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DataFrame의 값들: ndarray (numpy array)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tips.values <span class="co"># or tips.to_numpy()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>     total_bill  tip     sex smoker   day    time  size
-129       22.82 2.18    Male     No  Thur   Lunch     3
-30         9.55 1.45    Male     No   Sat  Dinner     2
-234       15.53 3.00    Male    Yes   Sat  Dinner     2
-215       12.90 1.10  Female    Yes   Sat  Dinner     2
-146       18.64 1.36  Female     No  Thur   Lunch     3</code></pre>
+<pre><code>array([[16.99, 1.01, 'Female', ..., 'Sun', 'Dinner', 2],
+       [10.34, 1.66, 'Male', ..., 'Sun', 'Dinner', 3],
+       [21.01, 3.5, 'Male', ..., 'Sun', 'Dinner', 3],
+       ...,
+       [22.67, 2.0, 'Male', ..., 'Sat', 'Dinner', 2],
+       [17.82, 1.75, 'Male', ..., 'Sat', 'Dinner', 2],
+       [18.78, 3.0, 'Female', ..., 'Thur', 'Dinner', 2]],
+      shape=(244, 7), dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tips.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-10" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tips.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
 RangeIndex: 244 entries, 0 to 243
 Data columns (total 7 columns):
  #   Column      Non-Null Count  Dtype   
@@ -857,29 +845,43 @@ dtypes: category(4), float64(2), int64(1)
 memory usage: 7.4 KB</code></pre>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tips.describe()  <span class="co"># numerical type만 나열</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tips.head() <span class="co"># 처음 N개 나열</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>   total_bill  tip     sex smoker  day    time  size
+0       16.99 1.01  Female     No  Sun  Dinner     2
+1       10.34 1.66    Male     No  Sun  Dinner     3
+2       21.01 3.50    Male     No  Sun  Dinner     3
+3       23.68 3.31    Male     No  Sun  Dinner     2
+4       24.59 3.61  Female     No  Sun  Dinner     4</code></pre>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tips.describe() <span class="co"># numerical type만 나열</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="9">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>       total_bill    tip   size
 count      244.00 244.00 244.00
 mean        19.79   3.00   2.57
 std          8.90   1.38   0.95
-...           ...    ...    ...
+min          3.07   1.00   1.00
+25%         13.35   2.00   2.00
 50%         17.80   2.90   2.00
 75%         24.13   3.56   3.00
-max         50.81  10.00   6.00
-
-[8 rows x 3 columns]</code></pre>
+max         50.81  10.00   6.00</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tips.describe(include<span class="op">=</span><span class="st">"all"</span>)  <span class="co"># all types 나열</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+</div>
+<div id="cell-13" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tips.describe(include<span class="op">=</span><span class="st">"all"</span>) <span class="co"># all types 나열</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>        total_bill    tip   sex smoker  day    time   size
 count       244.00 244.00   244    244  244     244 244.00
 unique         NaN    NaN     2      2    4       2    NaN
 top            NaN    NaN  Male     No  Sat  Dinner    NaN
+freq           NaN    NaN   157    151   87     176    NaN
 ...            ...    ...   ...    ...  ...     ...    ...
+25%          13.35   2.00   NaN    NaN  NaN     NaN   2.00
 50%          17.80   2.90   NaN    NaN  NaN     NaN   2.00
 75%          24.13   3.56   NaN    NaN  NaN     NaN   3.00
 max          50.81  10.00   NaN    NaN  NaN     NaN   6.00
@@ -887,9 +889,10 @@ max          50.81  10.00   NaN    NaN  NaN     NaN   6.00
 [11 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tips.describe(include<span class="op">=</span><span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tips.describe(include<span class="op">=</span><span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="11">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>         sex smoker  day    time
 count    244    244  244     244
 unique     2      2    4       2
@@ -897,12 +900,13 @@ top     Male     No  Sat  Dinner
 freq     157    151   87     176</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>) <span class="co"># "day" 칼럼에 대한 각 카테고리별 counts</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>, sort<span class="op">=</span><span class="va">False</span>) <span class="co"># default: sort is true</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>, ascending<span class="op">=</span><span class="va">True</span>) <span class="co"># default: ascending is False</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>s4 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>, normalize<span class="op">=</span><span class="va">True</span>) <span class="co"># 카테고리별 비율</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>s5 <span class="op">=</span> tips.value_counts([<span class="st">"sex"</span>, <span class="st">"smoker"</span>]) <span class="co"># "sex", "smoker" 칼럼에 대한 유니크한 카테고리별 counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-15" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>) <span class="co"># "day" 칼럼에 대한 각 카테고리별 counts</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>, sort<span class="op">=</span><span class="va">False</span>) <span class="co"># default: sort is true</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>, ascending<span class="op">=</span><span class="va">True</span>) <span class="co"># default: ascending is False</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>s4 <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>, normalize<span class="op">=</span><span class="va">True</span>) <span class="co"># 카테고리별 비율</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>s5 <span class="op">=</span> tips.value_counts([<span class="st">"sex"</span>, <span class="st">"smoker"</span>]) <span class="co"># "sex", "smoker" 칼럼에 대한 유니크한 카테고리별 counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-chart" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
@@ -930,10 +934,10 @@ Name: count, dtype: int64</code></pre>
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-chart-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <pre><code>day
+Sun     76
+Sat     87
 Thur    62
 Fri     19
-Sat     87
-Sun     76
 Name: count, dtype: int64</code></pre>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-chart-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1016,55 +1020,123 @@ Tip
 <div class="callout-body-container callout-body">
 <p><code>.value_count()</code>의 결과는 Series이며 그 이름은 ‘count’ 또는 ’proportion’임 (pandas 2.0)</p>
 <p>Missing(NA)을 count하지 않으나 <code>dropna=False</code>을 이용해 나타낼 수 있음</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tips.value_counts(<span class="st">"day"</span>, dropna<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>tips.value_counts(<span class="st">"day"</span>, dropna<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Series에 대해서도 적용되며, DataFrame으로 컬럼을 선택해 적용할 수 있음</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tips[<span class="st">"day"</span>].value_counts()  <span class="co"># tips["day"]: Series object</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>tips[[<span class="st">"sex"</span>, <span class="st">"smoker"</span>]].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>tips[<span class="st">"day"</span>].value_counts()  <span class="co"># tips["day"]: Series object</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>tips[[<span class="st">"sex"</span>, <span class="st">"smoker"</span>]].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <hr>
-<p>Data: palmerpenguins</p>
-<div id="cell-18" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load a dataset</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>penguins.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \
-0  Adelie  Torgersen           39.10          18.70             181.00   
-1  Adelie  Torgersen           39.50          17.40             186.00   
-2  Adelie  Torgersen           40.30          18.00             195.00   
-3  Adelie  Torgersen             NaN            NaN                NaN   
-4  Adelie  Torgersen           36.70          19.30             193.00   
+</section>
+<section id="penguins-데이터셋" class="level3">
+<h3 class="anchored" data-anchor-id="penguins-데이터셋">penguins 데이터셋</h3>
+<p>The Palmer Archipelago penguins 데이터셋의 예,</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="images/lter_penguins.png" height="200"><br>
+Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/culmen_depth.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load a dataset</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \
+0    Adelie  Torgersen           39.10          18.70             181.00   
+1    Adelie  Torgersen           39.50          17.40             186.00   
+2    Adelie  Torgersen           40.30          18.00             195.00   
+3    Adelie  Torgersen             NaN            NaN                NaN   
+..      ...        ...             ...            ...                ...   
+340  Gentoo     Biscoe           46.80          14.30             215.00   
+341  Gentoo     Biscoe           50.40          15.70             222.00   
+342  Gentoo     Biscoe           45.20          14.80             212.00   
+343  Gentoo     Biscoe           49.90          16.10             213.00   
 
-   body_mass_g     sex  
-0      3750.00    Male  
-1      3800.00  Female  
-2      3250.00  Female  
-3          NaN     NaN  
-4      3450.00  Female  </code></pre>
+     body_mass_g     sex  
+0        3750.00    Male  
+1        3800.00  Female  
+2        3250.00  Female  
+3            NaN     NaN  
+..           ...     ...  
+340      4850.00  Female  
+341      5750.00    Male  
+342      5200.00  Female  
+343      5400.00    Male  
+
+[344 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>penguins.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>penguins.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
 RangeIndex: 344 entries, 0 to 343
 Data columns (total 7 columns):
  #   Column             Non-Null Count  Dtype  
 ---  ------             --------------  -----  
- 0   species            344 non-null    object 
- 1   island             344 non-null    object 
+ 0   species            344 non-null    str    
+ 1   island             344 non-null    str    
  2   bill_length_mm     342 non-null    float64
  3   bill_depth_mm      342 non-null    float64
  4   flipper_length_mm  342 non-null    float64
  5   body_mass_g        342 non-null    float64
- 6   sex                333 non-null    object 
-dtypes: float64(4), object(3)
-memory usage: 18.9+ KB</code></pre>
+ 6   sex                333 non-null    str    
+dtypes: float64(4), str(3)
+memory usage: 18.9 KB</code></pre>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>penguins.describe(include<span class="op">=</span><span class="st">"object"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-20" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="15">
+<div class="callout callout-style-default callout-note callout-titled" title="Missing 결측치">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Missing 결측치
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>NaN</code>, <code>NA</code>, <code>None</code></p>
+<ul>
+<li>pandas에서는 missing을 명명하는데 R의 컨벤션을 따라 <code>NA</code> (not available)라 부름.<br>
+</li>
+<li>대부분의 경우에서 NumPy object <code>NaN</code>(<code>np.nan</code>)을 <code>NA</code>을 나타내는데 사용됨.<br>
+</li>
+<li><code>np.nan</code>은 실제로 <strong>floating-point</strong>의 특정 값으로 float64 데이터 타입임. Integer 또는 string type에서 약간 이상하게 작동될 수 있음.<br>
+</li>
+<li>Python object인 <code>None</code>은 pandas에서 <code>NA</code>로 인식함.<br>
+</li>
+<li>현재 <code>NA</code>라는 새로운 pandas object 실험 중임</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, np.nan, <span class="va">None</span>, pd.NA])</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>0       1
+1       2
+2     NaN
+3    None
+4    &lt;NA&gt;
+dtype: object</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>s.isna() <span class="co"># NA 여부를 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>0    False
+1    False
+2     True
+3     True
+4     True
+dtype: bool</code></pre>
+<p><code>NA</code>의 handling에 대해서는 다음 참고</p>
+<ul>
+<li>Mckinney’s: 7.1 Handling Missing Data,</li>
+<li><a href="https://pandas.pydata.org/docs/user_guide/missing_data.html">Working with missing data</a></li>
+</ul>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>penguins.describe(include<span class="op">=</span><span class="st">"str"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="17">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>       species  island   sex
@@ -1075,9 +1147,9 @@ freq       152     168   168</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>penguins.value_counts([<span class="st">"island"</span>, <span class="st">"species"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div id="cell-24" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>penguins.value_counts([<span class="st">"island"</span>, <span class="st">"species"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>island     species  
 Biscoe     Gentoo       124
 Dream      Chinstrap     68
@@ -1087,28 +1159,59 @@ Biscoe     Adelie        44
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>penguins.value_counts([<span class="st">"sex"</span>, <span class="st">"species"</span>], dropna<span class="op">=</span><span class="va">False</span>) <span class="co"># NA은 기본적으로 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div id="cell-25" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>penguins.value_counts([<span class="st">"sex"</span>, <span class="st">"species"</span>], dropna<span class="op">=</span><span class="va">False</span>) <span class="co"># NA은 기본적으로 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>sex     species  
-Female  Adelie       73
 Male    Adelie       73
-        Gentoo       61
-                     ..
+Female  Adelie       73
+Male    Gentoo       61
+Female  Gentoo       58
         Chinstrap    34
+Male    Chinstrap    34
 NaN     Adelie        6
         Gentoo        5
-Name: count, Length: 8, dtype: int64</code></pre>
+Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values(<span class="st">"tip"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div id="cell-26" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NA의 개수</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>penguins.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>species               0
+island                0
+bill_length_mm        2
+bill_depth_mm         2
+flipper_length_mm     2
+body_mass_g           2
+sex                  11
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NA의 비율</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>penguins.isna().mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>species             0.00
+island              0.00
+bill_length_mm      0.01
+bill_depth_mm       0.01
+flipper_length_mm   0.01
+body_mass_g         0.01
+sex                 0.03
+dtype: float64</code></pre>
+</div>
+</div>
+<div id="cell-28" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values(<span class="st">"tip"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>     total_bill   tip     sex smoker  day    time  size
 170       50.81 10.00    Male    Yes  Sat  Dinner     3
 212       48.33  9.00    Male     No  Sat  Dinner     4
 23        39.42  7.58    Male     No  Sat  Dinner     4
+59        48.27  6.73    Male     No  Sat  Dinner     4
 ..          ...   ...     ...    ...  ...     ...   ...
+236       12.60  1.00    Male    Yes  Sat  Dinner     2
 111        7.25  1.00  Female     No  Sat  Dinner     1
 67         3.07  1.00  Female    Yes  Sat  Dinner     1
 92         5.75  1.00  Female    Yes  Fri  Dinner     2
@@ -1116,14 +1219,16 @@ Name: count, Length: 8, dtype: int64</code></pre>
 [244 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values([<span class="st">"size"</span>, <span class="st">"tip"</span>], ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">True</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div id="cell-29" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>tips.sort_values([<span class="st">"size"</span>, <span class="st">"tip"</span>], ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">True</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>     total_bill  tip     sex smoker   day    time  size
 125       29.80 4.20  Female     No  Thur   Lunch     6
 143       27.05 5.00  Female     No  Thur   Lunch     6
 156       48.17 5.00    Male     No   Sun  Dinner     6
+141       34.30 6.70    Male     No  Thur   Lunch     6
 ..          ...  ...     ...    ...   ...     ...   ...
+67         3.07 1.00  Female    Yes   Sat  Dinner     1
 111        7.25 1.00  Female     No   Sat  Dinner     1
 82        10.07 1.83  Female     No  Thur   Lunch     1
 222        8.58 1.92    Male    Yes   Fri   Lunch     1
@@ -1131,9 +1236,9 @@ Name: count, Length: 8, dtype: int64</code></pre>
 [244 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>tips.nlargest(<span class="dv">3</span>, <span class="st">"tip"</span>)  <span class="co"># 다수의 동등 순위가 있을 때 처리: keep="first", "last", "all"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div id="cell-30" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>tips.nlargest(<span class="dv">3</span>, <span class="st">"tip"</span>)  <span class="co"># 다수의 동등 순위가 있을 때 처리: keep="first", "last", "all"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>     total_bill   tip   sex smoker  day    time  size
 170       50.81 10.00  Male    Yes  Sat  Dinner     3
 212       48.33  9.00  Male     No  Sat  Dinner     4
@@ -1142,6 +1247,7 @@ Name: count, Length: 8, dtype: int64</code></pre>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
