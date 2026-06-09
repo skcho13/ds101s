@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2026-06-06">
+<meta name="dcterms.date" content="2026-06-10">
 
 <title>Logistic Regression –  Intro to Data Science</title>
 <style>
@@ -513,13 +513,13 @@ window.Quarto = {
   <li><a href="#분류모형의-성능을-평가하기-위한-여러-지표들" id="toc-분류모형의-성능을-평가하기-위한-여러-지표들" class="nav-link" data-scroll-target="#분류모형의-성능을-평가하기-위한-여러-지표들">분류모형의 성능을 평가하기 위한 여러 지표들</a></li>
   </ul></li>
   <li><a href="#decision-boundary" id="toc-decision-boundary" class="nav-link" data-scroll-target="#decision-boundary">Decision Boundary</a></li>
+  </ul></li>
   <li><a href="#basis-functions" id="toc-basis-functions" class="nav-link" data-scroll-target="#basis-functions">Basis Functions</a></li>
   <li><a href="#neural-networkdeep-learning" id="toc-neural-networkdeep-learning" class="nav-link" data-scroll-target="#neural-networkdeep-learning">Neural Network/Deep Learning</a></li>
   <li><a href="#multiclass-k-2" id="toc-multiclass-k-2" class="nav-link" data-scroll-target="#multiclass-k-2">Multiclass (K &gt; 2)</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#blowdown-data" id="toc-blowdown-data" class="nav-link" data-scroll-target="#blowdown-data">Blowdown data</a></li>
   <li><a href="#mnist-digits-data" id="toc-mnist-digits-data" class="nav-link" data-scroll-target="#mnist-digits-data">MNIST digits data</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#other-model-families" id="toc-other-model-families" class="nav-link" data-scroll-target="#other-model-families">Other Model Families</a></li>
   </ul>
@@ -549,7 +549,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2026</p>
+      <p class="date">June 10, 2026</p>
     </div>
   </div>
   
@@ -2345,8 +2345,9 @@ specificity
 </div>
 <!-- [3d surface](https://claude.ai/public/artifacts/bb394bef-ce25-4dde-8f18-357f142affb3) -->
 </section>
-<section id="basis-functions" class="level2">
-<h2 class="anchored" data-anchor-id="basis-functions">Basis Functions</h2>
+</section>
+<section id="basis-functions" class="level1">
+<h1>Basis Functions</h1>
 <p>기저 함수</p>
 <p>관측치(input vector) <span class="math inline">\(\mathbf{x}\)</span>에 대해, basis function <span class="math inline">\(\phi(\mathbf{x})\)</span>를 사용하여, 비선형 모형을 선형모형의 형태로 변환(파라미터에 대한 선형)</p>
 <p><span class="math display">\[\mathbf{y} = b_0 + b_1 \cdot \phi_1(\mathbf{x}) + b_2 \cdot \phi_2(\mathbf{x}) + ... + b_n \cdot \phi_{m-1}(\mathbf{x})\]</span></p>
@@ -2453,8 +2454,8 @@ Figure&nbsp;1: Logistic Regression Decision Boundary with Kernel Tricks
 </details>
 </div>
 </section>
-<section id="neural-networkdeep-learning" class="level2">
-<h2 class="anchored" data-anchor-id="neural-networkdeep-learning">Neural Network/Deep Learning</h2>
+<section id="neural-networkdeep-learning" class="level1">
+<h1>Neural Network/Deep Learning</h1>
 <ul>
 <li>앞서 Gaussian basis (radial basis) function (RBF)과 같은 방식으로 비선형 모형 변환이 유용하나, 계산량이 많고, 과적합을 방지하기 위한 조심스러운 정규화가 필요함.</li>
 <li>또는, Support Vector Machine (SVM)도 비슷하게 basis function을 이용해 비선형 모형을 만드나, 확률적 출력을 제공하지 않고 다중 클래스의 일반화가 어려움.</li>
@@ -2520,19 +2521,20 @@ FIGURE 10.2. <em>Activation functions. The piecewise-linear ReLU function is pop
 </div>
 <p><strong>Convolutional Deep Belief Networks: Hierarchical Representations</strong></p>
 <p><a href="images/cnn.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/cnn.png" class="img-fluid" width="700"></a></p>
+<p><a href="images/cnn-filter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/cnn-filter.png" class="img-fluid" width="800"></a></p>
 <div style="line-height: 1.5em; font-size: .9em">
-<p>Source: p.301, <em>Deep Learning: Foundations and Concepts</em> by Bishop, C. M. &amp; Bishop, H</p>
+<p>Source: p.301, 293, <em>Deep Learning: Foundations and Concepts</em> by Bishop, C. M. &amp; Bishop, H</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <figcaption>Figure 2. <em>The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases.</em></figcaption>
-<p><a href="images/cnn-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."><img src="images/cnn-1.png" class="img-fluid figure-img" width="400" alt="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."></a></p>
+<p><a href="images/cnn-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."><img src="images/cnn-1.png" class="img-fluid figure-img" width="400" alt="Figure 2. The first layer bases (top) and the second layer bases (bottom) learned from natural images. Each second layer basis (filter) was visualized as a weighted linear combination of the first layer bases."></a></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <figcaption>Figure 3. <em>Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes).</em></figcaption>
-<p><a href="images/cnn-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."><img src="images/cnn-2.png" class="img-fluid figure-img" alt="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."></a></p>
+<p><a href="images/cnn-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."><img src="images/cnn-2.png" class="img-fluid figure-img" alt="Figure 3. Columns 1-4: the second layer bases (top) and the third layer bases (bottom) learned from specific object categories. Column 5: the second layer bases (top) and the third layer bases (bottom) learned from a mixture of four object categories (faces, cars, airplanes, motorbikes)."></a></p>
 </figure>
 </div>
 <div style="line-height: 1.5em; font-size: .9em">
@@ -2545,8 +2547,8 @@ FIGURE 10.2. <em>Activation functions. The piecewise-linear ReLU function is pop
 </figure>
 </div>
 </section>
-<section id="multiclass-k-2" class="level2">
-<h2 class="anchored" data-anchor-id="multiclass-k-2">Multiclass (K &gt; 2)</h2>
+<section id="multiclass-k-2" class="level1">
+<h1>Multiclass (K &gt; 2)</h1>
 <p><strong>Multinomial logistic regression</strong></p>
 <p>클래스 <span class="math inline">\(C_k\)</span>에 속할 확률을 예측하는 모형: Base 클래스를 기준으로 나머지 클래스에 대한 확률을 예측<br>
 Binary 경우에서의 확률 <span class="math inline">\(\displaystyle P(Y=1|X=x) = \frac{1}{1+e^{-(b_0 + b_1 \cdot x)}}=\frac{e^{b_0 + b_1 \cdot x}}{1 + e^{b_0 + b_1 \cdot x}}\)</span>을 다음과 같이 확장할 수 있음.</p>
@@ -2836,7 +2838,7 @@ Note
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>test_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="c05c74ec" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="38">
+<div id="c05c74ec" class="cell quarto-layout-panel" data-execution_count="38" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div>
 
@@ -3496,7 +3498,6 @@ weighted avg       0.92      0.92      0.92      2000
 </code></pre>
 </div>
 </div>
-</section>
 </section>
 </section>
 <section id="other-model-families" class="level1">
