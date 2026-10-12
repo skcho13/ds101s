@@ -104,7 +104,7 @@ website:
     #     text: "GitHub organization"
     style: "floating"
     search: true
-    collapse-level: 3
+    collapse-level: 1
     
     contents:
       - href: index.qmd
@@ -115,6 +115,7 @@ website:
       #   text: "설문"
       - text: ---
       - section: Introduction
+        expanded: true
         contents:
           - href: contents/intro.qmd
             text: Overview
@@ -146,6 +147,7 @@ website:
             # text: Descriptive Statistics
       - text: ---
       - section: Linear Models
+        expanded: true
         contents:
           - section: Model Basics
             href: contents/model-basic.ipynb
@@ -157,6 +159,7 @@ website:
           # - text: Example
       - text: ---
       - section: Machine Learning Basics
+        expanded: true
         contents: 
           - href: contents/mlsl-intro.ipynb
             text: Introduction
@@ -167,6 +170,7 @@ website:
           - href: contents/knn.ipynb
             text: K-Nearest Neighbors
       - section: Classification
+        expanded: true
         contents:
           - href: contents/logistic.ipynb
             text: Logistic Regression
