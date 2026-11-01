@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2026-06-15">
+<meta name="dcterms.date" content="2026-11-01">
 
 <title>Logistic Regression –  Intro to Data Science</title>
 <style>
@@ -80,9 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dad3580ce166bcc2ae75f76527fe5e70.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2784291acb19446010c4162ba6083e35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a196d8a4be2b6cfa8d16b95a2d2cf8d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e85932638aa085f208483d20082cb70a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a196d8a4be2b6cfa8d16b95a2d2cf8d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -523,6 +523,7 @@ window.Quarto = {
   <li><a href="#mnist-digits-data" id="toc-mnist-digits-data" class="nav-link" data-scroll-target="#mnist-digits-data">MNIST digits data</a></li>
   </ul></li>
   <li><a href="#other-model-families" id="toc-other-model-families" class="nav-link" data-scroll-target="#other-model-families">Other Model Families</a></li>
+  <li><a href="#과학-문명의-방향" id="toc-과학-문명의-방향" class="nav-link" data-scroll-target="#과학-문명의-방향">과학 문명의 방향</a></li>
   </ul>
 </nav>
     </div>
@@ -550,7 +551,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 15, 2026</p>
+      <p class="date">November 1, 2026</p>
     </div>
   </div>
   
@@ -2996,7 +2997,7 @@ Note
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>test_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="c05c74ec" class="cell quarto-layout-panel" data-execution_count="38" data-layout-ncol="2">
+<div id="c05c74ec" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="38">
 <div class="quarto-layout-row">
 <div>
 
@@ -3660,7 +3661,7 @@ weighted avg       0.92      0.92      0.92      2000
 </section>
 <section id="other-model-families" class="level1">
 <h1>Other Model Families</h1>
-<p>선형모델을 확장한 다양한 모델들이 존재</p>
+<p>통계 전통에서 선형모델을 확장한 다양한 모델들이 존재</p>
 <ul>
 <li>Robust linear models: 중심에서 먼 outlier에 대한 잔차의 영향을 줄여서 파라미터를 추정</li>
 <li>Penalised linear models: 파라미터에 제한을 두어 estimation. 예를 들어, ridge regression, lasso regression</li>
@@ -3672,6 +3673,26 @@ weighted avg       0.92      0.92      0.92      2000
 <li>Splines, loess, smoothing splines 등</li>
 </ul></li>
 </ul>
+</section>
+<section id="과학-문명의-방향" class="level1">
+<h1>과학 문명의 방향</h1>
+<p><strong>Moby Dick (1851) by Herman Melville</strong></p>
+<blockquote class="blockquote">
+<p><em>“인간이라는 철부지가 제아무리 자신의 과학과 기술을 자랑한다 해도, 또 장밋빛 미래에 그 과학과 기술이 아무리 크게 발전한다 해도, 최후의 심판이 닥치는 그날까지 영원히, 바다는 인간을 조롱하고 죽일 것이며, 인간이 만들어 낼 수 있는 가장 위풍당당하고 견고한 군함조차 산산이 부숴 버릴 것이다. 그럼에도 이러한 경험이 끊임없이 되풀이되면서, 인간은 본래 바다가 지니고 있던 그 압도적인 공포를 온전히 느끼는 감각을 잃어버렸다.”</em></p>
+</blockquote>
+<div style="line-height: 1.5em; font-size: .9em">
+<blockquote class="blockquote">
+<p><em>“However baby man may brag of his science and skill, and however much, in a flattering future, that science and skill may augment; yet for ever and for ever, to the crack of doom, the sea will insult and murder him, and pulverize the stateliest, stiffest frigate he can make; nevertheless, by the continual repetition of these very impressions, man has lost that sense of the full awfulness of the sea which aboriginally belongs to it.”</em></p>
+</blockquote>
+</div>
+<p><strong><a href="../contents/anton-chekhov.html">다락방이 있는 집 (1896)</a> by Anton Chekhov</strong></p>
+<blockquote class="blockquote">
+<p><em>“의학도 부정하시잖아요.”</em></p>
+<p><em>“그렇습니다. 의학은 질병을 치료하기 위해서가 아니라 자연현상으로서 질병을 연구할 때에만 필요합니다.</em></p>
+<p><em>굳이 치료해야 한다면 질병 자체가 아니라 질병의 원인을 치료해야 합니다.</em></p>
+<p><em>가장 큰 원인인 육체노동을 없애면 질병도 사라집니다.</em></p>
+<p><em>나는 치료하는 학문을 인정하지 않습니다.”</em></p>
+</blockquote>
 
 
 </section>
