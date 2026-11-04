@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2026-04-27">
+<meta name="dcterms.date" content="2026-11-04">
 
 <title>Model Basics –  Intro to Data Science</title>
 <style>
@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dad3580ce166bcc2ae75f76527fe5e70.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2784291acb19446010c4162ba6083e35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-843a96de8931ea69f700e137e61a9cfb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a196d8a4be2b6cfa8d16b95a2d2cf8d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e85932638aa085f208483d20082cb70a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a196d8a4be2b6cfa8d16b95a2d2cf8d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -532,7 +532,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 27, 2026</p>
+      <p class="date">November 4, 2026</p>
     </div>
   </div>
   
@@ -586,7 +586,7 @@ window.Quarto = {
 </blockquote>
 <p>이상적으로, 모형(model)이 현상으로부터 <strong>노이즈</strong>가 제거된 진정한 <strong>신호</strong>를 잡아내 주기를 기대.<br>
 <em>물리 법칙: 물리적 세계에 대한 모델</em></p>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="5" data-layout-ncol="2">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -645,7 +645,7 @@ window.Quarto = {
 <li>그 외에 자연스럽게 나타난다고 가정할 수 있는 여러 분포들이 있음; Binomial, Poisson, Exponential, Weibull, Gamma, Beta, …
 <ul>
 <li>가령, 환자/병의 특성(X)에 따른 퇴원까지 남은 시간의 경우<br>
-<span class="math inline">\(Y = a * X_i + \epsilon_i\)</span>, &nbsp; <span class="math inline">\(\epsilon_i \sim \text{Exponential}(\lambda)\)</span>; <span class="math inline">\(f(t) = \lambda e^{-\lambda t}\)</span><br>
+<span class="math inline">\(Y = b_0 + b_1 * X_i + \epsilon_i\)</span>, &nbsp; <span class="math inline">\(\epsilon_i \sim \text{Exponential}(\lambda)\)</span>; <span class="math inline">\(f(t) = \lambda e^{-\lambda t}\)</span><br>
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Exponential_distribution_pdf_-_public_domain.svg" height="200"></li>
 </ul></li>
 </ul>
@@ -665,7 +665,7 @@ window.Quarto = {
 <li><span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>; density function <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\)</span></li>
 <li><span class="math inline">\(X \sim N(0, 1)\)</span>; <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}\)</span>, (standard normal distribution)</li>
 </ul>
-<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
+<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -730,7 +730,7 @@ Coin tossing widget code
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        ax.text(x[i], v <span class="op">+</span> <span class="fl">0.5</span>, <span class="bu">str</span>(v), ha<span class="op">=</span><span class="st">"center"</span>, color<span class="op">=</span><span class="st">"r"</span>)</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interact, fixed</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>interact(plot_Gaussin,  n<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>), ax<span class="op">=</span>fixed(<span class="va">None</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>interact(plot_Gaussin,  n<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>), ax<span class="op">=</span>fixed(<span class="va">None</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -774,12 +774,13 @@ Important
 <li>“good” model임을 뜻하지 않고, “true” model임을 뜻하는 것은 더더욱 아님</li>
 </ul>
 <blockquote class="blockquote">
-<p><em>모든 모델은 틀렸지만, 어떤 모델은 유용합니다.</em> by George Box<br>
+<p><em>모든 모델은 틀렸지만, 어떤 모델은 유용합니다.</em><br>
 <em>모델의 목표는 진리를 밝히는 것이 아니라, 여전히 유용한 단순한 근사치를 찾아내는 것입니다.</em></p>
 </blockquote>
 <blockquote class="blockquote">
 <p><em>All models are wrong, but some are useful.</em><br>
-<em>The goal of a model is not to uncover truth, but to discover a simple approximation that is still useful.</em></p>
+<em>The goal of a model is not to uncover truth, but to discover a simple approximation that is still useful.</em><br>
+- George Box</p>
 </blockquote>
 <section id="a-simple-model" class="level2">
 <h2 class="anchored" data-anchor-id="a-simple-model">A simple model</h2>
@@ -787,7 +788,7 @@ Important
 <div id="cell-15" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="7">
+<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="7" data-layout="[[2, 4, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -812,7 +813,7 @@ Important
 <li>무수히 많은 <span class="math inline">\(\beta_0, \beta_1\)</span>의 값들 중 위 데이터에 가장 가까운 값을 찾음</li>
 <li>그 예로, 임의로 250개의 선형 모델을 그려보면,</li>
 </ul>
-<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[4, 2, 1]]" data-execution_count="26">
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="26" data-layout="[[4, 2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 57.1%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="605"></p>
@@ -891,7 +892,7 @@ Model evaluation
 </div>
 </div>
 <p>이 중 제일 좋은 모델(dist가 최소) 10개의 모델을 그리면,</p>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="32">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="32" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" class="img-fluid" width="591"></p>
@@ -902,7 +903,7 @@ Model evaluation
 <ul>
 <li>오렌지 색은 위에서 구한 10 best models</li>
 </ul>
-<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="33">
+<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="33" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" class="img-fluid" width="599"></p>
@@ -922,7 +923,7 @@ Model evaluation
 <pre><code>array([4.22, 2.05])</code></pre>
 </div>
 </div>
-<div id="cell-38" class="cell quarto-layout-panel" data-layout="[[4, 3]]" data-execution_count="37">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="37" data-layout="[[4, 3]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 57.1%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-23-output-1.png" class="img-fluid" width="605"></p>
