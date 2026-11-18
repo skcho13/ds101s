@@ -308,7 +308,7 @@
     "href": "contents/mlsl-intro.html",
     "title": "Machine/Statistical Learning",
     "section": "",
-    "text": "\\(f\\): \\(X_1, X_2, ..., X_p\\)가 \\(Y\\)에 관해 제공하는 systematic information; unknown function\n\\(Y = f(X_1, X_2, ..., X_p) + \\epsilon\\)\n\\(\\epsilon\\): 불확실성의 소스들; reducible error & irreducible error (epistemic uncertainty & aleatory uncertainty)\n앞서 선형모형은 \\(f\\)를 \\(X\\)의 선형함수인 parametric model로 가정한 후 parameter를 추정하여 문제가 단순하였으나,\n이번에는 \\(f\\)의 형태를 가정하지 않고, \\(f\\) 자체를 추정하고자 하는 매우 광범위한 문제임.\n예를 들어,",
+    "text": "\\(f\\): \\(X_1, X_2, ..., X_p\\)가 \\(Y\\)에 관해 제공하는 systematic information; unknown function\n\\(Y = f(X_1, X_2, ..., X_p) + \\epsilon\\)\n\\(\\epsilon\\): 불확실성의 소스들; reducible error & irreducible error (epistemic uncertainty & aleatoric uncertainty)\n앞서 선형모형은 \\(f\\)를 \\(X\\)의 선형함수인 parametric model로 가정한 후 parameter를 추정하여 문제가 단순하였으나,\n이번에는 \\(f\\)의 형태를 가정하지 않고, \\(f\\) 자체를 추정하고자 하는 매우 광범위한 문제임.\n예를 들어,",
     "crumbs": [
       "Home",
       "Machine Learning Basics",
@@ -320,7 +320,7 @@
     "href": "contents/mlsl-intro.html#왜-분석하는가",
     "title": "Machine/Statistical Learning",
     "section": "왜 분석하는가?",
-    "text": "왜 분석하는가?\nThe Occam’s Dilemma?\n\n예측(prediction)\n변수들 간의 관계에 대한 추론(inference)/해석(interpretation)\n\n정보(information) 획득의 관점에서: Leo Breiman 글 참고",
+    "text": "왜 분석하는가?\n\n예측(prediction)\n변수들 간의 관계에 대한 추론(inference)/해석(interpretation)\n\nThe Occam’s Dilemma?\n\n정보(information) 획득이라는 넓은 관점에서 보면 해석은 하나의 정보 획득 방법에 불과; Leo Breiman 글 참고\n예측 정확도를 우선 추구하더라고 정보는 희생되지 않을 수 있으며 오히려 정보가 더 풍부해 질 수 있음.",
     "crumbs": [
       "Home",
       "Machine Learning Basics",
@@ -332,7 +332,7 @@
     "href": "contents/mlsl-intro.html#어떻게-f를-추정하는가",
     "title": "Machine/Statistical Learning",
     "section": "어떻게 \\(f\\)를 추정하는가?",
-    "text": "어떻게 \\(f\\)를 추정하는가?\n모수적(parametric) 접근\n\n모수적 접근: \\(f\\)의 형태를 가정하고, 그 형태에 대한 parameter를 추정\n가령, 선형성을 가정한 linear model: \\(f(X) = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + ... + \\beta_pX_p\\)\n모델을 관찰된 데이터에 fit(적합) 또는 모델을 train(훈련)/learn(학습) 시켜, parameter(모수) 추정\n전형적으로 (ordinary) least squares 방법을 사용\n상대적으로 적은 수의 데이터로도 추정이 가능\n해석을 통해 변수 간의 관계 추론 용이\n\\(f\\)의 형태를 잘못 가정하면, 잘못된 결과를 낼 수 있음\n\n\n\n\n\n\n\n\n\nSource: p.21, An Introduction to Statistical Learning with Applications in Python\n\n비모수적(non-parametric) 접근\n\n\\(f\\)의 형태를 가정하지 않음\n보통, 예측의 정확성이 높도록, 즉 데이터와 최대한 가까운 매우 복잡한 형태의 \\(\\hat f\\)를 추구\n과적합(overfit)이 되지 않도록, 새로운 데이터에도 잘 일반화되도록 sweet spot을 찾아야 함\n매우 많은 데이터가 요구됨\n해석은 어려우나, \\(f\\)로부터 다양한 정보(information)을 추출하는 방법을 고안함으로써 (해석을 넘어) 정보를 추출할 수 있음\n모수가 없을 수도, 있을 수도 있으나, 해석 가능한 모수라고 보기 어려움\n\n\n\n\n\n\n\n\n\n\n\n\nSource: p.22, An Introduction to Statistical Learning with Applications in Python\n\nThe tradeoff between flexibility and interpretability\n\n\nSource: p.22, An Introduction to Statistical Learning with Applications in Python\n\n어떤 기준으로 이 tradeoff의 수준을 결정할 것인가?\n\n해석에 중심을 두고, 변수 간의 관계를 추론하고자 하는 경우: 모형이 틀릴 위험이 존재 &gt;&gt; bias가 높아짐\n예측의 정확성에 중심을 두는 경우: 과적합이 될 위험이 존재 &gt;&gt; variance가 높아짐\n이 둘이 항상 대치되는 것은 아님; 단순한 모형이 새로운 데이터에서 더 나은 예측 정확도를 가질 수도 있음!",
+    "text": "어떻게 \\(f\\)를 추정하는가?\nParametric (모수적) 접근\n\n모수적 접근: \\(f\\)의 형태를 가정하고, 그 형태에 대한 parameter를 추정\n가령, 선형성을 가정한 linear model: \\(f(X) = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + ... + \\beta_pX_p\\)\n모델을 관찰된 데이터에 fit(적합) 또는 모델을 train(훈련)/learn(학습) 시켜, parameter(모수) 추정\n전형적으로 (ordinary) least squares 방법을 사용\n상대적으로 적은 수의 데이터로도 추정이 가능\n해석을 통해 변수 간의 관계 추론 용이\n\\(f\\)의 형태를 잘못 가정하면, 잘못된 결과를 낼 수 있음\n\n\n\n\n\n\n\n\n\nSource: p.21, An Introduction to Statistical Learning with Applications in Python\n\nNon-parametric (비모수적) 접근\n\n\\(f\\)의 형태를 가정하지 않음\n보통, 예측의 정확성이 높도록, 즉 데이터와 최대한 가까운 매우 복잡한 형태의 \\(\\hat f\\)를 추구\n과적합(overfit)이 되지 않도록, 새로운 데이터에도 잘 일반화되도록 sweet spot을 찾아야 함\n매우 많은 데이터가 요구됨\n해석은 어려우나, \\(f\\)로부터 다양한 정보(information)을 추출하는 방법을 고안함으로써 (해석을 넘어) 정보를 추출할 수 있음\n모수가 없을 수도, 있을 수도 있으나, 해석 가능한 모수라고 보기 어려움\n\n\n\n\n\n\n\n\n\n\n\n\nSource: p.22, An Introduction to Statistical Learning with Applications in Python\n\nThe tradeoff between flexibility and interpretability\n\n\nSource: p.22, An Introduction to Statistical Learning with Applications in Python\n\n어떤 기준으로 이 tradeoff의 수준을 결정할 것인가?\n\n해석에 중심을 두고, 변수 간의 관계를 추론하고자 하는 경우: 모형이 틀릴 위험이 존재 &gt;&gt; bias가 높아짐\n예측의 정확성에 중심을 두는 경우: 과적합이 될 위험이 존재 &gt;&gt; variance가 높아짐\n이 둘이 항상 대치되는 것은 아님; 단순한 모형이 새로운 데이터에서 더 나은 예측 정확도를 가질 수도 있음!",
     "crumbs": [
       "Home",
       "Machine Learning Basics",
