@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2026-11-16">
+<meta name="dcterms.date" content="2026-11-23">
 
 <title>Machine/Statistical Learning –  Intro to Data Science</title>
 <style>
@@ -540,7 +540,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 16, 2026</p>
+      <p class="date">November 23, 2026</p>
     </div>
   </div>
   
@@ -717,7 +717,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <li>예를 들어, 다이아몬드의 무게로 가격을 예측한다면: 1 carat 다이아몬드의 true price?</li>
 <li>또는, 목소리(특정 frequency)로 성별을 예측한다면; 분류 문제의 경우 뒤에서 다룸</li>
 </ul>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="2" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/loss-diamond.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/loss-diamond.png" class="img-fluid"></a></p>
@@ -762,7 +762,7 @@ Y: <em><strong>target/label</strong>, response, dependent variable, outcome vari
 <li><span class="math inline">\(\hat f(1.5, Fair, I1) = E(Y|carat=1.5,~ cut=Fair,~ clarity=I1)\)</span></li>
 </ul></li>
 </ul>
-<div id="cell-7" class="cell quarto-layout-panel" data-execution_count="23" data-layout="[1.3, 1]">
+<div id="cell-7" class="cell quarto-layout-panel" data-layout="[1.3, 1]" data-execution_count="23">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 56.5%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-5-output-1.png" class="img-fluid" width="580"></p>
@@ -786,7 +786,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 </div>
 </div>
 <p>만약, 부리의 길이로 부리의 깊이를 예측한는 모형에 대해 <span class="math inline">\(\hat f\)</span>를 구한다면,</p>
-<div id="cell-15" class="cell quarto-layout-panel" data-execution_count="28" data-layout="[[1, 1, 1]]">
+<div id="cell-15" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="28">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-10-output-1.png" class="img-fluid" width="460"></p>
@@ -803,7 +803,7 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <li>Likelihood가 최대가 되도록 파라미터(기울기와 절편)를 구한 것임; maximum likelihood estimation</li>
 <li>Squared error를 최소화하는 것과 동일함.</li>
 </ul>
-<div id="cell-17" class="cell quarto-layout-panel" data-execution_count="29" data-layout="[[1, 1, 1]]">
+<div id="cell-17" class="cell quarto-layout-panel" data-layout="[[1, 1, 1]]" data-execution_count="29">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-11-output-1.png" class="img-fluid" width="460"></p>
@@ -820,13 +820,13 @@ Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</spa
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: <a href="https://www.hashpi.com/visualizing-a-multivariate-gaussian">Visualizing a multivariate Gaussian</a></p>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Expected value">
+<div class="callout callout-style-default callout-tip callout-titled" title="Expected value (기댓값; 평균값)">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expected value
+Expected value (기댓값; 평균값)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -834,7 +834,8 @@ Expected value
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(X: \{a, b, a, a, b, c\}\)</span><br>
 The mean of <span class="math inline">\(X=\displaystyle \frac{a + b + a + a + b + c}{6} = \frac{3*a}{6} + \frac{2*b}{6} + \frac{1*c}{6}=a*\frac{3}{6} + b*\frac{2}{6} + c*\frac{1}{6}\)</span><br>
-<span class="math inline">\(~~~~~~~~~~~~~~~~~~~~~~~~~=a*p(X=a) + b*p(X=b) + c*(X=c)\)</span>: <em>weighted average</em></p>
+<span class="math inline">\(~~~~~~~~~~~~~~~~~~~~~~~~~=a*p(X=a) + b*p(X=b) + c*(X=c)\)</span>: <em>weighted average</em><br>
+여기서 <span class="math inline">\(\displaystyle \frac{3}{6}, \frac{2}{6}, \frac{1}{6}\)</span>는 실제 확률 <span class="math inline">\(p(X=a), p(X=b), p(X=c)\)</span>에 대한 실증적 추정값으로 볼 수 있음.</p>
 <p>Expectation: <span class="math inline">\(E(X)=\displaystyle \sum x_i p(X=x_i)= \sum xp(x)\)</span></p>
 <p>연속값이라면, <span class="math inline">\(E(X)=\displaystyle \sum \Delta x * p(\Delta x) = \int x f(x) dx\)</span>, where <span class="math inline">\(f(x)\)</span> is the probability density function<br>
 <span class="math inline">\(p(\Delta x) = f(x)\Delta x\)</span></p>
@@ -868,6 +869,7 @@ The mean of <span class="math inline">\(X=\displaystyle \frac{a + b + a + a + b 
 <ul>
 <li>즉, <em>데이터셋에 따라 <span class="math inline">\(f(x_0;D_i)\)</span>가 얼마나 민감하게 변하는지 측정</em></li>
 </ul>
+<p><img src="images/bias-variance-infograph.png" class="img-fluid" width="680"></p>
 <p>모든 <span class="math inline">\(x\)</span>에 대한 비용의 총합으로 확장해서 이해하면,</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Expected Loss 분해">
 <div class="callout-header d-flex align-content-center">
@@ -881,8 +883,8 @@ Expected Loss 분해
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(\displaystyle E(L_2) = (bias)^2 + variance + noise\)</span></p>
 <ul>
-<li><span class="math inline">\(\displaystyle \text{(bias)}^2 = \int [E_D\left( f(x_0; D_i)\right) - h(x_0)]^2 p(x) dx\)</span></li>
-<li><span class="math inline">\(\displaystyle \text{variance} = \int E_D[\left\{f(x_0;D_i) - E_D\left(f(x_0;D_i)\right)\right\}^2] p(x) dx\)</span></li>
+<li><span class="math inline">\(\displaystyle \text{(bias)}^2 = \int [E_D\left( f(x; D_i)\right) - h(x)]^2 p(x) dx\)</span></li>
+<li><span class="math inline">\(\displaystyle \text{variance} = \int E_D[\left\{f(x;D_i) - E_D\left(f(x;D_i)\right)\right\}^2] p(x) dx\)</span></li>
 <li><span class="math inline">\(\displaystyle \text{noise} = \iint \left( h(x) - y) \right)^2p(x, y) dxdy\)</span></li>
 </ul>
 </div>
@@ -923,8 +925,16 @@ Expected Loss 분해
 </ul></li>
 <li><span class="math inline">\(f(x_i): P(Y = C_k|X=x_i)\)</span>가 최대인 클래스에 할당; 즉, <span class="math inline">\(f(x_i) = \underset{k}{\mathrm{argmax}}~ P(Y = C_k|X=x_i)\)</span>
 <ul>
-<li>Conditional class probabilities; 앞서 conditional mean <span class="math inline">\(E(Y|X)\)</span>에 대응</li>
-<li>Bayes classifier라고 부름: 0-1 loss function하에 expected loss를 최소로 함 (즉, 오류율을 최소로 함)</li>
+<li>Conditional class probabilities; 앞서 conditional mean <span class="math inline">\(E(Y|X)\)</span>에 대응
+<ul>
+<li>0-1 loss function하에 평균 손실(expected loss)를 최소로 함 (즉, 오류율을 최소로 함)</li>
+</ul></li>
+<li>더 일반화해서, 손실함수(loss function, <span class="math inline">\(L(C_j,C_k)\)</span>)를 정의해서 평균 손실(expected loss)을 최소로 하는 것으로 정의할 수 있음.
+<ul>
+<li><span class="math inline">\(f_L^{*}(x_i)= \underset{C_j}{\arg\min} \sum_{k=1}^{K} L(C_j,C_k)P(Y=C_k\mid X=x_i)\)</span></li>
+<li>0-1 loss function의 경우, <span class="math inline">\(L(C_j,C_k) = 1\)</span> if <span class="math inline">\(C_j \neq C_k\)</span> else <span class="math inline">\(L(C_j,C_k) = 0\)</span></li>
+<li>이런 분류기를 Bayes classifier라고 부름</li>
+</ul></li>
 </ul></li>
 <li>이 <span class="math inline">\(P(Y = C_k|X=x)\)</span>를 추정하기 위한 다양한 방식들이 존재
 <ul>
@@ -934,7 +944,13 @@ Expected Loss 분해
 <li>Linear/Quadratic discriminant analysis</li>
 </ul></li>
 </ul>
-<div id="cell-22" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[1, 1]]">
+<p><strong>다시 Palmer 펭귄의 예에서</strong>,<br>
+이들의 부리 길이와 두께로 종(Adelie과 Gentoo)을 분류할 수 있는가?</p>
+<ul>
+<li>두 종의 어떻게 다른가?</li>
+<li>어떤 특징/특성(feature)이 종을 가장 잘 구분하는가?</li>
+</ul>
+<div id="cell-23" class="cell quarto-layout-panel" data-layout="[[1, 1]]" data-execution_count="19">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-12-output-1.png" class="img-fluid" width="565"></p>
@@ -946,6 +962,7 @@ Expected Loss 분해
 </div>
 <ul>
 <li>예측 모델은 분류기(classifier)라고도 부르며 다음과 같은 결정 경계(decision boundary)를 찾는 것과 동일함</li>
+<li><strong>결정 경계는 관측되지 않은 값에 대해서도 예측이 가능하도록 함</strong>: 이는 모집단 혹은 일반화의 문제를 해결하는 것과 동일함.</li>
 </ul>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -959,14 +976,14 @@ Expected Loss 분해
 </div>
 <p>만약, 한 개의 예측변수로만 예측한다면,<br>
 가령 <span class="math inline">\(X\)</span>: bill_length_mm인 경우, 즉 펭귄의 부리 길이로만 두 종을 분류한다면,</p>
-<div id="cell-31" class="cell quarto-layout-panel" data-execution_count="27" data-layout="[5, 1]">
+<div id="cell-32" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="27">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-19-output-1.png" class="img-fluid" width="891"></p>
 </div>
 </div>
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="28" data-layout="[5, 1]">
+<div id="cell-33" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="28">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-20-output-1.png" class="img-fluid" width="998"></p>
@@ -974,14 +991,14 @@ Expected Loss 분해
 </div>
 </div>
 <p>모델의 적절한 평가를 위해, 데이터셋을 훈련셋과 테스트셋으로 나눠보면</p>
-<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="35" data-layout="[5, 1]">
+<div id="cell-35" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="35">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-21-output-1.png" class="img-fluid" width="891"></p>
 </div>
 </div>
 </div>
-<div id="cell-35" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[5, 1]">
+<div id="cell-36" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-22-output-1.png" class="img-fluid" width="998"></p>
@@ -989,7 +1006,7 @@ Expected Loss 분해
 </div>
 </div>
 <p>Quadratic discriminant analysis(QDA) 알고리즘으로 예측해보면; 각각을 Gaussian으로 가정하고, 평균과 표준편차를 추정해서 분포를 얻어 분류하는 방법</p>
-<div id="cell-39" class="cell quarto-layout-panel" data-execution_count="34" data-layout="[5, 1]">
+<div id="cell-40" class="cell quarto-layout-panel" data-layout="[5, 1]" data-execution_count="34">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 83.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-25-output-1.png" class="img-fluid" width="891"></p>
@@ -997,7 +1014,7 @@ Expected Loss 분해
 </div>
 </div>
 <p>Confusion matrix with the threshold=0.5</p>
-<div id="cell-41" class="cell" data-execution_count="38">
+<div id="cell-42" class="cell" data-execution_count="38">
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>Truth      Adelie  Gentoo
 Predicted                
@@ -1006,7 +1023,7 @@ Gentoo          3      56</code></pre>
 </div>
 </div>
 <p>만약, 다음과 같은 loss function (loss matrix)가 주어진다면,</p>
-<div id="cell-43" class="cell" data-execution_count="39">
+<div id="cell-44" class="cell" data-execution_count="39">
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>Truth      Adelie  Gentoo
 Predicted                
@@ -1015,7 +1032,7 @@ Gentoo         30       0</code></pre>
 </div>
 </div>
 <p>Expected loss:<br>
-<span class="math inline">\(E(L) = \displaystyle \sum_{i=1} \sum_{j=1} L_{ij}P(y\in C_i, \hat y\in C_j) = \frac{1}{137}(74*0 + 4*10 + 3*30 + 56*0)\)</span></p>
+<span class="math inline">\(E(L) = \displaystyle \sum_{i=1} \sum_{j=1} L_{ij}P(y = C_i, \hat y = C_j) = \frac{1}{137}(74*0 + 4*10 + 3*30 + 56*0)\)</span></p>
 <p>보통의 경우, 0-1 loss를 사용. 즉, 잘못 분류된(misclassified)된 관측치에 대한 비율; <strong><em>오분류율 (misclassification error rate)</em></strong></p>
 <p><span class="math inline">\(\displaystyle E(L) = \frac{1}{N} \sum_{i=1}^N I(y_i \neq \hat y_i) = \frac{4 + 3}{74 + 4 + 3 + 56} = \frac{7}{137}\)</span><br>
   where <span class="math inline">\(I\)</span> is the indicator function: 0 if <span class="math inline">\(y_i = \hat y_i\)</span>, 1 otherwise</p>
@@ -1136,7 +1153,7 @@ Gentoo         30       0</code></pre>
 <li>다수의 훈련셋과 검증셋을 생성하여, 평균값으로 모형의 성능을 평가</li>
 <li>다양한 변형이 존재</li>
 </ul>
-<div id="cell-47" class="cell">
+<div id="cell-48" class="cell">
 <details class="code-fold">
 <summary>load packages</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -1165,7 +1182,7 @@ Gentoo         30       0</code></pre>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-49" class="cell" data-execution_count="41">
+<div id="cell-50" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install ISLP package</span></span>
@@ -1188,7 +1205,7 @@ Gentoo         30       0</code></pre>
 2    3436         11.00    70       1  </code></pre>
 </div>
 </div>
-<div id="cell-50" class="cell" data-execution_count="42">
+<div id="cell-51" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>auto_train, auto_valid <span class="op">=</span> train_test_split(auto, test_size<span class="op">=</span><span class="fl">.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1203,7 +1220,7 @@ Gentoo         30       0</code></pre>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    p.add(so.Line(), so.PolyFit(i)).label(title<span class="op">=</span><span class="ss">f"M = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-51" class="cell quarto-layout-panel" data-execution_count="43" data-layout="[1, 1, 1]">
+<div id="cell-52" class="cell quarto-layout-panel" data-layout="[1, 1, 1]" data-execution_count="43">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-32-output-1.png" class="img-fluid" width="630"></p>
@@ -1271,7 +1288,7 @@ Gentoo         30       0</code></pre>
 <p>k개의 훈련셋에서 각각에서 얻은 모델에 대해서 검증셋으로부터 모형의 평가치를 얻음: 주로 MSE(mean squared error)</p>
 <p>k-fold CV estimate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k MSE_i\)</span></p>
 <p>분류의 경우, misclassification error rate: <span class="math inline">\(\displaystyle CV_{(k)} = \frac{1}{k} \sum_{i=1}^k \frac{1}{n_i} \sum_{j=1}^{n_i} I(y_j \neq \hat y_j)\)</span></p>
-<div id="cell-54" class="cell" data-execution_count="50">
+<div id="cell-55" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_validate, cross_val_score, KFold, ShuffleSplit</span>
@@ -1298,7 +1315,7 @@ MSEs: [15.98 15.84 18.39 25.88 18.71 23.58 23.58 23.83 11.19 14.88],
 Average: 19.185331419374968</code></pre>
 </div>
 </div>
-<div id="cell-55" class="cell" data-execution_count="51">
+<div id="cell-56" class="cell" data-execution_count="51">
 <details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span><span class="dv">10</span>, test_size<span class="op">=</span><span class="fl">.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1362,7 +1379,7 @@ Average: 16.32656735042881</code></pre>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"10-split Shuffle &amp; Split Cross-validation </span><span class="ch">\n</span><span class="st">with 20% test sets over 10 degrees of Polynomial"</span>)</span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-56" class="cell quarto-layout-panel" data-execution_count="52" data-layout="[1, 1]">
+<div id="cell-57" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="52">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-35-output-1.png" class="img-fluid" width="436"></p>
@@ -1408,7 +1425,7 @@ Average: 16.32656735042881</code></pre>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>plt.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-57" class="cell quarto-layout-panel" data-execution_count="53" data-layout="[1, 1]">
+<div id="cell-58" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="53">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-36-output-1.png" class="img-fluid" width="425"></p>
@@ -1433,7 +1450,7 @@ Average: 16.32656735042881</code></pre>
 <p>관찰된 데이터에 가장 적합한 모형을 찾는 것이 아니고, 일반화된 모형을 찾는 것이 목표임.<br>
 아래 그림에서 관찰된 데이터셋에 대한 예측 오류인 “test error”와 “true error”의 관계를 보여줌.<br>
 예를 들어, 아래의 3가지 형태의 true relationship에 대해,</p>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
+<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><a href="images/bias-variance-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="images/bias-variance-1.png" class="img-fluid" width="450"></a></p>
@@ -1474,7 +1491,7 @@ Average: 16.32656735042881</code></pre>
 <li>최적의 flexibility를 선택한 후, 전체 training set으로 fitting한 모델을 선택 후</li>
 <li>test set으로 모델의 성능을 평가</li>
 </ul>
-<div id="cell-60" class="cell" data-execution_count="56">
+<div id="cell-61" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, GridSearchCV</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2498,14 +2515,14 @@ function forceTheme(elementId) {
 forceTheme('sk-container-id-2');</script>
 </div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="61">
+<div id="cell-62" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best parameter!</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>grid_search.best_params_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>{'poly__degree': 8}</code></pre>
 </div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="58">
+<div id="cell-63" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best estimator!</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>grid_search.best_estimator_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
@@ -3380,20 +3397,20 @@ forceTheme('sk-container-id-3');</script>
 </div>
 </div>
 <p><code>grid_search.cv_results_</code>에 교차검증의 여러 지표들이 포함되어 있음</p>
-<div id="cell-64" class="cell" data-execution_count="62">
+<div id="cell-65" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>grid_search.cv_results_[<span class="st">"mean_test_score"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>array([-24.82, -20.29, -20.37, -20.67, -20.2 , -20.32, -20.21, -20.05,
        -20.23, -21.  ])</code></pre>
 </div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="63">
+<div id="cell-66" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>grid_search.cv_results_[<span class="st">"param_poly__degree"</span>].data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])</code></pre>
 </div>
 </div>
-<div id="cell-66" class="cell" data-execution_count="64">
+<div id="cell-67" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    {</span>
@@ -3416,7 +3433,7 @@ forceTheme('sk-container-id-3');</script>
 </div>
 </div>
 <p>2차 다항함수로 충분하다고 판단하고, 전체 training set으로 다시 fitting한 후, test set으로 성능을 평가</p>
-<div id="cell-68" class="cell" data-execution_count="65">
+<div id="cell-69" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mod_auto_best <span class="op">=</span> Pipeline([(<span class="st">"poly"</span>, PolynomialFeatures(<span class="dv">2</span>)), (<span class="st">"lm"</span>, LinearRegression())])</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mod_auto_best.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
@@ -4289,7 +4306,7 @@ function forceTheme(elementId) {
 forceTheme('sk-container-id-4');</script>
 </div>
 </div>
-<div id="cell-69" class="cell" data-execution_count="66">
+<div id="cell-70" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get root_mean_squared_error and median_absolute_error</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> root_mean_squared_error, median_absolute_error</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4312,7 +4329,7 @@ Median Absolute Error: 2.486</code></pre>
 <p>주어진 데이터셋으로부터 같은 사이즈의 데이터셋들을 중복을 허용해서 추출.<br>
 마치 새로운 표본들을 얻는 것과 같은 효과를 얻어, 표본들마다 모형이 어떻게 다르게 추정되는지를 파악함.</p>
 <p><a href="https://islp.readthedocs.io/en/latest/datasets/Carseats.html">Sales of Child Car Seats</a>(<code>Carseats</code>) 데이터셋으로 예를 들면,</p>
-<div id="cell-73" class="cell" data-execution_count="68">
+<div id="cell-74" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>carseats <span class="op">=</span> load_data(<span class="st">"Carseats"</span>)</span>
@@ -4329,7 +4346,7 @@ Median Absolute Error: 2.486</code></pre>
 2         12   Yes  Yes  </code></pre>
 </div>
 </div>
-<div id="cell-74" class="cell" data-execution_count="69">
+<div id="cell-75" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> carseats[[<span class="st">"Income"</span>, <span class="st">"Advertising"</span>, <span class="st">"Population"</span>, <span class="st">"Price"</span>, <span class="st">"Age"</span>]]</span>
@@ -5079,7 +5096,7 @@ function forceTheme(elementId) {
 forceTheme('sk-container-id-5');</script>
 </div>
 </div>
-<div id="cell-75" class="cell" data-execution_count="70">
+<div id="cell-76" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> pd.DataFrame(lm_carseats.coef_, index<span class="op">=</span>X.columns, columns<span class="op">=</span>[<span class="st">"params"</span>])</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
@@ -5091,7 +5108,7 @@ Price       -0.0574
 Age         -0.0490</code></pre>
 </div>
 </div>
-<div id="cell-77" class="cell" data-execution_count="72">
+<div id="cell-78" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.utils <span class="im">import</span> resample</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
@@ -5104,7 +5121,7 @@ Age         -0.0490</code></pre>
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    params_new <span class="op">=</span> pd.DataFrame(lm_carseats.coef_, index<span class="op">=</span>X.columns, columns<span class="op">=</span>[<span class="ss">f"sample_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>])</span>
 <span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    params_boot <span class="op">=</span> pd.concat([params_boot, params_new], axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-78" class="cell" data-execution_count="73">
+<div id="cell-79" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>params_boot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>             params  sample_0  sample_1  sample_2  sample_3  ...  sample_995  \
@@ -5125,7 +5142,7 @@ Age             -0.0486     -0.0535     -0.0394     -0.0375
 </div>
 </div>
 <p>1000개 표본에서 파라미터 추정치의 표준편차; <em>standard error</em></p>
-<div id="cell-80" class="cell" data-execution_count="74">
+<div id="cell-81" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>params_boot.std(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>Income        0.0038
@@ -5140,7 +5157,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>params_boot.T.hist(bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">.7</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>), layout<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-82" class="cell quarto-layout-panel" data-execution_count="75" data-layout="[3, 1]">
+<div id="cell-83" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="75">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="mlsl-intro_files/figure-html/cell-53-output-1.png" class="img-fluid" width="689"></p>
@@ -5178,7 +5195,7 @@ Short version
 </div>
 </div>
 <p>선형회귀에서 OLS estimation 결과와 비교하면,</p>
-<div id="cell-86" class="cell" data-execution_count="76">
+<div id="cell-87" class="cell" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>lm_carseats2 <span class="op">=</span> ols(<span class="st">"Sales ~ Income + Advertising + Population + Price + Age"</span>, data<span class="op">=</span>carseats).fit()</span>

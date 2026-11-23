@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2026-11-02">
+<meta name="dcterms.date" content="2026-11-24">
 
 <title>Logistic Regression –  Intro to Data Science</title>
 <style>
@@ -551,7 +551,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 2, 2026</p>
+      <p class="date">November 24, 2026</p>
     </div>
   </div>
   
@@ -679,7 +679,7 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="9708bb61" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="5">
+<div id="9708bb61" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-6-output-1.png" class="img-fluid" width="589"></p>
@@ -702,7 +702,7 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'log d = </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="448e7ed0" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="6">
+<div id="448e7ed0" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-7-output-1.png" class="img-fluid" width="758"></p>
@@ -748,7 +748,7 @@ window.Quarto = {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Diameter (cm)'</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="d6fbd6f2" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="8">
+<div id="d6fbd6f2" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-9-output-1.png" class="img-fluid" width="834"></p>
@@ -773,7 +773,7 @@ window.Quarto = {
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">'Emperical Probability'</span>, y <span class="op">=</span> <span class="st">'Proportion of Died'</span>, x<span class="op">=</span><span class="st">'Log of Diameter (cm)'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="6dad2803" class="cell quarto-layout-panel" data-layout="[3, 1]" data-execution_count="9">
+<div id="6dad2803" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[3, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="834"></p>
@@ -844,7 +844,7 @@ Important
 <p>이를 확률로 표현하면,<br>
 <span class="math inline">\(\displaystyle P(Y=1|X=x) = E(Y|X=x) = \sigma(b_0 + b_1 \cdot \log_{2} d)\)</span></p>
 <p>즉, logit은 예측변수 <span class="math inline">\(x\)</span> 와 선형적으로 연결되는데 반해, 확률 <span class="math inline">\(p\)</span> 는 예측변수 <span class="math inline">\(x\)</span> 와 비선형적 관계를 맺음</p>
-<div id="fa280612" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="15">
+<div id="fa280612" class="cell quarto-layout-panel" data-execution_count="15" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-12-output-1.png" class="img-fluid" width="470"></p>
@@ -907,7 +907,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Log of Diameter (cm)"</span>, y<span class="op">=</span><span class="st">"Density"</span>, color<span class="op">=</span><span class="st">"Label"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="7fef49b7" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="17">
+<div id="7fef49b7" class="cell quarto-layout-panel" data-execution_count="17" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="790"></p>
@@ -955,7 +955,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Emperical Probability"</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="8d91902a" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="19">
+<div id="8d91902a" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-16-output-1.png" class="img-fluid" width="846"></p>
@@ -994,7 +994,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># y = np.polyval(np.polyfit(blowbs_bn.log2d, blowbs_bn.log_odds, 1), x)</span></span>
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lineplot(x=x, y=y, ax=ax, color=".6")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a4f966e4" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="20">
+<div id="a4f966e4" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-17-output-1.png" class="img-fluid" width="856"></p>
@@ -1014,7 +1014,7 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 </ul>
 <!-- 참고: 이항분포 (Y: 사건의 횟수) -->
 <!-- ![](images/binomial.png){width=750} -->
-<div id="2d803e77" class="cell quarto-layout-panel" data-layout="[10, -1, 10, -1]" data-execution_count="21">
+<div id="2d803e77" class="cell quarto-layout-panel" data-execution_count="21" data-layout="[10, -1, 10, -1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-18-output-1.png" class="img-fluid" width="545"></p>
@@ -1065,13 +1065,13 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>위의 Log likelihood = <span class="math inline">\(\displaystyle \sum_{i=1}^{n} y_i \cdot \log p_i + (1-y_i) \cdot \log(1-p_i)\)</span>는</p>
+<p>위의 Log likelihood = <span class="math inline">\(\displaystyle \sum_{i=1}^{n} y_i \cdot \log q_i + (1-y_i) \cdot \log(1-q_i)\)</span>는</p>
 <p>머신러닝에서 손실함수로 사용되는 cross-entropy loss와 (거의) 동일함.</p>
-<p><span class="math inline">\(L = -\frac{1}{n} \sum_{i=1}^{n} y_i \cdot \log p_i + (1-y_i) \cdot \log (1-p_i)\)</span></p>
-<p>= [cross-entropy]: <span class="math inline">\(H(\tilde{q}, p)\)</span>: [실제값(y)를 <span class="math inline">\(p\)</span>의 분포로 잘못 모델링했을 때의 평균 정보량]</p>
+<p><span class="math inline">\(L = -\frac{1}{n} \sum_{i=1}^{n} y_i \cdot \log q_i + (1-y_i) \cdot \log (1-q_i)\)</span></p>
+<p>= <span class="math inline">\(H(\tilde{p}, q)\)</span> (cross-entropy) : 실제값(y)를 <span class="math inline">\(q\)</span>의 분포로 잘못 모델링했을 때의 평균 정보량</p>
+<p>= <span class="math inline">\(KL(\tilde{p} | q) + H(\tilde{p})\)</span></p>
 <p>= [부정확하게 예측되어 발생하는 정보 손실량: Kullback-Leibler divergence] + [경험분포 자체의 평균 정보량]</p>
-<p>= <span class="math inline">\(KL(\tilde{q} | p) + H(\tilde{q})\)</span></p>
-<p>관측 데이터로부터 <strong>경험분포</strong> <span class="math inline">\(\tilde{q}\)</span>와, 모델이 만드는 <strong>모델분포</strong> <span class="math inline">\(p\)</span>를 구분</p>
+<p>관측 데이터로부터 <strong>경험분포</strong> <span class="math inline">\(\tilde{p}\)</span>와, 모델이 만드는 <strong>모델분포</strong> <span class="math inline">\(q\)</span>를 구분</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1087,14 +1087,14 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 </thead>
 <tbody>
 <tr class="odd">
-<td>경험분포 <span class="math inline">\(\tilde{q}\)</span>: 여기서는 degenerate Bernoulli 분포</td>
+<td>경험분포 <span class="math inline">\(\tilde{p}\)</span>: 여기서는 degenerate Bernoulli 분포</td>
 <td><span class="math inline">\(y_i\)</span> (관측값)</td>
 <td><span class="math inline">\(1 - y_i\)</span></td>
 </tr>
 <tr class="even">
-<td>모델분포 <span class="math inline">\(p\)</span></td>
-<td><span class="math inline">\(\hat{p}_i\)</span> (예측값)</td>
-<td><span class="math inline">\(1 - \hat{p}_i\)</span></td>
+<td>모델분포 <span class="math inline">\(q\)</span></td>
+<td><span class="math inline">\(\hat{q}_i\)</span> (예측값)</td>
+<td><span class="math inline">\(1 - \hat{q}_i\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1111,10 +1111,9 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>정보량: <span class="math inline">\(-\log p\)</span></li>
+<li>어떤 사건 <span class="math inline">\(x\)</span>에 대한 정보량 <span class="math inline">\(I(x)\)</span>: <span class="math inline">\(-\log p(x)\)</span></li>
 <li>엔트로피 <span class="math inline">\(H\)</span>: 평균 정보량(정보의 기대값) <span class="math inline">\(\displaystyle \sum p \cdot (-\log p) = \sum -p \cdot \log p\)</span></li>
 </ul>
-<p>By Claude Sonnet 4.6</p>
 <p>오늘 길에서 만나는 사람들의 키를 예측한다고 했을 때, 키가 180cm가 넘는 여자를 만나는 사건의 정보:</p>
 <p><strong>상황 설정</strong></p>
 <p>오늘 서울 길거리를 걷습니다. 마주치는 사람들의 키는 서울 여성의 실제 분포 <span class="math inline">\(p\)</span>를 따릅니다. 이 <span class="math inline">\(p\)</span>는 내가 어떻게 생각하든 상관없이 세상에 고정되어 있는 실제 빈도입니다.</p>
@@ -1123,6 +1122,13 @@ log odds가 <span class="math inline">\(X\)</span>에 대해 선형적으로 연
 <p><strong>정보량 — 실현된 사건이 얼마나 드문가/놀라운가</strong></p>
 <p><span class="math display">\[I(\text{180cm 이상}) = -\log_2 p(\text{180cm 이상}) = -\log_2 (0.001) \approx 10 \text{ bits}\]</span></p>
 <p>여기서 <span class="math inline">\(p\)</span>는 서울에서 실제로 180cm 이상 여성이 얼마나 드문가입니다. 이 사건이 실제 세계에서 0.1%밖에 일어나지 않는다는 사실 자체가 정보량을 결정합니다.</p>
+<ul>
+<li>180cm 이상 여성을 만나는 일은 예상하기 매우 어려운 사건임</li>
+<li>나의 “경험 모델”에 의하면 평균적인 160cm 정도의 여성을 만나는 것을 예상할 수 있었음.</li>
+<li>흔하게 예상되는 사건은 적은 bit(정보량)로 저장하는 것이 효율적이라는 점에서 정보량이 작다고 보는 것임.</li>
+<li>정확히는 <span class="math inline">\(p\)</span>의 확률로 발생하는 사건들을 저장하는데 필요한 “평균 코드 길이”을 최소화하도록 설계하면 그 사건을 저장하는데 최적의 코드 길이가 <span class="math inline">\(-\log_2 p\)</span> bit임.</li>
+<li>이 때, 평균 코드 길이(코드 길이의 기댓값)는 아래 엔트로피가 됨.</li>
+</ul>
 <p><strong>엔트로피 — 걷기 전, 실제 세계의 불확실성</strong></p>
 <p><span class="math display">\[H(p) = \sum_x p(x) \cdot (-\log_2 p(x))\]</span></p>
 <p>집을 나서기 전 상태입니다. 오늘 어떤 키의 사람을 만날지 모릅니다. 이 불확실성의 총량이 엔트로피입니다.</p>
@@ -1256,7 +1262,7 @@ Scikit-learn implementation
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="a8234351" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="25">
+<div id="a8234351" class="cell quarto-layout-panel" data-execution_count="25" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-22-output-1.png" class="img-fluid" width="768"></p>
@@ -1486,7 +1492,7 @@ Deviance Residuals
 <div id="d3ecb8f8" class="cell quarto-layout-panel" data-layout="[50, 50]">
 
 </div>
-<div id="a1b37dd1" class="cell quarto-layout-panel" data-layout="[50, 50]" data-execution_count="68">
+<div id="a1b37dd1" class="cell quarto-layout-panel" data-execution_count="68" data-layout="[50, 50]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-30-output-1.png" class="img-fluid" width="470"></p>
@@ -1529,21 +1535,21 @@ Important
 </ul>
 </div>
 </div>
-<div id="70c5a856" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="140">
+<div id="70c5a856" class="cell quarto-layout-panel" data-execution_count="140" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-33-output-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </div>
-<div id="67b8c19c" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="141">
+<div id="67b8c19c" class="cell quarto-layout-panel" data-execution_count="141" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-34-output-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </div>
-<div id="46c722a0" class="cell quarto-layout-panel" data-layout="[4, 1]" data-execution_count="142">
+<div id="46c722a0" class="cell quarto-layout-panel" data-execution_count="142" data-layout="[4, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-35-output-1.png" class="img-fluid" width="768"></p>
@@ -1551,7 +1557,7 @@ Important
 </div>
 </div>
 <p>Threshold: 0.5인 경우, accuracy rate: 0.78</p>
-<div class="quarto-layout-panel" data-layout="[30, -5, 50, 20]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -5, 50, 20]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: center;">
 <table class="caption-top table">
@@ -1615,7 +1621,7 @@ Important
 </div>
 </div>
 <p>다른 threshold를 적용하면,</p>
-<div class="quarto-layout-panel" data-layout="[30, -8, 40, -22]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[30, -8, 40, -22]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <p>Threshold: 0.1인 경우,</p>
@@ -1711,7 +1717,7 @@ Important
 <span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
 <span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy rate: </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="b1b466d7" class="cell quarto-layout-panel" data-layout="[20, -5, 30, 45]" data-execution_count="69">
+<div id="b1b466d7" class="cell quarto-layout-panel" data-execution_count="69" data-layout="[20, -5, 30, 45]">
 
 </div>
 </section>
@@ -1868,7 +1874,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 이유: 잘못된 추천(FP)이 많아지면 사용자는 시스템의 신뢰도를 낮게 평가하고, 플랫폼 사용을 줄일 수 있습니다.
 목표: Precision을 높여, 추천된 제품이 사용자의 관심사와 일치할 가능성을 극대화합니다. -->
 <p>위의 confusion matrix로부터 지표들을 계산하면,</p>
-<div class="quarto-layout-panel" data-layout="[[50, -5, 50]]" style="font-size: .9em; line-height: 1em;">
+<div class="quarto-layout-panel" style="font-size: .9em; line-height: 1em;" data-layout="[[50, -5, 50]]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 47.6%;justify-content: center;">
 <p>Threshold: 0.1인 경우,</p>
@@ -1987,7 +1993,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co"># https://scikit-learn.org/stable/visualizations.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="afb388d5" class="cell quarto-layout-panel" data-layout="[1, 1]" data-execution_count="144">
+<div id="afb388d5" class="cell quarto-layout-panel" data-execution_count="144" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-42-output-1.png" class="img-fluid" width="470"></p>
@@ -2024,7 +2030,7 @@ False Negative Rate (FNR): 높은 FNR은 실제로 질병이 있는 환자들이
 <span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="co"># https://scikit-learn.org/stable/visualizations.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="836f22b1" class="cell quarto-layout-panel" data-layout="[60, 40]" data-execution_count="146">
+<div id="836f22b1" class="cell quarto-layout-panel" data-execution_count="146" data-layout="[60, 40]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-44-output-1.png" class="img-fluid" width="556"></p>
@@ -2266,7 +2272,7 @@ Specificity
 <li>보수적인 지표임. 즉, precision과 recall 중 하나라도 낮으면 F1-score도 낮아짐</li>
 </ul></li>
 </ul>
-<div id="607d0bd3" class="cell quarto-layout-panel" data-layout="[5, 4]" data-execution_count="253">
+<div id="607d0bd3" class="cell quarto-layout-panel" data-execution_count="253" data-layout="[5, 4]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
 <p><img src="logistic_files/figure-html/cell-53-output-1.png" class="img-fluid" width="552"></p>
@@ -2997,7 +3003,7 @@ Note
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>test_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="c05c74ec" class="cell quarto-layout-panel" data-execution_count="38" data-layout-ncol="2">
+<div id="c05c74ec" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="38">
 <div class="quarto-layout-row">
 <div>
 
